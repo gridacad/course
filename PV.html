@@ -1,0 +1,801 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>GRID ACADEMY | Photovoltaic Systems Engineering</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <style>
+        /* ── BASE STYLES (identical to SDPC) ── */
+        :root {
+            --primary-color:  #009268;
+            --primary-dark:   #006e4d;
+            --primary-light:  #00b37d;
+            --secondary-color:#2C3E50;
+            --accent-color:   #E6F4F1;
+            --light-bg:       #FFF2CC;
+            --medium-bg:      #FBE4D5;
+            --dark-bg:        #F4B083;
+            --darker-bg:      #C45911;
+            --text-dark:      #212E3C;
+            --white:          #FFFFFF;
+            --light-gray:     #f8f9fa;
+            --medium-gray:    #e9ecef;
+            --dark-gray:      #6c757d;
+            --shadow:         0 4px 12px rgba(0,0,0,0.1);
+            --radius:         8px;
+
+            /* PV accent (solar blue) used for level colours */
+            --pv-l1: #e8f4fd;
+            --pv-l2: #d0e9fa;
+            --pv-l3: #a8d5f5;
+            --pv-l4: #7abfe8;
+            --pv-l5: #4a9fd4;
+        }
+
+        * { margin:0; padding:0; box-sizing:border-box; }
+
+        body {
+            font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+            color: var(--secondary-color);
+            line-height: 1.6;
+            background-color: var(--light-gray);
+            overflow-x: hidden;
+        }
+
+        .container { max-width:1200px; margin:0 auto; padding:0 20px; }
+
+        section { padding:80px 0; position:relative; }
+        section:nth-child(even) { background-color: var(--white); }
+        section:nth-child(odd)  { background-color: var(--light-gray); }
+
+        h1 {
+            font-family: Montserrat, sans-serif;
+            font-size: 2.2rem;
+            color: var(--primary-color);
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            position: relative;
+        }
+        h1:after {
+            content: "";
+            position: absolute;
+            bottom: 0; left: 0;
+            width: 80px; height: 4px;
+            background-color: var(--primary-color);
+            border-radius: 2px;
+        }
+        h2 { font-family: Montserrat, sans-serif; font-size:1.6rem; color:var(--secondary-color); margin:30px 0 15px; }
+        h3 { font-family: Montserrat, sans-serif; font-size:1.3rem; color:var(--primary-color); margin:20px 0 10px; }
+        p  { margin-bottom:15px; font-size:1.05rem; }
+
+        /* ── TOP NAV (new) ── */
+        .top-nav {
+            position: sticky;
+            top: 0;
+            z-index: 200;
+            background: rgba(44,62,80,0.97);
+            backdrop-filter: blur(10px);
+            padding: 12px 0;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.25);
+        }
+        .nav-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+        .nav-brand {
+            font-family: Montserrat, sans-serif;
+            font-size: 1.1rem;
+            font-weight: 800;
+            color: white;
+            text-decoration: none;
+            letter-spacing: 1px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .nav-brand i { color: var(--primary-light); }
+        .nav-back {
+            display: flex;
+            align-items: center;
+            gap: 7px;
+            color: rgba(255,255,255,0.75);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+        .nav-back:hover { color: white; }
+        .nav-enroll {
+            background: var(--primary-color);
+            color: white;
+            padding: 8px 20px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 0.88rem;
+            transition: background 0.2s, transform 0.2s;
+        }
+        .nav-enroll:hover { background: var(--primary-dark); transform: translateY(-1px); }
+        .nav-left { display:flex; align-items:center; gap:20px; }
+
+        /* ── SHAPES ── */
+        .shape-circle {
+            position:absolute; border-radius:50%;
+            background-color: rgba(0,146,104,0.05); z-index:-1;
+        }
+        .shape-square {
+            position:absolute;
+            background-color: rgba(0,146,104,0.03);
+            transform: rotate(45deg); z-index:-1;
+        }
+
+        /* ── HERO ── */
+        .hero-section {
+            position:relative;
+            height:100vh;
+            display:flex;
+            align-items:center;
+            overflow:hidden;
+            background: linear-gradient(135deg, rgba(26,82,118,0.92) 0%, rgba(36,113,163,0.85) 100%),
+                        url("CO/pv-bg.jpg") center/cover no-repeat;
+        }
+        .hero-background { position:absolute; top:0; left:0; width:100%; height:100%; z-index:0; }
+        .hero-content {
+            position:relative; z-index:1;
+            color: var(--white);
+            padding:40px;
+            background-color: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            border-radius: var(--radius);
+            max-width:650px;
+            margin-left:5%;
+            box-shadow: var(--shadow);
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+        .logo { margin-bottom:30px; }
+        .logo h2 {
+            font-family: Montserrat, sans-serif;
+            font-size:2.2rem;
+            color: var(--white);
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+            display:flex;
+            align-items:center;
+        }
+        .course-title {
+            font-family: Montserrat, sans-serif;
+            font-size:2.8rem;
+            margin-bottom:20px;
+            color: var(--white);
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+            line-height:1.2;
+        }
+        .instructor {
+            font-size:1.3rem;
+            margin-bottom:10px;
+            color: var(--accent-color);
+            display:flex;
+            align-items:center;
+        }
+        .instructor i { margin-right:10px; }
+        .year {
+            font-size:1.1rem; font-weight:bold;
+            color: var(--white);
+            background-color: rgba(255,255,255,0.2);
+            padding:5px 15px;
+            border-radius:20px;
+            display:inline-block;
+        }
+        .cta-button {
+            display:inline-block;
+            margin-top:30px;
+            padding:12px 30px;
+            background-color: var(--white);
+            color: var(--primary-color);
+            text-decoration:none;
+            font-weight:bold;
+            border-radius:30px;
+            transition:all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+        .cta-button:hover {
+            transform:translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.25);
+            background-color: var(--accent-color);
+        }
+
+        /* ── CARD ── */
+        .card {
+            background-color: var(--white);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            padding:25px;
+            margin-bottom:25px;
+            border-top:4px solid var(--primary-color);
+            transition:transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .card:hover { transform:translateY(-5px); box-shadow:0 8px 25px rgba(0,0,0,0.15); }
+
+        /* ── TABLE ── */
+        .schedule-table {
+            width:100%;
+            border-collapse:collapse;
+            margin:20px 0;
+            box-shadow:var(--shadow);
+            border-radius:var(--radius);
+            overflow:hidden;
+        }
+        .schedule-table th {
+            background-color: var(--primary-color);
+            color: var(--white);
+            padding:15px; text-align:center;
+            font-family:"Aptos Narrow",sans-serif;
+            font-weight:bold; font-size:1.1rem;
+        }
+        .schedule-table td { padding:12px 15px; border:1px solid var(--medium-gray); text-align:center; }
+
+        .level-1 { background-color:var(--pv-l1); }
+        .level-2 { background-color:var(--pv-l2); }
+        .level-3 { background-color:var(--pv-l3); }
+        .level-4 { background-color:var(--pv-l4); color:var(--text-dark); }
+        .level-5 { background-color:var(--pv-l5); color:white; font-weight:600; }
+
+        /* ── LISTS ── */
+        ul { margin-left:20px; margin-bottom:20px; }
+        li { margin-bottom:8px; }
+        .bullet-list { list-style-type:none; margin-left:0; }
+        .bullet-list li { position:relative; padding-left:25px; margin-bottom:12px; }
+        .bullet-list li:before {
+            content:"✓"; color:var(--primary-color);
+            position:absolute; left:0; font-weight:bold;
+            background-color:rgba(0,146,104,0.1);
+            width:20px; height:20px; border-radius:50%;
+            display:flex; align-items:center; justify-content:center;
+            font-size:0.8rem;
+        }
+
+        /* ── CERTIFICATIONS ── */
+        .certification-container {
+            display:grid;
+            grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+            gap:25px;
+            margin:30px 0;
+        }
+        .certification-card {
+            background-color:var(--white);
+            padding:25px; border-radius:var(--radius);
+            box-shadow:var(--shadow);
+            border-left:4px solid var(--primary-color);
+            transition:transform 0.3s ease;
+            text-align:center;
+        }
+        .certification-card:hover { transform:translateY(-5px); }
+        .certification-card h3 {
+            margin-top:0; color:var(--primary-color);
+            display:flex; align-items:center; justify-content:center;
+        }
+        .certification-card h3 i { margin-right:10px; font-size:1.5rem; }
+
+        /* ── FOOTER ── */
+        footer {
+            background-color: var(--secondary-color);
+            color: var(--white);
+            padding:60px 0 30px;
+            position:relative;
+            overflow:hidden;
+        }
+        .instructor-info {
+            display:flex; flex-wrap:wrap;
+            justify-content:center; align-items:center;
+            gap:40px; margin-bottom:40px;
+        }
+        .instructor-photo { flex:0 0 250px; position:relative; }
+        .instructor-photo img { width:100%; border-radius:var(--radius); box-shadow:var(--shadow); }
+        .instructor-photo:after {
+            content:""; position:absolute;
+            width:100%; height:100%;
+            border:3px solid var(--primary-color);
+            border-radius:var(--radius);
+            top:10px; left:10px; z-index:-1;
+        }
+        .instructor-bio { flex:1; min-width:300px; text-align:left; }
+        .company-logos {
+            display:flex; justify-content:center; gap:40px;
+            flex-wrap:wrap; margin:40px 0;
+        }
+        .company-logo {
+            height:60px;
+            filter:brightness(0) invert(1);
+            opacity:0.8;
+            transition:opacity 0.3s;
+        }
+        .company-logo:hover { opacity:1; }
+        .copyright {
+            text-align:center; margin-top:40px;
+            padding-top:20px;
+            border-top:1px solid rgba(255,255,255,0.1);
+            color:rgba(255,255,255,0.7);
+            font-size:0.9rem;
+        }
+
+        /* ── SECTION HEADER ── */
+        .section-header { text-align:center; margin-bottom:50px; }
+        .section-header h1 { display:inline-block; }
+        .section-header p { max-width:700px; margin:0 auto; font-size:1.1rem; }
+
+        /* ── PROGRESS INDICATOR ── */
+        .progress-indicator { display:flex; justify-content:center; margin:40px 0; flex-wrap:wrap; }
+        .progress-step {
+            display:flex; flex-direction:column; align-items:center;
+            margin:0 15px; position:relative; width:110px;
+        }
+        .progress-step:not(:last-child):after {
+            content:""; position:absolute;
+            top:25px; left:65px;
+            width:90px; height:2px;
+            background-color:var(--primary-color); z-index:-1;
+        }
+        .step-circle {
+            width:50px; height:50px; border-radius:50%;
+            background-color:var(--primary-color);
+            color:white; display:flex;
+            align-items:center; justify-content:center;
+            font-weight:bold; margin-bottom:10px;
+            box-shadow:0 4px 10px rgba(0,146,104,0.3);
+        }
+        .step-label { text-align:center; font-weight:bold; color:var(--primary-color); font-size:0.85rem; }
+
+        /* ── ROUND TITLE ── */
+        .round-title {
+            width:100%; text-align:center;
+            font-size:1.2rem; font-weight:700;
+            margin:20px 0 10px; padding:12px;
+            background:#f1f3f5;
+            border-radius:8px; border:1px solid #dee2e6;
+            color:#212529;
+        }
+
+        /* ── RESPONSIVE ── */
+        @media (max-width:992px) {
+            .hero-content { padding:30px; margin:20px; }
+            .course-title { font-size:2.2rem; }
+        }
+        @media (max-width:768px) {
+            section { padding:60px 0; }
+            .hero-content { padding:25px; margin:15px; }
+            .course-title { font-size:1.8rem; }
+            .schedule-table { font-size:0.9rem; }
+            .instructor-info { flex-direction:column; text-align:center; }
+            .instructor-bio { text-align:center; }
+        }
+        @media (max-width:576px) {
+            h1 { font-size:1.8rem; }
+            h2 { font-size:1.4rem; }
+            h3 { font-size:1.2rem; }
+            .progress-step:not(:last-child):after { display:none; }
+            .progress-step { margin:8px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- TOP NAV -->
+    <nav class="top-nav">
+        <div class="nav-inner">
+            <div class="nav-left">
+                <a href="index.html" class="nav-back">
+                    <i class="fas fa-chevron-left"></i> All Courses
+                </a>
+                <a href="index.html" class="nav-brand">
+                    <i class="fas fa-bolt"></i> GRID ACADEMY
+                </a>
+            </div>
+            <a href="#enroll" class="nav-enroll">
+                <i class="fas fa-file-alt" style="margin-right:6px;"></i> Enroll Now
+            </a>
+        </div>
+    </nav>
+
+    <!-- HERO -->
+    <section class="hero-section" id="home">
+        <div class="shape-circle" style="width:300px;height:300px;top:-100px;right:-100px;"></div>
+        <div class="shape-square" style="width:200px;height:200px;bottom:-50px;left:10%;"></div>
+        <div class="shape-circle" style="width:150px;height:150px;bottom:100px;right:20%;"></div>
+
+        <div class="container">
+            <div class="hero-content">
+                <div class="logo">
+                    <h2>GRID ACADEMY</h2>
+                </div>
+                <h1 class="course-title">Photovoltaic Systems Engineering</h1>
+                <p class="instructor"><i class="fas fa-chalkboard-teacher"></i> Presented by: Eng. Ahmed Metwally</p>
+                <p class="year">2026 Edition</p>
+                <p>A comprehensive 5-level program covering grid-tied, off-grid, hybrid, and solar pumping systems — from PV physics to full project execution.</p>
+                <a href="#enroll" class="cta-button" id="enroll">Secure Your Seat Now <i class="fas fa-arrow-right"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <!-- COURSE OVERVIEW -->
+    <section id="overview">
+        <div class="shape-circle" style="width:200px;height:200px;top:50px;left:-50px;"></div>
+        <div class="shape-square" style="width:150px;height:150px;bottom:100px;right:5%;"></div>
+
+        <div class="container">
+            <div class="section-header">
+                <h1>Course Overview</h1>
+                <p>This 5-Level professional course equips electrical engineering students and professionals with the theoretical foundation and practical skills to design, size, and evaluate photovoltaic systems across all application types.</p>
+            </div>
+            <div class="card">
+                <p>From <strong>PV physics and solar radiation analysis</strong> to <strong>full grid-tied and off-grid system design</strong>, <strong>software simulation</strong>, and <strong>financial feasibility</strong>, this course delivers industry-aligned competencies you can use from day one on the job.</p>
+                <p>Each lecture blends theory, applied engineering calculations, and practical simulation using industry-standard software — progressing logically from fundamentals to real project execution in Egypt and the wider MENA region.</p>
+            </div>
+
+            <div class="progress-indicator">
+                <div class="progress-step">
+                    <div class="step-circle">1</div>
+                    <div class="step-label">Solar Foundations</div>
+                </div>
+                <div class="progress-step">
+                    <div class="step-circle">2</div>
+                    <div class="step-label">Grid-Tied Design</div>
+                </div>
+                <div class="progress-step">
+                    <div class="step-circle">3</div>
+                    <div class="step-label">Off-Grid & Hybrid</div>
+                </div>
+                <div class="progress-step">
+                    <div class="step-circle">4</div>
+                    <div class="step-label">Solar Pumping</div>
+                </div>
+                <div class="progress-step">
+                    <div class="step-circle">5</div>
+                    <div class="step-label">Projects & Finance</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- COURSE OBJECTIVES -->
+    <section id="objectives">
+        <div class="shape-circle" style="width:250px;height:250px;top:-100px;right:-100px;"></div>
+
+        <div class="container">
+            <div class="section-header">
+                <h1>Course Objectives</h1>
+                <p>By the end of this course, participants will be able to:</p>
+            </div>
+            <div class="card">
+                <ul class="bullet-list">
+                    <li>Understand PV physics, I–V characteristics, and solar radiation analysis.</li>
+                    <li>Select and size PV modules, inverters, and BOS components using datasheets.</li>
+                    <li>Design complete grid-tied PV systems manually and using simulation software.</li>
+                    <li>Size batteries, charge controllers, and off-grid/hybrid system components.</li>
+                    <li>Engineer solar pumping systems including pump selection and PV sizing.</li>
+                    <li>Develop project financial models: ROI, LCOE, and feasibility analysis (Egypt focus).</li>
+                    <li>Navigate permits, regulations, and real project development workflows.</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- COURSE STRUCTURE -->
+    <section id="structure">
+        <div class="shape-circle" style="width:220px;height:220px;bottom:-50px;right:-50px;"></div>
+
+        <div class="container">
+            <div class="section-header">
+                <h1>Course Structure</h1>
+                <p>A carefully sequenced curriculum: each level builds on the previous, moving from concept to calculation to real-world execution</p>
+            </div>
+
+            <!-- LEVEL 1 -->
+            <div class="card">
+                <h2>Level 1: Foundations of Solar &amp; PV</h2>
+                <p style="color:var(--dark-gray);margin-bottom:20px;"><em>Build strong conceptual and physical understanding of solar energy and PV behavior</em></p>
+
+                <h3><i class="fas fa-sun"></i> Lecture 1 (2.5h): Introduction to Solar Energy</h3>
+                <p>Course overview, solar radiation basics, and an introduction to solar energy technologies — PV vs CSP vs Solar Thermal — and their applications across grid-tied, off-grid, and BIPV systems.</p>
+
+                <h3><i class="fas fa-atom"></i> Lecture 2 (2.5h): Photovoltaic Effect &amp; PV Cells</h3>
+                <p>Physics of the PV effect, I–V curve fundamentals, key parameters (Voc, Isc, MPP), efficiency factors, and losses.</p>
+
+                <h3><i class="fas fa-solar-panel"></i> Lecture 3 (2.5h): PV Modules &amp; Technologies</h3>
+                <p>From cell to module to array — series/parallel effects, mono/poly/thin-film technologies, datasheets, certification standards, and energy payback.</p>
+
+                <h3><i class="fas fa-cloud-sun"></i> Lecture 4 (2.5h): Solar Radiation &amp; Site Analysis</h3>
+                <p>Radiation data sources, tilt and orientation optimization, irradiance on inclined surfaces, shading impact analysis, and site survey basics.</p>
+
+                <h3><i class="fas fa-chart-line"></i> Lecture 5 (2h): PV Market &amp; Economics (Egypt Focus)</h3>
+                <p>Egypt's energy landscape, feed-in tariffs and policies, market opportunities, and basic PV system economics.</p>
+            </div>
+
+            <!-- LEVEL 2 -->
+            <div class="card">
+                <h2>Level 2: Grid-Tied PV Systems Engineering</h2>
+                <p style="color:var(--dark-gray);margin-bottom:20px;"><em>Design and engineer complete grid-connected PV systems</em></p>
+
+                <h3><i class="fas fa-plug"></i> Lecture 6 (2.5h): Inverters &amp; Grid Interaction</h3>
+                <p>Inverter types (string vs central), grid synchronization, fault behavior, and grid code basics.</p>
+
+                <h3><i class="fas fa-wrench"></i> Lecture 7 (2.5h): BOS Components &amp; Installation</h3>
+                <p>Cables, protection devices, mounting structures, safety practices, and comparison of rooftop vs ground-mount systems.</p>
+
+                <h3><i class="fas fa-drafting-compass"></i> Lecture 8 (2.5h): System Design Fundamentals</h3>
+                <p>Component selection, system configuration options, cable sizing, protection design, and Performance Ratio (PR).</p>
+
+                <h3><i class="fas fa-calculator"></i> Lecture 9 (3h): Manual Design Workshop — Grid-Tied</h3>
+                <p>Full system sizing from scratch using manual methods and datasheet-based design, with a complete worked case study.</p>
+
+                <h3><i class="fas fa-laptop-code"></i> Lecture 10 (3h): Software Design &amp; Simulation</h3>
+                <p>PV system simulation using industry software, comparison of net metering vs feed-in tariff models, and inverter efficiency analysis.</p>
+
+                <h3><i class="fas fa-tools"></i> Lecture 11 (2h): O&amp;M and Troubleshooting</h3>
+                <p>Monitoring systems, fault detection methods, common failure modes, and maintenance strategies.</p>
+            </div>
+
+            <!-- LEVEL 3 -->
+            <div class="card">
+                <h2>Level 3: Off-Grid &amp; Hybrid Systems</h2>
+                <p style="color:var(--dark-gray);margin-bottom:20px;"><em>Design standalone and hybrid PV systems with battery storage</em></p>
+
+                <h3><i class="fas fa-network-wired"></i> Lecture 12 (2.5h): Off-Grid System Concepts</h3>
+                <p>System configurations, mini-grids and hybrid systems overview, and illustrative case studies.</p>
+
+                <h3><i class="fas fa-car-battery"></i> Lecture 13 (2.5h): Batteries &amp; Load Management</h3>
+                <p>Load estimation, battery technologies (Lead-acid, Li-ion), sizing methodologies, safety considerations, and charge controllers.</p>
+
+                <h3><i class="fas fa-drafting-compass"></i> Lecture 14 (2.5h): Off-Grid Design Engineering</h3>
+                <p>Full system sizing, voltage drop calculations, protection coordination, wiring, and safety practices.</p>
+
+                <h3><i class="fas fa-microscope"></i> Lecture 15 (3h): Off-Grid Design Workshop + Practical</h3>
+                <p>Hands-on manual design, software simulation, and an introduction to wiring and commissioning concepts.</p>
+            </div>
+
+            <!-- LEVEL 4 -->
+            <div class="card">
+                <h2>Level 4: Solar Pumping Systems</h2>
+                <p style="color:var(--dark-gray);margin-bottom:20px;"><em>Engineer PV-powered water pumping systems end-to-end</em></p>
+
+                <h3><i class="fas fa-tint"></i> Lecture 16 (2.5h): Pumping Fundamentals</h3>
+                <p>Pump types and curves, irrigation methods, and PV pumping system configurations.</p>
+
+                <h3><i class="fas fa-clipboard-list"></i> Lecture 17 (3h): Pumping System Design Workshop</h3>
+                <p>Load calculation, pump selection, PV array sizing, complete bill of materials (BOM), and software-assisted design.</p>
+            </div>
+
+            <!-- LEVEL 5 -->
+            <div class="card">
+                <h2>Level 5: Projects, Economics &amp; Real-World Engineering</h2>
+                <p style="color:var(--dark-gray);margin-bottom:20px;"><em>Prepare for real project execution and industry practice</em></p>
+
+                <h3><i class="fas fa-project-diagram"></i> Lecture 18 (2.5h): PV Project Development</h3>
+                <p>Project lifecycle overview, stakeholders, permits and regulations, and risk analysis.</p>
+
+                <h3><i class="fas fa-coins"></i> Lecture 19 (2.5h): Financials &amp; Feasibility</h3>
+                <p>Cost trends, ROI and LCOE concepts, financial modeling basics, and a full Egypt-based case study.</p>
+
+                <h3><i class="fas fa-award"></i> Lecture 20 (3h): Final Project + Evaluation</h3>
+                <p>Participants complete a full system design as a capstone project, deliver a presentation, receive instructor feedback, and complete a final assessment.</p>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- SCHEDULE -->
+    <section id="schedule">
+        <div class="container">
+            <div class="section-header">
+                <h1>Schedule</h1>
+                <p>
+                    <strong>Time: 8:00 PM (GMT+2 – Cairo) / 9:00 PM (GMT+3 – KSA)</strong><br />
+                    A <strong>Microsoft Teams meeting link</strong> will be shared with participants before each session.<br />
+                    After every session, <strong>a PDF Notes file</strong> will be provided to all participants.
+                </p>
+            </div>
+
+            <div class="round-title">Round 1 — Full Course — Dates To Be Announced</div>
+
+            <table class="schedule-table">
+                <thead>
+                    <tr>
+                        <th>Level</th>
+                        <th>Lecture</th>
+                        <th>Topic</th>
+                        <th>Duration</th>
+                        <th>Date</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td class="level-1">1</td><td>1</td><td>Introduction to Solar Energy</td><td>2.5h</td><td>TBA</td></tr>
+                    <tr><td class="level-1">1</td><td>2</td><td>PV Effect &amp; Cells</td><td>2.5h</td><td>TBA</td></tr>
+                    <tr><td class="level-1">1</td><td>3</td><td>PV Modules &amp; Technologies</td><td>2.5h</td><td>TBA</td></tr>
+                    <tr><td class="level-1">1</td><td>4</td><td>Solar Radiation &amp; Site Analysis</td><td>2.5h</td><td>TBA</td></tr>
+                    <tr><td class="level-1">1</td><td>5</td><td>PV Market &amp; Economics</td><td>2h</td><td>TBA</td></tr>
+                    <tr><td class="level-2">2</td><td>6</td><td>Inverters &amp; Grid Interaction</td><td>2.5h</td><td>TBA</td></tr>
+                    <tr><td class="level-2">2</td><td>7</td><td>BOS Components &amp; Installation</td><td>2.5h</td><td>TBA</td></tr>
+                    <tr><td class="level-2">2</td><td>8</td><td>System Design Fundamentals</td><td>2.5h</td><td>TBA</td></tr>
+                    <tr><td class="level-2">2</td><td>9</td><td>Manual Design Workshop</td><td>3h</td><td>TBA</td></tr>
+                    <tr><td class="level-2">2</td><td>10</td><td>Software Design &amp; Simulation</td><td>3h</td><td>TBA</td></tr>
+                    <tr><td class="level-2">2</td><td>11</td><td>O&amp;M and Troubleshooting</td><td>2h</td><td>TBA</td></tr>
+                    <tr><td class="level-3">3</td><td>12</td><td>Off-Grid System Concepts</td><td>2.5h</td><td>TBA</td></tr>
+                    <tr><td class="level-3">3</td><td>13</td><td>Batteries &amp; Load Management</td><td>2.5h</td><td>TBA</td></tr>
+                    <tr><td class="level-3">3</td><td>14</td><td>Off-Grid Design Engineering</td><td>2.5h</td><td>TBA</td></tr>
+                    <tr><td class="level-3">3</td><td>15</td><td>Off-Grid Workshop + Practical</td><td>3h</td><td>TBA</td></tr>
+                    <tr><td class="level-4">4</td><td>16</td><td>Pumping Fundamentals</td><td>2.5h</td><td>TBA</td></tr>
+                    <tr><td class="level-4">4</td><td>17</td><td>Pumping System Design Workshop</td><td>3h</td><td>TBA</td></tr>
+                    <tr><td class="level-5">5</td><td>18</td><td>PV Project Development</td><td>2.5h</td><td>TBA</td></tr>
+                    <tr><td class="level-5">5</td><td>19</td><td>Financials &amp; Feasibility</td><td>2.5h</td><td>TBA</td></tr>
+                    <tr><td class="level-5">5</td><td>20</td><td>Final Project + Evaluation</td><td>3h</td><td>TBA</td></tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <!-- CERTIFICATIONS -->
+    <section id="certifications">
+        <div class="shape-square" style="width:160px;height:160px;top:100px;right:10%;"></div>
+
+        <div class="container">
+            <div class="section-header">
+                <h1>Certifications</h1>
+                <p>Earn industry-recognized certifications as you progress through each level</p>
+            </div>
+
+            <h2>Completion Certifications:</h2>
+            <div class="certification-container">
+                <div class="certification-card">
+                    <h3><i class="fas fa-award"></i> Level 1:</h3>
+                    <p><em>Solar Energy Foundations Specialist</em></p>
+                </div>
+                <div class="certification-card">
+                    <h3><i class="fas fa-award"></i> Level 2:</h3>
+                    <p><em>Certified Grid-Tied PV Designer</em></p>
+                </div>
+                <div class="certification-card">
+                    <h3><i class="fas fa-award"></i> Level 3:</h3>
+                    <p><em>Off-Grid &amp; Hybrid Systems Engineer</em></p>
+                </div>
+                <div class="certification-card">
+                    <h3><i class="fas fa-award"></i> Level 4:</h3>
+                    <p><em>Solar Pumping Systems Designer</em></p>
+                </div>
+                <div class="certification-card">
+                    <h3><i class="fas fa-award"></i> Level 5:</h3>
+                    <p><em>PV Project Development Professional</em></p>
+                </div>
+            </div>
+
+            <h2>Attendance Certifications:</h2>
+            <div class="certification-container">
+                <div class="certification-card"><h3><i class="fas fa-certificate"></i> Level 1:</h3><p><em>Attended Level 1</em></p></div>
+                <div class="certification-card"><h3><i class="fas fa-certificate"></i> Level 2:</h3><p><em>Attended Level 2</em></p></div>
+                <div class="certification-card"><h3><i class="fas fa-certificate"></i> Level 3:</h3><p><em>Attended Level 3</em></p></div>
+                <div class="certification-card"><h3><i class="fas fa-certificate"></i> Level 4:</h3><p><em>Attended Level 4</em></p></div>
+                <div class="certification-card"><h3><i class="fas fa-certificate"></i> Level 5:</h3><p><em>Attended Level 5</em></p></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ASSIGNMENTS -->
+    <section id="assignments">
+        <div class="container">
+            <div class="section-header">
+                <h1>Assignments Summary</h1>
+                <p>Hands-on projects and exercises to reinforce your learning at every stage</p>
+            </div>
+            <div class="card">
+                <ul class="bullet-list">
+                    <li>I–V curve analysis and module parameter identification</li>
+                    <li>Site analysis and shading assessment</li>
+                    <li>Grid-tied system manual sizing (cable, array, inverter)</li>
+                    <li>Software simulation of a complete grid-tied system</li>
+                    <li>Battery and off-grid system sizing</li>
+                    <li>Off-grid design using simulation software</li>
+                    <li>Solar pumping system BOM and sizing</li>
+                    <li>Financial feasibility report (ROI / LCOE)</li>
+                    <li>Final capstone project: full PV system design and presentation</li>
+                    <li>Additional assignments will follow according to timing</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- TOOLS & SOFTWARE -->
+    <section id="tools">
+        <div class="container">
+            <div class="section-header">
+                <h1>Tools &amp; Software</h1>
+                <p>Industry-standard software used throughout the course</p>
+            </div>
+            <div class="card">
+                <ul class="bullet-list">
+                    <li>PVsyst for system simulation and yield analysis</li>
+                    <li>Excel for sizing calculations and financial modeling</li>
+                    <li>AutoCAD for system layout and single-line diagrams</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- EVALUATION -->
+    <section id="evaluation">
+        <div class="shape-square" style="width:140px;height:140px;top:80px;right:15%;"></div>
+
+        <div class="container">
+            <div class="section-header">
+                <h1>Evaluation Criteria</h1>
+                <p>How your performance will be assessed throughout the course</p>
+            </div>
+            <div class="card">
+                <ul class="bullet-list">
+                    <li>Assignments – 50%</li>
+                    <li>Level-Project / Final Design – 50%</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- POLICY -->
+    <section id="policy">
+        <div class="container">
+            <div class="section-header">
+                <h1>Content Usage &amp; Non-Sharing Policy</h1>
+                <p>Protecting the intellectual property of our course materials</p>
+            </div>
+            <div class="card">
+                <ul class="bullet-list">
+                    <li><strong>All course materials, tools, recordings, templates, and files are proprietary</strong> and may not be <strong>copied, recorded, distributed, or reused</strong> without written permission.</li>
+                    <li>By registering, participants agree not to <strong>share or reproduce content</strong> outside personal use or for commercial/teaching purposes.</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="shape-circle" style="width:300px;height:300px;top:-150px;left:-150px;background-color:rgba(255,255,255,0.05);"></div>
+        <div class="shape-square" style="width:200px;height:200px;bottom:-50px;right:10%;background-color:rgba(255,255,255,0.05);"></div>
+
+        <div class="container">
+            <div class="section-header">
+                <h1 style="color:white;">About the Instructor</h1>
+            </div>
+            <div class="instructor-info">
+                <div class="instructor-photo">
+                    <img src="CO/am.png" alt="Eng. Ahmed Metwally" />
+                </div>
+                <div class="instructor-bio">
+                    <p>Ahmed Metwally is a substation engineering manager with over 16 years of hands-on experience in AIS and GIS substations, with a focus on control and protection schemes. Throughout his career, he has worked closely with multidisciplinary teams across primary, secondary, and telecom systems, gaining practical insight into the challenges of real-world project execution.</p>
+                    <p>He has contributed to cost-saving initiatives that helped optimize designs and vendor specifications, leading to measurable improvements in efficiency. His academic background includes studies in Japanese Corporate Management through Harvard Business School and ongoing MBA studies, reflecting a continuous commitment to learning and development.</p>
+                    <p>Ahmed believes in sharing practical knowledge in a structured, accessible way, and is passionate about helping engineering students bridge the gap between theory and application.</p>
+                </div>
+            </div>
+
+            <div class="company-logos">
+                <img src="CO/i1.png" alt="Company 1" class="company-logo" />
+                <img src="CO/i2.png" alt="Company 2" class="company-logo" />
+                <img src="CO/i3.png" alt="Company 3" class="company-logo" />
+                <img src="CO/i4.png" alt="Company 4" class="company-logo" />
+            </div>
+
+            <div style="text-align:center;margin-top:30px;">
+                <a href="index.html" style="color:rgba(255,255,255,0.7);text-decoration:none;font-size:0.95rem;">
+                    <i class="fas fa-arrow-left" style="margin-right:6px;"></i> Back to All Courses
+                </a>
+            </div>
+
+            <div class="copyright">
+                <p>&copy; 2026 GRID ACADEMY. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

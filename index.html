@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GRID ACADEMY | All Courses</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --primary:        #009268;
+      --primary-dark:   #006e4d;
+      --primary-light:  #00b37d;
+      --primary-glow:   rgba(0,146,104,0.15);
+      --secondary:      #2C3E50;
+      --accent:         #E6F4F1;
+      --white:          #FFFFFF;
+      --light-gray:     #f4f7f6;
+      --text-dark:      #212E3C;
+      --shadow:         0 6px 24px rgba(0,0,0,0.10);
+      --radius:         12px;
+    }
+
+    * { margin:0; padding:0; box-sizing:border-box; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--light-gray);
+      color: var(--text-dark);
+      overflow-x: hidden;
+    }
+
+    /* ── NAV ── */
+    .top-nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(44,62,80,0.97);
+      backdrop-filter: blur(10px);
+      padding: 14px 0;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.2);
+    }
+    .nav-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .nav-brand {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.35rem;
+      font-weight: 800;
+      color: var(--white);
+      text-decoration: none;
+      letter-spacing: 1px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .nav-brand-icon {
+      width: 34px; height: 34px;
+      background: var(--primary);
+      border-radius: 7px;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .nav-brand-icon svg { width: 20px; height: 20px; fill: white; }
+    .nav-pill {
+      background: var(--primary);
+      color: white;
+      padding: 5px 14px;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+    }
+
+    /* ── HERO ── */
+    .hero {
+      position: relative;
+      min-height: 70vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      overflow: hidden;
+      background: linear-gradient(135deg, #006e4d 0%, #009268 50%, #00b37d 100%);
+      padding: 80px 24px;
+    }
+    .hero-bg-grid {
+      position: absolute; inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px);
+      background-size: 40px 40px;
+    }
+    .hero-orb {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(80px);
+      opacity: 0.3;
+    }
+    .hero-orb-1 { width: 400px; height: 400px; background: #00ffb3; top:-100px; right:-80px; }
+    .hero-orb-2 { width: 300px; height: 300px; background: #005c3f; bottom:-60px; left:-60px; }
+
+    .hero-content { position: relative; z-index: 1; max-width: 760px; }
+    .hero-tag {
+      display: inline-block;
+      background: rgba(255,255,255,0.15);
+      border: 1px solid rgba(255,255,255,0.3);
+      color: white;
+      padding: 6px 18px;
+      border-radius: 30px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      margin-bottom: 24px;
+    }
+    .hero h1 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      font-weight: 800;
+      color: white;
+      line-height: 1.15;
+      margin-bottom: 20px;
+      text-shadow: 0 2px 20px rgba(0,0,0,0.2);
+    }
+    .hero h1 span { color: #b8fce8; }
+    .hero p {
+      font-size: 1.1rem;
+      color: rgba(255,255,255,0.85);
+      max-width: 540px;
+      margin: 0 auto 36px;
+      line-height: 1.7;
+    }
+    .hero-stats {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      flex-wrap: wrap;
+    }
+    .stat {
+      text-align: center;
+    }
+    .stat-number {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 2rem;
+      font-weight: 800;
+      color: #b8fce8;
+      display: block;
+    }
+    .stat-label {
+      font-size: 0.85rem;
+      color: rgba(255,255,255,0.75);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    /* ── COURSES SECTION ── */
+    .courses-section {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 80px 24px;
+    }
+    .section-label {
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--primary);
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin-bottom: 10px;
+    }
+    .section-title {
+      font-family: 'Montserrat', sans-serif;
+      font-size: clamp(1.6rem, 3vw, 2.2rem);
+      font-weight: 800;
+      color: var(--secondary);
+      margin-bottom: 8px;
+    }
+    .section-sub {
+      color: #6c757d;
+      font-size: 1rem;
+      margin-bottom: 50px;
+    }
+
+    .courses-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+      gap: 32px;
+    }
+
+    /* ── COURSE CARD ── */
+    .course-card {
+      background: white;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      position: relative;
+    }
+    .course-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 16px 48px rgba(0,0,0,0.14);
+    }
+
+    .card-banner {
+      height: 180px;
+      position: relative;
+      display: flex;
+      align-items: flex-end;
+      padding: 20px 24px;
+      overflow: hidden;
+    }
+    .card-banner-sd {
+      background: linear-gradient(135deg, #006e4d 0%, #009268 100%);
+    }
+    .card-banner-pv {
+      background: linear-gradient(135deg, #1a5276 0%, #2471a3 100%);
+    }
+    .banner-pattern {
+      position: absolute; inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px);
+      background-size: 25px 25px;
+    }
+    .banner-icon {
+      position: absolute;
+      right: 20px; top: 20px;
+      width: 60px; height: 60px;
+      background: rgba(255,255,255,0.12);
+      border-radius: 14px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.8rem;
+      color: rgba(255,255,255,0.9);
+    }
+    .banner-badge {
+      position: relative;
+      z-index: 1;
+      background: rgba(255,255,255,0.2);
+      border: 1px solid rgba(255,255,255,0.3);
+      color: white;
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+    }
+
+    .card-body { padding: 28px 24px; flex: 1; display: flex; flex-direction: column; }
+
+    .card-title {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--secondary);
+      margin-bottom: 12px;
+      line-height: 1.3;
+    }
+    .card-description {
+      font-size: 0.95rem;
+      color: #6c757d;
+      line-height: 1.6;
+      margin-bottom: 20px;
+      flex: 1;
+    }
+
+    .card-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 24px;
+    }
+    .meta-chip {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.82rem;
+      color: var(--secondary);
+      background: var(--light-gray);
+      padding: 5px 12px;
+      border-radius: 20px;
+      font-weight: 500;
+    }
+    .meta-chip i { color: var(--primary); font-size: 0.8rem; }
+
+    .card-divider {
+      border: none;
+      border-top: 1px solid #e9ecef;
+      margin-bottom: 20px;
+    }
+
+    .card-instructor {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+    .instructor-avatar {
+      width: 38px; height: 38px;
+      background: var(--primary-glow);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      color: var(--primary);
+      font-size: 0.9rem;
+    }
+    .instructor-avatar-blue {
+      background: rgba(36,113,163,0.12);
+      color: #2471a3;
+    }
+    .instructor-name { font-size: 0.9rem; font-weight: 600; color: var(--secondary); }
+    .instructor-title { font-size: 0.78rem; color: #6c757d; }
+
+    .card-actions {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    .btn-primary {
+      flex: 1;
+      text-align: center;
+      padding: 13px 20px;
+      background: var(--primary);
+      color: white;
+      text-decoration: none;
+      border-radius: 8px;
+      font-weight: 700;
+      font-size: 0.9rem;
+      transition: background 0.2s ease, transform 0.2s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+    .btn-primary:hover {
+      background: var(--primary-dark);
+      transform: translateY(-1px);
+    }
+    .btn-primary-blue {
+      background: #2471a3;
+    }
+    .btn-primary-blue:hover {
+      background: #1a5276;
+    }
+    .btn-outline {
+      padding: 13px 16px;
+      border: 2px solid var(--primary);
+      color: var(--primary);
+      text-decoration: none;
+      border-radius: 8px;
+      font-weight: 700;
+      font-size: 0.9rem;
+      transition: all 0.2s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .btn-outline:hover {
+      background: var(--primary);
+      color: white;
+    }
+    .btn-outline-blue {
+      border-color: #2471a3;
+      color: #2471a3;
+    }
+    .btn-outline-blue:hover {
+      background: #2471a3;
+      color: white;
+    }
+
+    /* ── WHY GRID ACADEMY ── */
+    .why-section {
+      background: var(--secondary);
+      padding: 80px 24px;
+    }
+    .why-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    .why-inner .section-label { color: #b8fce8; }
+    .why-inner .section-title { color: white; margin-bottom: 16px; }
+    .why-inner .section-sub { color: rgba(255,255,255,0.65); margin-bottom: 50px; }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 24px;
+    }
+    .feature-card {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: var(--radius);
+      padding: 28px 20px;
+      text-align: center;
+      transition: background 0.3s ease;
+    }
+    .feature-card:hover { background: rgba(255,255,255,0.1); }
+    .feature-icon {
+      width: 52px; height: 52px;
+      background: var(--primary-glow);
+      border-radius: 12px;
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 16px;
+      font-size: 1.3rem;
+      color: var(--primary-light);
+    }
+    .feature-title {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1rem;
+      font-weight: 700;
+      color: white;
+      margin-bottom: 8px;
+    }
+    .feature-desc { font-size: 0.87rem; color: rgba(255,255,255,0.6); line-height: 1.5; }
+
+    /* ── FOOTER ── */
+    footer {
+      background: #1a252f;
+      padding: 40px 24px;
+      text-align: center;
+    }
+    footer .footer-brand {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.2rem;
+      font-weight: 800;
+      color: white;
+      margin-bottom: 10px;
+    }
+    footer p { color: rgba(255,255,255,0.5); font-size: 0.88rem; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 600px) {
+      .hero-stats { gap: 24px; }
+      .courses-grid { grid-template-columns: 1fr; }
+      .card-actions { flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- TOP NAV -->
+  <nav class="top-nav">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-brand">
+        <div class="nav-brand-icon">
+          <svg viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+        </div>
+        GRID ACADEMY
+      </a>
+      <span class="nav-pill">2026 Courses</span>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-bg-grid"></div>
+    <div class="hero-orb hero-orb-1"></div>
+    <div class="hero-orb hero-orb-2"></div>
+    <div class="hero-content">
+      <div class="hero-tag"><i class="fas fa-graduation-cap" style="margin-right:6px;"></i> Professional Engineering Courses</div>
+      <h1>Power Your Career in<br><span>Electrical Engineering</span></h1>
+      <p>Industry-aligned, job-ready courses designed by practicing engineers with real-world project experience.</p>
+      <div class="hero-stats">
+        <div class="stat">
+          <span class="stat-number">2</span>
+          <span class="stat-label">Courses</span>
+        </div>
+        <div class="stat">
+          <span class="stat-number">39</span>
+          <span class="stat-label">Sessions</span>
+        </div>
+        <div class="stat">
+          <span class="stat-number">100+</span>
+          <span class="stat-label">Engineers Trained</span>
+        </div>
+        <div class="stat">
+          <span class="stat-number">16+</span>
+          <span class="stat-label">Years Industry Exp.</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- COURSES -->
+  <div class="courses-section">
+    <p class="section-label">What We Offer</p>
+    <h2 class="section-title">Available Courses</h2>
+    <p class="section-sub">Choose your specialization and start your journey toward becoming a power systems professional.</p>
+
+    <div class="courses-grid">
+
+      <!-- CARD 1: Substation Design & Protection -->
+      <div class="course-card">
+        <div class="card-banner card-banner-sd">
+          <div class="banner-pattern"></div>
+          <div class="banner-icon"><i class="fas fa-bolt"></i></div>
+          <span class="banner-badge"><i class="fas fa-circle" style="font-size:0.5rem; margin-right:5px;"></i> Active — Round 2 Ongoing</span>
+        </div>
+        <div class="card-body">
+          <h3 class="card-title">Substation Design &amp; Protection Systems</h3>
+          <p class="card-description">Master substation design from control philosophy to advanced protection schemes, covering SLDs, calculations, relay settings, and field interfacing practices across 4 progressive levels.</p>
+          <div class="card-meta">
+            <span class="meta-chip"><i class="fas fa-layer-group"></i> 4 Levels</span>
+            <span class="meta-chip"><i class="fas fa-video"></i> 19 Sessions</span>
+            <span class="meta-chip"><i class="fas fa-laptop"></i> Online / Teams</span>
+            <span class="meta-chip"><i class="fas fa-tools"></i> AutoCAD · ETAP · Excel</span>
+          </div>
+          <hr class="card-divider" />
+          <div class="card-instructor">
+            <div class="instructor-avatar"><i class="fas fa-user-tie"></i></div>
+            <div>
+              <div class="instructor-name">Eng. Ahmed Metwally</div>
+              <div class="instructor-title">Substation Engineering Manager · 16+ yrs</div>
+            </div>
+          </div>
+          <div class="card-actions">
+            <a href="https://gridacad.github.io/pay/SDPC.html" class="btn-primary">
+              <i class="fas fa-arrow-right"></i> View Course
+            </a>
+            <a href="https://gridacad.github.io/pay/SDPC.html#enroll" class="btn-outline">
+              <i class="fas fa-file-alt"></i> Enroll
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- CARD 2: PV Systems Engineering -->
+      <div class="course-card">
+        <div class="card-banner card-banner-pv">
+          <div class="banner-pattern"></div>
+          <div class="banner-icon"><i class="fas fa-solar-panel"></i></div>
+          <span class="banner-badge"><i class="fas fa-circle" style="font-size:0.5rem; margin-right:5px;"></i> Enrolling Now</span>
+        </div>
+        <div class="card-body">
+          <h3 class="card-title">Photovoltaic Systems Engineering</h3>
+          <p class="card-description">Design and engineer complete PV systems from fundamentals to real projects — covering grid-tied, off-grid, hybrid, and solar pumping systems with hands-on workshops and simulation software.</p>
+          <div class="card-meta">
+            <span class="meta-chip"><i class="fas fa-layer-group"></i> 5 Levels</span>
+            <span class="meta-chip"><i class="fas fa-video"></i> 20 Sessions</span>
+            <span class="meta-chip"><i class="fas fa-laptop"></i> Online / Teams</span>
+            <span class="meta-chip"><i class="fas fa-tools"></i> PVsyst · Excel</span>
+          </div>
+          <hr class="card-divider" />
+          <div class="card-instructor">
+            <div class="instructor-avatar instructor-avatar-blue"><i class="fas fa-user-tie"></i></div>
+            <div>
+              <div class="instructor-name">Eng. Ahmed Metwally</div>
+              <div class="instructor-title">Power Systems Engineer · Solar Specialist</div>
+            </div>
+          </div>
+          <div class="card-actions">
+            <a href="https://gridacad.github.io/pay/PV.html" class="btn-primary btn-primary-blue">
+              <i class="fas fa-arrow-right"></i> View Course
+            </a>
+            <a href="https://gridacad.github.io/pay/PV.html#enroll" class="btn-outline btn-outline-blue">
+              <i class="fas fa-file-alt"></i> Enroll
+            </a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- WHY GRID ACADEMY -->
+  <section class="why-section">
+    <div class="why-inner">
+      <p class="section-label">Why Choose Us</p>
+      <h2 class="section-title">Built by Engineers, for Engineers</h2>
+      <p class="section-sub">No theory for theory's sake — every topic maps to real project deliverables.</p>
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-icon"><i class="fas fa-hard-hat"></i></div>
+          <div class="feature-title">Industry-Led</div>
+          <div class="feature-desc">Taught by practicing engineers with 16+ years of real project experience.</div>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon"><i class="fas fa-tools"></i></div>
+          <div class="feature-title">Hands-On Projects</div>
+          <div class="feature-desc">Real assignments using AutoCAD, Excel, ETAP, and PVsyst.</div>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon"><i class="fas fa-certificate"></i></div>
+          <div class="feature-title">Certifications</div>
+          <div class="feature-desc">Earn level-by-level completion and attendance certificates.</div>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon"><i class="fas fa-users"></i></div>
+          <div class="feature-title">Small Groups</div>
+          <div class="feature-desc">Focused cohorts via Microsoft Teams for maximum interaction.</div>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon"><i class="fas fa-file-pdf"></i></div>
+          <div class="feature-title">Session Notes</div>
+          <div class="feature-desc">PDF notes provided after every session to keep for reference.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-brand">GRID ACADEMY</div>
+    <p>&copy; 2026 GRID ACADEMY. All rights reserved.</p>
+  </footer>
+
+</body>
+</html>
