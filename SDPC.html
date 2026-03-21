@@ -203,41 +203,25 @@
             border: 1px solid rgba(255, 255, 255, 0.2);
         }
 
-        .logo {
-            margin-bottom: 30px;
-        }
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 30px;
+}
 
-        .logo h2 {
-            font-family: Montserrat, sans-serif;
-            font-size: 2.2rem;
-            color: var(--white);
-            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
-            display: flex;
-            align-items: center;
-        }
+.hero-logo {
+    width: 50px;
+    height: 50px;
+    object-fit: contain;
+}
 
-        .logo h2:before {
-            content: "";
-            display: inline-block;
-            width: 40px;
-            height: 40px;
-            background-color: var(--white);
-            margin-right: 15px;
-            border-radius: 6px;
-            position: relative;
-        }
-
-        .logo h2:after {
-            content: "";
-            display: inline-block;
-            width: 20px;
-            height: 20px;
-            background-color: var(--primary-color);
-            position: absolute;
-            left: 10px;
-            top: 10px;
-            border-radius: 4px;
-        }
+.logo h2 {
+    font-family: Montserrat, sans-serif;
+    font-size: 2.2rem;
+    color: var(--white);
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
 
         .course-title {
             font-family: Montserrat, sans-serif;
@@ -640,9 +624,10 @@
 
         <div class="container">
             <div class="hero-content">
-                <div class="logo">
-                    <h2>GRID ACADEMY</h2>
-                </div>
+<div class="logo">
+    <img src="Sm1.svg" alt="Grid Academy Logo" class="hero-logo">
+    <h2>GRID ACADEMY</h2>
+</div>
                 <h1 class="course-title">Substation Design & Protection Course</h1>
                 <p class="instructor"><i class="fas fa-chalkboard-teacher"></i> Presented by: Eng. Ahmed Metwally</p>
                 <p class="year">2026 Edition</p>
