@@ -437,8 +437,27 @@
                 padding: 20px 16px;
                 max-width: calc(100% - 24px);
             }
-            .logo { margin-bottom: 18px; }
-            .logo h2 { font-size: 1.5rem; }
+           .logo {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 30px;
+}
+
+.hero-logo {
+    width: 50px;
+    height: 50px;
+    object-fit: contain;
+	    filter: brightness(0) invert(1);
+}
+
+
+.logo h2 {
+    font-family: Montserrat, sans-serif;
+    font-size: 2.2rem;
+    color: var(--white);
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
             .course-title { font-size: 1.5rem; line-height: 1.25; margin-bottom: 14px; }
             .instructor { font-size: 0.95rem; }
             .year { font-size: 0.95rem; padding: 4px 12px; }
@@ -533,9 +552,10 @@
 
         <div class="container">
             <div class="hero-content">
-                <div class="logo">
-                    <h2>GRID ACADEMY</h2>
-                </div>
+                        <div class="logo">
+                            <img src="Sm1.svg" alt="Grid Academy Logo" class="hero-logo">
+                            <h2>GRID ACADEMY</h2>
+                        </div>    
                 <h1 class="course-title">Photovoltaic Systems Engineering</h1>
                 <p class="instructor"><i class="fas fa-chalkboard-teacher"></i> Presented by: Eng. Amr Farouk</p>
                 <p class="year">2026 Edition</p>
