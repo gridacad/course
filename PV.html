@@ -6,7 +6,7 @@
     <title>GRID ACADEMY | Photovoltaic Systems Engineering</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
     <style>
-        /* ── BASE STYLES (identical to SDPC) ── */
+        /* ── BASE STYLES ── */
         :root {
             --primary-color:  #009268;
             --primary-dark:   #006e4d;
@@ -25,7 +25,6 @@
             --shadow:         0 4px 12px rgba(0,0,0,0.1);
             --radius:         8px;
 
-            /* PV accent (solar blue) used for level colours */
             --pv-l1: #e8f4fd;
             --pv-l2: #d0e9fa;
             --pv-l3: #a8d5f5;
@@ -69,7 +68,7 @@
         h3 { font-family: Montserrat, sans-serif; font-size:1.3rem; color:var(--primary-color); margin:20px 0 10px; }
         p  { margin-bottom:15px; font-size:1.05rem; }
 
-        /* ── TOP NAV (new) ── */
+        /* ── TOP NAV ── */
         .top-nav {
             position: sticky;
             top: 0;
@@ -87,7 +86,7 @@
             align-items: center;
             justify-content: space-between;
             gap: 12px;
-            flex-wrap: wrap;
+            flex-wrap: nowrap;
         }
         .nav-brand {
             font-family: Montserrat, sans-serif;
@@ -99,6 +98,7 @@
             display: flex;
             align-items: center;
             gap: 8px;
+            white-space: nowrap;
         }
         .nav-brand i { color: var(--primary-light); }
         .nav-back {
@@ -110,6 +110,7 @@
             font-size: 0.9rem;
             font-weight: 500;
             transition: color 0.2s;
+            white-space: nowrap;
         }
         .nav-back:hover { color: white; }
         .nav-enroll {
@@ -121,9 +122,11 @@
             font-weight: 700;
             font-size: 0.88rem;
             transition: background 0.2s, transform 0.2s;
+            white-space: nowrap;
+            flex-shrink: 0;
         }
         .nav-enroll:hover { background: var(--primary-dark); transform: translateY(-1px); }
-        .nav-left { display:flex; align-items:center; gap:20px; }
+        .nav-left { display:flex; align-items:center; gap:20px; flex-shrink: 0; }
 
         /* ── SHAPES ── */
         .shape-circle {
@@ -139,12 +142,13 @@
         /* ── HERO ── */
         .hero-section {
             position:relative;
-            height:100vh;
+            min-height: 100svh;
             display:flex;
             align-items:center;
             overflow:hidden;
             background: linear-gradient(135deg, rgba(26,82,118,0.92) 0%, rgba(36,113,163,0.85) 100%),
                         url("CO/pv-bg.jpg") center/cover no-repeat;
+            padding: 80px 0 40px;
         }
         .hero-background { position:absolute; top:0; left:0; width:100%; height:100%; z-index:0; }
         .hero-content {
@@ -209,6 +213,9 @@
             box-shadow: 0 6px 20px rgba(0,0,0,0.25);
             background-color: var(--accent-color);
         }
+        .cta-button + .cta-button {
+            margin-left: 12px;
+        }
 
         /* ── CARD ── */
         .card {
@@ -222,12 +229,20 @@
         }
         .card:hover { transform:translateY(-5px); box-shadow:0 8px 25px rgba(0,0,0,0.15); }
 
+        /* ── TABLE WRAPPER ── */
+        .schedule-table-wrapper {
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            margin: 20px 0;
+        }
+
         /* ── TABLE ── */
         .schedule-table {
             width:100%;
+            min-width: 460px;
             border-collapse:collapse;
-            margin:20px 0;
-            box-shadow:var(--shadow);
             border-radius:var(--radius);
             overflow:hidden;
         }
@@ -351,19 +366,13 @@
         }
         .step-label { text-align:center; font-weight:bold; color:var(--primary-color); font-size:0.85rem; }
 
-
-
-
         .break-week td {
-    text-align: center;
-    font-weight: bold;
-    background: #f5f5f5;
-    color: #c0392b;
-}
+            text-align: center;
+            font-weight: bold;
+            background: #f5f5f5;
+            color: #c0392b;
+        }
 
-
-
-        
         /* ── ROUND TITLE ── */
         .round-title {
             width:100%; text-align:center;
@@ -374,11 +383,21 @@
             color:#212529;
         }
 
-        /* ── RESPONSIVE ── */
+        /* ── SCHEDULE TABLE INNER STYLES ── */
+        .schedule-table th, .schedule-table td { padding:10px 14px; border:1px solid #dee2e6; text-align:center; }
+        .schedule-table th { background:#f1f3f5; color:#212529; font-weight:600; text-transform:uppercase; letter-spacing:0.5px; }
+        .schedule-table tr:nth-child(even) { background:#f8f9fa; }
+        .schedule-table tr:hover { background:#f0f4ff; }
+        .past-session { background:#ffe6e6 !important; color:#b00020; font-weight:500; position:relative; }
+        .past-session::after { content:"✔ Past"; position:absolute; right:8px; top:6px; font-size:0.75em; color:#b00020; background:rgba(255,0,0,0.08); padding:2px 6px; border-radius:5px; }
+
+        /* ── RESPONSIVE — 992px ── */
         @media (max-width:992px) {
             .hero-content { padding:30px; margin:20px; }
             .course-title { font-size:2.2rem; }
         }
+
+        /* ── RESPONSIVE — 768px ── */
         @media (max-width:768px) {
             section { padding:60px 0; }
             .hero-content { padding:25px; margin:15px; }
@@ -387,12 +406,103 @@
             .instructor-info { flex-direction:column; text-align:center; }
             .instructor-bio { text-align:center; }
         }
+
+        /* ── RESPONSIVE — 576px ── */
         @media (max-width:576px) {
             h1 { font-size:1.8rem; }
             h2 { font-size:1.4rem; }
             h3 { font-size:1.2rem; }
             .progress-step:not(:last-child):after { display:none; }
             .progress-step { margin:8px; }
+        }
+
+        /* ── MOBILE FIXES — 480px (iPhone) ── */
+        @media (max-width: 480px) {
+
+            /* Nav */
+            .nav-brand span { display: none; }
+            .nav-brand { font-size: 0; gap: 0; }
+            .nav-brand i { font-size: 1.3rem; }
+            .nav-enroll { padding: 7px 13px; font-size: 0.82rem; }
+            .nav-back { font-size: 0.82rem; gap: 5px; }
+            .nav-left { gap: 12px; }
+
+            /* Hero */
+            .hero-section {
+                padding: 70px 0 36px;
+                align-items: flex-start;
+            }
+            .hero-content {
+                margin: 12px;
+                padding: 20px 16px;
+                max-width: calc(100% - 24px);
+            }
+            .logo { margin-bottom: 18px; }
+            .logo h2 { font-size: 1.5rem; }
+            .course-title { font-size: 1.5rem; line-height: 1.25; margin-bottom: 14px; }
+            .instructor { font-size: 0.95rem; }
+            .year { font-size: 0.95rem; padding: 4px 12px; }
+            .cta-button {
+                display: block;
+                text-align: center;
+                margin-top: 12px;
+                margin-left: 0 !important;
+                padding: 12px 20px;
+                font-size: 0.9rem;
+            }
+
+            /* Cards */
+            .card { padding: 16px 14px; }
+
+            /* Progress steps — horizontal row, no lines */
+            .progress-indicator {
+                flex-direction: row;
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 10px;
+                margin: 24px 0;
+            }
+            .progress-step {
+                flex-direction: column;
+                align-items: center;
+                width: auto;
+                min-width: 60px;
+                margin: 0;
+            }
+            .progress-step:not(:last-child):after { display: none; }
+            .step-circle {
+                width: 42px;
+                height: 42px;
+                font-size: 0.95rem;
+                margin-bottom: 6px;
+            }
+            .step-label { font-size: 0.72rem; text-align: center; max-width: 60px; }
+
+            /* Schedule: scrollable */
+            .schedule-table { min-width: 480px; font-size: 0.82rem; }
+            .schedule-table th,
+            .schedule-table td { padding: 8px 10px; }
+            .round-title { font-size: 1rem; padding: 10px 8px; }
+
+            /* Certification grid: 1 column */
+            .certification-container { grid-template-columns: 1fr; gap: 14px; }
+            .certification-card { padding: 18px 16px; }
+
+            /* Footer instructor photo */
+            .instructor-photo { flex: 0 0 auto; width: 100%; max-width: 240px; }
+            .instructor-bio { min-width: unset; width: 100%; text-align: center !important; }
+
+            /* Project portfolio grid: 2 columns */
+            .portfolio-grid { grid-template-columns: repeat(2, 1fr) !important; gap: 10px !important; }
+            .portfolio-grid > div { padding: 14px 10px !important; }
+            .portfolio-grid > div > div:first-child { font-size: 1.3rem !important; }
+            .portfolio-grid > div > div:last-child { font-size: 0.78rem !important; }
+
+            /* Section */
+            section { padding: 44px 0; }
+            .section-header { margin-bottom: 28px; }
+            .section-header p { font-size: 1rem; }
+            p { font-size: 1rem; }
         }
     </style>
 </head>
@@ -406,7 +516,7 @@
                     <i class="fas fa-chevron-left"></i> All Courses
                 </a>
                 <a href="index.html" class="nav-brand">
-                    <i class="fas fa-bolt"></i> GRID ACADEMY
+                    <i class="fas fa-bolt"></i> <span>GRID ACADEMY</span>
                 </a>
             </div>
             <a href="PV-pay.html" class="nav-enroll">
@@ -430,20 +540,9 @@
                 <p class="instructor"><i class="fas fa-chalkboard-teacher"></i> Presented by: Eng. Amr Farouk</p>
                 <p class="year">2026 Edition</p>
                 <p>A comprehensive 5-level program covering grid-tied, off-grid, hybrid, and solar pumping systems — from PV physics to full project execution.</p>
-                <a href="https://docs.google.com/forms/d/e/1FAIpQLSdKy8u6JsBfLq4gNz6nvGTaH5G57xsdJnUxnCHkXyxNaQFnrQ/viewform?usp=send_form" class="cta-button" id="enroll">Start Your Enrollment<i class="fas fa-arrow-right"></i></a>
-          
-
-    <a href="/pay/pv.html" class="cta-button secondary">
-        Enroll Now <i class="fas fa-credit-card"></i>
-    </a>
-
-
-
-
-
-
-
-
+                <a href="https://docs.google.com/forms/d/e/1FAIpQLSdKy8u6JsBfLq4gNz6nvGTaH5G57xsdJnUxnCHkXyxNaQFnrQ/viewform?usp=send_form" class="cta-button" id="enroll">Start Your Enrollment <i class="fas fa-arrow-right"></i></a>
+                <a href="/pay/pv.html" class="cta-button">Enroll Now <i class="fas fa-credit-card"></i></a>
+            </div>
         </div>
     </section>
 
@@ -627,64 +726,53 @@
 
             <div class="round-title">Round 1 — Full Course — Starting 14 April 2026 &nbsp;·&nbsp; Every Tuesday</div>
 
-            <table class="schedule-table">
-                <thead>
-                    <tr>
-                        <th>Level</th>
-                        <th>Lecture</th>
-                        <th>Topic</th>
-                        <th>Date</th>
-                    </tr>
-                </thead>
+            <div class="schedule-table-wrapper">
+                <table class="schedule-table">
+                    <thead>
+                        <tr>
+                            <th>Level</th>
+                            <th>Lecture</th>
+                            <th>Topic</th>
+                            <th>Date</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td class="level-1">1</td><td>1</td><td>Introduction to Solar Energy</td><td data-datetime="2026-04-14T21:00:00+02:00">14 Apr</td></tr>
+                        <tr><td class="level-1">1</td><td>2</td><td>PV Effect &amp; Cells</td><td data-datetime="2026-04-21T21:00:00+02:00">21 Apr</td></tr>
+                        <tr><td class="level-1">1</td><td>3</td><td>PV Modules &amp; Technologies</td><td data-datetime="2026-04-28T21:00:00+02:00">28 Apr</td></tr>
+                        <tr><td class="level-1">1</td><td>4</td><td>Solar Radiation &amp; Site Analysis</td><td data-datetime="2026-05-05T21:00:00+02:00">05 May</td></tr>
+                        <tr><td class="level-1">1</td><td>5</td><td>PV Market &amp; Economics</td><td data-datetime="2026-05-12T21:00:00+02:00">12 May</td></tr>
 
-                
-<tbody>
-    <tr><td class="level-1">1</td><td>1</td><td>Introduction to Solar Energy</td><td data-datetime="2026-04-14T21:00:00+02:00">14 Apr</td></tr>
-    <tr><td class="level-1">1</td><td>2</td><td>PV Effect &amp; Cells</td><td data-datetime="2026-04-21T21:00:00+02:00">21 Apr</td></tr>
-    <tr><td class="level-1">1</td><td>3</td><td>PV Modules &amp; Technologies</td><td data-datetime="2026-04-28T21:00:00+02:00">28 Apr</td></tr>
-    <tr><td class="level-1">1</td><td>4</td><td>Solar Radiation &amp; Site Analysis</td><td data-datetime="2026-05-05T21:00:00+02:00">05 May</td></tr>
-    <tr><td class="level-1">1</td><td>5</td><td>PV Market &amp; Economics</td><td data-datetime="2026-05-12T21:00:00+02:00">12 May</td></tr>
+                        <tr class="break-week"><td colspan="4">🛑 Break Week</td></tr>
 
-    <tr class="break-week"><td colspan="4">🛑 Break Week</td></tr>
+                        <tr><td class="level-2">2</td><td>6</td><td>Inverters &amp; Grid Interaction</td><td data-datetime="2026-05-26T21:00:00+02:00">26 May</td></tr>
+                        <tr><td class="level-2">2</td><td>7</td><td>BOS Components &amp; Installation</td><td data-datetime="2026-06-02T21:00:00+02:00">02 Jun</td></tr>
+                        <tr><td class="level-2">2</td><td>8</td><td>System Design Fundamentals</td><td data-datetime="2026-06-09T21:00:00+02:00">09 Jun</td></tr>
+                        <tr><td class="level-2">2</td><td>9</td><td>Manual Design Workshop</td><td data-datetime="2026-06-16T21:00:00+02:00">16 Jun</td></tr>
+                        <tr><td class="level-2">2</td><td>10</td><td>Software Design &amp; Simulation</td><td data-datetime="2026-06-23T21:00:00+02:00">23 Jun</td></tr>
+                        <tr><td class="level-2">2</td><td>11</td><td>O&amp;M and Troubleshooting</td><td data-datetime="2026-06-30T21:00:00+02:00">30 Jun</td></tr>
 
-    <tr><td class="level-2">2</td><td>6</td><td>Inverters &amp; Grid Interaction</td><td data-datetime="2026-05-26T21:00:00+02:00">26 May</td></tr>
-    <tr><td class="level-2">2</td><td>7</td><td>BOS Components &amp; Installation</td><td data-datetime="2026-06-02T21:00:00+02:00">02 Jun</td></tr>
-    <tr><td class="level-2">2</td><td>8</td><td>System Design Fundamentals</td><td data-datetime="2026-06-09T21:00:00+02:00">09 Jun</td></tr>
-    <tr><td class="level-2">2</td><td>9</td><td>Manual Design Workshop</td><td data-datetime="2026-06-16T21:00:00+02:00">16 Jun</td></tr>
-    <tr><td class="level-2">2</td><td>10</td><td>Software Design &amp; Simulation</td><td data-datetime="2026-06-23T21:00:00+02:00">23 Jun</td></tr>
-    <tr><td class="level-2">2</td><td>11</td><td>O&amp;M and Troubleshooting</td><td data-datetime="2026-06-30T21:00:00+02:00">30 Jun</td></tr>
+                        <tr class="break-week"><td colspan="4">🛑 Break Week</td></tr>
 
-    <tr class="break-week"><td colspan="4">🛑 Break Week</td></tr>
+                        <tr><td class="level-3">3</td><td>12</td><td>Off-Grid System Concepts</td><td data-datetime="2026-07-14T21:00:00+02:00">14 Jul</td></tr>
+                        <tr><td class="level-3">3</td><td>13</td><td>Batteries &amp; Load Management</td><td data-datetime="2026-07-21T21:00:00+02:00">21 Jul</td></tr>
+                        <tr><td class="level-3">3</td><td>14</td><td>Off-Grid Design Engineering</td><td data-datetime="2026-07-28T21:00:00+02:00">28 Jul</td></tr>
+                        <tr><td class="level-3">3</td><td>15</td><td>Off-Grid Workshop + Practical</td><td data-datetime="2026-08-04T21:00:00+02:00">04 Aug</td></tr>
 
-    <tr><td class="level-3">3</td><td>12</td><td>Off-Grid System Concepts</td><td data-datetime="2026-07-14T21:00:00+02:00">14 Jul</td></tr>
-    <tr><td class="level-3">3</td><td>13</td><td>Batteries &amp; Load Management</td><td data-datetime="2026-07-21T21:00:00+02:00">21 Jul</td></tr>
-    <tr><td class="level-3">3</td><td>14</td><td>Off-Grid Design Engineering</td><td data-datetime="2026-07-28T21:00:00+02:00">28 Jul</td></tr>
-    <tr><td class="level-3">3</td><td>15</td><td>Off-Grid Workshop + Practical</td><td data-datetime="2026-08-04T21:00:00+02:00">04 Aug</td></tr>
+                        <tr class="break-week"><td colspan="4">🛑 Break Week</td></tr>
 
-    <tr class="break-week"><td colspan="4">🛑 Break Week</td></tr>
+                        <tr><td class="level-4">4</td><td>16</td><td>Pumping Fundamentals</td><td data-datetime="2026-08-18T21:00:00+02:00">18 Aug</td></tr>
+                        <tr><td class="level-4">4</td><td>17</td><td>Pumping System Design Workshop</td><td data-datetime="2026-08-25T21:00:00+02:00">25 Aug</td></tr>
 
-    <tr><td class="level-4">4</td><td>16</td><td>Pumping Fundamentals</td><td data-datetime="2026-08-18T21:00:00+02:00">18 Aug</td></tr>
-    <tr><td class="level-4">4</td><td>17</td><td>Pumping System Design Workshop</td><td data-datetime="2026-08-25T21:00:00+02:00">25 Aug</td></tr>
+                        <tr class="break-week"><td colspan="4">🛑 Break Week</td></tr>
 
-    <tr class="break-week"><td colspan="4">🛑 Break Week</td></tr>
+                        <tr><td class="level-5">5</td><td>18</td><td>PV Project Development</td><td data-datetime="2026-09-08T21:00:00+02:00">08 Sep</td></tr>
+                        <tr><td class="level-5">5</td><td>19</td><td>Financials &amp; Feasibility</td><td data-datetime="2026-09-15T21:00:00+02:00">15 Sep</td></tr>
+                        <tr><td class="level-5">5</td><td>20</td><td>Final Project + Evaluation</td><td data-datetime="2026-09-22T21:00:00+02:00">22 Sep</td></tr>
+                    </tbody>
+                </table>
+            </div>
 
-    <tr><td class="level-5">5</td><td>18</td><td>PV Project Development</td><td data-datetime="2026-09-08T21:00:00+02:00">08 Sep</td></tr>
-    <tr><td class="level-5">5</td><td>19</td><td>Financials &amp; Feasibility</td><td data-datetime="2026-09-15T21:00:00+02:00">15 Sep</td></tr>
-    <tr><td class="level-5">5</td><td>20</td><td>Final Project + Evaluation</td><td data-datetime="2026-09-22T21:00:00+02:00">22 Sep</td></tr>
-</tbody>
-
-                
-            </table>
-
-            <style>
-                .schedule-table { border-collapse:collapse; width:100%; background:#fff; border-radius:8px; box-shadow:0 2px 8px rgba(0,0,0,0.1); overflow:hidden; font-family:"Segoe UI",Arial,sans-serif; }
-                .schedule-table th, .schedule-table td { padding:10px 14px; border:1px solid #dee2e6; text-align:center; }
-                .schedule-table th { background:#f1f3f5; color:#212529; font-weight:600; text-transform:uppercase; letter-spacing:0.5px; }
-                .schedule-table tr:nth-child(even) { background:#f8f9fa; }
-                .schedule-table tr:hover { background:#f0f4ff; }
-                .past-session { background:#ffe6e6 !important; color:#b00020; font-weight:500; position:relative; }
-                .past-session::after { content:"✔ Past"; position:absolute; right:8px; top:6px; font-size:0.75em; color:#b00020; background:rgba(255,0,0,0.08); padding:2px 6px; border-radius:5px; }
-            </style>
             <script>
             document.addEventListener("DOMContentLoaded", () => {
                 const utcMs = new Date().getTime() + new Date().getTimezoneOffset() * 60000;
@@ -847,7 +935,7 @@
             <!-- Key Project Highlights -->
             <div style="margin:40px 0;">
                 <h2 style="color:white;text-align:center;margin-bottom:24px;">Selected Project Portfolio</h2>
-                <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px;">
+                <div class="portfolio-grid" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px;">
                     <div style="background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.12);border-radius:10px;padding:18px;text-align:center;">
                         <div style="font-size:1.6rem;font-weight:800;color:var(--primary-light);">20 MW</div>
                         <div style="font-size:0.85rem;color:rgba(255,255,255,0.7);margin-top:4px;">+ 35MWh BESS<br>Juba, South Sudan</div>
