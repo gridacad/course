@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<title>Level 1 Starting April 12 – Substation Design Course</title>
+<!--[if mso]>
+<noscript>
+<xml>
+<o:OfficeDocumentSettings>
+<o:PixelsPerInch>96</o:PixelsPerInch>
+</o:OfficeDocumentSettings>
+</xml>
+</noscript>
+<![endif]-->
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&display=swap" rel="stylesheet" />
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body, html {
+    margin:0; padding:0;
+    background-color:#f4f7f6;
+    font-family:"Segoe UI",Tahoma,Geneva,Verdana,sans-serif;
+    -webkit-text-size-adjust:100%;
+    -ms-text-size-adjust:100%;
+  }
+  img { border:0; display:block; max-width:100%; }
+  a { text-decoration:none; }
+  table { border-collapse:collapse; mso-table-lspace:0pt; mso-table-rspace:0pt; }
+
+  .email-shell {
+    background-color:#f4f7f6;
+    padding:32px 12px;
+    min-height:100vh;
+  }
+  .email-card {
+    max-width:620px;
+    margin:0 auto;
+    background:#ffffff;
+    border-radius:16px;
+    overflow:hidden;
+    box-shadow:0 8px 40px rgba(0,0,0,0.12);
+  }
+
+  /* ── Header micro-bar ── */
+  .header-bar {
+    background:#006e4d;
+    text-align:center;
+    font-family:'Montserrat',sans-serif;
+    font-size:0.68rem;
+    font-weight:700;
+    letter-spacing:2.5px;
+    color:rgba(255,255,255,0.55);
+    text-transform:uppercase;
+    padding:10px 0 12px;
+  }
+
+  /* ── Hero ── */
+  .hero {
+    background:linear-gradient(150deg,#006e4d 0%,#009268 55%,#00b37d 100%);
+    padding:44px 36px 52px;
+    text-align:center;
+    position:relative;
+    overflow:visible;
+  }
+  .hero::before {
+    content:"";
+    position:absolute; inset:0;
+    background-image:
+      linear-gradient(rgba(255,255,255,0.04) 1px,transparent 1px),
+      linear-gradient(90deg,rgba(255,255,255,0.04) 1px,transparent 1px);
+    background-size:28px 28px;
+  }
+  .hero-orb {
+    position:absolute; border-radius:50%;
+    filter:blur(60px); opacity:0.25; pointer-events:none;
+  }
+  .orb-1 { width:260px;height:260px;background:#b8fce8;top:-80px;right:-60px; }
+  .orb-2 { width:180px;height:180px;background:#003d28;bottom:0;left:-40px; }
+  .hero-inner { position:relative; z-index:1; }
+
+  .badge-announce {
+    display:inline-block;
+    background:rgba(255,255,255,0.15);
+    border:1px solid rgba(255,255,255,0.3);
+    color:#ffffff;
+    font-size:0.72rem; font-weight:700;
+    letter-spacing:2px; text-transform:uppercase;
+    padding:6px 18px; border-radius:30px;
+    margin-bottom:22px;
+  }
+  .hero-title {
+    font-family:'Montserrat',sans-serif;
+    font-size:2rem; font-weight:800;
+    color:#ffffff; line-height:1.2;
+    margin-bottom:8px;
+    text-shadow:0 2px 12px rgba(0,0,0,0.2);
+  }
+  .hero-subtitle {
+    font-size:0.92rem;
+    color:rgba(255,255,255,0.75);
+    letter-spacing:0.5px; margin-bottom:28px;
+  }
+
+  /* Floating level card */
+  .level-float {
+    display:inline-flex; align-items:center; gap:16px;
+    background:#ffffff; border-radius:14px;
+    padding:16px 28px;
+    box-shadow:0 12px 40px rgba(0,0,0,0.18);
+    position:relative; z-index:2;
+    margin-top:8px;
+    margin-bottom:0;
+  }
+  .level-circle {
+    width:56px; height:56px;
+    background:linear-gradient(135deg,#006e4d,#009268);
+    border-radius:12px;
+    display:flex; align-items:center; justify-content:center;
+    font-family:'Montserrat',sans-serif;
+    font-size:1.6rem; font-weight:800; color:#ffffff;
+    box-shadow:0 4px 16px rgba(0,146,104,0.4);
+    flex-shrink:0;
+  }
+  .level-text { text-align:left; }
+  .level-name {
+    font-family:'Montserrat',sans-serif;
+    font-size:1.05rem; font-weight:700; color:#2C3E50;
+    white-space:nowrap;
+  }
+  .level-sub { font-size:0.8rem; color:#6c757d; margin-top:3px; }
+
+  /* ── Body ── */
+  .body-pad { padding:36px 36px 32px; }
+
+  .greeting { font-size:1rem; font-weight:600; color:#2C3E50; margin-bottom:14px; }
+  .intro {
+    font-size:0.96rem; color:#495057;
+    line-height:1.75; margin-bottom:28px;
+  }
+  .intro strong { color:#006e4d; }
+
+  /* Info grid */
+  .info-grid {
+    display:grid; grid-template-columns:1fr 1fr;
+    gap:10px; margin-bottom:28px;
+  }
+  .info-cell {
+    background:#f4f7f6; border:1px solid #e9ecef;
+    border-left:3px solid #009268;
+    border-radius:8px; padding:13px 15px;
+    display:flex; align-items:flex-start; gap:10px;
+  }
+  .info-cell.span-2 { grid-column:1 / -1; }
+  .cell-icon { font-size:1.15rem; flex-shrink:0; margin-top:1px; line-height:1; }
+  .cell-label {
+    font-size:0.68rem; font-weight:700;
+    text-transform:uppercase; letter-spacing:1px;
+    color:#6c757d; margin-bottom:4px;
+  }
+  .cell-value { font-size:0.95rem; font-weight:700; color:#2C3E50; line-height:1.3; }
+
+  /* Session table */
+  .sessions-heading {
+    font-family:'Montserrat',sans-serif;
+    font-size:0.72rem; font-weight:700;
+    text-transform:uppercase; letter-spacing:1.5px;
+    color:#009268; margin-bottom:10px;
+    padding-bottom:8px; border-bottom:2px solid #e6f4f1;
+    display:flex; align-items:center; gap:8px;
+  }
+  .sessions-heading::after {
+    content:""; flex:1; height:2px;
+    background:linear-gradient(90deg,#e6f4f1,transparent);
+  }
+
+  .schedule-table {
+    width:100%; border-collapse:collapse;
+    border-radius:10px; overflow:hidden;
+    box-shadow:0 2px 12px rgba(0,0,0,0.07);
+    margin-bottom:28px; font-size:0.88rem;
+  }
+  .schedule-table thead tr th {
+    background-color:#009268; color:#ffffff;
+    padding:11px 14px; text-align:center;
+    font-family:'Montserrat',sans-serif;
+    font-weight:700; font-size:0.75rem;
+    text-transform:uppercase; letter-spacing:0.8px;
+  }
+  .schedule-table tbody tr td {
+    padding:10px 14px; border:1px solid #e9ecef;
+    text-align:center; color:#2C3E50;
+  }
+  .schedule-table tbody tr:nth-child(even) td { background-color:#f8f9fa; }
+  .schedule-table tbody tr:hover td { background-color:#e6f4f1; }
+  .first-row td { background-color:rgba(0,146,104,0.10) !important; font-weight:700; }
+  .sess-num { color:#6c757d; font-size:0.8rem; }
+  .sess-title { text-align:left !important; color:#2C3E50; }
+  .sess-date { color:#006e4d; font-weight:700; white-space:nowrap; }
+  .level-badge-cell {
+    background-color:rgba(0,146,104,0.12) !important;
+    color:#006e4d; font-weight:700; font-size:0.85rem;
+  }
+
+  /* CTA block */
+  .cta-block {
+    background:linear-gradient(135deg,#f0fbf7 0%,#e6f4f1 100%);
+    border:1px solid #c3e6d8; border-radius:12px;
+    padding:24px 20px; text-align:center; margin-bottom:24px;
+  }
+  .cta-block p {
+    font-size:0.92rem; color:#495057;
+    margin-bottom:18px; line-height:1.6;
+  }
+  .cta-block p strong { color:#006e4d; }
+  .cta-buttons { display:flex; gap:10px; justify-content:center; flex-wrap:wrap; }
+
+  .btn-main {
+    display:inline-block;
+    background:linear-gradient(135deg,#006e4d,#009268);
+    color:#ffffff !important;
+    font-family:'Montserrat',sans-serif;
+    font-size:0.9rem; font-weight:700;
+    padding:14px 32px; border-radius:8px;
+    letter-spacing:0.3px;
+    box-shadow:0 4px 16px rgba(0,146,104,0.35);
+  }
+  .btn-secondary {
+    display:inline-block; background:#ffffff;
+    color:#009268 !important;
+    font-family:'Montserrat',sans-serif;
+    font-size:0.9rem; font-weight:700;
+    padding:14px 28px; border-radius:8px;
+    border:2px solid #009268; letter-spacing:0.3px;
+  }
+
+  /* Contact note */
+  .contact-note {
+    background:#fffbf0; border:1px solid #ffe5a0;
+    border-left:4px solid #f5c842; border-radius:8px;
+    padding:14px 16px; font-size:0.87rem;
+    color:#495057; line-height:1.65; margin-bottom:24px;
+  }
+  .contact-note a { color:#006e4d; font-weight:600; }
+
+  .divider { border:none; border-top:1px solid #e9ecef; margin:24px 0; }
+  .signoff { font-size:0.92rem; color:#495057; line-height:1.7; }
+  .signoff strong { color:#2C3E50; }
+
+  /* Footer */
+  .email-footer {
+    background:#2C3E50; padding:28px 36px; text-align:center;
+  }
+  .footer-brand {
+    font-family:'Montserrat',sans-serif;
+    font-size:1.05rem; font-weight:800; color:#ffffff;
+    letter-spacing:1.5px; margin-bottom:6px;
+    display:flex; align-items:center; justify-content:center; gap:8px;
+  }
+  .footer-brand-dot { width:8px;height:8px;background:#00b37d;border-radius:50%;display:inline-block; }
+  .footer-tagline { font-size:0.78rem; color:rgba(255,255,255,0.45); letter-spacing:0.5px; margin-bottom:14px; }
+  .footer-links { display:flex; justify-content:center; gap:18px; margin-bottom:14px; flex-wrap:wrap; }
+  .footer-links a { color:rgba(255,255,255,0.55); font-size:0.8rem; }
+  .footer-copy { font-size:0.75rem; color:rgba(255,255,255,0.25); margin-top:10px; }
+
+  /* Responsive */
+  @media only screen and (max-width:540px) {
+    .email-shell { padding:0; }
+    .email-card { border-radius:0; box-shadow:none; }
+    .hero { padding:32px 20px 44px; }
+    .hero-title { font-size:1.5rem; }
+    .level-float { flex-direction:column; text-align:center; padding:14px 20px; }
+    .level-text { text-align:center; }
+    .body-pad { padding:44px 20px 24px; }
+    .info-grid { grid-template-columns:1fr; }
+    .info-cell.span-2 { grid-column:1; }
+    .cta-buttons { flex-direction:column; align-items:center; }
+    .btn-main, .btn-secondary { width:100%; text-align:center; }
+    .email-footer { padding:24px 20px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="email-shell">
+<div class="email-card">
+
+  <!-- Micro-bar -->
+  <div class="header-bar">GRID ACADEMY &nbsp;·&nbsp; PROFESSIONAL ENGINEERING COURSES</div>
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-orb orb-1"></div>
+    <div class="hero-orb orb-2"></div>
+    <div class="hero-inner">
+      <div class="badge-announce">&#128226; New Round — Now Open</div>
+      <div class="hero-title">Substation Design<br>&amp; Protection Course</div>
+      <div class="hero-subtitle">Presented by Eng. Ahmed Metwally</div>
+
+      <div class="level-float">
+        <div class="level-circle">1</div>
+        <div class="level-text">
+          <div class="level-name">Level 1 is Here!</div>
+          <div class="level-sub">Foundations of Substation Design</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- BODY -->
+  <div class="body-pad">
+
+    <p class="greeting">Dear Engineer,</p>
+    <p class="intro">
+      We are thrilled to announce that <strong>Level 1 of the Substation Design &amp; Protection Course</strong> is now open for enrollment.<br><br>
+      We're excited to have had so much interest — if you'd like to join this upcoming round, kindly <strong>complete your payment to secure your spot</strong> before seats fill up.
+    </p>
+
+    <!-- Info grid -->
+    <div class="info-grid">
+      <div class="info-cell">
+        <span class="cell-icon">📅</span>
+        <div>
+          <div class="cell-label">Start Date</div>
+          <div class="cell-value">12 April 2026</div>
+        </div>
+      </div>
+      <div class="info-cell">
+        <span class="cell-icon">📍</span>
+        <div>
+          <div class="cell-label">Day</div>
+          <div class="cell-value">Every Sunday</div>
+        </div>
+      </div>
+      <div class="info-cell">
+        <span class="cell-icon">🕖</span>
+        <div>
+          <div class="cell-label">Time</div>
+          <div class="cell-value">8:00 PM – 10:30 PM<br><span style="font-size:0.78rem;font-weight:400;color:#6c757d;">GMT+2 Cairo </span></div>
+        </div>
+      </div>
+      <div class="info-cell">
+        <span class="cell-icon">⏱</span>
+        <div>
+          <div class="cell-label">Duration</div>
+          <div class="cell-value">4 Weekly Sessions</div>
+        </div>
+      </div>
+      <div class="info-cell span-2">
+        <span class="cell-icon">💻</span>
+        <div>
+          <div class="cell-label">Platform</div>
+          <div class="cell-value">Microsoft Teams &nbsp;—&nbsp; <span style="font-weight:400;font-size:0.88rem;color:#495057;">meeting link shared before each session · PDF notes provided after every session</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Session table -->
+    <div class="sessions-heading">Level 1 – Session Schedule</div>
+    <table class="schedule-table">
+      <thead>
+        <tr>
+          <th>Level</th>
+          <th>Session</th>
+          <th>Topic</th>
+          <th>Date</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="first-row">
+          <td class="level-badge-cell">1</td>
+          <td class="sess-num">1</td>
+          <td class="sess-title">Welcome to the Grid — Substation Types, Layouts &amp; System Roles</td>
+          <td class="sess-date">12 Apr</td>
+        </tr>
+        <tr>
+          <td class="level-badge-cell">1</td>
+          <td class="sess-num">2</td>
+          <td class="sess-title">Brains of the System — Conventional vs. SAS Control Hierarchy</td>
+          <td class="sess-date">19 Apr</td>
+        </tr>
+        <tr>
+          <td class="level-badge-cell">1</td>
+          <td class="sess-num">3</td>
+          <td class="sess-title">Protection System Basics — Philosophies, Elements &amp; Relay Types</td>
+          <td class="sess-date">26 Apr</td>
+        </tr>
+        <tr>
+          <td class="level-badge-cell">1</td>
+          <td class="sess-num">4</td>
+          <td class="sess-title">Relay Types &amp; Applications — Overcurrent, Differential &amp; Distance</td>
+          <td class="sess-date">03 May</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- CTA -->
+    <div class="cta-block">
+      <p>Complete your payment to <strong>confirm your spot</strong> in Level 1.<br>Seats are strictly limited and filled on a first-come, first-served basis.</p>
+      <div class="cta-buttons">
+        <a href="https://gridacad.github.io/pay/sdpc.html" class="btn-main">&#10003;&nbsp; Confirm My Spot</a>
+        <a href="https://gridacad.github.io/course/SDPC.html" class="btn-secondary">&#128196;&nbsp; Course Outline</a>
+
+      </div>
+    </div>
+
+    <hr class="divider" />
+
+    <!-- Contact note -->
+    <div class="contact-note">
+      If you have already paid or have any questions, feel free to reply directly to this email, reach us at
+      <a href="mailto:gridacademyinfo@gmail.com">gridacademyinfo@gmail.com</a>,
+      or message us on <a href="https://wa.me/201090855647">WhatsApp</a> — our team will be happy to assist.
+    </div>
+
+    <!-- Sign off -->
+    <p class="signoff">
+      Best regards,<br />
+           <strong> <span style="color:#009268;font-size:0.88rem;"> Grid Academy</span>  </strong>
+    </p>
+
+  </div>
+
+  <!-- FOOTER -->
+  <div class="email-footer">
+    <div class="footer-brand">
+      <span class="footer-brand-dot"></span>
+      GRID ACADEMY
+      <span class="footer-brand-dot"></span>
+    </div>
+    <div class="footer-tagline">Empowering Engineers in Power Systems</div>
+    <div class="footer-links">
+      <a href="https://gridacad.github.io/course/SDPC.html">Course Page</a>
+      <a href="https://gridacad.github.io/pay/sdpc.html">Enroll Now</a>
+      <a href="https://wa.me/201090855647">Contact Us</a>
+    </div>
+    <div class="footer-copy">&copy; 2026 GRID ACADEMY. All rights reserved.</div>
+  </div>
+
+</div>
+</div>
+
+</body>
+</html>
