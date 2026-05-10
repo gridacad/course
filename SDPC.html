@@ -130,6 +130,18 @@
         .nav-enroll:hover { background: var(--primary-dark); transform: translateY(-1px); }
         .nav-left { display:flex; align-items:center; gap:20px; }
 
+
+
+  .break-week td {
+            text-align: center;
+            font-weight: bold;
+            background: #f5f5f5;
+            color: #c0392b;
+        }
+
+
+
+
         .container {
             max-width: 1200px;
             margin: 0 auto;
@@ -604,6 +616,59 @@
             color: var(--primary-color);
         }
 
+
+
+
+
+
+
+
+
+/* ── TABLE WRAPPER & PAST SESSION STYLES ── */
+        .schedule-table-wrapper {
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            margin: 20px 0;
+        }
+
+        .schedule-table {
+            min-width: 460px;
+        }
+
+        .schedule-table tr:nth-child(even) { background: #f8f9fa; }
+        .schedule-table tr:hover { background: #f0f4ff; }
+
+        /* Force the cells in a past session to turn red, overriding the level colors */
+        .past-session td { 
+            background: #ffe6e6 !important; 
+            color: #b00020 !important; 
+            font-weight: 500; 
+        }
+
+        /* Add the "✔ Past" badge to the last cell of the row safely */
+        .past-session td:last-child {
+            position: relative;
+            padding-right: 60px; /* Make room for the badge */
+        }
+
+        .past-session td:last-child::after { 
+            content: "✔ Past"; 
+            position: absolute; 
+            right: 8px; 
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 0.75em; 
+            color: #b00020; 
+            background: rgba(255,0,0,0.08); 
+            padding: 2px 6px; 
+            border-radius: 5px; 
+        }
+
+
+
+
         /* Responsive Styles */
         @media (max-width: 992px) {
             .hero-content { padding: 30px; margin: 20px; }
@@ -781,54 +846,44 @@
     </section>
 
     <!-- Schedule -->
-    <section id="schedule">
+
+
+<section id="schedule">
         <div class="container">
-            <h1>Schedule</h1>
-            <p>
-                <strong>Time: 8:00 PM (GMT+2 - Cairo) / 09:00 PM (GMT+3 - KSA)</strong><br />
-                A <strong>Microsoft Teams meeting link</strong> will be shared with participants before each session.<br />
-                After every session, <strong>a PDF Notes file</strong> will be provided to all participants.
-            </p>
+            <div class="section-header">
+                <h1>Schedule</h1>
+                <p>
+                    <strong>Time: 8:00 PM (GMT+2 - Cairo) / 09:00 PM (GMT+3 - KSA)</strong><br />
+                    A <strong>Microsoft Teams meeting link</strong> will be shared with participants before each session.<br />
+                    After every session, <strong>a PDF Notes file</strong> will be provided to all participants.
+                </p>
+            </div>
 
-            <div class="schedule-wrapper">
-
-                <!-- ROUND 1 -->
-                <div class="round-title">Round 1 – Full Course – Starting 6 Oct</div>
-                <table class="schedule-table schedule-table-full" id="schedule-round1">
-                    <thead><tr><th>Level</th><th>Session</th><th>Date</th></tr></thead>
+            <div class="round-title">Round 1 – Full Course – Starting 6 Oct</div>
+            <div class="schedule-table-wrapper">
+                <table class="schedule-table">
+                    <thead>
+                        <tr>
+                            <th>Level</th>
+                            <th>Session</th>
+                            <th>Date</th>
+                        </tr>
+                    </thead>
                     <tbody>
                         <tr><td class="level-1">1</td><td>1</td><td data-datetime="2025-10-06T19:00:00+02:00">06 Oct</td></tr>
                         <tr><td class="level-1">1</td><td>2</td><td data-datetime="2025-10-13T19:00:00+02:00">13 Oct</td></tr>
                         <tr><td class="level-1">1</td><td>3</td><td data-datetime="2025-10-20T19:00:00+02:00">20 Oct</td></tr>
                         <tr><td class="level-1">1</td><td>4</td><td data-datetime="2025-10-27T19:00:00+02:00">27 Oct</td></tr>
-                    </tbody>
-                </table>
-
-                <table class="schedule-table schedule-table-full">
-                    <thead><tr><th>Level</th><th>Session</th><th>Date</th></tr></thead>
-                    <tbody>
                         <tr><td class="level-2">2</td><td>5</td><td data-datetime="2025-11-08T19:00:00+02:00">08 Nov</td></tr>
                         <tr><td class="level-2">2</td><td>6</td><td data-datetime="2025-11-15T19:00:00+02:00">15 Nov</td></tr>
                         <tr><td class="level-2">2</td><td>7</td><td data-datetime="2025-11-22T19:00:00+02:00">22 Nov</td></tr>
                         <tr><td class="level-2">2</td><td>8</td><td data-datetime="2025-11-29T19:00:00+02:00">29 Nov</td></tr>
                         <tr><td class="level-2">2</td><td>9</td><td data-datetime="2025-12-06T19:00:00+02:00">06 Dec</td></tr>
-                    </tbody>
-                </table>
-
-                <table class="schedule-table schedule-table-full">
-                    <thead><tr><th>Level</th><th>Session</th><th>Date</th></tr></thead>
-                    <tbody>
                         <tr><td class="level-3">3</td><td>10</td><td data-datetime="2025-12-27T19:00:00+02:00">27 Dec</td></tr>
                         <tr><td class="level-3">3</td><td>11</td><td data-datetime="2026-01-03T19:00:00+02:00">03 Jan</td></tr>
                         <tr><td class="level-3">3</td><td>12</td><td data-datetime="2026-01-10T19:00:00+02:00">10 Jan</td></tr>
                         <tr><td class="level-3">3</td><td>13</td><td data-datetime="2026-01-17T19:00:00+02:00">17 Jan</td></tr>
                         <tr><td class="level-3">3</td><td>14</td><td data-datetime="2026-01-24T19:00:00+02:00">24 Jan</td></tr>
-                    </tbody>
-                </table>
-
-                <table class="schedule-table schedule-table-full">
-                    <thead><tr><th>Level</th><th>Session</th><th>Date</th></tr></thead>
-                    <tbody>
                         <tr><td class="level-4">4</td><td>15</td><td data-datetime="2026-02-15T19:00:00+02:00"><span style="text-decoration:line-through;">14 Feb</span> 15-Feb</td></tr>
                         <tr><td class="level-4">4</td><td>16</td><td data-datetime="2026-02-22T19:00:00+02:00"><span style="text-decoration:line-through;">21 Feb</span> 22-Feb</td></tr>
                         <tr><td class="level-4">4</td><td>17</td><td data-datetime="2026-03-01T19:00:00+02:00"><span style="text-decoration:line-through;">28 Feb</span> 01-Mar</td></tr>
@@ -836,131 +891,91 @@
                         <tr><td class="level-4">4</td><td>19</td><td data-datetime="2026-03-31T19:00:00+02:00"><span style="text-decoration:line-through;">14 Mar</span> 31-Mar</td></tr>
                     </tbody>
                 </table>
+            </div>
 
-                <!-- ROUND 2 -->
-                <div class="round-title">Round 2 – Level 1 – Level 2 | Starting 26 Nov</div>
-                <table class="schedule-table schedule-table-full" id="schedule-round2-level1">
-                    <thead><tr><th>Level</th><th>Session</th><th>Date</th></tr></thead>
+            <div class="round-title">Round 2 – Level 1 – Level 2 | Starting 26 Nov</div>
+            <div class="schedule-table-wrapper">
+                <table class="schedule-table">
+                    <thead>
+                        <tr>
+                            <th>Level</th>
+                            <th>Session</th>
+                            <th>Date</th>
+                        </tr>
+                    </thead>
                     <tbody>
                         <tr><td class="level-1">1</td><td>1</td><td data-datetime="2025-11-26T20:00:00+02:00">26 Nov</td></tr>
                         <tr><td class="level-1">1</td><td>2</td><td data-datetime="2025-12-03T20:00:00+02:00">03 Dec</td></tr>
                         <tr><td class="level-1">1</td><td>3</td><td data-datetime="2025-12-10T20:00:00+02:00">10 Dec</td></tr>
                         <tr><td class="level-1">1</td><td>4</td><td data-datetime="2025-12-17T20:00:00+02:00">17 Dec</td></tr>
-                    </tbody>
-                </table>
-
-                <table class="schedule-table schedule-table-full">
-                    <thead><tr><th>Level</th><th>Session</th><th>Date</th></tr></thead>
-                    <tbody>
-                        <tr class="highlight-session"><td class="level-2">2</td><td>5</td><td data-datetime="2026-01-01T20:00:00+02:00">01 Jan</td></tr>
-                        <tr class="highlight-session"><td class="level-2">2</td><td>6</td><td data-datetime="2026-01-08T20:00:00+02:00">08 Jan</td></tr>
+                        <tr><td class="level-2">2</td><td>5</td><td data-datetime="2026-01-01T20:00:00+02:00">01 Jan</td></tr>
+                        <tr><td class="level-2">2</td><td>6</td><td data-datetime="2026-01-08T20:00:00+02:00">08 Jan</td></tr>
                         <tr><td class="level-2">2</td><td>7</td><td data-datetime="2026-01-14T20:00:00+02:00">14 Jan</td></tr>
                         <tr><td class="level-2">2</td><td>8</td><td data-datetime="2026-01-21T20:00:00+02:00">21 Jan</td></tr>
                         <tr><td class="level-2">2</td><td>9</td><td data-datetime="2026-01-28T20:00:00+02:00">28 Jan</td></tr>
                     </tbody>
                 </table>
-
-
-
-
-
-
-<!-- ROUND 3 -->
-<div class="round-title">Round 3 – Full Course – Starting 5 May</div>
-
-<!-- Level 1 -->
-<table class="schedule-table schedule-table-full" id="schedule-round3-level1">
-    <thead><tr><th>Level</th><th>Session</th><th>Date</th></tr></thead>
-    <tbody>
-        <tr><td class="level-1">1</td><td>1</td><td data-datetime="2026-05-05T20:00:00+02:00">05 May</td></tr>
-        <tr><td class="level-1">1</td><td>2</td><td data-datetime="2026-05-12T20:00:00+02:00">12 May</td></tr>
-        <tr><td class="level-1">1</td><td>3</td><td data-datetime="2026-05-18T20:00:00+02:00"><span style="text-decoration:line-through;">19 May</span> 18 May</td></tr>
-        <tr><td class="level-1">1</td><td>4</td><td data-datetime="2026-05-25T20:00:00+02:00"><span style="text-decoration:line-through;">26 May</span> 25 May</td></tr>
-    </tbody>
-</table>
-
-<!-- 2-Week Break Note -->
-<div class="level-break"><span>🔷 2-Week Break – Week of 2 Jun & 9 Jun</span></div>
-
-<!-- Level 2 -->
-<table class="schedule-table schedule-table-full">
-    <thead><tr><th>Level</th><th>Session</th><th>Date</th></tr></thead>
-    <tbody>
-        <tr><td class="level-2">2</td><td>5</td><td data-datetime="2026-06-16T20:00:00+02:00">16 Jun</td></tr>
-        <tr><td class="level-2">2</td><td>6</td><td data-datetime="2026-06-23T20:00:00+02:00">23 Jun</td></tr>
-        <tr><td class="level-2">2</td><td>7</td><td data-datetime="2026-06-30T20:00:00+02:00">30 Jun</td></tr>
-        <tr><td class="level-2">2</td><td>8</td><td data-datetime="2026-07-07T20:00:00+02:00">07 Jul</td></tr>
-        <tr><td class="level-2">2</td><td>9</td><td data-datetime="2026-07-14T20:00:00+02:00"><em>Mid-level (TBA)</em></td></tr>
-        <tr><td class="level-2">2</td><td>10</td><td data-datetime="2026-07-21T20:00:00+02:00"><em>Mid-level (TBA)</em></td></tr>
-    </tbody>
-</table>
-
-<!-- Level Break -->
-<div class="level-break"><span>🔷 Level Break – Week of 14 Jul</span></div>
-
-<!-- Level 3 -->
-<table class="schedule-table schedule-table-full">
-    <thead><tr><th>Level</th><th>Session</th><th>Date</th></tr></thead>
-    <tbody>
-        <tr><td class="level-3">3</td><td>11</td><td data-datetime="2026-07-21T20:00:00+02:00">21 Jul</td></tr>
-        <tr><td class="level-3">3</td><td>12</td><td data-datetime="2026-07-28T20:00:00+02:00">28 Jul</td></tr>
-        <tr><td class="level-3">3</td><td>13</td><td data-datetime="2026-08-04T20:00:00+02:00">04 Aug</td></tr>
-        <tr><td class="level-3">3</td><td>14</td><td data-datetime="2026-08-11T20:00:00+02:00">11 Aug</td></tr>
-        <tr><td class="level-3">3</td><td>15</td><td data-datetime="2026-08-18T20:00:00+02:00">18 Aug</td></tr>
-    </tbody>
-</table>
-
-<!-- Level Break -->
-<div class="level-break"><span>🔷 Level Break – Week of 25 Aug</span></div>
-
-<!-- Level 4 -->
-<table class="schedule-table schedule-table-full">
-    <thead><tr><th>Level</th><th>Session</th><th>Date</th></tr></thead>
-    <tbody>
-        <tr><td class="level-4">4</td><td>16</td><td data-datetime="2026-09-01T20:00:00+02:00">01 Sep</td></tr>
-        <tr><td class="level-4">4</td><td>17</td><td data-datetime="2026-09-08T20:00:00+02:00">08 Sep</td></tr>
-        <tr><td class="level-4">4</td><td>18</td><td data-datetime="2026-09-15T20:00:00+02:00">15 Sep</td></tr>
-        <tr><td class="level-4">4</td><td>19</td><td data-datetime="2026-09-22T20:00:00+02:00">22 Sep</td></tr>
-        <tr><td class="level-4">4</td><td>20</td><td data-datetime="2026-09-29T20:00:00+02:00">29 Sep</td></tr>
-    </tbody>
-</table>
-
             </div>
+
+            <div class="round-title">Round 3 – Full Course – Starting 5 May</div>
+            <div class="schedule-table-wrapper">
+                <table class="schedule-table">
+                    <thead>
+                        <tr>
+                            <th>Level</th>
+                            <th>Session</th>
+                            <th>Date</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td class="level-1">1</td><td>1</td><td data-datetime="2026-05-05T20:00:00+02:00">05 May</td></tr>
+                        <tr><td class="level-1">1</td><td>2</td><td data-datetime="2026-05-12T20:00:00+02:00">12 May</td></tr>
+                        <tr><td class="level-1">1</td><td>3</td><td data-datetime="2026-05-18T20:00:00+02:00"><span style="text-decoration:line-through;">19 May</span> 18 May</td></tr>
+                        <tr><td class="level-1">1</td><td>4</td><td data-datetime="2026-05-25T20:00:00+02:00"><span style="text-decoration:line-through;">26 May</span> 25 May</td></tr>
+                        
+                        <tr class="break-week"><td colspan="3">🛑 2-Week Break – Week of 2 Jun &amp; 9 Jun</td></tr>
+                        
+                        <tr><td class="level-2">2</td><td>5</td><td data-datetime="2026-06-16T20:00:00+02:00">16 Jun</td></tr>
+                        <tr><td class="level-2">2</td><td>6</td><td data-datetime="2026-06-23T20:00:00+02:00">23 Jun</td></tr>
+                        <tr><td class="level-2">2</td><td>7</td><td data-datetime="2026-06-30T20:00:00+02:00">30 Jun</td></tr>
+                        <tr><td class="level-2">2</td><td>8</td><td data-datetime="2026-07-07T20:00:00+02:00">07 Jul</td></tr>
+                        <tr><td class="level-2">2</td><td>9</td><td data-datetime="2026-07-14T20:00:00+02:00"><em>Mid-level (TBA)</em></td></tr>
+                        <tr><td class="level-2">2</td><td>10</td><td data-datetime="2026-07-21T20:00:00+02:00"><em>Mid-level (TBA)</em></td></tr>
+
+                        <tr class="break-week"><td colspan="3">🛑 Level Break – Week of 14 Jul</td></tr>
+
+                        <tr><td class="level-3">3</td><td>11</td><td data-datetime="2026-07-21T20:00:00+02:00">21 Jul</td></tr>
+                        <tr><td class="level-3">3</td><td>12</td><td data-datetime="2026-07-28T20:00:00+02:00">28 Jul</td></tr>
+                        <tr><td class="level-3">3</td><td>13</td><td data-datetime="2026-08-04T20:00:00+02:00">04 Aug</td></tr>
+                        <tr><td class="level-3">3</td><td>14</td><td data-datetime="2026-08-11T20:00:00+02:00">11 Aug</td></tr>
+                        <tr><td class="level-3">3</td><td>15</td><td data-datetime="2026-08-18T20:00:00+02:00">18 Aug</td></tr>
+
+                        <tr class="break-week"><td colspan="3">🛑 Level Break – Week of 25 Aug</td></tr>
+
+                        <tr><td class="level-4">4</td><td>16</td><td data-datetime="2026-09-01T20:00:00+02:00">01 Sep</td></tr>
+                        <tr><td class="level-4">4</td><td>17</td><td data-datetime="2026-09-08T20:00:00+02:00">08 Sep</td></tr>
+                        <tr><td class="level-4">4</td><td>18</td><td data-datetime="2026-09-15T20:00:00+02:00">15 Sep</td></tr>
+                        <tr><td class="level-4">4</td><td>19</td><td data-datetime="2026-09-22T20:00:00+02:00">22 Sep</td></tr>
+                        <tr><td class="level-4">4</td><td>20</td><td data-datetime="2026-09-29T20:00:00+02:00">29 Sep</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <script>
+            document.addEventListener("DOMContentLoaded", () => {
+                const utcMs = new Date().getTime() + new Date().getTimezoneOffset() * 60000;
+                const cairoNow = new Date(utcMs + 2 * 60 * 60000);
+                document.querySelectorAll(".schedule-table td[data-datetime]").forEach(cell => {
+                    if (new Date(cell.getAttribute("data-datetime")).getTime() < cairoNow.getTime())
+                        cell.parentElement.classList.add("past-session");
+                });
+            });
+            </script>
         </div>
     </section>
 
-    <style>
-        .schedule-wrapper { display:flex; flex-wrap:wrap; gap:2rem; justify-content:space-between; }
-        .schedule-table { border-collapse:collapse; width:48%; min-width:320px; background-color:#ffffff; border-radius:8px; box-shadow:0 2px 8px rgba(0,0,0,0.1); overflow:hidden; font-family:"Segoe UI",Arial,sans-serif; }
-        .schedule-table-full { width:100% !important; }
-        @media (max-width:900px) { .schedule-table { width:100%; } }
-        .schedule-table th, .schedule-table td { padding:10px 14px; border:1px solid #dee2e6; text-align:center; }
-        .schedule-table th { background-color:#f1f3f5; color:#212529; font-weight:600; text-transform:uppercase; letter-spacing:0.5px; }
-        .schedule-table tr:nth-child(even) { background-color:#f8f9fa; }
-        .schedule-table tr:hover { background-color:#f0f4ff; }
-        .past-session { background:#ffe6e6 !important; color:#b00020; font-weight:500; position:relative; }
-        .past-session::after { content:"✔ Past"; position:absolute; right:8px; top:6px; font-size:0.75em; color:#b00020; background:rgba(255,0,0,0.08); padding:2px 6px; border-radius:5px; }
-        .mega-project { font-weight:600; background:#fff8e1; }
-        .round2-title { width:100%; text-align:center; font-size:1.4rem; font-weight:700; margin:10px 0 0 0; padding:12px; background:#f1f3f5; border-radius:8px; border:1px solid #dee2e6; color:#212529; }
-    </style>
 
-    <script>
-    document.addEventListener("DOMContentLoaded", () => {
-        const nowLocal = new Date();
-        const utcMs = nowLocal.getTime() + nowLocal.getTimezoneOffset() * 60000;
-        const cairoNow = new Date(utcMs + 2 * 60 * 60000);
-        const dateCells = document.querySelectorAll(".schedule-table td[data-datetime]");
-        dateCells.forEach(cell => {
-            const iso = cell.getAttribute("data-datetime");
-            if (!iso) return;
-            const sessionDate = new Date(iso);
-            if (sessionDate.getTime() < cairoNow.getTime()) {
-                const row = cell.parentElement;
-                if (row) row.classList.add("past-session");
-            }
-        });
-    });
-    </script>
+
 
 
     <!-- Course Structure -->
