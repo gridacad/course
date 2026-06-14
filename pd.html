@@ -1,0 +1,1975 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="description" content="Master substation primary design with Eng. Mohamed Moatasim. 12-week professional certification covering layout, grounding, lightning protection, raceways & more.">
+    <meta name="robots" content="index, follow">
+    <title>Substation Primary Design Certification | GRID ACADEMY | Eng. Mohamed Moatasim</title>
+
+    <!-- Preconnect for performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <!-- Google Fonts: Inter + Montserrat -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Montserrat:wght@500;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        /* ============================================================
+           DESIGN SYSTEM — Single Source of Truth
+           ============================================================ */
+        :root {
+            /* Colors */
+            --orange-50: #fff7ed;
+            --orange-100: #ffedd5;
+            --orange-200: #fed7aa;
+            --orange-300: #fdba74;
+            --orange-400: #fb923c;
+            --orange-500: #f97316;
+            --orange-600: #ea580c;
+            --orange-700: #c2410c;
+            --orange-800: #9a3412;
+            --orange-900: #7c2d12;
+
+            --slate-50: #f8fafc;
+            --slate-100: #f1f5f9;
+            --slate-200: #e2e8f0;
+            --slate-300: #cbd5e1;
+            --slate-400: #94a3b8;
+            --slate-500: #64748b;
+            --slate-600: #475569;
+            --slate-700: #334155;
+            --slate-800: #1e293b;
+            --slate-900: #0f172a;
+
+            --white: #ffffff;
+            --black: #000000;
+
+            /* Semantic tokens */
+            --color-primary: var(--orange-500);
+            --color-primary-dark: var(--orange-600);
+            --color-primary-light: var(--orange-400);
+            --color-primary-bg: var(--orange-50);
+            --color-accent: #2c3e50;
+            --color-text: var(--slate-800);
+            --color-text-muted: var(--slate-500);
+            --color-text-inverse: var(--white);
+            --color-bg: var(--white);
+            --color-bg-alt: var(--slate-50);
+            --color-bg-dark: var(--slate-900);
+            --color-border: var(--slate-200);
+
+            /* Typography */
+            --font-heading: 'Montserrat', sans-serif;
+            --font-body: 'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif;
+
+            /* Spacing */
+            --section-py: 5rem;
+            --container-max: 1200px;
+            --container-px: 1.5rem;
+
+            /* Radii */
+            --radius-sm: 0.5rem;
+            --radius-md: 0.75rem;
+            --radius-lg: 1rem;
+            --radius-xl: 1.25rem;
+            --radius-full: 9999px;
+
+            /* Shadows */
+            --shadow-xs: 0 1px 2px rgba(0,0,0,0.04);
+            --shadow-sm: 0 1px 3px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04);
+            --shadow-md: 0 4px 12px rgba(0,0,0,0.08), 0 2px 4px rgba(0,0,0,0.04);
+            --shadow-lg: 0 10px 28px rgba(0,0,0,0.10), 0 4px 8px rgba(0,0,0,0.04);
+            --shadow-xl: 0 20px 40px rgba(0,0,0,0.12);
+
+            /* Transitions */
+            --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+            --duration-fast: 150ms;
+            --duration-normal: 250ms;
+            --duration-slow: 400ms;
+        }
+
+        /* ============================================================
+           RESET & BASE
+           ============================================================ */
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            -webkit-text-size-adjust: 100%;
+        }
+
+        body {
+            font-family: var(--font-body);
+            background-color: var(--color-bg);
+            color: var(--color-text);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        ul, ol {
+            list-style: none;
+        }
+
+        /* ============================================================
+           UTILITIES
+           ============================================================ */
+        .container {
+            width: 100%;
+            max-width: var(--container-max);
+            margin: 0 auto;
+            padding: 0 var(--container-px);
+        }
+
+        .section {
+            padding: var(--section-py) 0;
+        }
+
+        .section--alt {
+            background-color: var(--color-bg-alt);
+        }
+
+        /* Section header */
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-label {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--color-primary);
+            margin-bottom: 0.75rem;
+        }
+
+        .section-label::before {
+            content: '';
+            width: 24px;
+            height: 2px;
+            background: var(--color-primary);
+        }
+
+        .section-title {
+            font-family: var(--font-heading);
+            font-size: clamp(1.75rem, 4vw, 2.25rem);
+            font-weight: 800;
+            color: var(--color-text);
+            line-height: 1.2;
+            margin-bottom: 0.75rem;
+        }
+
+        .section-subtitle {
+            max-width: 640px;
+            margin: 0 auto;
+            color: var(--color-text-muted);
+            font-size: 1.05rem;
+        }
+
+        /* ============================================================
+           BUTTONS
+           ============================================================ */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.75rem;
+            border-radius: var(--radius-full);
+            font-weight: 600;
+            font-size: 0.9rem;
+            font-family: var(--font-body);
+            border: 2px solid transparent;
+            cursor: pointer;
+            transition: all var(--duration-normal) var(--ease-out);
+            white-space: nowrap;
+        }
+
+        .btn:focus-visible {
+            outline: 3px solid var(--orange-300);
+            outline-offset: 2px;
+        }
+
+        .btn--primary {
+            background: var(--color-primary);
+            color: var(--color-text-inverse);
+            border-color: var(--color-primary);
+            box-shadow: 0 4px 14px rgba(249, 115, 22, 0.35);
+        }
+
+        .btn--primary:hover {
+            background: var(--color-primary-dark);
+            border-color: var(--color-primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(249, 115, 22, 0.4);
+        }
+
+        .btn--outline {
+            background: transparent;
+            color: var(--color-text-inverse);
+            border-color: rgba(255,255,255,0.5);
+        }
+
+        .btn--outline:hover {
+            background: var(--color-text-inverse);
+            color: var(--color-accent);
+            border-color: var(--color-text-inverse);
+            transform: translateY(-2px);
+        }
+
+        .btn--ghost {
+            background: transparent;
+            color: var(--color-primary);
+            border-color: var(--color-primary);
+        }
+
+        .btn--ghost:hover {
+            background: var(--color-primary);
+            color: var(--color-text-inverse);
+        }
+
+        .btn--sm {
+            padding: 0.5rem 1.25rem;
+            font-size: 0.85rem;
+        }
+
+        /* ============================================================
+           NAVIGATION
+           ============================================================ */
+        .nav {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: var(--color-accent);
+            box-shadow: 0 2px 16px rgba(0,0,0,0.15);
+        }
+
+        .nav__inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 64px;
+            gap: 1rem;
+        }
+
+        .nav__brand {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-family: var(--font-heading);
+            font-size: 1.15rem;
+            font-weight: 800;
+            color: var(--color-text-inverse);
+            letter-spacing: -0.02em;
+        }
+
+        .nav__brand i {
+            color: var(--color-primary);
+            font-size: 1.3rem;
+        }
+
+        .nav__links {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .nav__link {
+            color: rgba(255,255,255,0.7);
+            font-size: 0.875rem;
+            font-weight: 500;
+            padding: 0.4rem 0.75rem;
+            border-radius: var(--radius-full);
+            transition: all var(--duration-fast);
+        }
+
+        .nav__link:hover,
+        .nav__link:focus-visible {
+            color: var(--color-text-inverse);
+            background: rgba(255,255,255,0.1);
+        }
+
+        .nav__cta {
+            background: var(--color-primary);
+            color: var(--color-text-inverse);
+            padding: 0.5rem 1.25rem;
+            border-radius: var(--radius-full);
+            font-weight: 600;
+            font-size: 0.85rem;
+            transition: all var(--duration-normal) var(--ease-out);
+            box-shadow: 0 2px 8px rgba(249,115,22,0.3);
+        }
+
+        .nav__cta:hover {
+            background: var(--color-primary-dark);
+            transform: translateY(-1px);
+        }
+
+        /* Mobile nav toggle */
+        .nav__toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--color-text-inverse);
+            font-size: 1.4rem;
+            cursor: pointer;
+            padding: 0.25rem;
+        }
+
+        /* ============================================================
+           HERO
+           ============================================================ */
+        .hero {
+            position: relative;
+            min-height: 85vh;
+            display: flex;
+            align-items: center;
+            background: linear-gradient(135deg, #1a2535 0%, #2c3e50 50%, #1e2a3a 100%);
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background:
+                radial-gradient(ellipse at 20% 50%, rgba(249,115,22,0.12) 0%, transparent 60%),
+                radial-gradient(ellipse at 80% 20%, rgba(249,115,22,0.06) 0%, transparent 50%);
+        }
+
+        .hero__grid {
+            position: absolute;
+            inset: 0;
+            background-image:
+                linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+            background-size: 60px 60px;
+        }
+
+        .hero__inner {
+            position: relative;
+            z-index: 2;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+            padding: 3rem 0;
+        }
+
+        .hero__badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(249,115,22,0.15);
+            color: var(--orange-300);
+            padding: 0.4rem 1rem;
+            border-radius: var(--radius-full);
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-bottom: 1.25rem;
+            border: 1px solid rgba(249,115,22,0.2);
+        }
+
+        .hero__badge i {
+            font-size: 0.75rem;
+        }
+
+        .hero__title {
+            font-family: var(--font-heading);
+            font-size: clamp(2rem, 4.5vw, 2.75rem);
+            font-weight: 800;
+            color: var(--color-text-inverse);
+            line-height: 1.15;
+            margin-bottom: 1rem;
+        }
+
+        .hero__title span {
+            color: var(--color-primary);
+        }
+
+        .hero__instructor {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--orange-200);
+            font-size: 1.05rem;
+            font-weight: 500;
+            margin-bottom: 1.25rem;
+        }
+
+        .hero__desc {
+            color: var(--slate-300);
+            font-size: 1rem;
+            line-height: 1.7;
+            margin-bottom: 2rem;
+            max-width: 540px;
+        }
+
+        .hero__actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+        }
+
+        .hero__stats {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+        }
+
+        .hero-stat {
+            background: rgba(255,255,255,0.06);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: var(--radius-lg);
+            padding: 1.5rem;
+            text-align: center;
+            transition: all var(--duration-normal) var(--ease-out);
+        }
+
+        .hero-stat:hover {
+            background: rgba(255,255,255,0.1);
+            transform: translateY(-4px);
+            border-color: rgba(249,115,22,0.3);
+        }
+
+        .hero-stat__icon {
+            width: 48px;
+            height: 48px;
+            background: rgba(249,115,22,0.15);
+            border-radius: var(--radius-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 0.75rem;
+            color: var(--color-primary);
+            font-size: 1.2rem;
+        }
+
+        .hero-stat__value {
+            font-family: var(--font-heading);
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--color-text-inverse);
+            margin-bottom: 0.25rem;
+        }
+
+        .hero-stat__label {
+            font-size: 0.8rem;
+            color: var(--slate-400);
+        }
+
+        /* ============================================================
+           OVERVIEW
+           ============================================================ */
+        .overview__grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 2rem;
+            align-items: start;
+        }
+
+        .card {
+            background: var(--color-bg);
+            border-radius: var(--radius-xl);
+            padding: 2rem;
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--color-border);
+            transition: all var(--duration-normal) var(--ease-out);
+        }
+
+        .card:hover {
+            box-shadow: var(--shadow-md);
+        }
+
+        .card--highlight {
+            border-top: 3px solid var(--color-primary);
+        }
+
+        .overview__text {
+            color: var(--color-text-muted);
+            line-height: 1.8;
+        }
+
+        .overview__text p + p {
+            margin-top: 1rem;
+        }
+
+        .overview__text strong {
+            color: var(--color-primary-dark);
+        }
+
+        /* Progress steps */
+        .progress-track {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1rem;
+        }
+
+        .progress-step {
+            text-align: center;
+            position: relative;
+        }
+
+        .progress-step::after {
+            content: '';
+            position: absolute;
+            top: 24px;
+            left: 60%;
+            width: 80%;
+            height: 2px;
+            background: var(--color-border);
+        }
+
+        .progress-step:last-child::after {
+            display: none;
+        }
+
+        .progress-step__circle {
+            width: 48px;
+            height: 48px;
+            background: var(--color-primary-bg);
+            border: 2px solid var(--color-primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 0.75rem;
+            font-family: var(--font-heading);
+            font-weight: 700;
+            color: var(--color-primary);
+            font-size: 0.9rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .progress-step__label {
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--color-text-muted);
+            line-height: 1.3;
+        }
+
+        /* ============================================================
+           OBJECTIVES
+           ============================================================ */
+        .objectives__grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1rem;
+        }
+
+        .objective-item {
+            display: flex;
+            gap: 1rem;
+            padding: 1.25rem;
+            background: var(--color-bg);
+            border-radius: var(--radius-lg);
+            border: 1px solid var(--color-border);
+            transition: all var(--duration-normal) var(--ease-out);
+        }
+
+        .objective-item:hover {
+            border-color: var(--color-primary);
+            box-shadow: var(--shadow-md);
+            transform: translateY(-2px);
+        }
+
+        .objective-item__icon {
+            flex-shrink: 0;
+            width: 40px;
+            height: 40px;
+            background: var(--color-primary-bg);
+            border-radius: var(--radius-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--color-primary);
+            font-size: 1rem;
+        }
+
+        .objective-item__text {
+            font-size: 0.925rem;
+            color: var(--color-text-muted);
+            line-height: 1.6;
+        }
+
+        /* ============================================================
+           CURRICULUM
+           ============================================================ */
+        .curriculum__grid {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+
+        .session-card {
+            background: var(--color-bg);
+            border-radius: var(--radius-lg);
+            border: 1px solid var(--color-border);
+            overflow: hidden;
+            transition: all var(--duration-normal) var(--ease-out);
+        }
+
+        .session-card:hover {
+            border-color: var(--color-primary);
+            box-shadow: var(--shadow-md);
+            transform: translateX(4px);
+        }
+
+        .session-card__header {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            padding: 1.25rem 1.5rem;
+            cursor: default;
+        }
+
+        .session-card__icon {
+            flex-shrink: 0;
+            width: 48px;
+            height: 48px;
+            background: var(--color-primary-bg);
+            border-radius: var(--radius-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--color-primary);
+            font-size: 1.3rem;
+            transition: all var(--duration-normal);
+        }
+
+        .session-card:hover .session-card__icon {
+            background: var(--color-primary);
+            color: var(--color-text-inverse);
+        }
+
+        .session-card__title {
+            font-family: var(--font-heading);
+            font-weight: 700;
+            font-size: 1.05rem;
+            color: var(--color-text);
+            margin-bottom: 0.3rem;
+        }
+
+        .session-card__desc {
+            color: var(--color-text-muted);
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+
+        /* ============================================================
+           SCHEDULE TABLE
+           ============================================================ */
+        .table-wrapper {
+            overflow-x: auto;
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--color-border);
+        }
+
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.9rem;
+        }
+
+        .data-table thead th {
+            background: var(--color-accent);
+            color: var(--color-text-inverse);
+            padding: 1rem 1.25rem;
+            font-weight: 600;
+            text-align: left;
+            white-space: nowrap;
+        }
+
+        .data-table tbody td {
+            padding: 0.875rem 1.25rem;
+            border-bottom: 1px solid var(--color-border);
+            vertical-align: middle;
+        }
+
+        .data-table tbody tr:last-child td {
+            border-bottom: none;
+        }
+
+        .data-table tbody tr:hover td {
+            background: var(--color-bg-alt);
+        }
+
+        .data-table tbody tr.past td {
+            background: var(--orange-50);
+            color: var(--orange-700);
+        }
+
+        .data-table .level-badge {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 32px;
+            height: 32px;
+            border-radius: var(--radius-sm);
+            font-weight: 700;
+            font-size: 0.8rem;
+        }
+
+        .level-badge--1 { background: var(--orange-100); color: var(--orange-700); }
+        .level-badge--2 { background: var(--orange-200); color: var(--orange-800); }
+        .level-badge--3 { background: var(--orange-300); color: var(--orange-900); }
+        .level-badge--4 { background: var(--orange-400); color: var(--white); }
+
+        .completed-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.3rem;
+            font-size: 0.7rem;
+            font-weight: 600;
+            background: var(--color-primary-bg);
+            color: var(--color-primary-dark);
+            padding: 0.15rem 0.6rem;
+            border-radius: var(--radius-full);
+            margin-left: 0.5rem;
+        }
+
+        .schedule-note {
+            text-align: center;
+            font-size: 0.85rem;
+            color: var(--color-text-muted);
+            margin-top: 1.25rem;
+        }
+
+        .schedule-note i {
+            color: var(--color-primary);
+            margin-right: 0.3rem;
+        }
+
+        /* ============================================================
+           INSTRUCTOR
+           ============================================================ */
+        .instructor-grid {
+            display: grid;
+            grid-template-columns: 300px 1fr;
+            gap: 3rem;
+            align-items: start;
+        }
+
+        .instructor-card {
+            background: var(--color-bg);
+            border-radius: var(--radius-xl);
+            padding: 2rem;
+            text-align: center;
+            border: 1px solid var(--color-border);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .instructor-card__avatar {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin: 0 auto 1rem;
+            border: 3px solid var(--color-primary);
+        }
+
+        .instructor-card__name {
+            font-family: var(--font-heading);
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--color-text);
+            margin-bottom: 0.3rem;
+        }
+
+        .instructor-card__title {
+            color: var(--color-text-muted);
+            font-size: 0.875rem;
+            margin-bottom: 1rem;
+        }
+
+        .instructor-card__contacts {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            font-size: 0.8rem;
+            color: var(--color-text-muted);
+        }
+
+        .instructor-card__contacts i {
+            color: var(--color-primary);
+            width: 16px;
+            text-align: center;
+            margin-right: 0.4rem;
+        }
+
+        .instructor-bio {
+            display: flex;
+            flex-direction: column;
+            gap: 1.25rem;
+        }
+
+        .instructor-bio__block {
+            background: var(--color-bg);
+            border-radius: var(--radius-lg);
+            padding: 1.5rem;
+            border: 1px solid var(--color-border);
+        }
+
+        .instructor-bio__heading {
+            font-family: var(--font-heading);
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: var(--color-primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .instructor-bio__text {
+            color: var(--color-text-muted);
+            font-size: 0.9rem;
+            line-height: 1.7;
+        }
+
+        .instructor-bio__skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .skill-tag {
+            font-size: 0.75rem;
+            font-weight: 600;
+            padding: 0.3rem 0.75rem;
+            border-radius: var(--radius-full);
+            background: var(--color-primary-bg);
+            color: var(--color-primary-dark);
+        }
+
+        /* ============================================================
+           TESTIMONIALS / CERTIFICATIONS
+           ============================================================ */
+        .cert-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .cert-card {
+            background: var(--color-bg);
+            border-radius: var(--radius-xl);
+            padding: 2rem;
+            text-align: center;
+            border: 1px solid var(--color-border);
+            border-bottom: 3px solid var(--color-primary);
+            transition: all var(--duration-normal) var(--ease-out);
+        }
+
+        .cert-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .cert-card__icon {
+            width: 56px;
+            height: 56px;
+            background: var(--color-primary-bg);
+            border-radius: var(--radius-lg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+            color: var(--color-primary);
+            font-size: 1.4rem;
+        }
+
+        .cert-card__title {
+            font-family: var(--font-heading);
+            font-size: 1.05rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .cert-card__desc {
+            color: var(--color-text-muted);
+            font-size: 0.9rem;
+        }
+
+        /* ============================================================
+           ASSIGNMENTS / TOOLS (merged section)
+           ============================================================ */
+        .meta-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .meta-card {
+            background: var(--color-bg);
+            border-radius: var(--radius-xl);
+            padding: 2rem;
+            border: 1px solid var(--color-border);
+        }
+
+        .meta-card__heading {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-family: var(--font-heading);
+            font-size: 1rem;
+            font-weight: 700;
+            margin-bottom: 1.25rem;
+        }
+
+        .meta-card__heading i {
+            color: var(--color-primary);
+        }
+
+        .meta-list {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+
+        .meta-list li {
+            display: flex;
+            gap: 0.75rem;
+            font-size: 0.9rem;
+            color: var(--color-text-muted);
+            line-height: 1.5;
+        }
+
+        .meta-list li i {
+            flex-shrink: 0;
+            color: var(--color-primary);
+            font-size: 0.75rem;
+            margin-top: 0.35rem;
+        }
+
+        /* ============================================================
+           POLICY
+           ============================================================ */
+        .policy-card {
+            background: var(--orange-50);
+            border: 1px solid var(--orange-200);
+            border-radius: var(--radius-xl);
+            padding: 2rem;
+        }
+
+        .policy-list {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+
+        .policy-list li {
+            display: flex;
+            gap: 0.75rem;
+            font-size: 0.9rem;
+            color: var(--orange-800);
+            line-height: 1.6;
+        }
+
+        .policy-list li i {
+            flex-shrink: 0;
+            color: var(--color-primary);
+            font-size: 0.8rem;
+            margin-top: 0.35rem;
+        }
+
+        /* ============================================================
+           FOOTER
+           ============================================================ */
+        .footer {
+            background: var(--color-bg-dark);
+            color: var(--slate-400);
+            padding: 4rem 0 2rem;
+        }
+
+        .footer__grid {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr 1fr;
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer__brand {
+            font-family: var(--font-heading);
+            font-size: 1.25rem;
+            font-weight: 800;
+            color: var(--color-text-inverse);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .footer__brand i {
+            color: var(--color-primary);
+        }
+
+        .footer__desc {
+            font-size: 0.9rem;
+            line-height: 1.7;
+            margin-bottom: 1.25rem;
+        }
+
+        .footer__heading {
+            font-family: var(--font-heading);
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: var(--color-text-inverse);
+            margin-bottom: 1rem;
+        }
+
+        .footer__links {
+            display: flex;
+            flex-direction: column;
+            gap: 0.6rem;
+        }
+
+        .footer__link {
+            font-size: 0.875rem;
+            color: var(--slate-400);
+            transition: color var(--duration-fast);
+        }
+
+        .footer__link:hover {
+            color: var(--color-primary);
+        }
+
+        .footer__bottom {
+            border-top: 1px solid rgba(255,255,255,0.08);
+            padding-top: 1.5rem;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1rem;
+            font-size: 0.8rem;
+        }
+
+        .footer__social {
+            display: flex;
+            gap: 0.75rem;
+        }
+
+        .footer__social a {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.06);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--slate-400);
+            font-size: 0.85rem;
+            transition: all var(--duration-fast);
+        }
+
+        .footer__social a:hover {
+            background: var(--color-primary);
+            color: var(--color-text-inverse);
+        }
+
+        /* ============================================================
+           SCROLL TO TOP
+           ============================================================ */
+        .scroll-top {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            width: 44px;
+            height: 44px;
+            background: var(--color-primary);
+            color: var(--color-text-inverse);
+            border: none;
+            border-radius: 50%;
+            font-size: 1rem;
+            cursor: pointer;
+            box-shadow: var(--shadow-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(10px);
+            transition: all var(--duration-normal) var(--ease-out);
+            z-index: 90;
+        }
+
+        .scroll-top.visible {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .scroll-top:hover {
+            background: var(--color-primary-dark);
+            transform: translateY(-2px);
+        }
+
+        /* ============================================================
+           ANIMATIONS
+           ============================================================ */
+        @media (prefers-reduced-motion: no-preference) {
+            .fade-up {
+                opacity: 0;
+                transform: translateY(24px);
+                transition: opacity 0.6s var(--ease-out), transform 0.6s var(--ease-out);
+            }
+
+            .fade-up.visible {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .fade-up {
+                opacity: 1 !important;
+                transform: none !important;
+            }
+        }
+
+        /* ============================================================
+           RESPONSIVE
+           ============================================================ */
+        @media (max-width: 1024px) {
+            .hero__inner {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .hero__desc {
+                margin: 0 auto 2rem;
+            }
+
+            .hero__actions {
+                justify-content: center;
+            }
+
+            .overview__grid {
+                grid-template-columns: 1fr;
+            }
+
+            .instructor-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer__grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            :root {
+                --section-py: 3.5rem;
+            }
+
+            .nav__inner {
+                height: 56px;
+            }
+
+            .nav__links {
+                display: none;
+                position: absolute;
+                top: 56px;
+                left: 0;
+                right: 0;
+                background: var(--color-accent);
+                flex-direction: column;
+                padding: 1rem;
+                gap: 0.25rem;
+                box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+            }
+
+            .nav__links.open {
+                display: flex;
+            }
+
+            .nav__link {
+                width: 100%;
+                padding: 0.75rem 1rem;
+                border-radius: var(--radius-md);
+            }
+
+            .nav__toggle {
+                display: block;
+            }
+
+            .hero {
+                min-height: 70vh;
+            }
+
+            .hero__stats {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1rem;
+            }
+
+            .hero-stat {
+                padding: 1rem;
+            }
+
+            .progress-track {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1.5rem;
+            }
+
+            .progress-step::after {
+                display: none;
+            }
+
+            .footer__grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .footer__bottom {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .data-table {
+                font-size: 0.8rem;
+            }
+
+            .data-table thead th,
+            .data-table tbody td {
+                padding: 0.65rem 0.75rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero__stats {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .hero-stat__value {
+                font-size: 1.25rem;
+            }
+
+            .btn {
+                padding: 0.65rem 1.25rem;
+                font-size: 0.85rem;
+            }
+
+            .card {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Skip to content for accessibility -->
+    <a href="#main" class="sr-only" style="position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden;">Skip to main content</a>
+
+    <!-- ═══════════════════════════════════════════════════════════
+         NAVIGATION
+         ═══════════════════════════════════════════════════════════ -->
+    <nav class="nav" role="navigation" aria-label="Main navigation">
+        <div class="container">
+            <div class="nav__inner">
+                <a href="index.html" class="nav__brand" aria-label="GRID ACADEMY Home">
+                    <i class="fas fa-bolt" aria-hidden="true"></i>
+                    GRID ACADEMY
+                </a>
+
+                <div class="nav__links" id="navLinks">
+                    <a href="#overview" class="nav__link">Overview</a>
+                    <a href="#curriculum" class="nav__link">Curriculum</a>
+                    <a href="#schedule" class="nav__link">Schedule</a>
+                    <a href="#instructor" class="nav__link">Instructor</a>
+                </div>
+
+                <div style="display:flex;align-items:center;gap:0.75rem;">
+                    <a href="/pay/sdpc.html" class="nav__cta">
+                        <i class="fas fa-file-alt" aria-hidden="true"></i> Enroll Now
+                    </a>
+                    <button class="nav__toggle" id="navToggle" aria-label="Toggle navigation menu" aria-expanded="false">
+                        <i class="fas fa-bars" aria-hidden="true"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main id="main">
+
+        <!-- ═══════════════════════════════════════════════════════
+             HERO
+             ═══════════════════════════════════════════════════════ -->
+        <section class="hero">
+            <div class="hero__grid" aria-hidden="true"></div>
+            <div class="container">
+                <div class="hero__inner">
+                    <div class="hero__copy fade-up">
+                        <div class="hero__badge">
+                            <i class="fas fa-bolt" aria-hidden="true"></i>
+                            Spring 2026 · Live Online
+                        </div>
+                        <h1 class="hero__title">
+                            Substation Primary<br>
+                            Design <span>Certification</span>
+                        </h1>
+                        <div class="hero__instructor">
+                            <i class="fas fa-chalkboard-user" aria-hidden="true"></i>
+                            Eng. Mohamed Moatasim — HV Substation Expert
+                        </div>
+                        <p class="hero__desc">
+                            Master substation layout, grounding, lightning protection, raceways, and auxiliary systems. 12 hands-on modules with real industrial projects — from concept to complete design package.
+                        </p>
+                        <div class="hero__actions">
+                            <a href="https://docs.google.com/forms/d/e/1FAIpQLSdKy8u6JsBfLq4gNz6nvGTaH5G57xsdJnUxnCHkXyxNaQFnrQ/viewform?usp=send_form"
+                               class="btn btn--primary" target="_blank" rel="noopener noreferrer">
+                                <i class="fas fa-clipboard-check" aria-hidden="true"></i> Register Free
+                            </a>
+                            <a href="#curriculum" class="btn btn--outline">
+                                <i class="fas fa-book-open" aria-hidden="true"></i> View Curriculum
+                            </a>
+                        </div>
+                    </div>
+                    <div class="hero__stats fade-up">
+                        <div class="hero-stat">
+                            <div class="hero-stat__icon"><i class="fas fa-layer-group" aria-hidden="true"></i></div>
+                            <div class="hero-stat__value">12</div>
+                            <div class="hero-stat__label">Live Sessions</div>
+                        </div>
+                        <div class="hero-stat">
+                            <div class="hero-stat__icon"><i class="fas fa-clock" aria-hidden="true"></i></div>
+                            <div class="hero-stat__value">24h</div>
+                            <div class="hero-stat__label">Live Duration</div>
+                        </div>
+                        <div class="hero-stat">
+                            <div class="hero-stat__icon"><i class="fas fa-certificate" aria-hidden="true"></i></div>
+                            <div class="hero-stat__value">IEEE</div>
+                            <div class="hero-stat__label">Standards Based</div>
+                        </div>
+                        <div class="hero-stat">
+                            <div class="hero-stat__icon"><i class="fas fa-users" aria-hidden="true"></i></div>
+                            <div class="hero-stat__value">Live</div>
+                            <div class="hero-stat__label">Interactive Sessions</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ═══════════════════════════════════════════════════════
+             OVERVIEW
+             ═══════════════════════════════════════════════════════ -->
+        <section id="overview" class="section">
+            <div class="container">
+                <div class="section-header fade-up">
+                    <div class="section-label">Course Overview</div>
+                    <h2 class="section-title">What You'll Master</h2>
+                    <p class="section-subtitle">A comprehensive 12-session professional program covering complete substation primary design — from fundamentals to real project execution.</p>
+                </div>
+                <div class="overview__grid fade-up">
+                    <div class="card card--highlight">
+                        <div class="overview__text">
+                            <p>This intensive program delivers step-by-step guidance through <strong>substation layout</strong>, <strong>auxiliary transformer sizing</strong>, <strong>raceways</strong>, <strong>grounding design</strong>, <strong>shielding &amp; lightning protection</strong>, <strong>AC/DC systems</strong>, <strong>earthing</strong>, <strong>MV sizing</strong>, and an <strong>overall design project</strong>. Practical design sessions and exam feedback are included.</p>
+                            <p>Starting <strong>1 August 2026</strong>, you'll build industry-ready skills directly applicable to real-world substation engineering. Each session includes practical examples, design sheets, and Q&amp;A. Participants receive detailed notes and design templates.</p>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="section-label" style="margin-bottom:1rem;">Learning Path</div>
+                        <div class="progress-track">
+                            <div class="progress-step">
+                                <div class="progress-step__circle">1</div>
+                                <div class="progress-step__label">Intro &amp; Layout</div>
+                            </div>
+                            <div class="progress-step">
+                                <div class="progress-step__circle">2</div>
+                                <div class="progress-step__label">Sizing &amp; Grounding</div>
+                            </div>
+                            <div class="progress-step">
+                                <div class="progress-step__circle">3</div>
+                                <div class="progress-step__label">Protection &amp; Earthing</div>
+                            </div>
+                            <div class="progress-step">
+                                <div class="progress-step__circle">4</div>
+                                <div class="progress-step__label">Project &amp; Exam</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ═══════════════════════════════════════════════════════
+             OBJECTIVES
+             ═══════════════════════════════════════════════════════ -->
+        <section id="objectives" class="section section--alt">
+            <div class="container">
+                <div class="section-header fade-up">
+                    <div class="section-label">Learning Outcomes</div>
+                    <h2 class="section-title">What You'll Be Able To Do</h2>
+                    <p class="section-subtitle">By the end of this course, participants will have mastered these core competencies.</p>
+                </div>
+                <div class="objectives__grid fade-up">
+                    <div class="objective-item">
+                        <div class="objective-item__icon"><i class="fas fa-sitemap" aria-hidden="true"></i></div>
+                        <div class="objective-item__text">Develop complete substation layouts and understand design philosophy for AIS/GIS configurations.</div>
+                    </div>
+                    <div class="objective-item">
+                        <div class="objective-item__icon"><i class="fas fa-calculator" aria-hidden="true"></i></div>
+                        <div class="objective-item__text">Perform auxiliary transformer sizing and raceway/loading calculations per NEC/IEC standards.</div>
+                    </div>
+                    <div class="objective-item">
+                        <div class="objective-item__icon"><i class="fas fa-globe" aria-hidden="true"></i></div>
+                        <div class="objective-item__text">Design grounding grids and lightning protection/shielding systems per IEEE 80 &amp; IEC 62305.</div>
+                    </div>
+                    <div class="objective-item">
+                        <div class="objective-item__icon"><i class="fas fa-car-battery" aria-hidden="true"></i></div>
+                        <div class="objective-item__text">Size AC/DC systems, cables, and MV equipment including clamps and connectors.</div>
+                    </div>
+                    <div class="objective-item">
+                        <div class="objective-item__icon"><i class="fas fa-link" aria-hidden="true"></i></div>
+                        <div class="objective-item__text">Implement reinforcement and equipment earthing techniques for structures and fences.</div>
+                    </div>
+                    <div class="objective-item">
+                        <div class="objective-item__icon"><i class="fas fa-tasks" aria-hidden="true"></i></div>
+                        <div class="objective-item__text">Complete an integrated substation design project with group evaluation and professional feedback.</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ═══════════════════════════════════════════════════════
+             CURRICULUM
+             ═══════════════════════════════════════════════════════ -->
+        <section id="curriculum" class="section">
+            <div class="container">
+                <div class="section-header fade-up">
+                    <div class="section-label">Course Curriculum</div>
+                    <h2 class="section-title">12 Immersive Sessions</h2>
+                    <p class="section-subtitle">Each session combines theory, engineering calculations, and practical design deliverables — fully updated to IEEE/IEC standards.</p>
+                </div>
+                <div class="curriculum__grid fade-up">
+                    <div class="session-card">
+                        <div class="session-card__header">
+                            <div class="session-card__icon"><i class="fas fa-sitemap" aria-hidden="true"></i></div>
+                            <div>
+                                <div class="session-card__title">01. Introduction to Substation Primary Design</div>
+                                <div class="session-card__desc">Substation functions, voltage hierarchy, major equipment overview (GIS/AIS), engineering disciplines, design stages, project lifecycle, and primary design deliverables mapping.</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="session-card">
+                        <div class="session-card__header">
+                            <div class="session-card__icon"><i class="fas fa-drafting-compass" aria-hidden="true"></i></div>
+                            <div>
+                                <div class="session-card__title">02. Substation Layout Design &amp; Equipment Arrangement</div>
+                                <div class="session-card__desc">Optimized equipment positioning, safety clearances, operational &amp; maintenance access, land utilization strategies, and layout philosophies for AIS/GIS substations.</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="session-card">
+                        <div class="session-card__header">
+                            <div class="session-card__icon"><i class="fas fa-bolt" aria-hidden="true"></i></div>
+                            <div>
+                                <div class="session-card__title">03. Auxiliary Transformer Sizing &amp; Station Service</div>
+                                <div class="session-card__desc">Determination of AC auxiliary loads, transformer kVA rating, redundancy philosophy, N+1 criteria, and step-by-step station service calculation with practical examples.</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="session-card">
+                        <div class="session-card__header">
+                            <div class="session-card__icon"><i class="fas fa-project-diagram" aria-hidden="true"></i></div>
+                            <div>
+                                <div class="session-card__title">04. Substation Raceways Design – Part I (Fundamentals)</div>
+                                <div class="session-card__desc">Cable trays, conduits, trenches, routing philosophy, separation requirements, segregation of control &amp; power cables, industry best practices &amp; installation standards.</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="session-card">
+                        <div class="session-card__header">
+                            <div class="session-card__icon"><i class="fas fa-network-wired" aria-hidden="true"></i></div>
+                            <div>
+                                <div class="session-card__title">05. Substation Raceways Design – Part II (Sizing &amp; Calculations)</div>
+                                <div class="session-card__desc">Raceway loading calculations, tray fill analysis, conduit fill per NEC/IEC, cable pulling tensions, detailed engineering design for large substations.</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="session-card">
+                        <div class="session-card__header">
+                            <div class="session-card__icon"><i class="fas fa-globe" aria-hidden="true"></i></div>
+                            <div>
+                                <div class="session-card__title">06. Grounding System Design &amp; Calculations</div>
+                                <div class="session-card__desc">Complete grounding grid design per IEEE 80 / IEC 50522, soil resistivity, conductor sizing, grid resistance, touch &amp; step voltage, safety compliance verification.</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="session-card">
+                        <div class="session-card__header">
+                            <div class="session-card__icon"><i class="fas fa-cloud-bolt" aria-hidden="true"></i></div>
+                            <div>
+                                <div class="session-card__title">07. Lightning Protection &amp; Shielding Design</div>
+                                <div class="session-card__desc">Rolling sphere method, shield wire placement, mast positioning, risk assessment (IEC 62305), shielding failures analysis &amp; lightning protection studies.</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="session-card">
+                        <div class="session-card__header">
+                            <div class="session-card__icon"><i class="fas fa-car-battery" aria-hidden="true"></i></div>
+                            <div>
+                                <div class="session-card__title">08. Substation AC &amp; DC Systems Design</div>
+                                <div class="session-card__desc">AC distribution architecture, DC battery &amp; charger sizing, single-line diagrams, breaker coordination, cable sizing for station service and control circuits.</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="session-card">
+                        <div class="session-card__header">
+                            <div class="session-card__icon"><i class="fas fa-link" aria-hidden="true"></i></div>
+                            <div>
+                                <div class="session-card__title">09. Earthing Design for Structures &amp; Equipment</div>
+                                <div class="session-card__desc">Equipment grounding, structural bonding, buried grounding systems, corrosion protection, step/touch voltage mitigation for fences &amp; steel structures.</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="session-card">
+                        <div class="session-card__header">
+                            <div class="session-card__icon"><i class="fas fa-industry" aria-hidden="true"></i></div>
+                            <div>
+                                <div class="session-card__title">10. MV System Design &amp; Civil Interfaces</div>
+                                <div class="session-card__desc">Medium voltage switchgear, cable routing through civil structures, manholes, duct banks, coordination with civil foundation drawings and construction details.</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="session-card">
+                        <div class="session-card__header">
+                            <div class="session-card__icon"><i class="fas fa-tasks" aria-hidden="true"></i></div>
+                            <div>
+                                <div class="session-card__title">11. Integrated Substation Design Project</div>
+                                <div class="session-card__desc">Full design project: layout, grounding, lightning, raceway and auxiliary systems — participants produce a complete primary design package.</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="session-card">
+                        <div class="session-card__header">
+                            <div class="session-card__icon"><i class="fas fa-award" aria-hidden="true"></i></div>
+                            <div>
+                                <div class="session-card__title">12. Project Review, Assessment &amp; Professional Feedback</div>
+                                <div class="session-card__desc">Design evaluation, technical interview simulation, feedback from industry expert, certification eligibility and career guidance.</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ═══════════════════════════════════════════════════════
+             SCHEDULE
+             ═══════════════════════════════════════════════════════ -->
+        <section id="schedule" class="section section--alt">
+            <div class="container">
+                <div class="section-header fade-up">
+                    <div class="section-label">Course Schedule</div>
+                    <h2 class="section-title">Session Timeline</h2>
+                    <p class="section-subtitle">
+                        <strong>Time: 8:00 PM (GMT+2 – Cairo) / 9:00 PM (GMT+3 – KSA)</strong><br>
+                        Live via Microsoft Teams · PDF notes provided after each session
+                    </p>
+                </div>
+                <div class="fade-up">
+                    <div style="text-align:center;font-weight:700;font-size:1.1rem;background:var(--color-primary-bg);padding:0.875rem;border-radius:var(--radius-full);margin-bottom:1.5rem;color:var(--color-primary-dark);">
+                        Round 1 · Starting 1 August 2026 · Instructor: Eng. Mohamed Moatasim
+                    </div>
+                    <div class="table-wrapper">
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>Module</th>
+                                    <th>Session Topic</th>
+                                    <th>Date</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><span class="level-badge level-badge--1">01</span></td>
+                                    <td>Introduction for substation design</td>
+                                    <td data-datetime="2026-08-01T20:00:00+02:00">01 Aug 2026</td>
+                                </tr>
+                                <tr>
+                                    <td><span class="level-badge level-badge--1">02</span></td>
+                                    <td>Substation layout Design</td>
+                                    <td data-datetime="2026-08-08T20:00:00+02:00">08 Aug 2026</td>
+                                </tr>
+                                <tr>
+                                    <td><span class="level-badge level-badge--1">03</span></td>
+                                    <td>Auxiliary transformer sizing calculation</td>
+                                    <td data-datetime="2026-08-15T20:00:00+02:00">15 Aug 2026</td>
+                                </tr>
+                                <tr>
+                                    <td><span class="level-badge level-badge--1">04</span></td>
+                                    <td>Substation Raceways – Part I</td>
+                                    <td data-datetime="2026-08-22T20:00:00+02:00">22 Aug 2026</td>
+                                </tr>
+                                <tr>
+                                    <td><span class="level-badge level-badge--2">05</span></td>
+                                    <td>Substation Raceways – Part II and loading calculation</td>
+                                    <td data-datetime="2026-08-29T20:00:00+02:00">29 Aug 2026</td>
+                                </tr>
+                                <tr>
+                                    <td><span class="level-badge level-badge--2">06</span></td>
+                                    <td>Grounding design calculation</td>
+                                    <td data-datetime="2026-09-05T20:00:00+02:00">05 Sep 2026</td>
+                                </tr>
+                                <tr>
+                                    <td><span class="level-badge level-badge--2">07</span></td>
+                                    <td>Shielding and lightning protection system</td>
+                                    <td data-datetime="2026-09-12T20:00:00+02:00">12 Sep 2026</td>
+                                </tr>
+                                <tr>
+                                    <td><span class="level-badge level-badge--2">08</span></td>
+                                    <td>AC &amp; DC system (CB, AC SLD and cable sizing)</td>
+                                    <td data-datetime="2026-09-19T20:00:00+02:00">19 Sep 2026</td>
+                                </tr>
+                                <tr>
+                                    <td><span class="level-badge level-badge--3">09</span></td>
+                                    <td>Earthing system (Reinforcement and Equipment earthing)</td>
+                                    <td data-datetime="2026-09-26T20:00:00+02:00">26 Sep 2026</td>
+                                </tr>
+                                <tr>
+                                    <td><span class="level-badge level-badge--3">10</span></td>
+                                    <td>MV Sizing calculation, clamps and connectors design</td>
+                                    <td data-datetime="2026-10-03T20:00:00+02:00">03 Oct 2026</td>
+                                </tr>
+                                <tr>
+                                    <td><span class="level-badge level-badge--4">11</span></td>
+                                    <td>Overall project</td>
+                                    <td data-datetime="2026-10-10T20:00:00+02:00">10 Oct 2026</td>
+                                </tr>
+                                <tr>
+                                    <td><span class="level-badge level-badge--4">12</span></td>
+                                    <td>Comments on Exam for each group</td>
+                                    <td data-datetime="2026-10-24T20:00:00+02:00">24 Oct 2026</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <p class="schedule-note">
+                        <i class="fas fa-clock" aria-hidden="true"></i>
+                        Sessions every Saturday · Recordings available within 24 hours
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ═══════════════════════════════════════════════════════
+             INSTRUCTOR
+             ═══════════════════════════════════════════════════════ -->
+        <section id="instructor" class="section">
+            <div class="container">
+                <div class="section-header fade-up">
+                    <div class="section-label">Your Instructor</div>
+                    <h2 class="section-title">Learn from an Industry Expert</h2>
+                    <p class="section-subtitle">hands-on experience in HV substation primary design.</p>
+                </div>
+                <div class="instructor-grid fade-up">
+                    <div class="instructor-card">
+                        <img src="mm.png" alt="Portrait of Eng. Mohamed Moatasim" class="instructor-card__avatar" loading="lazy">
+                        <div class="instructor-card__name">Eng. Mohamed Moatasim</div>
+                        <div class="instructor-card__title">HV Substation Expert · Primary Design</div>
+                        <div class="instructor-card__contacts">
+                            <span><i class="fas fa-phone-alt" aria-hidden="true"></i> (+20) 1229220086</span>
+                            <span><i class="fas fa-envelope" aria-hidden="true"></i> Mohammed.Moatasim00@gmail.com</span>
+                            <span><i class="fas fa-map-marker-alt" aria-hidden="true"></i> Cairo – Maadi, Egypt</span>
+                            <span><i class="fab fa-linkedin" aria-hidden="true"></i> linkedin.com/in/mohammed-moatasim</span>
+                        </div>
+                    </div>
+                    <div class="instructor-bio">
+                        <div class="instructor-bio__block">
+                            <div class="instructor-bio__heading">About</div>
+                            <p class="instructor-bio__text">A reliable electrical engineer with strong determination to solve complex problems, able to work hard and manage time professionally. Seeks opportunities to expand skills and gain valuable real-world experience in power systems engineering.</p>
+                        </div>
+                        <div class="instructor-bio__block">
+                            <div class="instructor-bio__heading">Education</div>
+                            <p class="instructor-bio__text"><strong>Cairo University</strong> — Faculty of Engineering, Electrical Power Engineering. Cumulative Grade: <strong>Excellent with Honor Degree</strong> — Top 10 of class.</p>
+                        </div>
+                        <div class="instructor-bio__block">
+                            <div class="instructor-bio__heading">Selected Experience</div>
+                            <p class="instructor-bio__text">EDUVATE Professional Program (Best Member) — Complete design of hospital (AutoCAD) &amp; residential building (Revit) · ELSEWEDY Electric — Cable accessories training · ABB Trainee (82 online modules) · National Authority for Tunnels (NAT) · Egyptian Radio and Television Union · Egyptian Electricity Holding Co.</p>
+                        </div>
+                        <div class="instructor-bio__block">
+                            <div class="instructor-bio__heading">Skills &amp; Tools</div>
+                            <div class="instructor-bio__skills">
+                                <span class="skill-tag">AutoCAD</span>
+                                <span class="skill-tag">Revit Electrical</span>
+                                <span class="skill-tag">Microstation</span>
+                                <span class="skill-tag">Ecodial</span>
+                                
+                            </div>
+                            <div class="instructor-bio__skills" style="margin-top:0.5rem;">
+                                <span class="skill-tag">ETAP</span>
+                                <span class="skill-tag">Dialux</span>
+                                <span class="skill-tag">MATLAB/Simulink</span>
+                                <span class="skill-tag">MS Office</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ═══════════════════════════════════════════════════════
+             CERTIFICATIONS & WHAT YOU EARN
+             ═══════════════════════════════════════════════════════ -->
+        <section class="section section--alt" style="padding-top:0;">
+            <div class="container">
+                <div class="section-header fade-up">
+                    <div class="section-label">What You Earn</div>
+                    <h2 class="section-title">Industry-Recognized Credentials</h2>
+                    <p class="section-subtitle">Walk away with verified certification and a professional design toolkit.</p>
+                </div>
+                <div class="cert-grid fade-up">
+                    <div class="cert-card">
+                        <div class="cert-card__icon"><i class="fas fa-certificate" aria-hidden="true"></i></div>
+                        <div class="cert-card__title">GRID Academy Certificate</div>
+                        <div class="cert-card__desc">Verified completion of 12 modules + capstone project — Substation Design Professional certification.</div>
+                    </div>
+                    <div class="cert-card">
+                        <div class="cert-card__icon"><i class="fas fa-calculator" aria-hidden="true"></i></div>
+                        <div class="cert-card__title">Design Toolkit</div>
+                        <div class="cert-card__desc">Excel calculators for grounding, lightning protection, and raceway sizing — ready for immediate use.</div>
+                    </div>
+                    <div class="cert-card">
+                        <div class="cert-card__icon"><i class="fas fa-award" aria-hidden="true"></i></div>
+                        <div class="cert-card__title">Attendance Certificate</div>
+                        <div class="cert-card__desc">Verified participation certificate recognizing your commitment to professional development.</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ═══════════════════════════════════════════════════════
+             ASSIGNMENTS & TOOLS (merged)
+             ═══════════════════════════════════════════════════════ -->
+        <section class="section">
+            <div class="container">
+                <div class="section-header fade-up">
+                    <div class="section-label">Practical Experience</div>
+                    <h2 class="section-title">Hands-on Tasks &amp; Tools</h2>
+                    <p class="section-subtitle">Apply what you learn with real-world assignments and industry-standard software.</p>
+                </div>
+                <div class="meta-grid fade-up">
+                    <div class="meta-card">
+                        <div class="meta-card__heading">
+                            <i class="fas fa-clipboard-list" aria-hidden="true"></i> Hands-on Assignments
+                        </div>
+                        <ul class="meta-list">
+                            <li><i class="fas fa-check" aria-hidden="true"></i><span>Substation layout sketch &amp; SLD development</span></li>
+                            <li><i class="fas fa-check" aria-hidden="true"></i><span>Auxiliary transformer sizing worksheet</span></li>
+                            <li><i class="fas fa-check" aria-hidden="true"></i><span>Grounding grid calculation (Excel-based)</span></li>
+                            <li><i class="fas fa-check" aria-hidden="true"></i><span>Lightning protection risk assessment report</span></li>
+                            <li><i class="fas fa-check" aria-hidden="true"></i><span>Cable and raceway loading calculation</span></li>
+                            <li><i class="fas fa-check" aria-hidden="true"></i><span>MV clamp and connector selection exercise</span></li>
+                            <li><i class="fas fa-check" aria-hidden="true"></i><span>Complete overall project (group work)</span></li>
+                        </ul>
+                    </div>
+                    <div class="meta-card">
+                        <div class="meta-card__heading">
+                            <i class="fas fa-laptop-code" aria-hidden="true"></i> Tools &amp; Software
+                        </div>
+                        <ul class="meta-list">
+                            <li><i class="fas fa-check" aria-hidden="true"></i><span>AutoCAD &amp; Revit for layout and raceway design</span></li>
+                            <li><i class="fas fa-check" aria-hidden="true"></i><span>Excel-based sizing templates (aux. transformer, grounding, cables)</span></li>
+                            <li><i class="fas fa-check" aria-hidden="true"></i><span>ETAP / Dialux for basic studies</span></li>
+                            <li><i class="fas fa-check" aria-hidden="true"></i><span>PDF resources &amp; design checklists</span></li>
+                        </ul>
+                    </div>
+                    <div class="meta-card">
+                        <div class="meta-card__heading">
+                            <i class="fas fa-chart-bar" aria-hidden="true"></i> Evaluation Criteria
+                        </div>
+                        <ul class="meta-list">
+                            <li><i class="fas fa-check" aria-hidden="true"></i><span>Weekly assignments / quizzes — 40%</span></li>
+                            <li><i class="fas fa-check" aria-hidden="true"></i><span>Final overall project (group/individual) — 60%</span></li>
+                            <li><i class="fas fa-check" aria-hidden="true"></i><span>Exam feedback session after 2 weeks from project submission</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ═══════════════════════════════════════════════════════
+             POLICY
+             ═══════════════════════════════════════════════════════ -->
+        <section class="section section--alt" style="padding-top:0;">
+            <div class="container">
+                <div class="section-header fade-up">
+                    <div class="section-label">Policy</div>
+                    <h2 class="section-title">Content Usage &amp; Non-Sharing Policy</h2>
+                </div>
+                <div class="policy-card fade-up">
+                    <ul class="policy-list">
+                        <li><i class="fas fa-shield-alt" aria-hidden="true"></i><span><strong>All course materials, tools, recordings, templates, and files are proprietary</strong> and may not be copied, recorded, distributed, or reused without written permission.</span></li>
+                        <li><i class="fas fa-shield-alt" aria-hidden="true"></i><span>By registering, participants agree not to share or reproduce content outside personal use or for commercial/teaching purposes.</span></li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- ═══════════════════════════════════════════════════════
+             FINAL CTA
+             ═══════════════════════════════════════════════════════ -->
+        <section class="section" style="background:var(--color-accent);text-align:center;">
+            <div class="container">
+                <div class="fade-up" style="max-width:640px;margin:0 auto;">
+                    <div class="section-label" style="color:var(--orange-300);">Ready to Start?</div>
+                    <h2 class="section-title" style="color:var(--color-text-inverse);">Begin Your Substation Design Journey</h2>
+                    <p style="color:var(--slate-300);margin-bottom:2rem;font-size:1.05rem;">Join engineers from leading EPCs and utilities. Limited seats for Spring 2026.</p>
+                    <div style="display:flex;flex-wrap:wrap;justify-content:center;gap:0.75rem;">
+                        <a href="https://docs.google.com/forms/d/e/1FAIpQLSdKy8u6JsBfLq4gNz6nvGTaH5G57xsdJnUxnCHkXyxNaQFnrQ/viewform?usp=send_form"
+                           class="btn btn--primary" target="_blank" rel="noopener noreferrer">
+                            <i class="fas fa-clipboard-check" aria-hidden="true"></i> Register Free
+                        </a>
+                        <a href="/pay/sdpc.html" class="btn btn--outline">
+                            <i class="fas fa-credit-card" aria-hidden="true"></i> Enroll Now
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- ═══════════════════════════════════════════════════════════
+         FOOTER
+         ═══════════════════════════════════════════════════════════ -->
+    <footer class="footer" role="contentinfo">
+        <div class="container">
+            <div class="footer__grid">
+                <div>
+                    <div class="footer__brand">
+                        <i class="fas fa-bolt" aria-hidden="true"></i>
+                        GRID ACADEMY
+                    </div>
+                    <p class="footer__desc">Professional engineering training for the power industry. We bridge the gap between academic knowledge and real-world engineering practice.</p>
+                    <div class="footer__social">
+                        <a href="https://www.linkedin.com/in/mohammed-moatasim" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                            <i class="fab fa-linkedin-in" aria-hidden="true"></i>
+                        </a>
+                        <a href="mailto:Mohammed.Moatasim00@gmail.com" aria-label="Email">
+                            <i class="fas fa-envelope" aria-hidden="true"></i>
+                        </a>
+                        <a href="https://wa.me/201229220086" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
+                            <i class="fab fa-whatsapp" aria-hidden="true"></i>
+                        </a>
+                    </div>
+                </div>
+                <div>
+                    <div class="footer__heading">Quick Links</div>
+                    <div class="footer__links">
+                        <a href="#overview" class="footer__link">Course Overview</a>
+                        <a href="#curriculum" class="footer__link">Curriculum</a>
+                        <a href="#schedule" class="footer__link">Schedule</a>
+                        <a href="#instructor" class="footer__link">Instructor</a>
+                    </div>
+                </div>
+                <div>
+                    <div class="footer__heading">Resources</div>
+                    <div class="footer__links">
+                        <a href="https://docs.google.com/forms/d/e/1FAIpQLSdKy8u6JsBfLq4gNz6nvGTaH5G57xsdJnUxnCHkXyxNaQFnrQ/viewform?usp=send_form" target="_blank" rel="noopener noreferrer" class="footer__link">Register Free</a>
+                        <a href="/pay/sdpc.html" class="footer__link">Enroll Now</a>
+                        <a href="index.html" class="footer__link">All Courses</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer__bottom">
+                <span>&copy; 2026 GRID ACADEMY. All rights reserved.</span>
+                <span>Substation Primary Design Engineering Certification</span>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scroll to top -->
+    <button class="scroll-top" id="scrollTop" aria-label="Scroll to top">
+        <i class="fas fa-chevron-up" aria-hidden="true"></i>
+    </button>
+
+    <!-- Font Awesome (loaded at end for performance) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <script>
+        // ── Past session highlighting ──
+        document.addEventListener('DOMContentLoaded', function () {
+            var now = new Date();
+            document.querySelectorAll('.data-table td[data-datetime]').forEach(function (cell) {
+                var sessionDate = new Date(cell.getAttribute('data-datetime'));
+                if (sessionDate < now) {
+                    cell.closest('tr').classList.add('past');
+                }
+            });
+        });
+
+        // ── Scroll-to-top button ──
+        var scrollTopBtn = document.getElementById('scrollTop');
+        window.addEventListener('scroll', function () {
+            if (window.scrollY > 500) {
+                scrollTopBtn.classList.add('visible');
+            } else {
+                scrollTopBtn.classList.remove('visible');
+            }
+        }, { passive: true });
+
+        scrollTopBtn.addEventListener('click', function () {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        // ── Mobile nav toggle ──
+        var navToggle = document.getElementById('navToggle');
+        var navLinks = document.getElementById('navLinks');
+        navToggle.addEventListener('click', function () {
+            var isOpen = navLinks.classList.toggle('open');
+            navToggle.setAttribute('aria-expanded', isOpen);
+        });
+
+        // Close mobile nav on link click
+        navLinks.querySelectorAll('.nav__link').forEach(function (link) {
+            link.addEventListener('click', function () {
+                navLinks.classList.remove('open');
+                navToggle.setAttribute('aria-expanded', 'false');
+            });
+        });
+
+        // ── Scroll animations (Intersection Observer) ──
+        if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+            var observer = new IntersectionObserver(function (entries) {
+                entries.forEach(function (entry) {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+            document.querySelectorAll('.fade-up').forEach(function (el) {
+                observer.observe(el);
+            });
+        } else {
+            document.querySelectorAll('.fade-up').forEach(function (el) {
+                el.classList.add('visible');
+            });
+        }
+    </script>
+</body>
+</html>
