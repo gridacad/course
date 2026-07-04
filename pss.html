@@ -1,28 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-    <meta name="description" content="Master power system analysis using ETAP: Load flow, short circuit, protection, and more in 8 live online sessions. Earn certification from Grid Academy." />
-    <title>Power System Studies Using ETAP | GRID ACADEMY</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="description" content="Master power system studies using ETAP with Eng. Mohamed Nady & Eng. Ziad Samy. 8-session live online certification covering load flow, short circuit, protection, motor starting, harmonics & more.">
+    <meta name="robots" content="index, follow">
+    <title>Power System Studies Using ETAP | GRID ACADEMY | Eng. Mohamed Nady &amp; Eng. Ziad Samy</title>
 
-    <!-- Preconnect -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Montserrat:wght@500;600;700;800&display=swap" rel="stylesheet" />
+    <!-- Modern browsers -->
+    <link rel="icon" type="image/svg+xml" href="Sm1.svg">
+    <!-- Fallback for most browsers -->
+    <link rel="icon" type="image/png" sizes="32x32" href="Sm1.png">
+    <!-- Optional: iOS home screen -->
+    <link rel="apple-touch-icon" href="Sm1.png">
+
+    <!-- Preconnect for performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <!-- Google Fonts: Inter + Montserrat -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Montserrat:wght@500;600;700;800&display=swap" rel="stylesheet">
 
     <style>
         /* ============================================================
-           DESIGN SYSTEM — Light Theme
+           DESIGN SYSTEM — Single Source of Truth (Purple)
            ============================================================ */
         :root {
-            --color-bg: #f8fafc;
-            --color-text: #1e293b;
-            --color-text-muted: #475569;
-            --color-surface: #ffffff;
-            --color-border: #e2e8f0;
-            --color-accent: #0f172a;
-
+            /* Colors */
             --purple-50: #faf5ff;
             --purple-100: #f3e8ff;
             --purple-200: #e9d5ff;
@@ -34,48 +38,68 @@
             --purple-800: #6b21a8;
             --purple-900: #581c87;
 
-            --slate-300: #94a3b8;
-            --slate-400: #64748b;
-            --slate-500: #475569;
+            --slate-50: #f8fafc;
+            --slate-100: #f1f5f9;
+            --slate-200: #e2e8f0;
+            --slate-300: #cbd5e1;
+            --slate-400: #94a3b8;
+            --slate-500: #64748b;
+            --slate-600: #475569;
+            --slate-700: #334155;
+            --slate-800: #1e293b;
+            --slate-900: #0f172a;
 
+            --white: #ffffff;
+            --black: #000000;
+
+            /* Semantic tokens */
             --color-primary: var(--purple-800);
             --color-primary-dark: var(--purple-900);
             --color-primary-light: var(--purple-500);
             --color-primary-bg: var(--purple-50);
+            --color-accent: #0f172a;
+            --color-text: var(--slate-800);
+            --color-text-muted: var(--slate-500);
+            --color-text-inverse: var(--white);
+            --color-bg: var(--white);
+            --color-bg-alt: var(--slate-50);
+            --color-bg-dark: var(--slate-900);
+            --color-border: var(--slate-200);
 
+            /* Typography */
             --font-heading: 'Montserrat', sans-serif;
-            --font-body: 'Inter', 'Segoe UI', system-ui, sans-serif;
+            --font-body: 'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif;
 
+            /* Spacing */
             --section-py: 5rem;
             --container-max: 1200px;
             --container-px: 1.5rem;
 
-            --radius-sm: 0.375rem;
-            --radius-md: 0.5rem;
-            --radius-lg: 0.75rem;
-            --radius-xl: 1rem;
-            --radius-2xl: 1.5rem;
+            /* Radii */
+            --radius-sm: 0.5rem;
+            --radius-md: 0.75rem;
+            --radius-lg: 1rem;
+            --radius-xl: 1.25rem;
             --radius-full: 9999px;
 
-            --shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.03);
-            --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.05), 0 1px 2px rgba(0, 0, 0, 0.03);
-            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-            --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-            --shadow-2xl: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            /* Shadows */
+            --shadow-xs: 0 1px 2px rgba(0,0,0,0.04);
+            --shadow-sm: 0 1px 3px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04);
+            --shadow-md: 0 4px 12px rgba(0,0,0,0.08), 0 2px 4px rgba(0,0,0,0.04);
+            --shadow-lg: 0 10px 28px rgba(0,0,0,0.10), 0 4px 8px rgba(0,0,0,0.04);
+            --shadow-xl: 0 20px 40px rgba(0,0,0,0.12);
 
+            /* Transitions */
             --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
             --duration-fast: 150ms;
             --duration-normal: 250ms;
-            --duration-slow: 350ms;
+            --duration-slow: 400ms;
         }
 
         /* ============================================================
            RESET & BASE
            ============================================================ */
-        *,
-        *::before,
-        *::after {
+        *, *::before, *::after {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
@@ -83,6 +107,7 @@
 
         html {
             scroll-behavior: smooth;
+            -webkit-text-size-adjust: 100%;
         }
 
         body {
@@ -91,6 +116,7 @@
             color: var(--color-text);
             line-height: 1.6;
             -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
         }
 
         img {
@@ -104,11 +130,13 @@
             text-decoration: none;
         }
 
-        ul,
-        ol {
+        ul, ol {
             list-style: none;
         }
 
+        /* ============================================================
+           UTILITIES
+           ============================================================ */
         .container {
             width: 100%;
             max-width: var(--container-max);
@@ -120,59 +148,48 @@
             padding: var(--section-py) 0;
         }
 
-        .section--compact {
-            padding: calc(var(--section-py) * 0.75) 0;
-        }
-
-        .section--extended {
-            padding: calc(var(--section-py) * 1.25) 0;
-        }
-
         .section--alt {
             background-color: var(--color-bg-alt);
         }
 
         .section-header {
             text-align: center;
-            margin-bottom: 2.5rem;
+            margin-bottom: 3rem;
         }
 
         .section-label {
             display: inline-flex;
             align-items: center;
             gap: 0.5rem;
-            font-size: 0.75rem;
-            font-weight: 600;
+            font-size: 0.8rem;
+            font-weight: 700;
             text-transform: uppercase;
-            letter-spacing: 0.08em;
+            letter-spacing: 0.1em;
             color: var(--color-primary);
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.75rem;
         }
 
         .section-label::before {
             content: '';
-            width: 20px;
+            width: 24px;
             height: 2px;
             background: var(--color-primary);
-            flex-shrink: 0;
         }
 
         .section-title {
             font-family: var(--font-heading);
-            font-size: clamp(1.875rem, 4.5vw, 2.25rem);
+            font-size: clamp(1.75rem, 4vw, 2.25rem);
             font-weight: 800;
             color: var(--color-text);
             line-height: 1.2;
             margin-bottom: 0.75rem;
-            letter-spacing: -0.02em;
         }
 
         .section-subtitle {
             max-width: 640px;
             margin: 0 auto;
             color: var(--color-text-muted);
-            font-size: 1.1rem;
-            line-height: 1.6;
+            font-size: 1.05rem;
         }
 
         /* ============================================================
@@ -183,45 +200,27 @@
             align-items: center;
             justify-content: center;
             gap: 0.5rem;
-            padding: 0.875rem 1.75rem;
+            padding: 0.75rem 1.75rem;
             border-radius: var(--radius-full);
             font-weight: 600;
-            font-size: 0.875rem;
+            font-size: 0.9rem;
             font-family: var(--font-body);
             border: 2px solid transparent;
             cursor: pointer;
             transition: all var(--duration-normal) var(--ease-out);
             white-space: nowrap;
-            position: relative;
-            overflow: hidden;
-            background-clip: padding-box;
         }
 
-        .btn::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(
-                90deg,
-                transparent,
-                rgba(255, 255, 255, 0.2),
-                transparent
-            );
-            transition: left 0.5s;
-        }
-
-        .btn:hover::before {
-            left: 100%;
+        .btn:focus-visible {
+            outline: 3px solid var(--purple-300);
+            outline-offset: 2px;
         }
 
         .btn--primary {
             background: var(--color-primary);
-            color: #ffffff;
+            color: var(--color-text-inverse);
             border-color: var(--color-primary);
-            box-shadow: 0 4px 14px rgba(107, 33, 168, 0.3);
+            box-shadow: 0 4px 14px rgba(107, 33, 168, 0.35);
         }
 
         .btn--primary:hover {
@@ -231,25 +230,17 @@
             box-shadow: 0 6px 20px rgba(107, 33, 168, 0.4);
         }
 
-        .btn--primary:active {
-            transform: translateY(0);
-        }
-
         .btn--outline {
             background: transparent;
-            color: var(--color-text);
-            border-color: var(--color-border);
+            color: var(--color-text-inverse);
+            border-color: rgba(255,255,255,0.5);
         }
 
         .btn--outline:hover {
-            background: var(--color-text);
-            color: #ffffff;
-            border-color: var(--color-text);
+            background: var(--color-text-inverse);
+            color: var(--color-accent);
+            border-color: var(--color-text-inverse);
             transform: translateY(-2px);
-        }
-
-        .btn--outline:active {
-            transform: translateY(0);
         }
 
         .btn--ghost {
@@ -260,24 +251,12 @@
 
         .btn--ghost:hover {
             background: var(--color-primary);
-            color: #ffffff;
+            color: var(--color-text-inverse);
         }
 
-        .btn--ghost:active {
-            transform: translateY(0);
-        }
-
-        .btn--icon-only {
-            width: 2.5rem;
-            height: 2.5rem;
-            padding: 0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .btn--icon-only .btn-inner {
-            font-size: 1.125rem;
+        .btn--sm {
+            padding: 0.5rem 1.25rem;
+            font-size: 0.85rem;
         }
 
         /* ============================================================
@@ -287,16 +266,16 @@
             position: sticky;
             top: 0;
             z-index: 100;
-            background: var(--color-surface);
-            border-bottom: 1px solid var(--color-border);
-            backdrop-filter: saturate(180%) blur(12px);
-            background-color: rgba(255, 255, 255, 0.9);
-            transition: background-color 0.3s ease;
+            background: var(--color-accent);
+            box-shadow: 0 2px 16px rgba(0,0,0,0.15);
         }
 
-        .nav.scrolled {
-            background-color: rgba(255, 255, 255, 0.95);
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+        .nav-logo {
+            height: 28px;
+            width: auto;
+            filter: brightness(0) invert(1);
+            display: block;
+            flex-shrink: 0;
         }
 
         .nav__inner {
@@ -310,23 +289,17 @@
         .nav__brand {
             display: flex;
             align-items: center;
-            gap: 0.75rem;
+            gap: 0.5rem;
             font-family: var(--font-heading);
             font-size: 1.15rem;
             font-weight: 800;
-            color: var(--color-text);
+            color: var(--color-text-inverse);
             letter-spacing: -0.02em;
         }
 
-        .nav__logo {
-            height: 32px;
-            width: auto;
-            display: block;
-            transition: transform 0.3s ease;
-        }
-
-        .nav__brand:hover .nav__logo {
-            transform: scale(1.05);
+        .nav__brand i {
+            color: var(--color-primary);
+            font-size: 1.3rem;
         }
 
         .nav__links {
@@ -336,73 +309,44 @@
         }
 
         .nav__link {
-            color: var(--color-text-muted);
+            color: rgba(255,255,255,0.7);
             font-size: 0.875rem;
             font-weight: 500;
             padding: 0.4rem 0.75rem;
-            border-radius: var-radius-full);
+            border-radius: var(--radius-full);
             transition: all var(--duration-fast);
-            position: relative;
         }
 
         .nav__link:hover,
         .nav__link:focus-visible {
-            color: var(--color-text);
-            background: rgba(107, 33, 168, 0.08);
-        }
-
-        .nav__link.active {
-            color: var(--color-primary);
-            font-weight: 600;
-        }
-
-        .nav__link.active::after {
-            content: '';
-            position: absolute;
-            bottom: -2px;
-            left: 0;
-            width: 100%;
-            height: 2px;
-            background: var(--color-primary);
-            border-radius: 1px;
+            color: var(--color-text-inverse);
+            background: rgba(255,255,255,0.1);
         }
 
         .nav__cta {
             background: var(--color-primary);
-            color: #ffffff;
+            color: var(--color-text-inverse);
             padding: 0.5rem 1.25rem;
             border-radius: var(--radius-full);
             font-weight: 600;
             font-size: 0.85rem;
             transition: all var(--duration-normal) var(--ease-out);
-            box-shadow: 0 2px 8px rgba(107, 33, 168, 0.3);
-            border: none;
+            box-shadow: 0 2px 8px rgba(107,33,168,0.3);
         }
 
         .nav__cta:hover {
             background: var(--color-primary-dark);
             transform: translateY(-1px);
-            box-shadow: 0 4px 12px rgba(107, 33, 168, 0.4);
-        }
-
-        .nav__cta:active {
-            transform: translateY(0);
         }
 
         .nav__toggle {
             display: none;
             background: none;
             border: none;
-            color: var(--color-text);
+            color: var(--color-text-inverse);
             font-size: 1.4rem;
             cursor: pointer;
             padding: 0.25rem;
-            border-radius: var(--radius-sm);
-        }
-
-        .nav__toggle:hover {
-            background: rgba(107, 33, 168, 0.1);
-            color: var(--color-primary);
         }
 
         /* ============================================================
@@ -413,21 +357,26 @@
             min-height: 85vh;
             display: flex;
             align-items: center;
-            background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+            background: linear-gradient(135deg, #1a1030 0%, #2a1b47 50%, #1e1433 100%);
             overflow: hidden;
-            background-image:
-                radial-gradient(circle at 20% 50%, rgba(107, 33, 168, 0.03) 0%, transparent 20%),
-                radial-gradient(circle at 80% 20%, rgba(107, 33, 168, 0.03) 0%, transparent 20%);
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background:
+                radial-gradient(ellipse at 20% 50%, rgba(168,85,247,0.14) 0%, transparent 60%),
+                radial-gradient(ellipse at 80% 20%, rgba(168,85,247,0.07) 0%, transparent 50%);
         }
 
         .hero__grid {
             position: absolute;
             inset: 0;
             background-image:
-                linear-gradient(rgba(107, 33, 168, 0.02) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(107, 33, 168, 0.02) 1px, transparent 1px);
-            background-size: 40px 40px;
-            opacity: 0.5;
+                linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+            background-size: 60px 60px;
         }
 
         .hero__inner {
@@ -435,377 +384,281 @@
             z-index: 2;
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 4rem;
+            gap: 3rem;
             align-items: center;
-            padding: 4rem 0;
+            padding: 3rem 0;
         }
 
         .hero__badge {
             display: inline-flex;
             align-items: center;
             gap: 0.5rem;
-            background: rgba(107, 33, 168, 0.1);
-            color: var(--color-primary);
-            padding: 0.5rem 1.25rem;
+            background: rgba(168,85,247,0.15);
+            color: var(--purple-300);
+            padding: 0.4rem 1rem;
             border-radius: var(--radius-full);
-            font-size: 0.875rem;
+            font-size: 0.8rem;
             font-weight: 600;
-            margin-bottom: 1.5rem;
-            border: 1px solid rgba(107, 33, 168, 0.15);
-            backdrop-filter: blur(4px);
+            margin-bottom: 1.25rem;
+            border: 1px solid rgba(168,85,247,0.2);
+        }
+
+        .hero__badge i {
+            font-size: 0.75rem;
         }
 
         .hero__title {
             font-family: var(--font-heading);
-            font-size: clamp(2.25rem, 5vw, 3rem);
+            font-size: clamp(2rem, 4.5vw, 2.75rem);
             font-weight: 800;
-            color: var(--color-text);
-            line-height: 1.1;
-            margin-bottom: 1.25rem;
-            letter-spacing: -0.02em;
+            color: var(--color-text-inverse);
+            line-height: 1.15;
+            margin-bottom: 1rem;
         }
 
         .hero__title span {
-            color: var(--color-primary);
-            position: relative;
-        }
-
-        .hero__title span::after {
-            content: '';
-            position: absolute;
-            bottom: -4px;
-            left: 0;
-            width: 20px;
-            height: 3px;
-            background: var(--color-primary);
-            border-radius: 2px;
+            color: var(--color-primary-light);
         }
 
         .hero__instructor {
             display: flex;
             align-items: center;
-            gap: 0.75rem;
-            color: var(--color-text-muted);
-            font-size: 1.125rem;
+            gap: 0.5rem;
+            color: var(--purple-200);
+            font-size: 1.05rem;
             font-weight: 500;
-            margin-bottom: 1.5rem;
-        }
-
-        .hero__instructor i {
-            font-size: 1.25rem;
+            margin-bottom: 1.25rem;
         }
 
         .hero__desc {
-            color: var(--color-text-muted);
-            font-size: 1.125rem;
-            line-height: 1.8;
-            margin-bottom: 2.5rem;
-            max-width: 560px;
-            opacity: 0.9;
+            color: var(--slate-300);
+            font-size: 1rem;
+            line-height: 1.7;
+            margin-bottom: 2rem;
+            max-width: 540px;
         }
 
         .hero__actions {
             display: flex;
             flex-wrap: wrap;
-            gap: 1rem;
+            gap: 0.75rem;
         }
 
         .hero__stats {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap: 2rem;
+            gap: 1.5rem;
         }
 
         .hero-stat {
-            background: rgba(255, 255, 255, 0.85);
+            background: rgba(255,255,255,0.06);
             backdrop-filter: blur(12px);
-            border: 1px solid var(--color-border);
-            border-radius: var(--radius-xl);
-            padding: 1.75rem;
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: var(--radius-lg);
+            padding: 1.5rem;
             text-align: center;
             transition: all var(--duration-normal) var(--ease-out);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .hero-stat::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 4px;
-            height: 100%;
-            background: var(--color-primary);
-            opacity: 0;
-            transition: opacity 0.3s ease;
         }
 
         .hero-stat:hover {
-            background: #ffffff;
-            transform: translateY(-6px) scale(1.02);
-            border-color: var(--color-primary);
-            box-shadow: var(--shadow-lg);
-        }
-
-        .hero-stat:hover::before {
-            opacity: 1;
+            background: rgba(255,255,255,0.1);
+            transform: translateY(-4px);
+            border-color: rgba(168,85,247,0.3);
         }
 
         .hero-stat__icon {
-            width: 56px;
-            height: 56px;
-            background: var(--color-primary-bg);
-            border-radius: var(--radius-lg);
+            width: 48px;
+            height: 48px;
+            background: rgba(168,85,247,0.15);
+            border-radius: var(--radius-md);
             display: flex;
             align-items: center;
             justify-content: center;
-            margin: 0 auto 1rem;
-            color: var(--color-primary);
-            font-size: 1.5rem;
+            margin: 0 auto 0.75rem;
+            color: var(--color-primary-light);
+            font-size: 1.2rem;
         }
 
         .hero-stat__value {
             font-family: var(--font-heading);
-            font-size: 2rem;
+            font-size: 1.5rem;
             font-weight: 800;
-            color: var(--color-text);
-            margin-bottom: 0.5rem;
-            background: linear-gradient(to right, var(--color-primary), var(--color-primary-dark));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+            color: var(--color-text-inverse);
+            margin-bottom: 0.25rem;
         }
 
         .hero-stat__label {
-            font-size: 0.875rem;
-            color: var(--color-text-muted);
-            font-weight: 500;
+            font-size: 0.8rem;
+            color: var(--slate-400);
         }
-/* ============================================================
+
+  /* ============================================================
    OVERVIEW
    ============================================================ */
+
 .overview__grid {
     display: grid;
     grid-template-columns: 2fr 1fr;
-    gap: 1.75rem;
+    gap: 2rem;
     align-items: start;
 }
 
-.card {
-    background: var(--color-surface);
-    border-radius: var(--radius-2xl);
-    padding: 2.25rem;
-    box-shadow: var(--shadow-sm);
-    border: 1px solid var(--color-border);
-    transition: transform var(--duration-normal) var(--ease-out),
-                box-shadow var(--duration-normal) var(--ease-out);
-    position: relative;
-    overflow: hidden;
+.card--full {
+    grid-column: 1 / -1;
 }
 
-.card::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 4px;
-    height: 100%;
-    background: var(--color-primary);
-    opacity: 0;
-    transition: opacity var(--duration-normal) var(--ease-out);
+.card {
+    background: var(--color-bg);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-xl);
+    padding: 2rem;
+    box-shadow: var(--shadow-sm);
+    transition: box-shadow var(--duration-normal) var(--ease-out);
 }
 
 .card:hover {
-    box-shadow: var(--shadow-lg);
-    transform: translateY(-4px);
-}
-
-.card:hover::before {
-    opacity: 1;
+    box-shadow: var(--shadow-md);
 }
 
 .card--highlight {
-    background: linear-gradient(135deg, var(--color-surface) 0%, var(--color-primary-bg) 100%);
-}
-
-.card--highlight::before {
-    background: linear-gradient(to bottom, var(--color-primary), var(--color-primary-dark));
-    opacity: 1;
-    width: 3px;
+    border-top: 3px solid var(--color-primary);
 }
 
 .overview__text {
     color: var(--color-text-muted);
-    line-height: 1.75;
-    font-size: 1.0625rem;
+    line-height: 1.8;
 }
 
 .overview__text p + p {
-    margin-top: 1.25rem;
+    margin-top: 1rem;
 }
 
 .overview__text strong {
-    color: var(--color-text);
-    font-weight: 600;
+    color: var(--color-primary-dark);
 }
 
-.overview__side-label {
-    margin-bottom: 1.5rem;
-}
+/* ============================================================
+   Learning Path
+   ============================================================ */
 
-/* --- Progress track (real sequence: session 1 through 6) --- */
 .progress-track {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    row-gap: 2.25rem;
-    column-gap: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 0;
+    margin-top: 1.5rem;
 }
 
 .progress-step {
-    text-align: center;
     position: relative;
+    flex: 1;
+    text-align: center;
     padding: 0 0.5rem;
 }
 
-.progress-step::after {
-    content: '';
+.progress-step:not(:last-child)::after {
+    content: "";
     position: absolute;
-    top: 26px;
-    left: calc(50% + 28px);
-    width: calc(100% - 56px);
+    top: 24px;
+    left: calc(50% + 24px);
+    width: calc(100% - 48px);
     height: 2px;
     background: var(--color-border);
-    transition: background-color var(--duration-normal) var(--ease-out);
-}
-
-/* hide the connector at the end of each row of 3, not just the last item overall */
-.progress-step:nth-child(3n)::after {
-    display: none;
+    z-index: 0;
 }
 
 .progress-step__circle {
-    width: 52px;
-    height: 52px;
-    background: var(--color-primary-bg);
-    border: 2px solid var(--color-primary);
-    border-radius: 50%;
+    width: 48px;
+    height: 48px;
+    margin: 0 auto 0.9rem;
+
     display: flex;
     align-items: center;
     justify-content: center;
-    margin: 0 auto 0.75rem;
-    font-family: var(--font-heading);
-    font-weight: 700;
+
+    border-radius: 50%;
+    border: 2px solid var(--color-primary);
+
+    background: var(--color-primary-bg);
     color: var(--color-primary);
-    font-size: 1.0625rem;
+
+    font-family: var(--font-heading);
+    font-size: 0.95rem;
+    font-weight: 700;
+
     position: relative;
     z-index: 2;
-    transition: background var(--duration-normal) var(--ease-out),
-                color var(--duration-normal) var(--ease-out),
-                transform var(--duration-normal) var(--ease-out),
-                box-shadow var(--duration-normal) var(--ease-out);
-    box-shadow: 0 4px 6px rgba(107, 33, 168, 0.1);
-}
-
-.progress-step:hover .progress-step__circle {
-    background: var(--color-primary);
-    color: #ffffff;
-    transform: scale(1.08);
-    box-shadow: 0 6px 12px rgba(107, 33, 168, 0.2);
-}
-
-.progress-step:hover::after {
-    background-color: var(--color-primary);
 }
 
 .progress-step__label {
-    font-size: 0.8125rem;
+    font-size: 0.82rem;
     font-weight: 600;
     color: var(--color-text-muted);
     line-height: 1.4;
+    max-width: 110px;
+    margin: 0 auto;
 }
 
-/* stack to a single column on small screens so the row-end connector logic
-   never has to fight a reflowed grid */
-@media (max-width: 640px) {
-    .overview__grid {
-        grid-template-columns: 1fr;
-    }
+/* ============================================================
+   Responsive
+   ============================================================ */
+
+@media (max-width: 992px) {
+
     .progress-track {
-        grid-template-columns: 1fr;
-        row-gap: 1.5rem;
+        overflow-x: auto;
+        justify-content: flex-start;
+        gap: 2rem;
+        padding-bottom: 0.5rem;
     }
-    .progress-step::after {
-        display: none;
+
+    .progress-step {
+        flex: 0 0 120px;
     }
 }
-        
+
         /* ============================================================
            OBJECTIVES
            ============================================================ */
         .objectives__grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 1.5rem;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1rem;
         }
 
         .objective-item {
             display: flex;
-            gap: 1.25rem;
-            padding: 1.5rem;
-            background: var(--color-surface);
-            border-radius: var(--radius-xl);
+            gap: 1rem;
+            padding: 1.25rem;
+            background: var(--color-bg);
+            border-radius: var(--radius-lg);
             border: 1px solid var(--color-border);
             transition: all var(--duration-normal) var(--ease-out);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .objective-item::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 4px;
-            height: 100%;
-            background: var(--color-primary);
-            opacity: 0;
-            transition: opacity 0.3s ease;
         }
 
         .objective-item:hover {
-            border-color: transparent;
-            box-shadow: var(--shadow-lg);
-            transform: translateY(-4px);
-        }
-
-        .objective-item:hover::before {
-            opacity: 1;
+            border-color: var(--color-primary);
+            box-shadow: var(--shadow-md);
+            transform: translateY(-2px);
         }
 
         .objective-item__icon {
             flex-shrink: 0;
-            width: 48px;
-            height: 48px;
+            width: 40px;
+            height: 40px;
             background: var(--color-primary-bg);
-            border-radius: var(--radius-lg);
+            border-radius: var(--radius-md);
             display: flex;
             align-items: center;
             justify-content: center;
             color: var(--color-primary);
-            font-size: 1.2rem;
-            transition: all var(--duration-normal) var(--ease-out);
-        }
-
-        .objective-item:hover .objective-item__icon {
-            background: var(--color-primary);
-            color: #ffffff;
-            transform: scale(1.1);
+            font-size: 1rem;
         }
 
         .objective-item__text {
-            font-size: 1rem;
+            font-size: 0.925rem;
             color: var(--color-text-muted);
-            line-height: 1.7;
+            line-height: 1.6;
         }
 
         /* ============================================================
@@ -814,258 +667,101 @@
         .curriculum__grid {
             display: flex;
             flex-direction: column;
-            gap: 1.5rem;
+            gap: 0.75rem;
         }
 
         .session-card {
-            background: var(--color-surface);
-            border-radius: var(--radius-2xl);
+            background: var(--color-bg);
+            border-radius: var(--radius-lg);
             border: 1px solid var(--color-border);
             overflow: hidden;
             transition: all var(--duration-normal) var(--ease-out);
-            position: relative;
-            overflow: hidden;
-            background-clip: padding-box;
-            box-shadow: var(--shadow-sm);
-        }
-
-        .session-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 4px;
-            height: 100%;
-            background: var(--color-primary);
-            opacity: 0;
-            transition: opacity 0.3s ease;
         }
 
         .session-card:hover {
             border-color: var(--color-primary);
-            box-shadow: var(--shadow-lg);
-            transform: translateY(-6px) scale(1.02);
-        }
-
-        .session-card:hover::before {
-            opacity: 1;
+            box-shadow: var(--shadow-md);
+            transform: translateX(4px);
         }
 
         .session-card__header {
             display: flex;
             align-items: flex-start;
-            gap: 1.5rem;
-            padding: 2rem;
+            gap: 1rem;
+            padding: 1.25rem 1.5rem;
             cursor: default;
-            background: linear-gradient(to bottom, var(--color-surface) 0%, var(--color-bg) 100%);
-            border-bottom: 1px solid var(--color-border);
         }
 
         .session-card__icon {
             flex-shrink: 0;
-            width: 60px;
-            height: 60px;
+            width: 48px;
+            height: 48px;
             background: var(--color-primary-bg);
-            border-radius: var(--radius-lg);
+            border-radius: var(--radius-md);
             display: flex;
             align-items: center;
             justify-content: center;
             color: var(--color-primary);
-            font-size: 1.75rem;
-            transition: all var(--duration-normal) var(--ease-out);
-            box-shadow: 0 4px 6px rgba(107, 33, 168, 0.1);
-            position: relative;
-            overflow: hidden;
+            font-size: 1.3rem;
+            transition: all var(--duration-normal);
         }
 
         .session-card:hover .session-card__icon {
             background: var(--color-primary);
-            color: #ffffff;
-            transform: scale(1.1);
-            box-shadow: 0 6px 12px rgba(107, 33, 168, 0.2);
-        }
-
-        .session-card__icon::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(
-                45deg,
-                transparent,
-                rgba(255, 255, 255, 0.1),
-                transparent
-            );
-            transform: translateX(-100%);
-            transition: transform 0.6s ease;
-        }
-
-        .session-card__icon:hover::before {
-            transform: translateX(100%);
+            color: var(--color-text-inverse);
         }
 
         .session-card__title {
             font-family: var(--font-heading);
             font-weight: 700;
-            font-size: 1.375rem;
+            font-size: 1.05rem;
             color: var(--color-text);
-            margin-bottom: 0.75rem;
-            letter-spacing: -0.01em;
+            margin-bottom: 0.3rem;
         }
 
-        .session-card__meta {
-            display: flex;
-            gap: 1.5rem;
-            margin-bottom: 1.5rem;
-            font-size: 1rem;
+        .session-card__desc {
             color: var(--color-text-muted);
-            flex-wrap: wrap;
-        }
-
-        .session-card__meta span {
-            background: var(--color-primary-bg);
-            padding: 0.375rem 0.875rem;
-            border-radius: var(--radius-full);
-            font-size: 0.875rem;
-            font-weight: 500;
-            border: 1px solid var(--color-primary);
-            transition: all var(--duration-normal) var(--ease-out);
-        }
-
-        .session-card__meta span:hover {
-            background: var(--color-primary);
-            color: #ffffff;
-        }
-
-        .session-card__content {
-            padding: 0 2rem 2rem;
-margin-top: 2rem;
-
-        }
-
-        .session-card__section {
-            margin-bottom: 1.75rem;
-        }
-
-        .session-card__section-title {
-            font-family: var(--font-heading);
-            font-weight: 600;
-            font-size: 1.125rem;
-            color: var(--color-primary);
-            margin-bottom: 0.75rem;
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-        }
-
-        .session-card__section-title i {
-            font-size: 1.25rem;
-            width: 24px;
-            flex-shrink: 0;
-
-        }
-
-        .session-card__section-content {
-            color: var(--color-text-muted);
-            font-size: 1rem;
-            line-height: 1.8;
-        }
-
-        .session-card__section-content ul {
-            padding-left: 1.5rem;
-        }
-
-        .session-card__section-content li {
-            margin-bottom: 0.75rem;
-            position: relative;
-            padding-left: 0.5rem;
-        }
-
-        .session-card__section-content li::before {
-            content: "";
-            position: absolute;
-            left: 0;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 6px;
-            height: 6px;
-            border-radius: 50%;
-            background: var(--color-primary);
-        }
-
-        .session-card__section-content li::after {
-            content: "";
-            position: absolute;
-            left: -2px;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 2px;
-            height: 2px;
-            border-radius: 50%;
-            background: var(--color-primary);
-            opacity: 0.5;
-
-
-
-
+            font-size: 0.9rem;
+            line-height: 1.5;
         }
 
         /* ============================================================
-           SCHEDULE
+           SCHEDULE TABLE
            ============================================================ */
         .table-wrapper {
             overflow-x: auto;
-            border-radius: var(--radius-2xl);
-            box-shadow: var(--shadow-lg);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-sm);
             border: 1px solid var(--color-border);
-            background: var(--color-surface);
-            backdrop-filter: saturate(180%) blur(12px);
-            position: relative;
-            overflow: hidden;
         }
 
         .data-table {
             width: 100%;
-            border-collapse: separate;
-            border-spacing: 0;
-            font-size: 1rem;
-            min-width: 600px;
+            border-collapse: collapse;
+            font-size: 0.9rem;
         }
 
         .data-table thead th {
-            background: linear-gradient(135deg, var(--color-accent), var(--color-primary));
-            color: #ffffff;
-            padding: 1.75rem 2rem;
+            background: var(--color-accent);
+            color: var(--color-text-inverse);
+            padding: 1rem 1.25rem;
             font-weight: 600;
-            font-size: 1.05rem;
             text-align: left;
             white-space: nowrap;
-            position: relative;
-        }
-
-        .data-table thead th::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            height: 2px;
-            background: linear-gradient(to right, transparent, var(--color-primary), transparent);
         }
 
         .data-table tbody td {
-            padding: 1.5rem 2rem;
+            padding: 0.875rem 1.25rem;
             border-bottom: 1px solid var(--color-border);
             vertical-align: middle;
-            position: relative;
-            transition: all 0.3s ease;
+        }
+
+        .data-table tbody tr:last-child td {
+            border-bottom: none;
         }
 
         .data-table tbody tr:hover td {
             background: var(--color-bg-alt);
-            transform: translateX(4px);
         }
 
         .data-table tbody tr.past td {
@@ -1077,46 +773,41 @@ margin-top: 2rem;
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            width: 36px;
-            height: 36px;
-            border-radius: var(--radius-md);
-            font-weight: 600;
-            font-size: 0.875rem;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+            width: 32px;
+            height: 32px;
+            border-radius: var(--radius-sm);
+            font-weight: 700;
+            font-size: 0.8rem;
         }
 
-        .level-badge--1 {
-            background: var(--purple-100);
-            color: var(--purple-700);
-        }
-        .level-badge--2 {
-            background: var(--purple-200);
-            color: var(--purple-800);
-        }
-        .level-badge--3 {
-            background: var(--purple-300);
-            color: var(--purple-900);
-        }
-        .level-badge--4 {
-            background: var(--purple-400);
-            color: #ffffff;
+        .level-badge--1 { background: var(--purple-100); color: var(--purple-700); }
+        .level-badge--2 { background: var(--purple-200); color: var(--purple-800); }
+        .level-badge--3 { background: var(--purple-300); color: var(--purple-900); }
+        .level-badge--4 { background: var(--purple-400); color: var(--white); }
+
+        .completed-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.3rem;
+            font-size: 0.7rem;
+            font-weight: 600;
+            background: var(--color-primary-bg);
+            color: var(--color-primary-dark);
+            padding: 0.15rem 0.6rem;
+            border-radius: var(--radius-full);
+            margin-left: 0.5rem;
         }
 
         .schedule-note {
             text-align: center;
-            font-size: 1rem;
+            font-size: 0.85rem;
             color: var(--color-text-muted);
-            margin-top: 2rem;
-            padding: 1.5rem;
-            background: var(--color-primary-bg);
-            border-radius: var(--radius-xl);
-            border-left: 4px solid var(--color-primary);
+            margin-top: 1.25rem;
         }
 
         .schedule-note i {
             color: var(--color-primary);
-            margin-right: 0.5rem;
-            font-size: 1.125rem;
+            margin-right: 0.3rem;
         }
 
         /* ============================================================
@@ -1125,712 +816,337 @@ margin-top: 2rem;
         .instructor-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2.5rem;
+            gap: 2rem;
             align-items: start;
         }
 
         .instructor-card {
-            background: var(--color-surface);
-            border-radius: var(--radius-2xl);
-            padding: 2.5rem;
+            background: var(--color-bg);
+            border-radius: var(--radius-xl);
+            padding: 2rem;
             text-align: center;
             border: 1px solid var(--color-border);
-            transition: all var(--duration-normal) var(--ease-out);
-            position: relative;
-            overflow: hidden;
-            background-clip: padding-box;
             box-shadow: var(--shadow-sm);
         }
 
-        .instructor-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 4px;
-            height: 100%;
-            background: var(--color-primary);
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-
-        .instructor-card:hover {
-            box-shadow: var(--shadow-lg);
-            transform: translateY(-8px) scale(1.02);
-        }
-
-        .instructor-card:hover::before {
-            opacity: 1;
-        }
-
         .instructor-card__avatar {
-            width: 160px;
-            height: 160px;
+            width: 120px;
+            height: 120px;
             border-radius: 50%;
             object-fit: cover;
-            margin: 0 auto 2rem;
-            border: 4px solid var(--color-primary);
-            box-shadow: 0 8px 16px rgba(107, 33, 168, 0.15);
-            transition: all var(--duration-normal) var(--ease-out);
-            position: relative;
-        }
-
-        .instructor-card:hover .instructor-card__avatar {
-            transform: scale(1.05);
-            box-shadow: 0 12px 24px rgba(107, 33, 168, 0.25);
-        }
-
-        .instructor-card__avatar::before {
-            content: '';
-            position: absolute;
-            top: -4px;
-            left: -4px;
-            right: -4px;
-            bottom: -4px;
-            border-radius: 50%;
-            border: 2px solid var(--color-primary);
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-
-        .instructor-card:hover .instructor-card__avatar::before {
-            opacity: 1;
+            margin: 0 auto 1rem;
+            border: 3px solid var(--color-primary);
         }
 
         .instructor-card__name {
             font-family: var(--font-heading);
-            font-size: 1.5rem;
+            font-size: 1.2rem;
             font-weight: 700;
             color: var(--color-text);
-            margin-bottom: 0.5rem;
-            letter-spacing: -0.01em;
+            margin-bottom: 0.3rem;
         }
 
         .instructor-card__title {
             color: var(--color-text-muted);
-            font-size: 0.8rem;
-            margin-bottom: 1.75rem;
-            font-weight: 500;
+            font-size: 0.875rem;
+            margin-bottom: 1.25rem;
         }
 
         .instructor-card__contacts {
             display: flex;
             justify-content: center;
-            gap: 1.25rem;
-            font-size: 1rem;
-            color: var(--color-text-muted);
-            margin-top: 2rem;
             flex-wrap: wrap;
-        }
-
-        .instructor-card__contacts i {
-            color: var(--color-primary);
-            width: 20px;
-            text-align: center;
-            margin-right: 0.5rem;
-            font-size: 1.125rem;
+            gap: 0.75rem;
         }
 
         .instructor-card__contacts a {
             display: inline-flex;
             align-items: center;
-            gap: 0.5rem;
-            padding: 0.75rem 1.5rem;
-            border-radius: var(--radius-full);
+            gap: 0.4rem;
+            font-size: 0.8rem;
             font-weight: 600;
-            border: 2px solid transparent;
+            padding: 0.5rem 1rem;
+            border-radius: var(--radius-full);
+            border: 1px solid var(--color-border);
+            color: var(--color-text-muted);
             transition: all var(--duration-normal) var(--ease-out);
-            position: relative;
-            overflow: hidden;
         }
 
-        .instructor-card__contacts a:first-child {
+        .instructor-card__contacts a:hover {
             background: var(--color-primary);
-            color: #ffffff;
+            color: var(--color-text-inverse);
+            border-color: var(--color-primary);
         }
 
-        .instructor-card__contacts a:first-child:hover {
-            background: var(--color-primary-dark);
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(107, 33, 168, 0.3);
-        }
-
-        .instructor-card__contacts a:last-child {
-            background: transparent;
-            color: var(--color-text);
-            border: 2px solid var(--color-border);
-        }
-
-        .instructor-card__contacts a:last-child:hover {
-            background: var(--color-text);
-            color: #ffffff;
-            border-color: var(--color-text);
-            transform: translateY(-2px);
+        .instructor-card__contacts i {
+            color: var(--color-primary);
         }
 
         .instructor-card__contacts a:hover i {
-            color: #ffffff;
+            color: var(--color-text-inverse);
         }
 
+        /* ============================================================
+           CERTIFICATIONS
+           ============================================================ */
+        .cert-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
 
-=
+        .cert-card {
+            background: var(--color-bg);
+            border-radius: var(--radius-xl);
+            padding: 2rem;
+            text-align: center;
+            border: 1px solid var(--color-border);
+            border-bottom: 3px solid var(--color-primary);
+            transition: all var(--duration-normal) var(--ease-out);
+        }
 
+        .cert-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-md);
+        }
 
+        .cert-card__icon {
+            width: 56px;
+            height: 56px;
+            background: var(--color-primary-bg);
+            border-radius: var(--radius-lg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+            color: var(--color-primary);
+            font-size: 1.4rem;
+        }
 
+        .cert-card__title {
+            font-family: var(--font-heading);
+            font-size: 1.05rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
 
-
-
-   /* ============================================================
-   CERTIFICATIONS
-   ============================================================ */
-.cert-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 1.25rem;
-}
-
-.cert-card {
-    background: var(--color-surface);
-    border-radius: var(--radius-xl);
-    padding: 2rem 1.5rem 1.75rem;
-    text-align: center;
-    border: 1px solid var(--color-border);
-    transition: transform var(--duration-normal) var(--ease-out),
-                box-shadow var(--duration-normal) var(--ease-out),
-                border-color var(--duration-normal) var(--ease-out);
-    position: relative;
-    overflow: hidden;
-    box-shadow: var(--shadow-sm);
-}
-
-.cert-card::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 3px;
-    background: linear-gradient(to right, var(--color-primary), var(--color-primary-dark));
-    transform: scaleX(0);
-    transform-origin: left;
-    transition: transform var(--duration-normal) var(--ease-out);
-}
-
-.cert-card:hover {
-    transform: translateY(-4px);
-    box-shadow: var(--shadow-lg);
-    border-color: var(--color-primary);
-}
-
-.cert-card:hover::before {
-    transform: scaleX(1);
-}
-
-/* --- Seal-style icon --- */
-.cert-card__icon {
-    width: 52px;
-    height: 52px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 0 auto 1.125rem;
-    color: var(--color-primary);
-    font-size: 1.25rem;
-    background: var(--color-primary-bg);
-    outline: 2px dashed rgba(107, 33, 168, 0.35);
-    outline-offset: 3px;
-    transition: background var(--duration-normal) var(--ease-out),
-                color var(--duration-normal) var(--ease-out),
-                outline-color var(--duration-normal) var(--ease-out),
-                transform var(--duration-normal) var(--ease-out);
-    position: relative;
-}
-
-.cert-card:hover .cert-card__icon {
-    background: var(--color-primary);
-    color: #ffffff;
-    outline-color: var(--color-primary);
-    transform: scale(1.06);
-}
-
-.cert-card__icon::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    border-radius: 50%;
-    background: linear-gradient(
-        115deg,
-        transparent 30%,
-        rgba(255, 255, 255, 0.35) 50%,
-        transparent 70%
-    );
-    transform: translateX(-120%);
-}
-
-.cert-card:hover .cert-card__icon::after {
-    transform: translateX(120%);
-    transition: transform 0.7s ease;
-}
-
-.cert-card__title {
-    font-family: var(--font-heading);
-    font-size: 1.0625rem;
-    font-weight: 700;
-    margin-bottom: 0.625rem;
-    letter-spacing: -0.01em;
-    background: linear-gradient(to right, var(--color-primary), var(--color-primary-dark));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-}
-
-.cert-card__desc {
-    color: var(--color-text-muted);
-    font-size: 0.875rem;
-    line-height: 1.55;
-    font-weight: 500;
-}
+        .cert-card__desc {
+            color: var(--color-text-muted);
+            font-size: 0.9rem;
+        }
 
         /* ============================================================
-           META / TOOLS
+           ASSIGNMENTS / TOOLS (merged section)
            ============================================================ */
         .meta-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
             gap: 1.5rem;
         }
 
         .meta-card {
-            background: var(--color-surface);
-            border-radius: var(--radius-2xl);
-            padding: 2.5rem;
+            background: var(--color-bg);
+            border-radius: var(--radius-xl);
+            padding: 2rem;
             border: 1px solid var(--color-border);
-            transition: all var(--duration-normal) var(--ease-out);
-            position: relative;
-            overflow: hidden;
-            box-shadow: var(--shadow-sm);
-        }
-
-        .meta-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 4px;
-            height: 100%;
-            background: var(--color-primary);
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-
-        .meta-card:hover {
-            transform: translateY(-4px);
-            box-shadow: var(--shadow-lg);
-            border-color: transparent;
-        }
-
-        .meta-card:hover::before {
-            opacity: 1;
         }
 
         .meta-card__heading {
             display: flex;
             align-items: center;
-            gap: 1rem;
+            gap: 0.75rem;
             font-family: var(--font-heading);
-            font-size: 1.125rem;
+            font-size: 1rem;
             font-weight: 700;
-            margin-bottom: 1.5rem;
-            position: relative;
-            padding-left: 0.5rem;
-        }
-
-        .meta-card__heading::before {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 4px;
-            height: 24px;
-            background: var(--color-primary);
-            border-radius: 2px;
+            margin-bottom: 1.25rem;
         }
 
         .meta-card__heading i {
             color: var(--color-primary);
-            font-size: 1.5rem;
         }
 
         .meta-list {
             display: flex;
             flex-direction: column;
-            gap: 1rem;
+            gap: 0.75rem;
         }
 
         .meta-list li {
             display: flex;
-            gap: 1rem;
-            font-size: 1rem;
+            gap: 0.75rem;
+            font-size: 0.9rem;
             color: var(--color-text-muted);
-            line-height: 1.7;
-            padding: 0.5rem 0;
+            line-height: 1.5;
         }
 
         .meta-list li i {
             flex-shrink: 0;
             color: var(--color-primary);
-            font-size: 1.125rem;
-            margin-top: 0.25rem;
-            width: 24px;
-            text-align: center;
-        }
-
-        .meta-list li::before {
-            content: "";
-            position: absolute;
-            left: 0;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 6px;
-            height: 6px;
-            border-radius: 50%;
-            background: var(--color-primary);
+            font-size: 0.75rem;
+            margin-top: 0.35rem;
         }
 
         /* ============================================================
            POLICY
            ============================================================ */
         .policy-card {
-            background: var(--color-surface);
-            border-radius: var(--radius-2xl);
-            border: 1px solid var(--color-border);
-            padding: 2.5rem;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .policy-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 4px;
-            height: 100%;
-            background: var(--color-primary);
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-
-        .policy-card:hover::before {
-            opacity: 1;
+            background: var(--purple-50);
+            border: 1px solid var(--purple-200);
+            border-radius: var(--radius-xl);
+            padding: 2rem;
         }
 
         .policy-list {
             display: flex;
             flex-direction: column;
-            gap: 1.25rem;
+            gap: 0.75rem;
         }
 
         .policy-list li {
             display: flex;
-            gap: 1rem;
-            font-size: 1rem;
-            color: var(--color-text-muted);
-            line-height: 1.8;
-            padding: 0.5rem 0;
+            gap: 0.75rem;
+            font-size: 0.9rem;
+            color: var(--purple-800);
+            line-height: 1.6;
         }
 
         .policy-list li i {
             flex-shrink: 0;
             color: var(--color-primary);
-            font-size: 1.125rem;
-            margin-top: 0.25rem;
+            font-size: 0.8rem;
+            margin-top: 0.35rem;
         }
 
         /* ============================================================
-   FINAL CTA
-   ============================================================ */
-.final-cta {
-    background: var(--color-accent);
-    text-align: center;
-    position: relative;
-    overflow: hidden;
-}
+           FOOTER
+           ============================================================ */
+        .footer {
+            background: var(--color-bg-dark);
+            color: var(--slate-400);
+            padding: 4rem 0 2rem;
+        }
 
-.final-cta::before {
-    content: '';
-    position: absolute;
-    top: -40%;
-    left: 50%;
-    width: 600px;
-    height: 600px;
-    transform: translateX(-50%);
-    background: radial-gradient(circle, rgba(255, 255, 255, 0.06), transparent 70%);
-    pointer-events: none;
-}
+        .footer__grid {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr 1fr;
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
 
-.final-cta__inner {
-    max-width: 640px;
-    margin: 0 auto;
-    position: relative;
-}
+        .footer__brand {
+            font-family: var(--font-heading);
+            font-size: 1.25rem;
+            font-weight: 800;
+            color: var(--color-text-inverse);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 0.75rem;
+        }
 
-.final-cta__label {
-    color: var(--purple-300);
-}
+        .footer__brand i {
+            color: var(--color-primary-light);
+        }
 
-.final-cta__title {
-    color: #ffffff;
-}
+        .footer__desc {
+            font-size: 0.9rem;
+            line-height: 1.7;
+            margin-bottom: 1.25rem;
+        }
 
-.final-cta__desc {
-    color: #ffffff;
-    margin-bottom: 1.25rem;
-    font-size: 1.25rem;
-    line-height: 1.6;
-}
+        .footer__heading {
+            font-family: var(--font-heading);
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: var(--color-text-inverse);
+            margin-bottom: 1rem;
+        }
 
-/* seats-left badge — real info, not decoration */
-.final-cta__badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    padding: 0.5rem 1rem;
-    border-radius: var(--radius-full);
-    background: rgba(255, 255, 255, 0.1);
-    border: 1px solid rgba(255, 255, 255, 0.18);
-    color: #ffffff;
-    font-size: 0.8125rem;
-    font-weight: 600;
-    margin-bottom: 1.75rem;
-}
+        .footer__links {
+            display: flex;
+            flex-direction: column;
+            gap: 0.6rem;
+        }
 
-.final-cta__badge-dot {
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    background: #4ade80;
-    box-shadow: 0 0 0 0 rgba(74, 222, 128, 0.6);
-    animation: pulse-dot 1.8s infinite;
-}
+        .footer__link {
+            font-size: 0.875rem;
+            color: var(--slate-400);
+            transition: color var(--duration-fast);
+        }
 
-@keyframes pulse-dot {
-    0%   { box-shadow: 0 0 0 0 rgba(74, 222, 128, 0.5); }
-    70%  { box-shadow: 0 0 0 8px rgba(74, 222, 128, 0); }
-    100% { box-shadow: 0 0 0 0 rgba(74, 222, 128, 0); }
-}
+        .footer__link:hover {
+            color: var(--color-primary-light);
+        }
 
-.final-cta__actions {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 0.75rem;
-}
+        .footer__bottom {
+            border-top: 1px solid rgba(255,255,255,0.08);
+            padding-top: 1.5rem;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1rem;
+            font-size: 0.8rem;
+        }
 
-@media (prefers-reduced-motion: reduce) {
-    .final-cta__badge-dot { animation: none; }
-}
+        .footer__social {
+            display: flex;
+            gap: 0.75rem;
+        }
 
+        .footer__social a {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.06);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--slate-400);
+            font-size: 0.85rem;
+            transition: all var(--duration-fast);
+        }
 
-/* ============================================================
-   FOOTER
-   ============================================================ */
-.footer {
-    background: var(--color-accent);
-    color: var(--slate-300);
-    padding: 5rem 0 3rem;
-    position: relative;
-    overflow: hidden;
-    border-top: 1px solid var(--color-border);
-}
-
-.footer::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 4px;
-    background: linear-gradient(to right, var(--color-primary), var(--color-primary-dark));
-}
-
-.footer__grid {
-    display: grid;
-    grid-template-columns: 1.5fr 1fr 1fr;
-    gap: 3rem;
-    margin-bottom: 3rem;
-}
-
-.footer__brand {
-    display: flex;
-    align-items: center;
-    gap: 0.625rem;
-    font-family: var(--font-heading);
-    font-size: 1.5rem;
-    font-weight: 800;
-    color: #ffffff;
-    letter-spacing: -0.02em;
-    margin-bottom: 1rem;
-}
-
-.footer__brand i {
-    font-size: 1.5rem;
-    color: var(--color-primary);
-}
-
-.footer__desc {
-    font-size: 1rem;
-    line-height: 1.75;
-    color: var(--slate-300);
-    max-width: 380px;
-    margin-bottom: 1.75rem;
-}
-
-.footer__heading {
-    font-family: var(--font-heading);
-    font-size: 1.125rem;
-    font-weight: 700;
-    color: #ffffff;
-    margin-bottom: 1.5rem;
-    position: relative;
-    padding-left: 0.875rem;
-}
-
-.footer__heading::before {
-    content: '';
-    position: absolute;
-    left: 0;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 4px;
-    height: 18px;
-    background: var(--color-primary);
-    border-radius: 2px;
-}
-
-.footer__links {
-    display: flex;
-    flex-direction: column;
-    gap: 0.875rem;
-}
-
-.footer__link {
-    display: flex;
-    align-items: center;
-    gap: 0.625rem;
-    font-size: 0.9375rem;
-    color: var(--slate-300);
-    transition: color var(--duration-normal) var(--ease-out),
-                transform var(--duration-normal) var(--ease-out);
-    width: fit-content;
-}
-
-.footer__link:hover {
-    color: var(--color-primary);
-    transform: translateX(4px);
-}
-
-.footer__link i {
-    font-size: 1rem;
-    width: 18px;
-    text-align: center;
-}
-
-.footer__social {
-    display: flex;
-    gap: 0.75rem;
-}
-
-.footer__social a {
-    width: 42px;
-    height: 42px;
-    border-radius: 50%;
-    background: rgba(255, 255, 255, 0.06);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: var(--slate-300);
-    font-size: 1.0625rem;
-    transition: all 0.35s ease;
-    position: relative;
-    overflow: hidden;
-}
-
-.footer__social a::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-    transition: left 0.5s;
-}
-
-.footer__social a:hover::before {
-    left: 100%;
-}
-
-.footer__social a:hover {
-    background: var(--color-primary);
-    color: #ffffff;
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(107, 33, 168, 0.3);
-}
-
-.footer__bottom {
-    border-top: 1px solid rgba(255, 255, 255, 0.08);
-    padding-top: 2rem;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    align-items: center;
-    gap: 1.25rem;
-    font-size: 0.875rem;
-    color: var(--slate-300);
-}
-
-
-
+        .footer__social a:hover {
+            background: var(--color-primary);
+            color: var(--color-text-inverse);
+        }
 
         /* ============================================================
            SCROLL TO TOP
            ============================================================ */
         .scroll-top {
             position: fixed;
-            bottom: 2.5rem;
-            right: 2.5rem;
-            width: 56px;
-            height: 56px;
+            bottom: 2rem;
+            right: 2rem;
+            width: 44px;
+            height: 44px;
             background: var(--color-primary);
-            color: #ffffff;
+            color: var(--color-text-inverse);
             border: none;
             border-radius: 50%;
-            font-size: 1.25rem;
+            font-size: 1rem;
             cursor: pointer;
-            box-shadow: var(--shadow-lg);
+            box-shadow: var(--shadow-md);
             display: flex;
             align-items: center;
             justify-content: center;
             opacity: 0;
             visibility: hidden;
-            transform: translateY(10px) scale(0.8);
+            transform: translateY(10px);
             transition: all var(--duration-normal) var(--ease-out);
-            z-index: 100;
+            z-index: 90;
         }
 
         .scroll-top.visible {
-            opacity: 0.9;
+            opacity: 1;
             visibility: visible;
-            transform: translateY(0) scale(1);
+            transform: translateY(0);
         }
 
         .scroll-top:hover {
             background: var(--color-primary-dark);
-            transform: translateY(-2px) scale(1.05);
-            box-shadow: 0 8px 20px rgba(107, 33, 168, 0.4);
+            transform: translateY(-2px);
         }
 
         /* ============================================================
@@ -1839,13 +1155,13 @@ margin-top: 2rem;
         @media (prefers-reduced-motion: no-preference) {
             .fade-up {
                 opacity: 0;
-                transform: translateY(40px) scale(0.95);
-                transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+                transform: translateY(24px);
+                transition: opacity 0.6s var(--ease-out), transform 0.6s var(--ease-out);
             }
 
             .fade-up.visible {
                 opacity: 1;
-                transform: translateY(0) scale(1);
+                transform: translateY(0);
             }
         }
 
@@ -1863,7 +1179,6 @@ margin-top: 2rem;
             .hero__inner {
                 grid-template-columns: 1fr;
                 text-align: center;
-                padding: 3rem 0;
             }
 
             .hero__desc {
@@ -1876,26 +1191,10 @@ margin-top: 2rem;
 
             .overview__grid {
                 grid-template-columns: 1fr;
-                gap: 2.5rem;
             }
 
             .footer__grid {
-                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-                gap: 2.5rem;
-            }
-
-            .data-table {
-                font-size: 0.95rem;
-                min-width: 100%;
-            }
-
-            .data-table thead th {
-                padding: 1.25rem 1.5rem;
-                font-size: 0.95rem;
-            }
-
-            .data-table tbody td {
-                padding: 1rem 1.5rem;
+                grid-template-columns: 1fr 1fr;
             }
         }
 
@@ -1914,13 +1213,11 @@ margin-top: 2rem;
                 top: 56px;
                 left: 0;
                 right: 0;
-                background: var(--color-surface);
+                background: var(--color-accent);
                 flex-direction: column;
-                padding: 1.5rem;
-                gap: 0.5rem;
-                box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
-                border-top: 1px solid var(--color-border);
-                z-index: 1000;
+                padding: 1rem;
+                gap: 0.25rem;
+                box-shadow: 0 8px 24px rgba(0,0,0,0.15);
             }
 
             .nav__links.open {
@@ -1929,13 +1226,8 @@ margin-top: 2rem;
 
             .nav__link {
                 width: 100%;
-                padding: 1rem 1.5rem;
+                padding: 0.75rem 1rem;
                 border-radius: var(--radius-md);
-                border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-            }
-
-            .nav__link:last-child {
-                border-bottom: none;
             }
 
             .nav__toggle {
@@ -1944,26 +1236,20 @@ margin-top: 2rem;
 
             .hero {
                 min-height: 70vh;
-                padding: 0;
-            }
-
-            .hero__inner {
-                padding: 2.5rem 0;
             }
 
             .hero__stats {
                 grid-template-columns: repeat(2, 1fr);
-                gap: 1.5rem;
-                margin-top: 2rem;
+                gap: 1rem;
             }
 
             .hero-stat {
-                padding: 1.25rem;
+                padding: 1rem;
             }
 
             .progress-track {
                 grid-template-columns: repeat(2, 1fr);
-                gap: 2rem;
+                gap: 1.5rem;
             }
 
             .progress-step::after {
@@ -1975,98 +1261,62 @@ margin-top: 2rem;
                 gap: 2rem;
             }
 
-            .data-table {
-                font-size: 0.9rem;
-                min-width: 100%;
-            }
-
-            .data-table thead th {
-                padding: 1rem 1.25rem;
-                font-size: 0.9rem;
-            }
-
-            .data-table tbody td {
-                padding: 0.875rem 1.25rem;
-            }
-
-            .instructor-card__contacts {
+            .footer__bottom {
                 flex-direction: column;
-                align-items: center;
+                text-align: center;
+            }
+
+            .data-table {
+                font-size: 0.8rem;
+            }
+
+            .data-table thead th,
+            .data-table tbody td {
+                padding: 0.65rem 0.75rem;
             }
         }
 
         @media (max-width: 480px) {
             .hero__stats {
                 grid-template-columns: 1fr 1fr;
-                gap: 1rem;
             }
 
             .hero-stat__value {
-                font-size: 1.5rem;
+                font-size: 1.25rem;
             }
 
             .btn {
-                padding: 0.75rem 1.5rem;
-                font-size: 0.95rem;
-            }
-
-            .card {
-                padding: 2rem;
-            }
-
-            .data-table {
+                padding: 0.65rem 1.25rem;
                 font-size: 0.85rem;
             }
 
-            .data-table thead th {
-                padding: 0.75rem 1rem;
-            }
-
-            .data-table tbody td {
-                padding: 0.75rem 1rem;
-            }
-
-            .footer__brand {
-                flex-direction: column;
-                text-align: center;
-            }
-
-            .footer__brand span {
-                font-size: 1.5rem;
-            }
-
-            .footer__social {
-                justify-content: center;
-                margin-top: 1.5rem;
+            .card {
+                padding: 1.5rem;
             }
         }
     </style>
 </head>
 <body>
 
-    <!-- ══════════════════════════════════════════════════════════════
+    <!-- Skip to content for accessibility -->
+    <a href="#main" class="sr-only" style="position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden;">Skip to main content</a>
+
+    <!-- ═══════════════════════════════════════════════════════════
          NAVIGATION
-         ════════════════════════════════════════════════════════════ -->
+         ═══════════════════════════════════════════════════════════ -->
     <nav class="nav" role="navigation" aria-label="Main navigation">
         <div class="container">
-        <div class="nav-inner">
-            <div class="nav-left">
-                <a href="index.html" class="nav-back">
-                    <i class="fas fa-chevron-left"></i> All Courses
+            <div class="nav__inner">
+                <a href="index.html" class="nav__brand" aria-label="GRID ACADEMY Home">
+                    <img src="Sm1.svg" alt="Grid Academy Logo" class="nav-logo">
+                    GRID ACADEMY
                 </a>
-				
-    <a href="index.html" class="nav-brand">
-      <img src="Sm1.svg" alt="Grid Academy Logo" class="nav-logo">
-      GRID ACADEMY
-    </a>
 
-
-				
                 <div class="nav__links" id="navLinks">
                     <a href="#overview" class="nav__link">Overview</a>
                     <a href="#curriculum" class="nav__link">Curriculum</a>
                     <a href="#schedule" class="nav__link">Schedule</a>
-                    <a href="#instructor" class="nav__link">Instructor</a>
+                    <a href="#instructor" class="nav__link">Instructors</a>
                 </div>
 
                 <div style="display:flex;align-items:center;gap:0.75rem;">
@@ -2083,9 +1333,9 @@ margin-top: 2rem;
 
     <main id="main">
 
-        <!-- ═══════════════════════════════════════════════════════════
+        <!-- ═══════════════════════════════════════════════════════
              HERO
-             ═════════════════════════════════════════════════════════ -->
+             ═══════════════════════════════════════════════════════ -->
         <section class="hero">
             <div class="hero__grid" aria-hidden="true"></div>
             <div class="container">
@@ -2093,21 +1343,21 @@ margin-top: 2rem;
                     <div class="hero__copy fade-up">
                         <div class="hero__badge">
                             <i class="fas fa-bolt" aria-hidden="true"></i>
-                            Power System Studies · ETAP Training
+                            Fall 2026 · Live Online
                         </div>
                         <h1 class="hero__title">
-                            Power System Studies<br />
-                            Using <span>ETAP</span>
+                            Power System <span>Studies</span> Using ETAP
                         </h1>
                         <div class="hero__instructor">
                             <i class="fas fa-chalkboard-user" aria-hidden="true"></i>
-                            Eng. Mohamed Nady &amp; Eng. Ziad Samy
+                            Eng. Mohamed Nady &amp; Eng. Ziad Samy — Power System Studies Experts
                         </div>
                         <p class="hero__desc">
-                            Master power system analysis including load flow, short circuit, protection coordination, and more using ETAP software. 8 live online sessions with hands-on practice.
+                            Master load flow, short circuit, protection coordination, motor starting, and harmonics analysis using ETAP. 8 hands-on live sessions — from fundamentals to a complete professional project.
                         </p>
                         <div class="hero__actions">
-                            <a href="https://docs.google.com/forms/d/e/1FAIpQLSdKy8u6JsBfLq4gNz6nvGTaH5G57xsdJnUxnCHkXyxNaQFnrQ/viewform?usp=send_form" class="btn btn--primary" target="_blank" rel="noopener noreferrer">
+                            <a href="https://docs.google.com/forms/d/e/1FAIpQLSdKy8u6JsBfLq4gNz6nvGTaH5G57xsdJnUxnCHkXyxNaQFnrQ/viewform?usp=send_form"
+                               class="btn btn--primary" target="_blank" rel="noopener noreferrer">
                                 <i class="fas fa-clipboard-check" aria-hidden="true"></i> Register Free
                             </a>
                             <a href="#curriculum" class="btn btn--outline">
@@ -2123,91 +1373,116 @@ margin-top: 2rem;
                         </div>
                         <div class="hero-stat">
                             <div class="hero-stat__icon"><i class="fas fa-clock" aria-hidden="true"></i></div>
-                            <div class="hero-stat__value">2.5 hrs</div>
+                            <div class="hero-stat__value">2.5h</div>
                             <div class="hero-stat__label">Per Session</div>
                         </div>
                         <div class="hero-stat">
                             <div class="hero-stat__icon"><i class="fas fa-laptop-code" aria-hidden="true"></i></div>
-                            <div class="hero-stat__value">100%</div>
-                            <div class="hero-stat__label">Online</div>
+                            <div class="hero-stat__value">ETAP</div>
+                            <div class="hero-stat__label">Industry Software</div>
                         </div>
                         <div class="hero-stat">
-                            <div class="hero-stat__icon"><i class="fas fa-certificate" aria-hidden="true"></i></div>
-                            <div class="hero-stat__value">Certificate</div>
-                            <div class="hero-stat__label">Of Completion</div>
+                            <div class="hero-stat__icon"><i class="fas fa-users" aria-hidden="true"></i></div>
+                            <div class="hero-stat__value">Live</div>
+                            <div class="hero-stat__label">Interactive Sessions</div>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- ═══════════════════════════════════════════════════════════
+        <!-- ═══════════════════════════════════════════════════════
      OVERVIEW
-     ═══════════════════════════════════════════════════════════ -->
+     ═══════════════════════════════════════════════════════ -->
 <section id="overview" class="section">
     <div class="container">
         <div class="section-header fade-up">
             <div class="section-label">Course Overview</div>
             <h2 class="section-title">Master Power System Analysis with ETAP</h2>
-            <p class="section-subtitle">A comprehensive 6-session live online course covering essential power system studies using industry-standard ETAP software. Learn from industry best practices.</p>
+            <p class="section-subtitle">
+                A comprehensive 8-session professional program covering complete power system studies —
+                from fundamentals to a real engineering project, using industry-standard ETAP software.
+            </p>
         </div>
 
         <div class="overview__grid fade-up">
-
-            <div class="card card--highlight">
+            <div class="card card--highlight card--full">
                 <div class="overview__text">
-                    <p>This intensive course provides hands-on training in <strong>power system analysis</strong> using <strong>ETAP</strong>, the industry-standard software for electrical power systems. You'll learn to perform load flow, short circuit, protection coordination, motor starting, and harmonic analysis studies.</p>
-                    <p>Starting <strong>15 August 2026</strong>, you'll gain practical skills directly applicable to real-world power system engineering. Each 2-3 hour session includes live demonstrations, guided practice, and Q&amp;A. Participants receive practice materials.</p>
+                    <p>
+                        This intensive program delivers step-by-step guidance through
+                        <strong>power system fundamentals</strong>,
+                        <strong>load flow analysis</strong>,
+                        <strong>short circuit studies</strong>,
+                        <strong>protection coordination</strong>,
+                        <strong>motor starting analysis</strong>, and
+                        <strong>harmonics &amp; power quality</strong>,
+                        closing with an <strong>integrated engineering project</strong>.
+                        Live ETAP demonstrations and guided practice are included in every session.
+                    </p>
+
+                    <p>
+                        Starting <strong>14 August 2026</strong>, you'll build industry-ready skills
+                        directly applicable to real-world power system engineering. Each session
+                        includes live ETAP demonstrations, hands-on practice, and Q&amp;A.
+                        Participants receive practice materials and access to ETAP Student Edition
+                        for the course duration.
+                    </p>
+
+                    <div class="section-label" style="margin:2.5rem 0 1.25rem;">
+                        Learning Path
+                    </div>
+
+                    <div class="progress-track">
+                        <div class="progress-step">
+                            <div class="progress-step__circle">1</div>
+                            <div class="progress-step__label">Fundamentals &amp; ETAP Intro</div>
+                        </div>
+
+                        <div class="progress-step">
+                            <div class="progress-step__circle">2</div>
+                            <div class="progress-step__label">Load Flow &amp; Scenarios</div>
+                        </div>
+
+                        <div class="progress-step">
+                            <div class="progress-step__circle">3</div>
+                            <div class="progress-step__label">Short Circuit &amp; Automation</div>
+                        </div>
+
+                        <div class="progress-step">
+                            <div class="progress-step__circle">4</div>
+                            <div class="progress-step__label">Protection &amp; Coordination</div>
+                        </div>
+
+                        <div class="progress-step">
+                            <div class="progress-step__circle">5</div>
+                            <div class="progress-step__label">Motor Starting</div>
+                        </div>
+
+                        <div class="progress-step">
+                            <div class="progress-step__circle">6</div>
+                            <div class="progress-step__label">Harmonics &amp; Reporting</div>
+                        </div>
+                    </div>
                 </div>
             </div>
-
-            <div class="card">
-                <div class="section-label overview__side-label">What You'll Learn</div>
-                <div class="progress-track">
-                    <div class="progress-step">
-                        <div class="progress-step__circle">1</div>
-                        <div class="progress-step__label">Power System<br />Fundamentals</div>
-                    </div>
-                    <div class="progress-step">
-                        <div class="progress-step__circle">2</div>
-                        <div class="progress-step__label">Load Flow<br />Analysis</div>
-                    </div>
-                    <div class="progress-step">
-                        <div class="progress-step__circle">3</div>
-                        <div class="progress-step__label">Short Circuit<br />Analysis</div>
-                    </div>
-                    <div class="progress-step">
-                        <div class="progress-step__circle">4</div>
-                        <div class="progress-step__label">Protection<br />Coordination</div>
-                    </div>
-                    <div class="progress-step">
-                        <div class="progress-step__circle">5</div>
-                        <div class="progress-step__label">Motor Starting<br />Analysis</div>
-                    </div>
-                    <div class="progress-step">
-                        <div class="progress-step__circle">6</div>
-                        <div class="progress-step__label">Harmonics &amp;<br />Reporting</div>
-                    </div>
-                </div>
-            </div>
-
         </div>
     </div>
 </section>
-        <!-- ═══════════════════════════════════════════════════════════
+
+        <!-- ═══════════════════════════════════════════════════════
              OBJECTIVES
-             ═════════════════════════════════════════════════════════ -->
+             ═══════════════════════════════════════════════════════ -->
         <section id="objectives" class="section section--alt">
             <div class="container">
                 <div class="section-header fade-up">
                     <div class="section-label">Learning Outcomes</div>
                     <h2 class="section-title">What You'll Be Able To Do</h2>
-                    <p class="section-subtitle">By completing this course, you will gain practical skills in power system analysis using ETAP software.</p>
+                    <p class="section-subtitle">By the end of this course, participants will have mastered these core competencies.</p>
                 </div>
                 <div class="objectives__grid fade-up">
                     <div class="objective-item">
                         <div class="objective-item__icon"><i class="fas fa-sitemap" aria-hidden="true"></i></div>
-                        <div class="objective-item__text">Understand power system components and single-line diagram creation in ETAP.</div>
+                        <div class="objective-item__text">Understand power system components and build single-line diagrams in ETAP.</div>
                     </div>
                     <div class="objective-item">
                         <div class="objective-item__icon"><i class="fas fa-calculator" aria-hidden="true"></i></div>
@@ -2219,7 +1494,7 @@ margin-top: 2rem;
                     </div>
                     <div class="objective-item">
                         <div class="objective-item__icon"><i class="fas fa-shield-alt" aria-hidden="true"></i></div>
-                        <div class="objective-item__text">Design and coordinate protection systems using ETAP's protective device coordination tools.</div>
+                        <div class="objective-item__text">Design and coordinate protection systems using ETAP's device coordination tools.</div>
                     </div>
                     <div class="objective-item">
                         <div class="objective-item__icon"><i class="fas fa-cogs" aria-hidden="true"></i></div>
@@ -2233,742 +1508,252 @@ margin-top: 2rem;
             </div>
         </section>
 
-        <!-- ═══════════════════════════════════════════════════════════
+        <!-- ═══════════════════════════════════════════════════════
              CURRICULUM
-             ═════════════════════════════════════════════════════════ -->
+             ═══════════════════════════════════════════════════════ -->
         <section id="curriculum" class="section">
             <div class="container">
                 <div class="section-header fade-up">
                     <div class="section-label">Course Curriculum</div>
                     <h2 class="section-title">8 Immersive Sessions</h2>
-                    <p class="section-subtitle">Each session combines theory, live ETAP demonstrations, and hands-on practice — fully aligned with industry practices.</p>
+                    <p class="section-subtitle">Each session combines theory, live ETAP demonstrations, and hands-on practice — fully aligned with IEEE/IEC industry standards.</p>
                 </div>
                 <div class="curriculum__grid fade-up">
-
-                    <!-- Session 1 -->
+                    <div class="session-card">
+                        <div class="session-card__header">
+                            <div class="session-card__icon"><i class="fas fa-sitemap" aria-hidden="true"></i></div>
+                            <div>
+                                <div class="session-card__title">01. Power System Fundamentals &amp; ETAP Introduction</div>
+                                <div class="session-card__desc">Power system structure, generation-to-load hierarchy, and the ETAP interface. Single-line diagram creation, manual vs. auto-build modeling, and building your first ETAP project from a real industrial network sketch.</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="session-card">
+                        <div class="session-card__header">
+                            <div class="session-card__icon"><i class="fas fa-chart-line" aria-hidden="true"></i></div>
+                            <div>
+                                <div class="session-card__title">02. Load Flow Analysis &amp; Scenario Wizard</div>
+                                <div class="session-card__desc">Steady-state load flow theory, bus types, and load modeling techniques. Configure ETAP's Scenario Wizard to compare normal, peak-load, and outage conditions, then interpret voltage profiles, loading, and losses.</div>
+                            </div>
+                        </div>
+                    </div>
                     <div class="session-card">
                         <div class="session-card__header">
                             <div class="session-card__icon"><i class="fas fa-bolt" aria-hidden="true"></i></div>
                             <div>
-                                <div class="session-card__title">Session 1: Power System Fundamentals &amp; ETAP Introduction</div>
-                                <div class="session-card__meta">
-                                    <span>Duration: 2-3 hrs</span>
-                                    <span>Level: Beginner</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="session-card__content">
-                            <div class="session-card__section">
-                                
-				<div class="session-card__section-title"><i class="fas fa-list-check" aria-hidden="true"></i> Objectives</div>
-                                <div class="session-card__section-content">
-                                    <ul>
-                                        <li>Understand power system structure and components (generation, transmission, distribution, loads)</li>
-                                        <li>Get familiar with ETAP interface, navigation, and workflow</li>
-                                        <li>Learn the difference between manual and auto-build modeling approaches</li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="session-card__section">
-                                <div class="session-card__section-title"><i class="fas fa-info-circle" aria-hidden="true"></i> Topics</div>
-                                <div class="session-card__section-content">
-                                    <ul>
-                                        <li>Power system overview: generation → transmission → distribution → load</li>
-                                        <li>Key components: transformers, generators, loads, circuit breakers, disconnect switches</li>
-                                        <li>ETAP software capabilities: Load Flow, Short Circuit, Motor Starting, Protection Coordination, Arc Flash, Harmonics, etc.</li>
-                                        <li>ETAP user interface: navigation, toolbars, workspace setup</li>
-                                        <li>Modeling philosophy: manual vs. auto-build, single-line diagram (SLD) creation best practices</li>
-                                        <li>ETAP project creation, saving, and management basics</li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="session-card__section">
-                                <div class="session-card__section-title"><i class="fas fa-laptop-code" aria-hidden="true"></i> Practice</div>
-                                <div class="session-card__section-content">
-                                    <ul>
-                                        <li>Create a new ETAP project</li>
-                                        <li>Build a simple single-line diagram with source, transformer, and load</li>
-                                        <li>Navigate the ETAP workspace and explore toolbars</li>
-                                        <li>Practice manual and auto-build techniques</li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="session-card__section">
-                                <div class="session-card__section-title"><i class="fas fa-clipboard-list" aria-hidden="true"></i> Assignment</div>
-                                <div class="session-card__section-content">
-                                    <ul>
-                                        <li>Recreate a small industrial network SLD in ETAP (provided sketch)</li>
-                                        <li>Include at least: 2 buses, 1 transformer, 1 generator, 2 loads, 1 circuit breaker</li>
-                                        <li>Submit the ETAP project file for review</li>
-                                    </ul>
-                                </div>
+                                <div class="session-card__title">03. Short Circuit Analysis &amp; Study Automation</div>
+                                <div class="session-card__desc">Fault current calculation using IEC/ANSI methods across 3-phase, line-line, and line-ground faults. Automate repetitive studies with ETAP's Scenario &amp; Study Wizard and validate equipment withstand ratings.</div>
                             </div>
                         </div>
                     </div>
-
-                    <!-- Session 2 -->
-                    <div class="session-card">
-                        <div class="session-card__header">
-                            <div class="session-card__icon"><i class="fas fa-exchange-alt" aria-hidden="true"></i></div>
-                            <div>
-                                <div class="session-card__title">Session 2: Load Flow Analysis &amp; Scenario Wizard</div>
-                                <div class="session-card__meta">
-                                    <span>Duration: 2-3 hrs</span>
-                                    <span>Level: Beginner</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="session-card__content">
-                            <div class="session-card__section">
-                                <div class="session-card__section-title"><i class="fas fa-list-check" aria-hidden="true"></i> Objectives</div>
-                                <div class="session-card__section-content">
-                                    <ul>
-                                        <li>Understand steady-state system behavior and load flow fundamentals</li>
-                                        <li>Learn to configure and run load flow studies in ETAP</li>
-                                        <li>Use ETAP's Scenario Wizard to manage different operating conditions</li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="session-card__section">
-                                <div class="session-card__section-title"><i class="fas fa-info-circle" aria-hidden="true"></i> Topics</div>
-                                <div class="session-card__section-content">
-                                    <ul>
-                                        <li>Load flow fundamentals: purpose, equations, bus types (Slack, PQ, PV)</li>
-                                        <li>Load modeling: constant impedance, constant current, constant power, composite loads</li>
-                                        <li>Load flow objectives: voltage profile analysis, % loading, losses calculation</li>
-                                        <li>ETAP Load Flow setup: study case creation, loading % adjustment, generation shifting</li>
-                                        <li>Scenario Wizard: creating configurations, study modes, cases; managing normal/emergency operations</li>
-                                        <li>Interpreting load flow results: voltage deviations, overloads, losses</li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="session-card__section">
-                                <div class="session-card__section-title"><i class="fas fa-laptop-code" aria-hidden="true"></i> Practice</div>
-                                <div class="session-card__section-content">
-                                    <ul>
-                                        <li>Set up and run a load flow study on a sample system</li>
-                                        <li>Analyze voltage profiles and identify under/over-voltage buses</li>
-                                        <li>Check % loading of branches and identify overloaded elements</li>
-                                        <li>Calculate total system losses</li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="session-card__section">
-                                <div class="session-card__section-title"><i class="fas fa-clipboard-list" aria-hidden="true"></i> Assignment</div>
-                                <div class="session-card__section-content">
-                                    <ul>
-                                        <li>Create multiple scenarios (normal, peak load, generator outage) for the same system</li>
-                                        <li>Run load flow for each scenario and compare results</li>
-                                        <li>Document findings: worst-case voltage drops, overloads</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Session 3 -->
-                    <div class="session-card">
-                        <div class="session-card__header">
-                            <div class="session-card__icon"><i class="fas fa-bolt" aria-hidden="true"></i></div>
-                            <div>
-                                <div class="session-card__title">Session 3: Short Circuit Analysis &amp; Study Automation</div>
-                                <div class="session-card__meta">
-                                    <span>Duration: 2-3 hrs</span>
-                                    <span>Level: Beginner</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="session-card__content">
-                            <div class="session-card__section">
-                                <div class="session-card__section-title"><i class="fas fa-list-check" aria-hidden="true"></i> Objectives</div>
-                                <div class="session-card__section-content">
-                                    <ul>
-                                        <li>Calculate fault currents and evaluate equipment withstand capabilities</li>
-                                        <li>Automate studies using ETAP's Scenario &amp; Study Wizard</li>
-                                        <li>Perform minimum and maximum short circuit calculations</li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="session-card__section">
-                                <div class="session-card__section-title"><i class="fas fa-info-circle" aria-hidden="true"></i> Topics</div>
-                                <div class="session-card__section-content">
-                                    <ul>
-                                        <li>Short circuit fundamentals: types of faults (3L, LL, LG, LLG), current symmetrical components</li>
-                                        <li>IEC and ANSI short circuit calculation methods</li>
-                                        <li>Key outputs: initial symmetrical current (Ik"), peak current (ip), breaking current (ib), etc.</li>
-                                        <li>ETAP Short Circuit module: study case setup, fault placement, calculation options</li>
-                                        <li>Equipment withstand validation: comparing calculated currents vs. equipment ratings</li>
-                                        <li>Scenario &amp; Study Wizard: creating scenarios, grouping, executing study macros</li>
-                                        <li>Using shortcuts and favorites for repetitive studies</li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="session-card__section">
-                                <div class="session-card__section-title"><i class="fas fa-laptop-code" aria-hidden="true"></i> Practice</div>
-                                <div class="session-card__section-content">
-                                    <ul>
-                                        <li>Perform minimum and maximum short circuit calculations</li>
-                                        <li>Check circuit breaker breaking capacity against fault currents</li>
-                                        <li>Verify bus bar short circuit withstand ratings</li>
-                                        <li>Experiment with different fault types and locations</li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="session-card__section">
-                                <div class="session-card__section-title"><i class="fas fa-clipboard-list" aria-hidden="true"></i> Assignment</div>
-                                <div class="session-card__section-content">
-                                    <ul>
-                                        <li>Perform a complete short circuit study (min/max) on the assigned system</li>
-                                        <li>Document: maximum fault current at each bus, equipment adequacy</li>
-                                        <li>Recommend any necessary equipment upgrades based on results</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Session 4 -->
                     <div class="session-card">
                         <div class="session-card__header">
                             <div class="session-card__icon"><i class="fas fa-shield-alt" aria-hidden="true"></i></div>
                             <div>
-                                <div class="session-card__title">Session 4: Protection Fundamentals &amp; Device Coordination</div>
-                                <div class="session-card__meta">
-                                    <span>Duration: 2-3 hrs</span>
-                                    <span>Level: Intermediate</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="session-card__content">
-                            <div class="session-card__section">
-                                <div class="session-card__section-title"><i class="fas fa-list-check" aria-hidden="true"></i> Objectives</div>
-                                <div class="session-card__section-content">
-                                    <ul>
-                                        <li>Understand protection philosophy and the role of protective devices</li>
-                                        <li>Learn protection requirements: speed, selectivity, sensitivity, reliability</li>
-                                        <li>Study different relay types and their applications</li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="session-card__section">
-                                <div class="session-card__section-title"><i class="fas fa-info-circle" aria-hidden="true"></i> Topics</div>
-                                <div class="session-card__section-content">
-                                    <ul>
-                                        <li>Power system faults: types, impacts, and clearing times</li>
-                                        <li>Protection basics: relay definition, function, and importance in power systems</li>
-                                        <li>Protection requirements: speed (fast clearing), selectivity (isolating fault), sensitivity (detecting faults)</li>
-                                        <li>Relay types: electromechanical, static, digital/numerical relays</li>
-                                        <li>Transformer protection: Buchholz relay, overcurrent, differential protection</li>
-                                        <li>Feeder protection: overcurrent, distance relays</li>
-                                        <li>Motor protection: overload, locked rotor, under-voltage</li>
-                                        <li>Introduction to ETAP's protective device coordination module</li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="session-card__section">
-                                <div class="session-card__section-title"><i class="fas fa-laptop-code" aria-hidden="true"></i> Practice</div>
-                                <div class="session-card__section-content">
-                                    <ul>
-                                        <li>Explore ETAP's protective device coordination workspace</li>
-                                        <li>Review relay time-current curves (TCCs) in ETAP library</li>
-                                        <li>Practice basic coordination between upstream and downstream devices</li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="session-card__section">
-                                <div class="session-card__section-title"><i class="fas fa-clipboard-list" aria-hidden="true"></i> Assignment</div>
-                                <div class="session-card__section-content">
-                                    <ul>
-                                        <li>Select appropriate protective devices for a feeder circuit</li>
-                                        <li>Plot time-current curves and verify coordination</li>
-                                        <li>Ensure selective tripping for faults downstream</li>
-                                    </ul>
-                                </div>
+                                <div class="session-card__title">04. Protection Fundamentals &amp; Device Coordination</div>
+                                <div class="session-card__desc">Protection philosophy, relay types, and coordination requirements — speed, selectivity, and sensitivity. Transformer, feeder, and motor protection schemes, with hands-on time-current curve coordination in ETAP.</div>
                             </div>
                         </div>
                     </div>
-
-                    <!-- Session 5 -->
                     <div class="session-card">
                         <div class="session-card__header">
-                            <div class="session-card__icon"><i class="fa-cogs" aria-hidden="true"></i></div>
+                            <div class="session-card__icon"><i class="fas fa-cogs" aria-hidden="true"></i></div>
                             <div>
-                                <div class="session-card__title">Session 5: Motor Starting Analysis</div>
-                                <div class="session-card__meta">
-                                    <span>Duration: 2-3 hrs</span>
-                                    <span>Level: Intermediate</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="session-card__content">
-                            <div class="session-card__section">
-                                <div class="session-card__section-title"><i class="fas fa-list-check" aria-hidden="true"></i> Objectives</div>
-                                <div class="session-card__section-content">
-                                    <ul>
-                                        <li>Understand motor starting characteristics and their impact on power systems</li>
-                                        <li>Analyze voltage dips and acceleration performance using ETAP</li>
-                                        <li>Evaluate motor starting methods and their effects on system stability</li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="session-card__section">
-                                <div class="session-card__section-title"><i class="fas fa-info-circle" aria-hidden="true"></i> Topics</div>
-                                <div class="session-card__section-content">
-                                    <ul>
-                                        <li>Motor starting fundamentals: starting current, torque-speed curves, acceleration time</li>
-                                        <li>Effects of motor starting on voltage dip and system stability</li>
-                                        <li>Starting methods: DOL, star-delta, auto-transformer, soft starter, VFD</li>
-                                        <li>ETAP Motor Starting module: study case setup, motor model parameters</li>
-                                        <li>Dynamic motor acceleration analysis: voltage and current profiles during start</li>
-                                        <li>Evaluation of starting performance and compliance with IEEE 399 / IEC standards</li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="session-card__section">
-                                <div class="session-card__section-title"><i class="fas fa-laptop-code" aria-hidden="true"></i> Practice</div>
-                                <div class="session-card__section-content">
-                                    <ul>
-                                        <li>Set up and run a motor starting study on a sample system</li>
-                                        <li>Analyze voltage dip during motor start and compare with limits</li>
-                                        <li>Evaluate acceleration time and torque margins</li>
-                                        <li>Compare different starting methods and their impact</li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="session-card__section">
-                                <div class="session-card__section-title"><i class="fas fa-clipboard-list" aria-hidden="true"></i> Assignment</div>
-                                <div class="session-card__section-content">
-                                    <ul>
-                                        <li>Perform a motor starting study for a large induction motor</li>
-                                        <li>Assess voltage dip and recommend a suitable starting method</li>
-                                        <li>Document the analysis with ETAP reports</li>
-                                    </ul>
-                                </div>
+                                <div class="session-card__title">05. Motor Starting Analysis</div>
+                                <div class="session-card__desc">Motor starting characteristics, starting methods (DOL, star-delta, VFD), and their impact on system voltage and stability. Dynamic acceleration studies in ETAP with evaluation against IEEE 399 / IEC limits.</div>
                             </div>
                         </div>
                     </div>
-
-                    <!-- Session 6 -->
                     <div class="session-card">
                         <div class="session-card__header">
                             <div class="session-card__icon"><i class="fas fa-wave-square" aria-hidden="true"></i></div>
                             <div>
-                                <div class="session-card__title">Session 6: Harmonics Analysis &amp; Reporting</div>
-                                <div class="session-card__meta">
-                                    <span>Duration: 2-3 hrs</span>
-                                    <span>Level: Intermediate</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="session-card__content">
-                            <div class="session-card__section">
-                                <div class="session-card__section-title"><i class="fas fa-list-check" aria-hidden="true"></i> Objectives</div>
-                                <div class="session-card__section-content">
-                                    <ul>
-                                        <li>Understand harmonic sources and their effects on power quality</li>
-                                        <li>Perform harmonic analysis using ETAP's Harmonics module</li>
-                                        <li>Interpret harmonic distortion results and recommend mitigation measures</li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="session-card__section">
-                                <div class="session-card__section-title"><i class="fas fa-info-circle" aria-hidden="true"></i> Topics</div>
-                                <div class="session-card__section-content">
-                                    <ul>
-                                        <li>Harmonics fundamentals: sources, effects on equipment, and power quality issues</li>
-                                        <li>Harmonic distortion: individual harmonic distortion (IHD), total harmonic distortion (THD)</li>
-                                        <li>Harmonic standards: IEEE 519, IEC 61000 compliance</li>
-                                        <li>ETAP Harmonics module: modeling non-linear loads, harmonic sources</li>
-                                        <li>Frequency scan analysis and harmonic resonance</li>
-                                        <li>Filter design and mitigation techniques (passive and active filters)</li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="session-card__section">
-                                <div class="session-card__section-title"><i class="fas fa-laptop-code" aria-hidden="true"></i> Practice</div>
-                                <div class="session-card__section-content">
-                                    <ul>
-                                        <li>Set up and run a harmonic analysis study in ETAP</li>
-                                        <li>Perform frequency scan to identify resonance conditions</li>
-                                        <li>Calculate THD and assess compliance with IEEE 519</li>
-                                        <li>Design a simple passive filter for harmonic mitigation</li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="session-card__section">
-                                <div class="session-card__section-title"><i class="fas fa-clipboard-list" aria-hidden="true"></i> Assignment</div>
-                                <div class="session-card__section-content">
-                                    <ul>
-                                        <li>Perform a complete harmonic analysis on an industrial system with VFDs</li>
-                                        <li>Identify harmonic resonance and propose mitigation</li>
-                                        <li>Generate a professional ETAP report with findings and recommendations</li>
-                                    </ul>
-                                </div>
+                                <div class="session-card__title">06. Harmonics Analysis &amp; Reporting</div>
+                                <div class="session-card__desc">Harmonic sources, distortion metrics (THD/IHD), and IEEE 519 / IEC 61000 compliance. Frequency scans, resonance identification, and passive filter design for harmonic mitigation.</div>
                             </div>
                         </div>
                     </div>
-
-
-<!-- Session 7 -->
-<div class="session-card">
-    <div class="session-card__header">
-        <div class="session-card__icon">
-            <i class="fas fa-comments" aria-hidden="true"></i>
-        </div>
-        <div>
-            <div class="session-card__title">Session 7: Comprehensive Review, Q&amp;A &amp; Study Workshop</div>
-            <div class="session-card__meta">
-                <span>Duration: 2-3 hrs</span>
-                <span>Level: Intermediate</span>
-            </div>
-        </div>
-    </div>
-
-    <div class="session-card__content">
-
-        <div class="session-card__section">
-            <div class="session-card__section-title">
-                <i class="fas fa-list-check" aria-hidden="true"></i> Objectives
-            </div>
-            <div class="session-card__section-content">
-                <ul>
-                    <li>Reinforce the concepts covered throughout the course.</li>
-                    <li>Resolve technical questions and common ETAP challenges.</li>
-                    <li>Strengthen understanding through real-world engineering scenarios.</li>
-                </ul>
-            </div>
-        </div>
-
-        <div class="session-card__section">
-            <div class="session-card__section-title">
-                <i class="fas fa-info-circle" aria-hidden="true"></i> Topics
-            </div>
-            <div class="session-card__section-content">
-                <ul>
-                    <li>Comprehensive review of all previous study modules.</li>
-                    <li>Power system modeling best practices.</li>
-                    <li>Load Flow, Short Circuit, Protection Coordination, Motor Starting, and Harmonic Analysis recap.</li>
-                    <li>Common ETAP modeling mistakes and troubleshooting techniques.</li>
-                    <li>Engineering report interpretation and validation.</li>
-                    <li>Open Q&amp;A with real industrial case discussions.</li>
-                </ul>
-            </div>
-        </div>
-
-        <div class="session-card__section">
-            <div class="session-card__section-title">
-                <i class="fas fa-laptop-code" aria-hidden="true"></i> Practice
-            </div>
-            <div class="session-card__section-content">
-                <ul>
-                    <li>Solve instructor-selected engineering scenarios.</li>
-                    <li>Analyze and troubleshoot ETAP models.</li>
-                    <li>Review previous assignments and improve study results.</li>
-                    <li>Live troubleshooting session with participants.</li>
-                </ul>
-            </div>
-        </div>
-
-        <div class="session-card__section">
-            <div class="session-card__section-title">
-                <i class="fas fa-clipboard-list" aria-hidden="true"></i> Assignment
-            </div>
-            <div class="session-card__section-content">
-                <ul>
-                    <li>Revise previous assignments using instructor feedback.</li>
-                    <li>Prepare your complete ETAP project for the final presentation.</li>
-                </ul>
-            </div>
-        </div>
-
-    </div>
-</div>
-
-<!-- Session 8 -->
-<div class="session-card">
-    <div class="session-card__header">
-        <div class="session-card__icon">
-            <i class="fas fa-award" aria-hidden="true"></i>
-        </div>
-        <div>
-            <div class="session-card__title">Session 8: Final Project Presentation &amp; Professional Workflow</div>
-            <div class="session-card__meta">
-                <span>Duration: 2-3 hrs</span>
-                <span>Level: Advanced</span>
-            </div>
-        </div>
-    </div>
-
-    <div class="session-card__content">
-
-        <div class="session-card__section">
-            <div class="session-card__section-title">
-                <i class="fas fa-list-check" aria-hidden="true"></i> Objectives
-            </div>
-            <div class="session-card__section-content">
-                <ul>
-                    <li>Demonstrate mastery of ETAP through a complete engineering project.</li>
-                    <li>Learn how professional consultants present and validate their studies.</li>
-                    <li>Receive personalized technical feedback and recommendations.</li>
-                </ul>
-            </div>
-        </div>
-
-        <div class="session-card__section">
-            <div class="session-card__section-title">
-                <i class="fas fa-info-circle" aria-hidden="true"></i> Topics
-            </div>
-            <div class="session-card__section-content">
-                <ul>
-                    <li>Complete industrial project walkthrough.</li>
-                    <li>Engineering assumptions and study methodology.</li>
-                    <li>Reviewing and validating study results.</li>
-                    <li>Professional ETAP report generation.</li>
-                    <li>Engineering recommendations and optimization techniques.</li>
-                    <li>Career guidance and next learning roadmap.</li>
-                </ul>
-            </div>
-        </div>
-
-        <div class="session-card__section">
-            <div class="session-card__section-title">
-                <i class="fas fa-laptop-code" aria-hidden="true"></i> Practice
-            </div>
-            <div class="session-card__section-content">
-                <ul>
-                    <li>Present your final ETAP project.</li>
-                    <li>Discuss study assumptions and engineering decisions.</li>
-                    <li>Review project outputs with the instructor.</li>
-                    <li>Receive detailed technical feedback.</li>
-                </ul>
-            </div>
-        </div>
-
-        <div class="session-card__section">
-            <div class="session-card__section-title">
-                <i class="fas fa-clipboard-list" aria-hidden="true"></i> Final Project
-            </div>
-            <div class="session-card__section-content">
-                <ul>
-                    <li>Create a complete industrial ETAP model.</li>
-                    <li>Perform Load Flow, Short Circuit, Motor Starting, Protection Coordination, and Harmonic studies.</li>
-                    <li>Generate professional ETAP reports with engineering conclusions and recommendations.</li>
-                    <li>Present and defend your engineering solution.</li>
-                </ul>
-            </div>
-        </div>
-
-    </div>
-</div>
-
-
+                    <div class="session-card">
+                        <div class="session-card__header">
+                            <div class="session-card__icon"><i class="fas fa-comments" aria-hidden="true"></i></div>
+                            <div>
+                                <div class="session-card__title">07. Comprehensive Review, Q&amp;A &amp; Study Workshop</div>
+                                <div class="session-card__desc">A full recap of load flow, short circuit, protection, motor starting, and harmonics studies. Troubleshoot common ETAP modeling mistakes and work through real industrial case discussions in an open Q&amp;A.</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="session-card">
+                        <div class="session-card__header">
+                            <div class="session-card__icon"><i class="fas fa-award" aria-hidden="true"></i></div>
+                            <div>
+                                <div class="session-card__title">08. Final Project Presentation &amp; Professional Workflow</div>
+                                <div class="session-card__desc">Present a complete ETAP project — layout, load flow, short circuit, protection coordination, motor starting, and harmonics — as professional consultants do, with personalized feedback and career guidance.</div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <!-- ═══════════════════════════════════════════════════════════
+        <!-- ═══════════════════════════════════════════════════════
              SCHEDULE
-             ═════════════════════════════════════════════════════════ -->
+             ═══════════════════════════════════════════════════════ -->
         <section id="schedule" class="section section--alt">
             <div class="container">
                 <div class="section-header fade-up">
-                    <div class="section-label">Schedule</div>
-                    <h2 class="section-title">Live Session Calendar</h2>
-                    <p class="section-subtitle">All sessions are held live online — recordings are available for registered participants.</p>
+                    <div class="section-label">Course Schedule</div>
+                    <h2 class="section-title">Session Timeline</h2>
+                    <p class="section-subtitle">
+                        <strong>Time: 8:00 PM (GMT+2 – Cairo) / 9:00 PM (GMT+3 – KSA)</strong><br>
+                        Live via Microsoft Teams · PDF notes provided after each session
+                    </p>
                 </div>
                 <div class="fade-up">
                     <div style="text-align:center;font-weight:700;font-size:1.1rem;background:var(--color-primary-bg);padding:0.875rem;border-radius:var(--radius-full);margin-bottom:1.5rem;color:var(--color-primary-dark);">
-                        Round 1 · Starting 15 August 2026 · Instructors: Eng. Mohamed Nady &amp; Eng. Ziad Samy
+                        Round 1 · Starting 14 August 2026 · Instructors: Eng. Mohamed Nady &amp; Eng. Ziad Samy
                     </div>
                     <div class="table-wrapper">
                         <table class="data-table">
                             <thead>
                                 <tr>
-                                    <th>Session</th>
+                                    <th>Module</th>
+                                    <th>Session Topic</th>
                                     <th>Date</th>
-                                    <th>Topic</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td><span class="level-badge level-badge--1">1</span></td>
-                                    <td data-datetime="2026-08-15T20:00:00+02:00">15 Aug 2026</td>
+                                    <td><span class="level-badge level-badge--1">01</span></td>
                                     <td>Power System Fundamentals &amp; ETAP Introduction</td>
+                                    <td data-datetime="2026-08-14T20:00:00+02:00">14 Aug 2026</td>
                                 </tr>
                                 <tr>
-                                    <td><span class="level-badge level-badge--1">2</span></td>
-                                    <td data-datetime="2026-08-22T20:00:00+02:00">22 Aug 2026</td>
+                                    <td><span class="level-badge level-badge--1">02</span></td>
                                     <td>Load Flow Analysis &amp; Scenario Wizard</td>
+                                    <td data-datetime="2026-08-21T20:00:00+02:00">21 Aug 2026</td>
                                 </tr>
                                 <tr>
-                                    <td><span class="level-badge level-badge--2">3</span></td>
-                                    <td data-datetime="2026-08-29T20:00:00+02:00">29 Aug 2026</td>
+                                    <td><span class="level-badge level-badge--2">03</span></td>
                                     <td>Short Circuit Analysis &amp; Study Automation</td>
+                                    <td data-datetime="2026-08-28T20:00:00+02:00">28 Aug 2026</td>
                                 </tr>
                                 <tr>
-                                    <td><span class="level-badge level-badge--2">4</span></td>
-                                    <td data-datetime="2026-09-05T20:00:00+02:00">05 Sep 2026</td>
+                                    <td><span class="level-badge level-badge--2">04</span></td>
                                     <td>Protection Fundamentals &amp; Device Coordination</td>
+                                    <td data-datetime="2026-09-04T20:00:00+02:00">04 Sep 2026</td>
                                 </tr>
                                 <tr>
-                                    <td><span class="level-badge level-badge--3">5</span></td>
-                                    <td data-datetime="2026-09-12T20:00:00+02:00">12 Sep 2026</td>
+                                    <td><span class="level-badge level-badge--3">05</span></td>
                                     <td>Motor Starting Analysis</td>
+                                    <td data-datetime="2026-09-11T20:00:00+02:00">11 Sep 2026</td>
                                 </tr>
                                 <tr>
-                                    <td><span class="level-badge level-badge--3">6</span></td>
-                                    <td data-datetime="2026-09-19T20:00:00+02:00">19 Sep 2026</td>
+                                    <td><span class="level-badge level-badge--3">06</span></td>
                                     <td>Harmonics Analysis &amp; Reporting</td>
+                                    <td data-datetime="2026-09-18T20:00:00+02:00">18 Sep 2026</td>
                                 </tr>
-				<tr>
-    <td><span class="level-badge level-badge--4">7</span></td>
-    <td data-datetime="2026-09-26T20:00:00+02:00">26 Sep 2026</td>
-    <td>Comprehensive Review, Q&amp;A &amp; Study Workshop</td>
-</tr>
-
-<tr>
-    <td><span class="level-badge level-badge--4">8</span></td>
-    <td data-datetime="2026-10-03T20:00:00+02:00">03 Oct 2026</td>
-    <td>Final Project Presentation &amp; Professional Workflow</td>
-</tr>
-
+                                <tr>
+                                    <td><span class="level-badge level-badge--4">07</span></td>
+                                    <td>Comprehensive Review, Q&amp;A &amp; Study Workshop</td>
+                                    <td data-datetime="2026-09-25T20:00:00+02:00">25 Sep 2026</td>
+                                </tr>
+                                <tr>
+                                    <td><span class="level-badge level-badge--4">08</span></td>
+                                    <td>Final Project Presentation &amp; Professional Workflow</td>
+                                    <td data-datetime="2026-10-02T20:00:00+02:00">02 Oct 2026</td>
+                                </tr>
                             </tbody>
                         </table>
                     </div>
                     <p class="schedule-note">
                         <i class="fas fa-clock" aria-hidden="true"></i>
-                        Sessions every Saturday (Live only)
+                        Sessions every Friday
                     </p>
                 </div>
             </div>
         </section>
 
-        <!-- ═══════════════════════════════════════════════════════════
+        <!-- ═══════════════════════════════════════════════════════
              INSTRUCTORS
-             ═════════════════════════════════════════════════════════ -->
+             ═══════════════════════════════════════════════════════ -->
         <section id="instructor" class="section">
             <div class="container">
                 <div class="section-header fade-up">
                     <div class="section-label">Your Instructors</div>
                     <h2 class="section-title">Learn from ETAP Experts</h2>
-                    <p class="section-subtitle">
-                        Hands‑on experience in power system analysis and ETAP applications.
-                    </p>
+                    <p class="section-subtitle">Hands-on experience in power system analysis and ETAP applications.</p>
                 </div>
-
                 <div class="instructor-grid fade-up">
-
-<!-- Instructor 1 -->
-<div class="instructor-card">
-    <img src="CO/Nady.png"
-         alt="Portrait of Eng. Mohamed Nady"
-         class="instructor-card__avatar"
-         loading="lazy" />
-
-    <div class="instructor-card__content">
-        <div class="instructor-card__name">
-            Eng. Mohamed Nady
-        </div>
-        <div class="instructor-card__title">
-            Teaching Assistant @ Cairo University · Power Systems Engineer
-        </div>
-
-        <div class="instructor-card__contacts">
-            
-            <a class="contact-link contact-link--email"
-               href="mailto:mohamednady200093@gmail.com"
-               aria-label="Email Mohamed Nady">
-                <i class="fas fa-envelope contact-icon" aria-hidden="true"></i>
-                Email
-            </a>
-
-            <a class="contact-link contact-link--linkedin"
-               href="https://www.linkedin.com/in/mohamed-nady-ragab/"
-               target="_blank"
-               rel="noopener noreferrer"
-               aria-label="Mohamed Nady LinkedIn">
-                <i class="fab fa-linkedin-in contact-icon" aria-hidden="true"></i>
-                LinkedIn
-            </a>
-
-        </div>
-    </div>
-</div>
-
-                    <!-- Instructor 2 -->
                     <div class="instructor-card">
-                        <img src="CO/Ziad.png"
-                             alt="Portrait of Eng. Ziad Samy"
-                             class="instructor-card__avatar"
-                             loading="lazy" />
-
-                        <div class="instructor-card__content">
-                            <div class="instructor-card__name">
-                                Eng. Ziad Samy
-                            </div>
-                            <div class="instructor-card__title">
-                                Power System Studies Engineer @ Schneider Electric
-                            </div>
-
-                            <div class="instructor-card__contacts">
-                                <a href="mailto:ziad.samy.2000@gmail.com" aria-label="Email Ziad Samy">
-                                    <i class="fas fa-envelope" aria-hidden="true"></i> Email
-                                </a>
-                                <a href="https://www.linkedin.com/in/ziad-samy-8110a41b5/" target="_blank" rel="noopener noreferrer" aria-label="Ziad Samy LinkedIn">
-                                    <i class="fab fa-linkedin-in" aria-hidden="true"></i> LinkedIn
-                                </a>
-                            </div>
+                        <img src="CO/Nady.png" alt="Portrait of Eng. Mohamed Nady" class="instructor-card__avatar" loading="lazy">
+                        <div class="instructor-card__name">Eng. Mohamed Nady</div>
+                        <div class="instructor-card__title">Power System Studies Engineer @ Advansys-IS<br>Teaching Assistant @ Cairo University<br>Ex-Power System Studies Engineer @ ADVEC</div>
+                        <div class="instructor-card__contacts">
+                            <a href="mailto:mohamednady200093@gmail.com" aria-label="Email Mohamed Nady">
+                                <i class="fas fa-envelope" aria-hidden="true"></i> Email
+                            </a>
+                            <a href="https://www.linkedin.com/in/mohamed-nady-ragab/" target="_blank" rel="noopener noreferrer" aria-label="Mohamed Nady LinkedIn">
+                                <i class="fab fa-linkedin" aria-hidden="true"></i> LinkedIn
+                            </a>
                         </div>
                     </div>
-
+                    <div class="instructor-card">
+                        <img src="CO/Ziad.png" alt="Portrait of Eng. Ziad Samy" class="instructor-card__avatar" loading="lazy">
+                        <div class="instructor-card__name">Eng. Ziad Samy</div>
+                        <div class="instructor-card__title">Power System Studies Engineer @ Advansys-IS<br>Ex-Power System Studies Engineer @ Schneider Electric<br><br></div>
+                        <div class="instructor-card__contacts">
+                            <a href="mailto:ziad.samy.2000@gmail.com" aria-label="Email Ziad Samy">
+                                <i class="fas fa-envelope" aria-hidden="true"></i> Email
+                            </a>
+                            <a href="https://www.linkedin.com/in/ziad-samy-8110a41b5/" target="_blank" rel="noopener noreferrer" aria-label="Ziad Samy LinkedIn">
+                                <i class="fab fa-linkedin" aria-hidden="true"></i> LinkedIn
+                            </a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
 
-       <!-- ═══════════════════════════════════════════════════════════
-     CERTIFICATIONS & WHAT YOU EARN
-     ═══════════════════════════════════════════════════════════ -->
-<section class="section section--alt" style="padding-top:0;">
-    <div class="container">
-        <div class="section-header fade-up">
-            <div class="section-label">What You Earn</div>
-            <h2 class="section-title">Certifications &amp; Recognition</h2>
-            <p class="section-subtitle">Upon successful completion, you'll receive credentials that validate your ETAP skills.</p>
-        </div>
 
-        <div class="cert-grid fade-up">
-
-            <div class="cert-card">
-                <div class="cert-card__icon"><i class="fas fa-certificate" aria-hidden="true"></i></div>
-                <div class="cert-card__title">Certificate of Completion</div>
-                <div class="cert-card__desc">Issued by Grid Academy, verifying your proficiency in ETAP power system studies.</div>
+        <!-- ═══════════════════════════════════════════════════════
+             CERTIFICATIONS & WHAT YOU EARN
+             ═══════════════════════════════════════════════════════ -->
+        <section class="section section--alt" style="padding-top:0;">
+            <div class="container">
+                <div class="section-header fade-up">
+                    <div class="section-label">What You Earn</div>
+                    <h2 class="section-title">Industry-Recognized Credentials</h2>
+                    <p class="section-subtitle">Walk away with verified certification and a professional ETAP project portfolio.</p>
+                </div>
+                <div class="cert-grid fade-up">
+                    <div class="cert-card">
+                        <div class="cert-card__icon"><i class="fas fa-certificate" aria-hidden="true"></i></div>
+                        <div class="cert-card__title">GRID Academy Certificate</div>
+                        <div class="cert-card__desc">Verified completion of 8 modules + final project — Power System Studies Professional certification.</div>
+                    </div>
+                    <div class="cert-card">
+                        <div class="cert-card__icon"><i class="fas fa-laptop-code" aria-hidden="true"></i></div>
+                        <div class="cert-card__title">Hands-on Project Portfolio</div>
+                        <div class="cert-card__desc">Complete a real-world power system project in ETAP to showcase your engineering capabilities.</div>
+                    </div>
+                    <div class="cert-card">
+                        <div class="cert-card__icon"><i class="fas fa-award" aria-hidden="true"></i></div>
+                        <div class="cert-card__title">Industry-Recognized Badge</div>
+                        <div class="cert-card__desc">Digital credential that can be shared on LinkedIn and professional profiles.</div>
+                    </div>
+                </div>
             </div>
+        </section>
 
-            <div class="cert-card">
-                <div class="cert-card__icon"><i class="fas fa-laptop-code" aria-hidden="true"></i></div>
-                <div class="cert-card__title">Hands-on Project Portfolio</div>
-                <div class="cert-card__desc">Complete a real-world power system project to showcase your ETAP capabilities.</div>
-            </div>
-
-            <div class="cert-card">
-                <div class="cert-card__icon"><i class="fas fa-award" aria-hidden="true"></i></div>
-                <div class="cert-card__title">Industry-Recognized Badge</div>
-                <div class="cert-card__desc">Digital credential that can be shared on LinkedIn and professional profiles.</div>
-            </div>
-
-        </div>
-    </div>
-</section>
-
-        <!-- ═══════════════════════════════════════════════════════════
-             ASSIGNMENTS / TOOLS / EVALUATION
-             ═════════════════════════════════════════════════════════ -->
+        <!-- ═══════════════════════════════════════════════════════
+             ASSIGNMENTS & TOOLS (merged)
+             ═══════════════════════════════════════════════════════ -->
         <section class="section">
             <div class="container">
                 <div class="section-header fade-up">
-                    <div class="section-label">Course Details</div>
-                    <h2 class="section-title">Assignments, Tools &amp; Evaluation</h2>
-                    <p class="section-subtitle">Everything you need to succeed in this hands-on training program.</p>
+                    <div class="section-label">Practical Experience</div>
+                    <h2 class="section-title">Hands-on Tasks &amp; Tools</h2>
+                    <p class="section-subtitle">Apply what you learn with real-world assignments and industry-standard software.</p>
                 </div>
                 <div class="meta-grid fade-up">
                     <div class="meta-card">
@@ -2982,6 +1767,7 @@ margin-top: 2rem;
                             <li><i class="fas fa-check" aria-hidden="true"></i><span>Protection device selection and coordination</span></li>
                             <li><i class="fas fa-check" aria-hidden="true"></i><span>Motor starting analysis and voltage drop assessment</span></li>
                             <li><i class="fas fa-check" aria-hidden="true"></i><span>Harmonic analysis and THD calculation</span></li>
+                            <li><i class="fas fa-check" aria-hidden="true"></i><span>Complete final project (individual/group)</span></li>
                         </ul>
                     </div>
                     <div class="meta-card">
@@ -3002,20 +1788,21 @@ margin-top: 2rem;
                         <ul class="meta-list">
                             <li><i class="fas fa-check" aria-hidden="true"></i><span>Weekly assignments / quizzes</span></li>
                             <li><i class="fas fa-check" aria-hidden="true"></i><span>Final comprehensive project</span></li>
+                            <li><i class="fas fa-check" aria-hidden="true"></i><span>Exam feedback session after project submission</span></li>
                         </ul>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- ═══════════════════════════════════════════════════════════
+        <!-- ═══════════════════════════════════════════════════════
              POLICY
-             ═════════════════════════════════════════════════════════ -->
+             ═══════════════════════════════════════════════════════ -->
         <section class="section section--alt" style="padding-top:0;">
             <div class="container">
                 <div class="section-header fade-up">
                     <div class="section-label">Policy</div>
-                    <h2 class="section-title">Code of Conduct &amp; Confidentiality</h2>
+                    <h2 class="section-title">Content Usage &amp; Non-Sharing Policy</h2>
                 </div>
                 <div class="policy-card fade-up">
                     <ul class="policy-list">
@@ -3026,164 +1813,148 @@ margin-top: 2rem;
             </div>
         </section>
 
-       
-
-   <!-- ═══════════════════════════════════════════════════════════
-     FINAL CTA
-     ═══════════════════════════════════════════════════════════ -->
-<section class="section final-cta">
-    <div class="container">
-        <div class="fade-up final-cta__inner">
-            <div class="section-label final-cta__label">Ready to Start?</div>
-            <h2 class="section-title final-cta__title">Begin Your Power System Analysis Journey</h2>
-            <p class="final-cta__desc">Join engineers from leading EPCs and utilities.</p>
-
-            <div class="final-cta__badge">
-                <span class="final-cta__badge-dot" aria-hidden="true"></span>
-                Limited seats — August 2026 cohort
+        <!-- ═══════════════════════════════════════════════════════
+             FINAL CTA
+             ═══════════════════════════════════════════════════════ -->
+        <section class="section" style="background:var(--color-accent);text-align:center;">
+            <div class="container">
+                <div class="fade-up" style="max-width:640px;margin:0 auto;">
+                    <div class="section-label" style="color:var(--purple-300);">Ready to Start?</div>
+                    <h2 class="section-title" style="color:var(--color-text-inverse);">Begin Your Power System Studies Journey</h2>
+                    <p style="color:var(--slate-300);margin-bottom:2rem;font-size:1.05rem;">Join engineers from leading EPCs and utilities. Limited seats for the Fall 2026 cohort.</p>
+                    <div style="display:flex;flex-wrap:wrap;justify-content:center;gap:0.75rem;">
+                        <a href="https://docs.google.com/forms/d/e/1FAIpQLSdKy8u6JsBfLq4gNz6nvGTaH5G57xsdJnUxnCHkXyxNaQFnrQ/viewform?usp=send_form"
+                           class="btn btn--primary" target="_blank" rel="noopener noreferrer">
+                            <i class="fas fa-clipboard-check" aria-hidden="true"></i> Register Free
+                        </a>
+                        <a href="/pay/pss.html" class="btn btn--outline">
+                            <i class="fas fa-credit-card" aria-hidden="true"></i> Enroll Now
+                        </a>
+                    </div>
+                </div>
             </div>
-
-            <div class="final-cta__actions">
-                <a href="https://docs.google.com/forms/d/e/1FAIpQLSdKy8u6JsBfLq4gNz6nvGTaH5G57xsdJnUxnCHkXyxNaQFnrQ/viewform?usp=send_form"
-                   class="btn btn--primary" target="_blank" rel="noopener noreferrer">
-                    <i class="fas fa-clipboard-check" aria-hidden="true"></i> Register Free
-                </a>
-                <a href="/pay/pss.html" class="btn btn--outline">
-                    <i class="fas fa-credit-card" aria-hidden="true"></i> Enroll Now
-                </a>
-            </div>
-        </div>
-    </div>
-</section>
+        </section>
 
     </main>
 
-    <!-- ══════════════════════════════════════════════════════════════
+    <!-- ═══════════════════════════════════════════════════════════
          FOOTER
-         ════════════════════════════════════════════════════════════ -->
+         ═══════════════════════════════════════════════════════════ -->
     <footer class="footer" role="contentinfo">
         <div class="container">
             <div class="footer__grid">
                 <div>
                     <div class="footer__brand">
-                        <i class="fas fa-bolt" aria-hidden="true"></i>
+                        <img src="Sm1.svg" alt="Grid Academy Logo" class="nav-logo">
                         GRID ACADEMY
                     </div>
-                    <p class="footer__desc">
-                        Empowering engineers with practical power system analysis skills using ETAP.
-                    </p>
+                    <p class="footer__desc">Professional engineering training for the power industry. We bridge the gap between academic knowledge and real-world engineering practice.</p>
                     <div class="footer__social">
-                        <a href="#" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                        <a href="https://www.linkedin.com/company/gridacad" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
                             <i class="fab fa-linkedin-in" aria-hidden="true"></i>
                         </a>
-                        <a href="mailto:info@gridacademy.com" aria-label="Email">
+                        <a href="mailto:gridacademyinfo@gmail.com" aria-label="Email">
                             <i class="fas fa-envelope" aria-hidden="true"></i>
                         </a>
-                        <a href="#" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
+                        <a href="https://wa.me/201229220086" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
                             <i class="fab fa-whatsapp" aria-hidden="true"></i>
                         </a>
                     </div>
                 </div>
-
                 <div>
                     <div class="footer__heading">Quick Links</div>
                     <div class="footer__links">
-                        <a href="#overview" class="footer__link">Overview</a>
+                        <a href="#overview" class="footer__link">Course Overview</a>
                         <a href="#curriculum" class="footer__link">Curriculum</a>
                         <a href="#schedule" class="footer__link">Schedule</a>
-                        <a href="#instructor" class="footer__link">Instructor</a>
+                        <a href="#instructor" class="footer__link">Instructors</a>
                     </div>
                 </div>
-
                 <div>
-                    <div class="footer__heading">Get Started</div>
+                    <div class="footer__heading">Resources</div>
                     <div class="footer__links">
-                        <a href="https://docs.google.com/forms/d/e/1FAIpQLSdKy8u6JsBfLq4gNz6nvGTaH5G57xsdJnUxnCHkXyxNaQFnrQ/viewform?usp=send_form"
-                           target="_blank" rel="noopener noreferrer" class="footer__link">Register Free</a>
+                        <a href="https://docs.google.com/forms/d/e/1FAIpQLSdKy8u6JsBfLq4gNz6nvGTaH5G57xsdJnUxnCHkXyxNaQFnrQ/viewform?usp=send_form" target="_blank" rel="noopener noreferrer" class="footer__link">Register Free</a>
                         <a href="/pay/pss.html" class="footer__link">Enroll Now</a>
-                        <a href="index.html" class="footer__link">Home</a>
+                        <a href="index.html" class="footer__link">All Courses</a>
                     </div>
                 </div>
             </div>
-
             <div class="footer__bottom">
-                <span>&copy; 2026 Grid Academy. All rights reserved.</span>
-                <span>Built with <i class="fas fa-heart" style="color:var(--color-primary);" aria-hidden="true"></i> for power engineers</span>
+                <span>&copy; 2026 GRID ACADEMY. All rights reserved.</span>
+                <span>Power System Studies Using ETAP — Engineering Certification</span>
             </div>
         </div>
     </footer>
 
-    <!-- Scroll to Top -->
+    <!-- Scroll to top -->
     <button class="scroll-top" id="scrollTop" aria-label="Scroll to top">
         <i class="fas fa-chevron-up" aria-hidden="true"></i>
     </button>
 
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <!-- Font Awesome (loaded at end for performance) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-
-            // ── Past session highlighting ──
+        // ── Past session highlighting ──
+        document.addEventListener('DOMContentLoaded', function () {
             var now = new Date();
-            document.querySelectorAll('.data-table td[data-datetime]').forEach(function(cell) {
+            document.querySelectorAll('.data-table td[data-datetime]').forEach(function (cell) {
                 var sessionDate = new Date(cell.getAttribute('data-datetime'));
                 if (sessionDate < now) {
                     cell.closest('tr').classList.add('past');
                 }
             });
-
-            // ── Scroll-to-top button ──
-            var scrollTopBtn = document.getElementById('scrollTop');
-            window.addEventListener('scroll', function() {
-                if (window.scrollY > 500) {
-                    scrollTopBtn.classList.add('visible');
-                } else {
-                    scrollTopBtn.classList.remove('visible');
-                }
-            }, { passive: true });
-
-            scrollTopBtn.addEventListener('click', function() {
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-            });
-
-            // ── Mobile nav toggle ──
-            var navToggle = document.getElementById('navToggle');
-            var navLinks = document.getElementById('navLinks');
-            navToggle.addEventListener('click', function() {
-                var isOpen = navLinks.classList.toggle('open');
-                navToggle.setAttribute('aria-expanded', isOpen);
-            });
-
-            navLinks.querySelectorAll('.nav__link').forEach(function(link) {
-                link.addEventListener('click', function() {
-                    navLinks.classList.remove('open');
-                    navToggle.setAttribute('aria-expanded', 'false');
-                });
-            });
-
-            // ── Scroll animations (Intersection Observer) ──
-            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-                var observer = new IntersectionObserver(function(entries) {
-                    entries.forEach(function(entry) {
-                        if (entry.isIntersecting) {
-                            entry.target.classList.add('visible');
-                            observer.unobserve(entry.target);
-                        }
-                    });
-                }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
-
-                document.querySelectorAll('.fade-up').forEach(function(el) {
-                    observer.observe(el);
-                });
-            } else {
-                document.querySelectorAll('.fade-up').forEach(function(el) {
-                    el.classList.add('visible');
-                });
-            }
-
         });
-    </script>
 
+        // ── Scroll-to-top button ──
+        var scrollTopBtn = document.getElementById('scrollTop');
+        window.addEventListener('scroll', function () {
+            if (window.scrollY > 500) {
+                scrollTopBtn.classList.add('visible');
+            } else {
+                scrollTopBtn.classList.remove('visible');
+            }
+        }, { passive: true });
+
+        scrollTopBtn.addEventListener('click', function () {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        // ── Mobile nav toggle ──
+        var navToggle = document.getElementById('navToggle');
+        var navLinks = document.getElementById('navLinks');
+        navToggle.addEventListener('click', function () {
+            var isOpen = navLinks.classList.toggle('open');
+            navToggle.setAttribute('aria-expanded', isOpen);
+        });
+
+        // Close mobile nav on link click
+        navLinks.querySelectorAll('.nav__link').forEach(function (link) {
+            link.addEventListener('click', function () {
+                navLinks.classList.remove('open');
+                navToggle.setAttribute('aria-expanded', 'false');
+            });
+        });
+
+        // ── Scroll animations (Intersection Observer) ──
+        if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+            var observer = new IntersectionObserver(function (entries) {
+                entries.forEach(function (entry) {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+            document.querySelectorAll('.fade-up').forEach(function (el) {
+                observer.observe(el);
+            });
+        } else {
+            document.querySelectorAll('.fade-up').forEach(function (el) {
+                el.classList.add('visible');
+            });
+        }
+    </script>
 </body>
 </html>
