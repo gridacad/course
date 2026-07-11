@@ -1985,8 +1985,40 @@
                     </div>
                 </div>
             </div>
+
+
+
+            
+            .build-no{
+    color:#8d8d8d;
+    font-size:0.75em;
+    margin-left:6px;
+    opacity:0.45;
+    font-weight:400;
+    user-select:none;
+}
+
+
+            <script>
+const csvUrl = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQ0b9DO30oeiMbnp_Ed3VevV3orzQKNSuZ_nsvq0wk-tUG8Lm1wzESmGj_qi7_IgDGtJkOI6YwWh0n5/pub?gid=410425389&single=true&output=csv";
+
+fetch(csvUrl)
+  .then(r => r.text())
+  .then(text => {
+      const rows = text.trim().split(/\r?\n/);
+      const a2 = rows[1].split(",")[0];   // First column, second row
+      document.getElementById("buildNo").textContent = a2;
+  })
+  .catch(console.error);
+</script>
+
+
+            
             <div class="footer__bottom">
-                <span>&copy; 2026 GRID ACADEMY. All rights reserved.</span>
+                <span>
+                    &copy; 2026 GRID ACADEMY. All rights reserved.
+                    <span id="buildNo" class="build-no"></span>
+                </span>
                 <span>Power System Studies Using ETAP — Engineering Certification</span>
             </div>
         </div>
