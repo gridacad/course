@@ -46,6 +46,12 @@
       --pd-primary-dark:  #ea580c;
       --pd-primary-light: #fb923c;
       --pd-glow:          rgba(249,115,22,0.15);
+
+      /* Teal — PSS®E Steady-State Analysis & IBRs Grid Integration (Eng. Ahmed Farid) */
+      --psse-primary:      #115e59;
+      --psse-primary-dark: #134e4a;
+      --psse-primary-light:#14b8a6;
+      --psse-glow:         rgba(17,94,89,0.15);
     }
 
     * { margin:0; padding:0; box-sizing:border-box; }
@@ -255,13 +261,16 @@
       background: linear-gradient(135deg, #006e4d 0%, #009268 100%);
     }
     .card-banner-pv {
-      background: linear-gradient(135deg, #1a5270%, #2471a3 100%);
+      background: linear-gradient(135deg, #1a5276 0%, #2471a3 100%);
     }
     .card-banner-pss {
       background: linear-gradient(135deg, var(--pss-primary-dark) 0%, var(--pss-primary) 100%);
     }
     .card-banner-pd {
       background: linear-gradient(135deg, var(--pd-primary-dark) 0%, var(--pd-primary) 100%);
+    }
+    .card-banner-psse {
+      background: linear-gradient(135deg, var(--psse-primary-dark) 0%, var(--psse-primary) 100%);
     }
     .banner-pattern {
       position: absolute; inset: 0;
@@ -331,6 +340,7 @@
     .meta-chip i { color: var(--primary); font-size: 0.8rem; }
     .meta-chip i.pss-icon { color: var(--pss-primary); }
     .meta-chip i.pd-icon { color: var(--pd-primary); }
+    .meta-chip i.psse-icon { color: var(--psse-primary); }
 
     .card-divider {
       border: none;
@@ -365,6 +375,10 @@
     .instructor-avatar-orange {
       background: var(--pd-glow);
       color: var(--pd-primary);
+    }
+    .instructor-avatar-teal {
+      background: var(--psse-glow);
+      color: var(--psse-primary);
     }
     .instructor-avatar-stack {
       display: flex;
@@ -422,6 +436,12 @@
     .btn-primary-orange:hover {
       background: var(--pd-primary-dark);
     }
+    .btn-primary-teal {
+      background: var(--psse-primary);
+    }
+    .btn-primary-teal:hover {
+      background: var(--psse-primary-dark);
+    }
     .btn-outline {
       padding: 13px 16px;
       border: 2px solid var(--primary);
@@ -461,6 +481,14 @@
     }
     .btn-outline-orange:hover {
       background: var(--pd-primary);
+      color: white;
+    }
+    .btn-outline-teal {
+      border-color: var(--psse-primary);
+      color: var(--psse-primary);
+    }
+    .btn-outline-teal:hover {
+      background: var(--psse-primary);
       color: white;
     }
 
@@ -720,6 +748,40 @@
               <i class="fas fa-arrow-right"></i> View Course
             </a>
             <a href="https://gridacad.github.io/pay/pv.html" class="btn-outline btn-outline-blue">
+              <i class="fas fa-file-alt"></i>&nbsp;Enroll
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- CARD 5: PSS®E Steady-State Analysis & IBRs Grid Integration -->
+      <div class="course-card">
+        <div class="card-banner card-banner-psse">
+          <div class="banner-pattern"></div>
+          <div class="banner-icon"><i class="fas fa-bolt"></i></div>
+          <span class="banner-badge"><i class="fas fa-circle" style="font-size:0.5rem; margin-right:5px;"></i> Enrolling — Fall 2026 Cohort</span>
+        </div>
+        <div class="card-body">
+          <h3 class="card-title">PSS&reg;E Steady-State Analysis &amp; IBRs Grid Integration Studies</h3>
+          <p class="card-description">A hands-on live course in PSS&reg;E covering steady-state power flow, short-circuit and contingency analysis, and Egyptian IBR grid-code compliance — from software fundamentals to comprehensive IBR grid integration studies.</p>
+          <div class="card-meta">
+            <span class="meta-chip"><i class="fas fa-video psse-icon"></i> 6 Sessions</span>
+            <span class="meta-chip"><i class="fas fa-laptop psse-icon"></i> Online / Teams</span>
+            <span class="meta-chip"><i class="fas fa-tools psse-icon"></i> PSS&reg;E</span>
+          </div>
+          <hr class="card-divider" />
+          <div class="card-instructor">
+            <div class="instructor-avatar instructor-avatar-teal"><i class="fas fa-user-tie"></i></div>
+            <div>
+              <div class="instructor-name">Eng. Ahmed Farid</div>
+              <div class="instructor-title">Power System Consulting Engineer</div>
+            </div>
+          </div>
+          <div class="card-actions">
+            <a href="https://gridacad.github.io/course/psse.html" class="btn-primary btn-primary-teal">
+              <i class="fas fa-arrow-right"></i> View Course
+            </a>
+            <a href="https://gridacad.github.io/pay/psse.html" class="btn-outline btn-outline-teal">
               <i class="fas fa-file-alt"></i>&nbsp;Enroll
             </a>
           </div>
