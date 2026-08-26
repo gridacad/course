@@ -2,7 +2,8 @@
 <html lang="en">
 <head>
 
-	<!-- Modern browsers -->
+
+  <!-- Modern browsers -->
 <link rel="icon" type="image/svg+xml" href="Sm1.svg">
 
 <!-- Fallback for most browsers -->
@@ -14,1189 +15,823 @@
 <!-- Optional: iOS home screen -->
 <link rel="apple-touch-icon" href="Sm1.png">
 
+  
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GRID ACADEMY | All Courses</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --primary:        #009268;
+      --primary-dark:   #006e4d;
+      --primary-light:  #00b37d;
+      --primary-glow:   rgba(0,146,104,0.15);
+      --secondary:      #2C3E50;
+      --accent:         #E6F4F1;
+      --white:          #FFFFFF;
+      --light-gray:     #f4f7f6;
+      --text-dark:      #212E3C;
+      --shadow:         0 6px 24px rgba(0,0,0,0.10);
+      --radius:         12px;
 
+      /* Purple — Power System Studies (Ziad & Mohamed) */
+      --pss-primary:      #6b21a8;
+      --pss-primary-dark: #581c87;
+      --pss-primary-light:#a855f7;
+      --pss-glow:         rgba(107,33,168,0.15);
 
-	<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-VQGZNL7PNG"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+      /* Orange — Primary Design Course (Eng. Mohamed Moatasim) */
+      --pd-primary:       #f97316;
+      --pd-primary-dark:  #ea580c;
+      --pd-primary-light: #fb923c;
+      --pd-glow:          rgba(249,115,22,0.15);
 
-  gtag('config', 'G-VQGZNL7PNG');
-</script>
+      /* Teal — PSS®E Steady-State Analysis & IBRs Grid Integration (Eng. Ahmed Farid) */
+      --psse-primary:      #115e59;
+      --psse-primary-dark: #134e4a;
+      --psse-primary-light:#14b8a6;
+      --psse-glow:         rgba(17,94,89,0.15);
+    }
 
-	
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>GRID ACADEMY | Substation Design and Protection Systems</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
-    <style>
-        /* Base Styles */
-        :root {
-            --primary-color: #009268;
-            --primary-dark: #006e4d;
-            --primary-light: #00b37d;
-            --secondary-color: #2C3E50;
-            --accent-color: #E6F4F1;
-            --light-bg: #FFF2CC;
-            --medium-bg: #FBE4D5;
-            --dark-bg: #F4B083;
-            --darker-bg: #C45911;
-            --text-dark: #212E3C;
-            --white: #FFFFFF;
-            --light-gray: #f8f9fa;
-            --medium-gray: #e9ecef;
-            --dark-gray: #6c757d;
-            --shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-            --radius: 8px;
-        }
+    * { margin:0; padding:0; box-sizing:border-box; }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--light-gray);
+      color: var(--text-dark);
+      overflow-x: hidden;
+    }
 
-        body {
-            font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-            color: var(--secondary-color);
-            line-height: 1.6;
-            background-color: var(--light-gray);
-            overflow-x: hidden;
-        }
+    /* ── NAV ── */
+    .top-nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(44,62,80,0.97);
+      backdrop-filter: blur(10px);
+      padding: 14px 0;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.2);
+    }
+    .nav-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .nav-brand {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.35rem;
+      font-weight: 800;
+      color: var(--white);
+      text-decoration: none;
+      letter-spacing: 1px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .nav-brand-icon {
+      width: 34px; height: 34px;
+      background: var(--primary);
+      border-radius: 7px;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .nav-brand-icon svg { width: 20px; height: 20px; fill: white; }
+    .nav-pill {
+      background: var(--primary);
+      color: white;
+      padding: 5px 14px;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+    }
 
-        /* ── TOP NAV (new) ── */
-        .top-nav {
-            position: sticky;
-            top: 0;
-            z-index: 200;
-            background: rgba(44,62,80,0.97);
-            backdrop-filter: blur(10px);
-            padding: 12px 0;
-            box-shadow: 0 2px 12px rgba(0,0,0,0.25);
-        }
-
-		    .nav-logo {
+    .nav-logo {
     height: 28px;
     width: auto;
     filter: brightness(0) invert(1);
     display: block;
     flex-shrink: 0;
 }
-        .nav-inner {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 12px;
-            flex-wrap: wrap;
-        }
-        .nav-brand {
-            font-family: Montserrat, sans-serif;
-            font-size: 1.1rem;
-            font-weight: 800;
-            color: white;
-            text-decoration: none;
-            letter-spacing: 1px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-        .nav-brand i { color: var(--primary-light); }
-        .nav-back {
-            display: flex;
-            align-items: center;
-            gap: 7px;
-            color: rgba(255,255,255,0.75);
-            text-decoration: none;
-            font-size: 0.9rem;
-            font-weight: 500;
-            transition: color 0.2s;
-        }
-        .nav-back:hover { color: white; }
-        .nav-enroll {
-            background: var(--primary-color);
-            color: white;
-            padding: 8px 20px;
-            border-radius: 25px;
-            text-decoration: none;
-            font-weight: 700;
-            font-size: 0.88rem;
-            transition: background 0.2s, transform 0.2s;
-        }
-        .nav-enroll:hover { background: var(--primary-dark); transform: translateY(-1px); }
-        .nav-left { display:flex; align-items:center; gap:20px; }
-
-
-
-  .break-week td {
-            text-align: center;
-            font-weight: bold;
-            background: #f5f5f5;
-            color: #c0392b;
-        }
-
-
-
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        section {
-            padding: 80px 0;
-            position: relative;
-        }
-
-        section:nth-child(even) {
-            background-color: var(--white);
-        }
-
-        section:nth-child(odd) {
-            background-color: var(--light-gray);
-        }
-
-        h1 {
-            font-family: Montserrat, sans-serif;
-            font-size: 2.2rem;
-            color: var(--primary-color);
-            margin-bottom: 30px;
-            padding-bottom: 15px;
-            position: relative;
-        }
-
-        h1:after {
-            content: "";
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 80px;
-            height: 4px;
-            background-color: var(--primary-color);
-            border-radius: 2px;
-        }
-
-        h2 {
-            font-family: Montserrat, sans-serif;
-            font-size: 1.6rem;
-            color: var(--secondary-color);
-            margin: 30px 0 15px;
-        }
-
-        h3 {
-            font-family: Montserrat, sans-serif;
-            font-size: 1.3rem;
-            color: var(--primary-color);
-            margin: 20px 0 10px;
-        }
-
-        p {
-            margin-bottom: 15px;
-            font-size: 1.05rem;
-        }
-
-        /* Shapes and Background Elements */
-        .shape-circle {
-            position: absolute;
-            border-radius: 50%;
-            background-color: rgba(0, 146, 104, 0.05);
-            z-index: -1;
-        }
-
-        .shape-square {
-            position: absolute;
-            background-color: rgba(0, 146, 104, 0.03);
-            transform: rotate(45deg);
-            z-index: -1;
-        }
-
-        /* Updated Hero Section Styles */
-        .hero-section {
-            position: relative;
-            height: 100vh;
-            display: flex;
-            align-items: center;
-            overflow: hidden;
-            background: linear-gradient(135deg, rgba(0, 110, 77, 0.9) 0%, rgba(0, 146, 104, 0.8) 100%),
-                url("CO/bg.jpg") center/cover no-repeat;
-        }
-
-        .hero-background {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 0;
-        }
-
-        .hero-content {
-            position: relative;
-            z-index: 1;
-            color: var(--white);
-            padding: 40px;
-            background-color: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            border-radius: var(--radius);
-            max-width: 650px;
-            margin-left: 5%;
-            box-shadow: var(--shadow);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-        }
-
-.logo {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-    margin-bottom: 30px;
-}
-
-.hero-logo {
-    width: 50px;
-    height: 50px;
-    object-fit: contain;
-	    filter: brightness(0) invert(1);
-}
-
-
-.logo h2 {
-    font-family: Montserrat, sans-serif;
-    font-size: 2.2rem;
-    color: var(--white);
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
-}
-
-        .course-title {
-            font-family: Montserrat, sans-serif;
-            font-size: 2.8rem;
-            margin-bottom: 20px;
-            color: var(--white);
-            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
-            line-height: 1.2;
-        }
-
-        .instructor {
-            font-size: 1.3rem;
-            margin-bottom: 10px;
-            color: var(--accent-color);
-            display: flex;
-            align-items: center;
-        }
-
-        .instructor i {
-            margin-right: 10px;
-        }
-
-        .year {
-            font-size: 1.1rem;
-            font-weight: bold;
-            color: var(--white);
-            background-color: rgba(255, 255, 255, 0.2);
-            padding: 5px 15px;
-            border-radius: 20px;
-            display: inline-block;
-        }
-
-        .cta-button {
-            display: inline-block;
-            margin-top: 30px;
-            padding: 12px 30px;
-            background-color: var(--white);
-            color: var(--primary-color);
-            text-decoration: none;
-            font-weight: bold;
-            border-radius: 30px;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-        }
-
-        .cta-button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
-            background-color: var(--accent-color);
-        }
-
-        /* Card Styles */
-        .card {
-            background-color: var(--white);
-            border-radius: var(--radius);
-            box-shadow: var(--shadow);
-            padding: 25px;
-            margin-bottom: 25px;
-            border-top: 4px solid var(--primary-color);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
-        }
-
-        /* Table Styles */
-        .schedule-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 20px 0;
-            box-shadow: var(--shadow);
-            border-radius: var(--radius);
-            overflow: hidden;
-        }
-
-        .schedule-table th {
-            background-color: var(--primary-color);
-            color: var(--white);
-            padding: 15px;
-            text-align: center;
-            font-family: "Aptos Narrow", sans-serif;
-            font-weight: bold;
-            font-size: 1.1rem;
-        }
-
-        .schedule-table td {
-            padding: 12px 15px;
-            border: 1px solid var(--medium-gray);
-        }
-
-        .level-1 { background-color: rgba(0, 146, 104, 0.1); }
-        .level-2 { background-color: rgba(0, 146, 104, 0.2); }
-        .level-3 { background-color: rgba(0, 146, 104, 0.3); }
-        .level-4 { background-color: rgba(0, 146, 104, 0.4); color: var(--text-dark); }
-
-        .mega-project {
-            font-weight: bold;
-            background-color: var(--light-bg);
-        }
-
-        /* List Styles */
-        ul {
-            margin-left: 20px;
-            margin-bottom: 20px;
-        }
-
-        li {
-            margin-bottom: 8px;
-        }
-
-        .bullet-list {
-            list-style-type: none;
-            margin-left: 0;
-        }
-
-        .bullet-list li {
-            position: relative;
-            padding-left: 25px;
-            margin-bottom: 12px;
-        }
-
-        .bullet-list li:before {
-            content: "✓";
-            color: var(--primary-color);
-            position: absolute;
-            left: 0;
-            font-weight: bold;
-            background-color: rgba(0, 146, 104, 0.1);
-            width: 20px;
-            height: 20px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 0.8rem;
-        }
-
-        /* Certification Styles */
-        .certification-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 25px;
-            margin: 30px 0;
-        }
-
-        .certification-card {
-            background-color: var(--white);
-            padding: 25px;
-            border-radius: var(--radius);
-            box-shadow: var(--shadow);
-            border-left: 4px solid var(--primary-color);
-            transition: transform 0.3s ease;
-            text-align: center;
-        }
-
-        .certification-card:hover {
-            transform: translateY(-5px);
-        }
-
-        .certification-card h3 {
-            margin-top: 0;
-            color: var(--primary-color);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .certification-card h3 i {
-            margin-right: 10px;
-            font-size: 1.5rem;
-        }
-
-        /* Footer Styles */
-        footer {
-            background-color: var(--secondary-color);
-            color: var(--white);
-            padding: 60px 0 30px;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .instructor-info {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            align-items: center;
-            gap: 40px;
-            margin-bottom: 40px;
-        }
-
-        .instructor-photo {
-            flex: 0 0 250px;
-            position: relative;
-        }
-
-        .instructor-photo img {
-            width: 100%;
-            border-radius: var(--radius);
-            box-shadow: var(--shadow);
-        }
-
-        .instructor-photo:after {
-            content: "";
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            border: 3px solid var(--primary-color);
-            border-radius: var(--radius);
-            top: 10px;
-            left: 10px;
-            z-index: -1;
-        }
-
-
-
-
-		.level-break {
-    width: 100%;
-    text-align: center;
-    padding: 10px 0;
-    position: relative;
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    color: #6c757d;
-    font-size: 0.85rem;
-    font-style: italic;
-    font-family: "Segoe UI", Arial, sans-serif;
-}
-.level-break::before,
-.level-break::after {
-    content: "";
-    flex: 1;
-    height: 1px;
-    background: linear-gradient(to right, transparent, #ced4da, transparent);
-}
-.level-break span {
-    white-space: nowrap;
-    background: #f8f9fa;
-    padding: 4px 14px;
-    border-radius: 20px;
-    border: 1px dashed #ced4da;
-}
-
-
-
-		
-        .instructor-bio {
-            flex: 1;
-            min-width: 300px;
-            text-align: left;
-        }
-
-        .company-logos {
-            display: flex;
-            justify-content: center;
-            gap: 40px;
-            flex-wrap: wrap;
-            margin: 40px 0;
-        }
-
-        .company-logo {
-            height: 60px;
-            filter: brightness(0) invert(1);
-            opacity: 0.8;
-            transition: opacity 0.3s ease;
-        }
-
-        .company-logo:hover {
-            opacity: 1;
-        }
-
-        .copyright {
-            text-align: center;
-            margin-top: 40px;
-            padding-top: 20px;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            color: rgba(255, 255, 255, 0.7);
-            font-size: 0.9rem;
-        }
-
-        /* Section Styling */
-        .section-header {
-            text-align: center;
-            margin-bottom: 50px;
-        }
-
-        .section-header h1 {
-            display: inline-block;
-        }
-
-        .section-header p {
-            max-width: 700px;
-            margin: 0 auto;
-            font-size: 1.1rem;
-        }
-
-        /* Progress Indicator */
-        .progress-indicator {
-            display: flex;
-            justify-content: center;
-            margin: 40px 0;
-        }
-
-        .progress-step {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            margin: 0 20px;
-            position: relative;
-            width: 120px;
-        }
-
-        .progress-step:not(:last-child):after {
-            content: "";
-            position: absolute;
-            top: 25px;
-            left: 70px;
-            width: 100px;
-            height: 2px;
-            background-color: var(--primary-color);
-            z-index: -1;
-        }
-
-        .step-circle {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            background-color: var(--primary-color);
-            color: white;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: bold;
-            margin-bottom: 10px;
-            box-shadow: 0 4px 10px rgba(0, 146, 104, 0.3);
-        }
-
-        .step-label {
-            text-align: center;
-            font-weight: bold;
-            color: var(--primary-color);
-        }
-
-
-
-
-
-
-
-
-
-/* ── TABLE WRAPPER & PAST SESSION STYLES ── */
-        .schedule-table-wrapper {
-            overflow-x: auto;
-            -webkit-overflow-scrolling: touch;
-            border-radius: var(--radius);
-            box-shadow: var(--shadow);
-            margin: 20px 0;
-        }
-
-        .schedule-table {
-            min-width: 460px;
-        }
-
-        .schedule-table tr:nth-child(even) { background: #f8f9fa; }
-        .schedule-table tr:hover { background: #f0f4ff; }
-
-        /* Force the cells in a past session to turn red, overriding the level colors */
-        .past-session td { 
-            background: #ffe6e6 !important; 
-            color: #b00020 !important; 
-            font-weight: 500; 
-        }
-
-        /* Add the "✔ Past" badge to the last cell of the row safely */
-        .past-session td:last-child {
-            position: relative;
-            padding-right: 60px; /* Make room for the badge */
-        }
-
-        .past-session td:last-child::after { 
-            content: "✔ Past"; 
-            position: absolute; 
-            right: 8px; 
-            top: 50%;
-            transform: translateY(-50%);
-            font-size: 0.75em; 
-            color: #b00020; 
-            background: rgba(255,0,0,0.08); 
-            padding: 2px 6px; 
-            border-radius: 5px; 
-        }
-
-
-
-
-        /* Responsive Styles */
-        @media (max-width: 992px) {
-            .hero-content { padding: 30px; margin: 20px; }
-            .course-title { font-size: 2.2rem; }
-            .progress-step:not(:last-child):after { width: 80px; left: 60px; }
-        }
-
-        @media (max-width: 768px) {
-            section { padding: 60px 0; }
-            .hero-content { padding: 25px; margin: 15px; }
-            .course-title { font-size: 1.8rem; }
-            .schedule-table { font-size: 0.9rem; }
-            .schedule-table th, .schedule-table td { padding: 10px 8px; }
-            .instructor-info { flex-direction: column; text-align: center; }
-            .instructor-bio { text-align: center; }
-            .company-logos { gap: 20px; }
-            .company-logo { height: 40px; }
-            .progress-step { margin: 0 10px; width: 100px; }
-            .progress-step:not(:last-child):after { width: 60px; left: 50px; }
-        }
-
-        @media (max-width: 576px) {
-            .schedule-table { display: block; overflow-x: auto; }
-            h1 { font-size: 1.8rem; }
-            h2 { font-size: 1.4rem; }
-            h3 { font-size: 1.2rem; }
-            .company-logo { height: 35px; }
-            .progress-indicator { flex-wrap: wrap; }
-            .progress-step { margin: 10px; }
-            .progress-step:not(:last-child):after { display: none; }
-        }
-
-        .round-title {
-            width: 100%;
-            text-align: center;
-            font-size: 1.4rem;
-            font-weight: 700;
-            margin: 20px 0 10px 0;
-            padding: 12px;
-            background: #f1f3f5;
-            border-radius: 8px;
-            border: 1px solid #dee2e6;
-            color: #212529;
-        }
-
-        .highlight-session {
-            background-color: #fff3cd;
-            font-weight: 700;
-            color: #856404;
-            border: 1px solid #ffeeba;
-        }
-
-        .highlight-note {
-            text-align: right;
-            font-style: italic;
-            background-color: #856404;
-            padding: 10px;
-            border-radius: 6px;
-            margin-top: 5px;
-            font-size: 0.95rem;
-        }
-    </style>
+    
+
+    /* ── HERO ── */
+    .hero {
+      position: relative;
+      min-height: 70vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      overflow: hidden;
+      background: linear-gradient(135deg, #006e4d 0%, #009268 50%, #00b37d 100%);
+      padding: 80px 24px;
+    }
+    .hero-bg-grid {
+      position: absolute; inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px);
+      background-size: 40px 40px;
+    }
+    .hero-orb {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(80px);
+      opacity: 0.3;
+    }
+    .hero-orb-1 { width: 400px; height: 400px; background: #00ffb3; top:-100px; right:-80px; }
+    .hero-orb-2 { width: 300px; height: 300px; background: #005c3f; bottom:-60px; left:-60px; }
+
+    .hero-content { position: relative; z-index: 1; max-width: 760px; }
+    .hero-tag {
+      display: inline-block;
+      background: rgba(255,255,255,0.15);
+      border: 1px solid rgba(255,255,255,0.3);
+      color: white;
+      padding: 6px 18px;
+      border-radius: 30px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      margin-bottom: 24px;
+    }
+    .hero h1 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      font-weight: 800;
+      color: white;
+      line-height: 1.15;
+      margin-bottom: 20px;
+      text-shadow: 0 2px 20px rgba(0,0,0,0.2);
+    }
+    .hero h1 span { color: #b8fce8; }
+    .hero p {
+      font-size: 1.1rem;
+      color: rgba(255,255,255,0.85);
+      max-width: 540px;
+      margin: 0 auto 36px;
+      line-height: 1.7;
+    }
+    .hero-stats {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      flex-wrap: wrap;
+    }
+    .stat {
+      text-align: center;
+    }
+    .stat-number {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 2rem;
+      font-weight: 800;
+      color: #b8fce8;
+      display: block;
+    }
+    .stat-label {
+      font-size: 0.85rem;
+      color: rgba(255,255,255,0.75);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    /* ── COURSES SECTION ── */
+    .courses-section {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 80px 24px;
+    }
+    .section-label {
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--primary);
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin-bottom: 10px;
+    }
+    .section-title {
+      font-family: 'Montserrat', sans-serif;
+      font-size: clamp(1.6rem, 3vw, 2.2rem);
+      font-weight: 800;
+      color: var(--secondary);
+      margin-bottom: 8px;
+    }
+    .section-sub {
+      color: #6c757d;
+      font-size: 1rem;
+      margin-bottom: 50px;
+    }
+
+    .courses-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+      gap: 32px;
+    }
+
+    /* ── COURSE CARD ── */
+    .course-card {
+      background: white;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      position: relative;
+    }
+    .course-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 16px 48px rgba(0,0,0,0.14);
+    }
+
+    .card-banner {
+      height: 180px;
+      position: relative;
+      display: flex;
+      align-items: flex-end;
+      padding: 20px 24px;
+      overflow: hidden;
+    }
+    .card-banner-sd {
+      background: linear-gradient(135deg, #006e4d 0%, #009268 100%);
+    }
+    .card-banner-pv {
+      background: linear-gradient(135deg, #1a5276 0%, #2471a3 100%);
+    }
+    .card-banner-pss {
+      background: linear-gradient(135deg, var(--pss-primary-dark) 0%, var(--pss-primary) 100%);
+    }
+    .card-banner-pd {
+      background: linear-gradient(135deg, var(--pd-primary-dark) 0%, var(--pd-primary) 100%);
+    }
+    .card-banner-psse {
+      background: linear-gradient(135deg, var(--psse-primary-dark) 0%, var(--psse-primary) 100%);
+    }
+    .banner-pattern {
+      position: absolute; inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px);
+      background-size: 25px 25px;
+    }
+    .banner-icon {
+      position: absolute;
+      right: 20px; top: 20px;
+      width: 60px; height: 60px;
+      background: rgba(255,255,255,0.12);
+      border-radius: 14px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.8rem;
+      color: rgba(255,255,255,0.9);
+    }
+    .banner-badge {
+      position: relative;
+      z-index: 1;
+      background: rgba(255,255,255,0.2);
+      border: 1px solid rgba(255,255,255,0.3);
+      color: white;
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+    }
+
+    .card-body { padding: 28px 24px; flex: 1; display: flex; flex-direction: column; }
+
+    .card-title {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--secondary);
+      margin-bottom: 12px;
+      line-height: 1.3;
+    }
+    .card-description {
+      font-size: 0.95rem;
+      color: #6c757d;
+      line-height: 1.6;
+      margin-bottom: 20px;
+      flex: 1;
+    }
+
+    .card-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 24px;
+    }
+    .meta-chip {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.82rem;
+      color: var(--secondary);
+      background: var(--light-gray);
+      padding: 5px 12px;
+      border-radius: 20px;
+      font-weight: 500;
+    }
+    .meta-chip i { color: var(--primary); font-size: 0.8rem; }
+    .meta-chip i.pss-icon { color: var(--pss-primary); }
+    .meta-chip i.pd-icon { color: var(--pd-primary); }
+    .meta-chip i.psse-icon { color: var(--psse-primary); }
+
+    .card-divider {
+      border: none;
+      border-top: 1px solid #e9ecef;
+      margin-bottom: 20px;
+    }
+
+    .card-instructor {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+    .card-instructor.two-up { align-items: flex-start; }
+    .instructor-avatar {
+      width: 38px; height: 38px;
+      background: var(--primary-glow);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      color: var(--primary);
+      font-size: 0.9rem;
+      flex-shrink: 0;
+    }
+    .instructor-avatar-blue {
+      background: rgba(36,113,163,0.12);
+      color: #2471a3;
+    }
+    .instructor-avatar-purple {
+      background: var(--pss-glow);
+      color: var(--pss-primary);
+    }
+    .instructor-avatar-orange {
+      background: var(--pd-glow);
+      color: var(--pd-primary);
+    }
+    .instructor-avatar-teal {
+      background: var(--psse-glow);
+      color: var(--psse-primary);
+    }
+    .instructor-avatar-stack {
+      display: flex;
+      flex-shrink: 0;
+    }
+    .instructor-avatar-stack .instructor-avatar {
+      border: 2px solid white;
+    }
+    .instructor-avatar-stack .instructor-avatar:not(:first-child) {
+      margin-left: -12px;
+    }
+    .instructor-name { font-size: 0.9rem; font-weight: 600; color: var(--secondary); }
+    .instructor-title { font-size: 0.78rem; color: #6c757d; }
+
+    .card-actions {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    .btn-primary {
+      flex: 1;
+      text-align: center;
+      padding: 13px 20px;
+      background: var(--primary);
+      color: white;
+      text-decoration: none;
+      border-radius: 8px;
+      font-weight: 700;
+      font-size: 0.9rem;
+      transition: background 0.2s ease, transform 0.2s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+    .btn-primary:hover {
+      background: var(--primary-dark);
+      transform: translateY(-1px);
+    }
+    .btn-primary-blue {
+      background: #2471a3;
+    }
+    .btn-primary-blue:hover {
+      background: #1a5276;
+    }
+    .btn-primary-purple {
+      background: var(--pss-primary);
+    }
+    .btn-primary-purple:hover {
+      background: var(--pss-primary-dark);
+    }
+    .btn-primary-orange {
+      background: var(--pd-primary);
+    }
+    .btn-primary-orange:hover {
+      background: var(--pd-primary-dark);
+    }
+    .btn-primary-teal {
+      background: var(--psse-primary);
+    }
+    .btn-primary-teal:hover {
+      background: var(--psse-primary-dark);
+    }
+    .btn-outline {
+      padding: 13px 16px;
+      border: 2px solid var(--primary);
+      color: var(--primary);
+      text-decoration: none;
+      border-radius: 8px;
+      font-weight: 700;
+      font-size: 0.9rem;
+      transition: all 0.2s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .btn-outline:hover {
+      background: var(--primary);
+      color: white;
+    }
+    .btn-outline-blue {
+      border-color: #2471a3;
+      color: #2471a3;
+    }
+    .btn-outline-blue:hover {
+      background: #2471a3;
+      color: white;
+    }
+    .btn-outline-purple {
+      border-color: var(--pss-primary);
+      color: var(--pss-primary);
+    }
+    .btn-outline-purple:hover {
+      background: var(--pss-primary);
+      color: white;
+    }
+    .btn-outline-orange {
+      border-color: var(--pd-primary);
+      color: var(--pd-primary);
+    }
+    .btn-outline-orange:hover {
+      background: var(--pd-primary);
+      color: white;
+    }
+    .btn-outline-teal {
+      border-color: var(--psse-primary);
+      color: var(--psse-primary);
+    }
+    .btn-outline-teal:hover {
+      background: var(--psse-primary);
+      color: white;
+    }
+
+    /* ── WHY GRID ACADEMY ── */
+    .why-section {
+      background: var(--secondary);
+      padding: 80px 24px;
+    }
+    .why-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    .why-inner .section-label { color: #b8fce8; }
+    .why-inner .section-title { color: white; margin-bottom: 16px; }
+    .why-inner .section-sub { color: rgba(255,255,255,0.65); margin-bottom: 50px; }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 24px;
+    }
+    .feature-card {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: var(--radius);
+      padding: 28px 20px;
+      text-align: center;
+      transition: background 0.3s ease;
+    }
+    .feature-card:hover { background: rgba(255,255,255,0.1); }
+    .feature-icon {
+      width: 52px; height: 52px;
+      background: var(--primary-glow);
+      border-radius: 12px;
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 16px;
+      font-size: 1.3rem;
+      color: var(--primary-light);
+    }
+    .feature-title {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1rem;
+      font-weight: 700;
+      color: white;
+      margin-bottom: 8px;
+    }
+    .feature-desc { font-size: 0.87rem; color: rgba(255,255,255,0.6); line-height: 1.5; }
+
+    /* ── FOOTER ── */
+    footer {
+      background: #1a252f;
+      padding: 40px 24px;
+      text-align: center;
+    }
+    footer .footer-brand {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.2rem;
+      font-weight: 800;
+      color: white;
+      margin-bottom: 10px;
+    }
+    footer p { color: rgba(255,255,255,0.5); font-size: 0.88rem; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 600px) {
+      .hero-stats { gap: 24px; }
+      .courses-grid { grid-template-columns: 1fr; }
+      .card-actions { flex-direction: column; }
+    }
+  </style>
 </head>
 <body>
 
-    <!-- ── TOP NAV (NEW) ── -->
-    <nav class="top-nav">
-        <div class="nav-inner">
-            <div class="nav-left">
-                <a href="index.html" class="nav-back">
-                    <i class="fas fa-chevron-left"></i> All Courses
-                </a>
-				
+  <!-- TOP NAV -->
+<nav class="top-nav">
+  <div class="nav-inner">
     <a href="index.html" class="nav-brand">
       <img src="Sm1.svg" alt="Grid Academy Logo" class="nav-logo">
       GRID ACADEMY
     </a>
-            </div>
-		<a href="/pay/sdpc.html" class="nav-enroll">
-  			  <i class="fas fa-file-alt" style="margin-right:6px;"></i> Enroll Now
-		</a>
+    <span class="nav-pill">2026 Courses</span>
+  </div>
+</nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-bg-grid"></div>
+    <div class="hero-orb hero-orb-1"></div>
+    <div class="hero-orb hero-orb-2"></div>
+    <div class="hero-content">
+      <div class="hero-tag"><i class="fas fa-graduation-cap" style="margin-right:6px;"></i> Professional Engineering Courses</div>
+      <h1>Power Your Career in<br><span>Electrical Engineering</span></h1>
+      <p>Industry-aligned, job-ready courses designed by practicing engineers with real-world project experience.</p>
+      <div class="hero-stats">
+        <div class="stat">
+          <span class="stat-number">4</span>
+          <span class="stat-label">Courses</span>
         </div>
-    </nav>
-
-    <!-- HERO -->
-    <section class="hero-section">
-        <div class="shape-circle" style="width: 300px; height: 300px; top: -100px; right: -100px;"></div>
-        <div class="shape-square" style="width: 200px; height: 200px; bottom: -50px; left: 10%;"></div>
-        <div class="shape-circle" style="width: 150px; height: 150px; bottom: 100px; right: 20%;"></div>
-
-        <div class="container">
-            <div class="hero-content">
-<div class="logo">
-    <img src="Sm1.svg" alt="Grid Academy Logo" class="hero-logo">
-    <h2>GRID ACADEMY</h2>
-</div>
-                <h1 class="course-title">Substation Design & Protection Course</h1>
-                <p class="instructor"><i class="fas fa-chalkboard-teacher"></i> Presented by: Eng. Ahmed Metwally</p>
-                <p class="year">2026 Edition</p>
-                <p>Master the art of substation design with our comprehensive 4-level professional program</p>
-      
-
-<div style="display: flex; gap: 10px;">
-    <a href="https://docs.google.com/forms/d/e/1FAIpQLSdKy8u6JsBfLq4gNz6nvGTaH5G57xsdJnUxnCHkXyxNaQFnrQ/viewform?usp=send_form" 
-       class="cta-button" target="_blank">
-        Trainee Registration <i class="fas fa-arrow-right"></i>
-    </a>
-
-    <a href="/pay/sdpc.html" class="cta-button secondary">
-        Enroll Now <i class="fas fa-credit-card"></i>
-    </a>
-</div>
-
-
-
+        <div class="stat">
+          <span class="stat-number">58</span>
+          <span class="stat-label">Sessions</span>
         </div>
-    </section>
-
-    <!-- Course Overview -->
-    <section id="overview">
-        <div class="shape-circle" style="width: 200px; height: 200px; top: 50px; left: -50px;"></div>
-        <div class="shape-square" style="width: 150px; height: 150px; bottom: 100px; right: 5%;"></div>
-
-        <div class="container">
-            <div class="section-header">
-                <h1>Course Overview</h1>
-                <p>This 4-Level professional course equips electrical engineering students with both theoretical ground and practical application in substation design and protection systems.</p>
-            </div>
-            <div class="card">
-                <p>It covers everything from <strong>control philosophy</strong> to <strong>advanced protection schemes</strong>, <strong>calculation techniques</strong>, and <strong>field interfacing practices</strong>, providing industry-aligned, job-ready competencies.</p>
-                <p>Through hands-on projects and real-world scenarios, you'll gain the expertise needed to excel in the power systems industry.</p>
-            </div>
-
-            <div class="progress-indicator">
-                <div class="progress-step">
-                    <div class="step-circle">1</div>
-                    <div class="step-label">Foundations</div>
-                </div>
-                <div class="progress-step">
-                    <div class="step-circle">2</div>
-                    <div class="step-label">Advanced Design</div>
-                </div>
-                <div class="progress-step">
-                    <div class="step-circle">3</div>
-                    <div class="step-label">Calculations</div>
-                </div>
-                <div class="progress-step">
-                    <div class="step-circle">4</div>
-                    <div class="step-label">Field Applications</div>
-                </div>
-            </div>
+        <div class="stat">
+          <span class="stat-number">100+</span>
+          <span class="stat-label">Engineers Trained</span>
         </div>
-    </section>
-
-    <!-- Course Objectives -->
-    <section id="objectives">
-        <div class="shape-circle" style="width: 250px; height: 250px; top: -100px; right: -100px;"></div>
-
-        <div class="container">
-            <div class="section-header">
-                <h1>Course Objectives</h1>
-                <p>By the end of this course, participants will be able to:</p>
-            </div>
-            <div class="card">
-                <ul class="bullet-list">
-                    <li>Understand the structure and control of conventional and automated substations.</li>
-                    <li>Interpret and design substation SLDs, schematics, and signal lists.</li>
-                    <li>Perform key sizing calculations for CTs, VTs, cables, batteries, and relays.</li>
-                    <li>Configure relay settings and develop safe interlocking schemes.</li>
-                    <li>Prepare and review submittals including design documents and vendor drawings.</li>
-                    <li>Apply industry best practices in real-world substation projects.</li>
-                </ul>
-            </div>
+        <div class="stat">
+          <span class="stat-number">16+</span>
+          <span class="stat-label">Years Industry Exp.</span>
         </div>
-    </section>
+      </div>
+    </div>
+  </section>
 
-    <!-- Schedule -->
+  <!-- COURSES -->
+  <div class="courses-section">
+    <p class="section-label">What We Offer</p>
+    <h2 class="section-title">Available Courses</h2>
+    <p class="section-sub">Choose your specialization and start your journey toward becoming a power systems professional.</p>
 
+    <div class="courses-grid">
 
-<section id="schedule">
-        <div class="container">
-            <div class="section-header">
-                <h1>Schedule</h1>
-                <p>
-                    <strong>Time: 8:00 PM (GMT+2 - Cairo) / 09:00 PM (GMT+3 - KSA)</strong><br />
-                    A <strong>Microsoft Teams meeting link</strong> will be shared with participants before each session.<br />
-                    After every session, <strong>a PDF Notes file</strong> will be provided to all participants.
-                </p>
-            </div>
-
-            <div class="round-title">Round 1 – Full Course – Starting 6 Oct</div>
-            <div class="schedule-table-wrapper">
-                <table class="schedule-table">
-                    <thead>
-                        <tr>
-                            <th>Level</th>
-                            <th>Session</th>
-                            <th>Date</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr><td class="level-1">1</td><td>1</td><td data-datetime="2025-10-06T19:00:00+02:00">06 Oct</td></tr>
-                        <tr><td class="level-1">1</td><td>2</td><td data-datetime="2025-10-13T19:00:00+02:00">13 Oct</td></tr>
-                        <tr><td class="level-1">1</td><td>3</td><td data-datetime="2025-10-20T19:00:00+02:00">20 Oct</td></tr>
-                        <tr><td class="level-1">1</td><td>4</td><td data-datetime="2025-10-27T19:00:00+02:00">27 Oct</td></tr>
-                        <tr><td class="level-2">2</td><td>5</td><td data-datetime="2025-11-08T19:00:00+02:00">08 Nov</td></tr>
-                        <tr><td class="level-2">2</td><td>6</td><td data-datetime="2025-11-15T19:00:00+02:00">15 Nov</td></tr>
-                        <tr><td class="level-2">2</td><td>7</td><td data-datetime="2025-11-22T19:00:00+02:00">22 Nov</td></tr>
-                        <tr><td class="level-2">2</td><td>8</td><td data-datetime="2025-11-29T19:00:00+02:00">29 Nov</td></tr>
-                        <tr><td class="level-2">2</td><td>9</td><td data-datetime="2025-12-06T19:00:00+02:00">06 Dec</td></tr>
-                        <tr><td class="level-3">3</td><td>10</td><td data-datetime="2025-12-27T19:00:00+02:00">27 Dec</td></tr>
-                        <tr><td class="level-3">3</td><td>11</td><td data-datetime="2026-01-03T19:00:00+02:00">03 Jan</td></tr>
-                        <tr><td class="level-3">3</td><td>12</td><td data-datetime="2026-01-10T19:00:00+02:00">10 Jan</td></tr>
-                        <tr><td class="level-3">3</td><td>13</td><td data-datetime="2026-01-17T19:00:00+02:00">17 Jan</td></tr>
-                        <tr><td class="level-3">3</td><td>14</td><td data-datetime="2026-01-24T19:00:00+02:00">24 Jan</td></tr>
-                        <tr><td class="level-4">4</td><td>15</td><td data-datetime="2026-02-15T19:00:00+02:00"><span style="text-decoration:line-through;">14 Feb</span> 15-Feb</td></tr>
-                        <tr><td class="level-4">4</td><td>16</td><td data-datetime="2026-02-22T19:00:00+02:00"><span style="text-decoration:line-through;">21 Feb</span> 22-Feb</td></tr>
-                        <tr><td class="level-4">4</td><td>17</td><td data-datetime="2026-03-01T19:00:00+02:00"><span style="text-decoration:line-through;">28 Feb</span> 01-Mar</td></tr>
-                        <tr><td class="level-4">4</td><td>18</td><td data-datetime="2026-03-24T19:00:00+02:00"><span style="text-decoration:line-through;">07 Mar</span> 24-Mar</td></tr>
-                        <tr><td class="level-4">4</td><td>19</td><td data-datetime="2026-03-31T19:00:00+02:00"><span style="text-decoration:line-through;">14 Mar</span> 31-Mar</td></tr>
-                    </tbody>
-                </table>
-            </div>
-
-            <div class="round-title">Round 2 – Level 1 – Level 2 | Starting 26 Nov</div>
-            <div class="schedule-table-wrapper">
-                <table class="schedule-table">
-                    <thead>
-                        <tr>
-                            <th>Level</th>
-                            <th>Session</th>
-                            <th>Date</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr><td class="level-1">1</td><td>1</td><td data-datetime="2025-11-26T20:00:00+02:00">26 Nov</td></tr>
-                        <tr><td class="level-1">1</td><td>2</td><td data-datetime="2025-12-03T20:00:00+02:00">03 Dec</td></tr>
-                        <tr><td class="level-1">1</td><td>3</td><td data-datetime="2025-12-10T20:00:00+02:00">10 Dec</td></tr>
-                        <tr><td class="level-1">1</td><td>4</td><td data-datetime="2025-12-17T20:00:00+02:00">17 Dec</td></tr>
-                        <tr><td class="level-2">2</td><td>5</td><td data-datetime="2026-01-01T20:00:00+02:00">01 Jan</td></tr>
-                        <tr><td class="level-2">2</td><td>6</td><td data-datetime="2026-01-08T20:00:00+02:00">08 Jan</td></tr>
-                        <tr><td class="level-2">2</td><td>7</td><td data-datetime="2026-01-14T20:00:00+02:00">14 Jan</td></tr>
-                        <tr><td class="level-2">2</td><td>8</td><td data-datetime="2026-01-21T20:00:00+02:00">21 Jan</td></tr>
-                        <tr><td class="level-2">2</td><td>9</td><td data-datetime="2026-01-28T20:00:00+02:00">28 Jan</td></tr>
-                    </tbody>
-                </table>
-            </div>
-<div class="round-title">Round 3 – Full Course – Starting 5 May</div>
-<div class="schedule-table-wrapper">
-    <table class="schedule-table">
-        <thead>
-            <tr>
-                <th>Number</th>
-                <th>lv.Session</th>
-                <th>Date</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr><td class="level-1">1</td><td>1.1</td><td data-datetime="2026-05-05T20:00:00+02:00">05 May</td></tr>
-            <tr><td class="level-1">2</td><td>1.2</td><td data-datetime="2026-05-12T20:00:00+02:00">12 May</td></tr>
-            <tr><td class="level-1">3</td><td>1.3</td><td data-datetime="2026-05-25T20:00:00+02:00"><span style="text-decoration:line-through;">19 May</span> 25 May</td></tr>
-
-            
-            <tr class="break-week"><td colspan="3">🛑 2-Week Break – Week of 2 Jun &amp; 9 Jun</td></tr>
-            <tr><td class="level-1">4</td><td>1.4</td><td data-datetime="2026-06-16T20:00:00+02:00"><span style="text-decoration:line-through;">26 May</span> 16 Jun</td></tr>
-
-			
-<tr><td class="level-2">5</td><td>2.1</td><td data-datetime="2026-06-23T20:00:00+02:00">23 Jun</td></tr>
-<tr><td class="level-2">6</td><td>2.2</td><td data-datetime="2026-07-08T20:00:00+02:00">08 Jul</td></tr>
-<tr><td class="level-2">7</td><td>2.3</td><td data-datetime="2026-07-14T20:00:00+02:00">14 Jul</td></tr>
-<tr><td class="level-2">8</td><td>2.4</td><td data-datetime="2026-07-28T20:00:00+02:00">28 Jul</td></tr>
-<tr><td class="level-2">9</td><td>2.5</td><td data-datetime="2026-06-30T20:00:00+02:00"><em>30 Jun</em></td></tr>
-<tr><td class="level-2">10</td><td>2.6</td><td data-datetime="2026-07-21T20:00:00+02:00"><em>21 Jul</em></td></tr>
-
-<tr class="break-week"><td colspan="3">🛑 Level Break – Week of 04 Aug</td></tr>
-
-<tr><td class="level-3">11</td><td>3.1</td><td data-datetime="2026-08-11T20:00:00+02:00">11 Aug</td></tr>
-<tr><td class="level-3">12</td><td>3.2</td><td data-datetime="2026-08-18T20:00:00+02:00">18 Aug</td></tr>
-<tr><td class="level-3">13</td><td>3.3</td><td data-datetime="2026-08-25T20:00:00+02:00">25 Aug</td></tr>
-<tr><td class="level-3">14</td><td>3.4</td><td data-datetime="2026-09-01T20:00:00+02:00">01 Sep</td></tr>
-<tr><td class="level-3">15</td><td>3.5</td><td data-datetime="2026-09-08T20:00:00+02:00">08 Sep</td></tr>
-
-<tr class="break-week"><td colspan="3">🛑 Level Break – Week of 15 Sep</td></tr>
-
-<tr><td class="level-4">16</td><td>4.1</td><td data-datetime="2026-09-22T20:00:00+02:00">22 Sep</td></tr>
-<tr><td class="level-4">17</td><td>4.2</td><td data-datetime="2026-09-29T20:00:00+02:00">29 Sep</td></tr>
-<tr><td class="level-4">18</td><td>4.3</td><td data-datetime="2026-10-06T20:00:00+02:00">06 Oct</td></tr>
-<tr><td class="level-4">19</td><td>4.4</td><td data-datetime="2026-10-13T20:00:00+02:00">13 Oct</td></tr>
-<tr><td class="level-4">20</td><td>4.5</td><td data-datetime="2026-10-20T20:00:00+02:00">20 Oct</td></tr>
-
-			
-</tbody>
-</table>
-</div>
-
-            <script>
-            document.addEventListener("DOMContentLoaded", () => {
-                const utcMs = new Date().getTime() + new Date().getTimezoneOffset() * 60000;
-                const cairoNow = new Date(utcMs + 2 * 60 * 60000);
-                document.querySelectorAll(".schedule-table td[data-datetime]").forEach(cell => {
-                    if (new Date(cell.getAttribute("data-datetime")).getTime() < cairoNow.getTime())
-                        cell.parentElement.classList.add("past-session");
-                });
-            });
-            </script>
+      <!-- CARD 1: Substation Design & Protection -->
+      <div class="course-card">
+        <div class="card-banner card-banner-sd">
+          <div class="banner-pattern"></div>
+          <div class="banner-icon"><i class="fas fa-bolt"></i></div>
+          <span class="banner-badge"><i class="fas fa-circle" style="font-size:0.5rem; margin-right:5px;"></i> Active — Round 3 Ongoing</span>
         </div>
-    </section>
-
-
-
-
-
-    <!-- Course Structure -->
-    <section id="structure">
-        <div class="shape-circle" style="width: 220px; height: 220px; bottom: -50px; right: -50px;"></div>
-
-        <div class="container">
-            <div class="section-header">
-                <h1>Course Structure</h1>
-                <p>Our curriculum is carefully designed to build your knowledge from foundational concepts to advanced applications</p>
+        <div class="card-body">
+          <h3 class="card-title">Substation Design &amp; Protection Systems</h3>
+          <p class="card-description">Master substation design from control philosophy to advanced protection schemes, covering SLDs, calculations, relay settings, and field interfacing practices across 4 progressive levels.</p>
+          <div class="card-meta">
+            <span class="meta-chip"><i class="fas fa-layer-group"></i> 4 Levels</span>
+            <span class="meta-chip"><i class="fas fa-video"></i> 19 Sessions</span>
+            <span class="meta-chip"><i class="fas fa-laptop"></i> Online / Teams</span>
+            <span class="meta-chip"><i class="fas fa-tools"></i> AutoCAD · ETAP · Excel</span>
+          </div>
+          <hr class="card-divider" />
+          <div class="card-instructor">
+            <div class="instructor-avatar"><i class="fas fa-user-tie"></i></div>
+            <div>
+              <div class="instructor-name">Eng. Ahmed Metwally</div>
+              <div class="instructor-title">Substation Engineering Manager · 16+ yrs</div>
             </div>
-
-            <div class="card">
-                <h2>Level 1: Foundations of Substation Design</h2>
-                <h3><i class="fas fa-bolt"></i> Session 1: Welcome to the Grid</h3>
-                <p>Substation types, voltage levels, layouts, and system roles.</p>
-                <h3><i class="fas fa-brain"></i> Session 2: Brains of the System</h3>
-                <p>Conventional vs SAS Substation Control. Hierarchy and components in conventional and automated systems.</p>
-                <h3><i class="fas fa-shield-alt"></i> Session 3: Protection System Basics</h3>
-                <p>Philosophies, protection elements, attributes, relay types.</p>
-                <h3><i class="fas fa-cogs"></i> Session 4: Relay Types and Applications</h3>
-                <p>Overcurrent, differential, and distance relays.</p>
-            </div>
-
-<div class="card">
-    <h2>Level 2: Advanced Substation Design & Drawings [Base Design]</h2>
-
-    <h3><i class="fas fa-project-diagram"></i> Session 1: Single Line Diagrams (SLD)</h3>
-    <p>Main SLD purpose, structure, IEC conventions.</p>
-
-    <h3><i class="fas fa-tachometer-alt"></i> Session 2: Relay & Metering SLD</h3>
-    <p>CT/VT integration, relay layout.</p>
-
-    <h3><i class="fas fa-route"></i> Session 3: Distance Protection Schemes</h3>
-    <p>Pilot-aided and non-pilot-aided schemes, zone settings.</p>
-
-    <h3><i class="fas fa-lock"></i> Session 4: Interlocking Schemes, Alarm List</h3>
-    <p>Logic design and maloperation prevention.</p>
-
-    <h3><i class="fas fa-drafting-compass"></i> Session 5: Single Line Diagram Workshop</h3>
-    <p>Hands-on development and review of SLDs based on real substation cases.</p>
-
-    <h3><i class="fas fa-project-diagram"></i> Session 6: Protection Logic Diagram Workshop</h3>
-    <p>Practical design of protection logic diagrams and interlocking implementation.</p>
-</div>
-
-            <div class="card">
-                <h2>Level 3: Engineering Calculations & Design Sizing</h2>
-                <h3><i class="fas fa-calculator"></i> Session 1: Breaker and Cable Sizing</h3>
-                <p>IEC-based sizing for AC/DC breakers and cables.</p>
-                <h3><i class="fas fa-bolt"></i> Session 2: Auxiliary Transformer & Zig-Zag Sizing</h3>
-                <p>Roles, calculation steps.</p>
-                <h3><i class="fas fa-exchange-alt"></i> Session 3: CT and VT Fundamentals</h3>
-                <p>CT classes, sizing, VT basics.</p>
-                <h3><i class="fas fa-sliders-h"></i> Session 4: CT and VT Adequacy</h3>
-                <p>CT Adequacy, Calculations, Parameters</p>
-                <h3><i class="fas fa-car-battery"></i> Session 5: Battery and Charger Sizing</h3>
-                <p>DC load profile, battery sizing.</p>
-            </div>
-
-            <div class="card">
-                <h2>Level 4: Practical Interfacing & Field Applications</h2>
-                <h3><i class="fas fa-wrench"></i> Session 1: Control & Protection Schematics Fundamentals</h3>
-                <p>This session introduces electrical symbols, wiring notations, and IEC/ANSI drawing conventions used in control and protection schematics.</p>
-                <p>Read drawings systematically and trace logic paths such as trip, close, alarm, and interlock circuits.</p>
-                <h3><i class="fas fa-project-diagram"></i> Session 2: Protection Schematics & Relay Logic Interpretation</h3>
-                <p>Focuses on understanding protection philosophy and how common schemes such as overcurrent, differential, and distance protection are represented in schematics.</p>
-                <p>Mapping schematic logic to relay functions and identify CT/VT connections and ANSI elements in real drawings.</p>
-                <h3><i class="fas fa-sliders-h"></i> Session 3: Relay Setting Calculations</h3>
-                <p>This session explains what relay settings are, why they are required, and how core parameters such as pickup, time dial, and curves are selected.</p>
-                <p>Practical examples demonstrating relay settings.</p>
-                <h3><i class="fas fa-th-list"></i> Session 4: Relay Settings (Application) + Panel & I/O Documentation</h3>
-                <p>Applies relay settings through coordination examples, verification against schematics, and identification of common setting errors.</p>
-                <p>The session also covers panel contents, signal lists, cable schedules, and termination charts, linking relay I/O to physical wiring.</p>
-                <h3><i class="fas fa-file-contract"></i> Session 5: Final Wrap-Up and Submittals</h3>
-                <p>This final session explains how all project documents fit together, including schematics, relay settings, signal lists, and termination drawings.</p>
-                <p>Participants gain insight into vendor deviations, and how these deliverables are used in real substation and plant projects.</p>
-            </div>
+          </div>
+          <div class="card-actions">
+            <a href="https://gridacad.github.io/course/SDPC.html" class="btn-primary">
+              <i class="fas fa-arrow-right"></i> View Course
+            </a>
+            <a href="https://gridacad.github.io/pay/sdpc.html" class="btn-outline">
+              <i class="fas fa-file-alt"></i>&nbsp;Enroll
+            </a>
+          </div>
         </div>
-    </section>
+      </div>
 
-    <!-- Certifications -->
-    <section id="certifications">
-        <div class="shape-square" style="width: 160px; height: 160px; top: 100px; right: 10%;"></div>
-        <div class="container">
-            <div class="section-header">
-                <h1>Certifications</h1>
-                <p>Earn industry-recognized certifications as you progress through each level of the course</p>
-            </div>
-            <h2>Completion Certifications:</h2>
-            <div class="certification-container">
-                <div class="certification-card"><h3><i class="fas fa-award"></i> Level 1:</h3><p><em>Certified Substation Basics Specialist</em></p></div>
-                <div class="certification-card"><h3><i class="fas fa-award"></i> Level 2:</h3><p><em>Advanced SLD & Protection Designer</em></p></div>
-                <div class="certification-card"><h3><i class="fas fa-award"></i> Level 3:</h3><p><em>Substation Design Calculator</em></p></div>
-                <div class="certification-card"><h3><i class="fas fa-award"></i> Level 4:</h3><p><em>Practical Field Interfacing Expert</em></p></div>
-            </div>
-            <h2>Attendance Certifications:</h2>
-            <div class="certification-container">
-                <div class="certification-card"><h3><i class="fas fa-certificate"></i> Level 1:</h3><p><em>Attended Level 1</em></p></div>
-                <div class="certification-card"><h3><i class="fas fa-certificate"></i> Level 2:</h3><p><em>Attended Level 2</em></p></div>
-                <div class="certification-card"><h3><i class="fas fa-certificate"></i> Level 3:</h3><p><em>Attended Level 3</em></p></div>
-                <div class="certification-card"><h3><i class="fas fa-certificate"></i> Level 4:</h3><p><em>Attended Level 4</em></p></div>
-            </div>
+      <!-- CARD 2: Power System Studies (PSS) -->
+      <div class="course-card">
+        <div class="card-banner card-banner-pss">
+          <div class="banner-pattern"></div>
+          <div class="banner-icon"><i class="fas fa-diagram-project"></i></div>
+          <span class="banner-badge"><i class="fas fa-circle" style="font-size:0.5rem; margin-right:5px;"></i> Enrolling — August 2026 Cohort</span>
         </div>
-    </section>
-
-    <!-- Assignments -->
-    <section id="assignments">
-        <div class="container">
-            <div class="section-header">
-                <h1>Assignments Summary</h1>
-                <p>Hands-on projects and exercises to reinforce your learning</p>
+        <div class="card-body">
+          <h3 class="card-title">Power System Studies</h3>
+          <p class="card-description">A hands-on live course in ETAP covering load flow, short circuit, protection coordination, motor starting, and harmonic analysis — the core studies every power systems engineer needs.</p>
+          <div class="card-meta">
+            <span class="meta-chip"><i class="fas fa-video pss-icon"></i> 8 Sessions</span>
+            <span class="meta-chip"><i class="fas fa-laptop pss-icon"></i> Online / Teams</span>
+            <span class="meta-chip"><i class="fas fa-tools pss-icon"></i> ETAP</span>
+          </div>
+          <hr class="card-divider" />
+          <div class="card-instructor two-up">
+            <div class="instructor-avatar-stack">
+              <div class="instructor-avatar instructor-avatar-purple"><i class="fas fa-user-tie"></i></div>
+              <div class="instructor-avatar instructor-avatar-purple"><i class="fas fa-user-tie"></i></div>
             </div>
-            <div class="card">
-                <ul class="bullet-list">
-                    <li>Component identification</li>
-                    <li>Control hierarchy diagram</li>
-                    <li>CT/VT sizing</li>
-                    <li>Main SLD drawing</li>
-                    <li>Relay & Metering SLD</li>
-                    <li>AC/DC SLDs</li>
-                    <li>Breaker and Cable sizing</li>
-                    <li>Battery Sizing</li>
-                    <li>Relay Settings</li>
-                    <li>Interlocking Logic</li>
-                    <li>Signal List & Schematic</li>
-                    <li>Others will follow according to timing</li>
-                </ul>
+            <div>
+              <div class="instructor-name">Eng. Ziad Samy &amp; Eng. Mohamed Nady</div>
+              <div class="instructor-title">Power System Studies Engineers</div>
             </div>
+          </div>
+          <div class="card-actions">
+            <a href="https://gridacad.github.io/course/pss.html" class="btn-primary btn-primary-purple">
+              <i class="fas fa-arrow-right"></i> View Course
+            </a>
+            <a href="https://gridacad.github.io/pay/pss.html" class="btn-outline btn-outline-purple">
+              <i class="fas fa-file-alt"></i>&nbsp;Enroll
+            </a>
+          </div>
         </div>
-    </section>
+      </div>
 
-    <!-- Tools & Software -->
-    <section id="tools">
-        <div class="container">
-            <div class="section-header">
-                <h1>Tools & Software</h1>
-                <p>Industry-standard software used throughout the course</p>
-            </div>
-            <div class="card">
-                <ul class="bullet-list">
-                    <li>AutoCAD for schematic and SLD drafting</li>
-                    <li>Excel for all sizing calculations</li>
-                    <li>ETAP for protection studies</li>
-                </ul>
-            </div>
+      <!-- CARD 3: Primary Design Course (PD) -->
+      <div class="course-card">
+        <div class="card-banner card-banner-pd">
+          <div class="banner-pattern"></div>
+          <div class="banner-icon"><i class="fas fa-drafting-compass"></i></div>
+          <span class="banner-badge"><i class="fas fa-circle" style="font-size:0.5rem; margin-right:5px;"></i> Enrolling Now</span>
         </div>
-    </section>
-
-    <!-- Evaluation -->
-    <section id="evaluation">
-        <div class="container">
-            <div class="section-header">
-                <h1>Evaluation Criteria</h1>
-                <p>How your performance will be assessed throughout the course</p>
+        <div class="card-body">
+          <h3 class="card-title">Primary Design Course</h3>
+          <p class="card-description">Build a strong foundation in electrical primary design — single line diagrams, equipment sizing, and layout fundamentals — structured for engineers starting out in power system design.</p>
+          <div class="card-meta">
+            <span class="meta-chip"><i class="fas fa-layer-group pd-icon"></i> 3 Levels</span>
+            <span class="meta-chip"><i class="fas fa-video pd-icon"></i> 12 Sessions</span>
+            <span class="meta-chip"><i class="fas fa-laptop pd-icon"></i> Online / Teams</span>
+            <span class="meta-chip"><i class="fas fa-tools pd-icon"></i> AutoCAD · Excel</span>
+          </div>
+          <hr class="card-divider" />
+          <div class="card-instructor">
+            <div class="instructor-avatar instructor-avatar-orange"><i class="fas fa-user-tie"></i></div>
+            <div>
+              <div class="instructor-name">Eng. Mohamed Moatasim</div>
+              <div class="instructor-title">Primary Design Engineer</div>
             </div>
-            <div class="card">
-                <ul class="bullet-list">
-                    <li>Assignments – 50%</li>
-                    <li>Level-Project – 50%</li>
-                </ul>
-            </div>
+          </div>
+          <div class="card-actions">
+            <a href="https://gridacad.github.io/course/pd.html" class="btn-primary btn-primary-orange">
+              <i class="fas fa-arrow-right"></i> View Course
+            </a>
+            <a href="https://gridacad.github.io/pay/pd.html" class="btn-outline btn-outline-orange">
+              <i class="fas fa-file-alt"></i>&nbsp;Enroll
+            </a>
+          </div>
         </div>
-    </section>
+      </div>
 
-    <!-- Policy -->
-    <section id="policy">
-        <div class="container">
-            <div class="section-header">
-                <h1>Content Usage & Non-Sharing Policy</h1>
-                <p>Protecting the intellectual property of our course materials</p>
-            </div>
-            <div class="card">
-                <ul class="bullet-list">
-                    <li><strong>All course materials, tools, recordings, templates, and files are proprietary</strong> and may not be <strong>copied, recorded, distributed, or reused</strong> without written permission.</li>
-                    <li>By registering, participants agree not to <strong>share or reproduce content</strong> outside personal use or for commercial/teaching purposes.</li>
-                </ul>
-            </div>
+      <!-- CARD 4: PV Systems Engineering -->
+      <div class="course-card">
+        <div class="card-banner card-banner-pv">
+          <div class="banner-pattern"></div>
+          <div class="banner-icon"><i class="fas fa-solar-panel"></i></div>
+          <span class="banner-badge"><i class="fas fa-circle" style="font-size:0.5rem; margin-right:5px;"></i> Not Live </span>
         </div>
-    </section>
-
-    <!-- Footer -->
-    <footer>
-        <div class="shape-circle" style="width: 300px; height: 300px; top: -150px; left: -150px; background-color: rgba(255,255,255,0.05);"></div>
-        <div class="shape-square" style="width: 200px; height: 200px; bottom: -50px; right: 10%; background-color: rgba(255,255,255,0.05);"></div>
-
-        <div class="container">
-            <div class="section-header">
-                <h1 style="color: white;">About the Instructor</h1>
+        <div class="card-body">
+          <h3 class="card-title">Photovoltaic Systems Engineering</h3>
+          <p class="card-description">Design and engineer complete PV systems from fundamentals to real projects — covering grid-tied, off-grid, hybrid, and solar pumping systems with hands-on workshops and simulation software.</p>
+          <div class="card-meta">
+            <span class="meta-chip"><i class="fas fa-layer-group"></i> 5 Levels</span>
+            <span class="meta-chip"><i class="fas fa-video"></i> 20 Sessions</span>
+            <span class="meta-chip"><i class="fas fa-laptop"></i> Online / Teams</span>
+            <span class="meta-chip"><i class="fas fa-tools"></i> PVsyst · Excel</span>
+          </div>
+          <hr class="card-divider" />
+          <div class="card-instructor">
+            <div class="instructor-avatar instructor-avatar-blue"><i class="fas fa-user-tie"></i></div>
+            <div>
+              <div class="instructor-name">Eng. Amr Farouk</div>
+              <div class="instructor-title">Renewable Energy Business Consultant · 35+ yrs</div>
             </div>
-            <div class="instructor-info">
-                <div class="instructor-photo">
-                    <img src="CO/am.png" alt="Eng. Ahmed Metwally" />
-                </div>
-                <div class="instructor-bio">
-                    <p>Ahmed Metwally is a substation engineering manager with over 16 years of hands-on experience in AIS and GIS substations, with a focus on control and protection schemes. Throughout his career, he has worked closely with multidisciplinary teams across primary, secondary, and telecom systems, gaining practical insight into the challenges of real-world project execution.</p>
-                    <p>He has contributed to cost-saving initiatives that helped optimize designs and vendor specifications, leading to measurable improvements in efficiency. His academic background includes studies in Japanese Corporate Management through Harvard Business School and ongoing MBA studies, reflecting a continuous commitment to learning and development.</p>
-                    <p>Ahmed believes in sharing practical knowledge in a structured, accessible way, and is passionate about helping engineering students bridge the gap between theory and application.</p>
-                </div>
-            </div>
-
-            <div class="company-logos">
-                <img src="CO/i1.png" alt="Company 1" class="company-logo" />
-                <img src="CO/i2.png" alt="Company 2" class="company-logo" />
-                <img src="CO/i3.png" alt="Company 3" class="company-logo" />
-                <img src="CO/i4.png" alt="Company 4" class="company-logo" />
-            </div>
-
-            <div style="text-align:center;margin-top:30px;">
-                <a href="index.html" style="color:rgba(255,255,255,0.7);text-decoration:none;font-size:0.95rem;">
-                    <i class="fas fa-arrow-left" style="margin-right:6px;"></i> Back to All Courses
-                </a>
-            </div>
-
-            <div class="copyright">
-                <p>&copy; 2026 GRID ACADEMY. All rights reserved.</p>
-            </div>
+          </div>
+          <div class="card-actions">
+            <a href="https://gridacad.github.io/course/PV.html" class="btn-primary btn-primary-blue">
+              <i class="fas fa-arrow-right"></i> View Course
+            </a>
+            <a href="https://gridacad.github.io/pay/pv.html" class="btn-outline btn-outline-blue">
+              <i class="fas fa-file-alt"></i>&nbsp;Enroll
+            </a>
+          </div>
         </div>
-    </footer>
+      </div>
+
+      <!-- CARD 5: PSS®E Steady-State Analysis & IBRs Grid Integration -->
+      <div class="course-card">
+        <div class="card-banner card-banner-psse">
+          <div class="banner-pattern"></div>
+          <div class="banner-icon"><i class="fas fa-bolt"></i></div>
+          <span class="banner-badge"><i class="fas fa-circle" style="font-size:0.5rem; margin-right:5px;"></i> Enrolling — Fall 2026 Cohort</span>
+        </div>
+        <div class="card-body">
+          <h3 class="card-title">PSS&reg;E Steady-State Analysis &amp; IBRs Grid Integration Studies</h3>
+          <p class="card-description">A hands-on live course in PSS&reg;E covering steady-state power flow, short-circuit and contingency analysis, and Egyptian IBR grid-code compliance — from software fundamentals to comprehensive IBR grid integration studies.</p>
+          <div class="card-meta">
+            <span class="meta-chip"><i class="fas fa-video psse-icon"></i> 6 Sessions</span>
+            <span class="meta-chip"><i class="fas fa-laptop psse-icon"></i> Online / Teams</span>
+            <span class="meta-chip"><i class="fas fa-tools psse-icon"></i> PSS&reg;E</span>
+          </div>
+          <hr class="card-divider" />
+          <div class="card-instructor">
+            <div class="instructor-avatar instructor-avatar-teal"><i class="fas fa-user-tie"></i></div>
+            <div>
+              <div class="instructor-name">Eng. Ahmed Farid</div>
+              <div class="instructor-title">Power System Consulting Engineer</div>
+            </div>
+          </div>
+          <div class="card-actions">
+            <a href="https://gridacad.github.io/course/psse.html" class="btn-primary btn-primary-teal">
+              <i class="fas fa-arrow-right"></i> View Course
+            </a>
+            <a href="https://gridacad.github.io/pay/psse.html" class="btn-outline btn-outline-teal">
+              <i class="fas fa-file-alt"></i>&nbsp;Enroll
+            </a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- WHY GRID ACADEMY -->
+  <section class="why-section">
+    <div class="why-inner">
+      <p class="section-label">Why Choose Us</p>
+      <h2 class="section-title">Built by Engineers, for Engineers</h2>
+      <p class="section-sub">No theory for theory's sake — every topic maps to real project deliverables.</p>
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-icon"><i class="fas fa-hard-hat"></i></div>
+          <div class="feature-title">Industry-Led</div>
+          <div class="feature-desc">Taught by practicing engineers with 16+ years of real project experience.</div>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon"><i class="fas fa-tools"></i></div>
+          <div class="feature-title">Hands-On Projects</div>
+          <div class="feature-desc">Real assignments using AutoCAD, Excel, ETAP, and PVsyst.</div>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon"><i class="fas fa-certificate"></i></div>
+          <div class="feature-title">Certifications</div>
+          <div class="feature-desc">Earn level-by-level completion and attendance certificates.</div>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon"><i class="fas fa-users"></i></div>
+          <div class="feature-title">Small Groups</div>
+          <div class="feature-desc">Focused cohorts via Microsoft Teams for maximum interaction.</div>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon"><i class="fas fa-file-pdf"></i></div>
+          <div class="feature-title">Session Notes</div>
+          <div class="feature-desc">PDF notes provided after every session to keep for reference.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-brand">GRID ACADEMY</div>
+    <p>&copy; 2026 GRID ACADEMY. All rights reserved.</p>
+  </footer>
+
 </body>
 </html>
