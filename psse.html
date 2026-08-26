@@ -1,0 +1,2030 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XWLXEZEW4R"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-XWLXEZEW4R');
+</script>
+
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+
+    <meta name="description" content="Master PSS®E steady-state analysis and IBR grid integration studies with Eng. Ahmed Farid. 6-session live online program covering PSS®E fundamentals, load flow, short-circuit analysis, and Egyptian IBR grid code compliance.">
+    
+    
+    <meta name="robots" content="index, follow">
+    <title>PSS®E Steady-State Analysis &amp; IBRs Grid Integration Studies | GRID ACADEMY | Eng. Ahmed Farid</title>
+
+    <!-- Modern browsers -->
+    <link rel="icon" type="image/svg+xml" href="Sm1.svg">
+    <!-- Fallback for most browsers -->
+    <link rel="icon" type="image/png" sizes="32x32" href="Sm1.png">
+    <!-- Optional: iOS home screen -->
+    <link rel="apple-touch-icon" href="Sm1.png">
+
+    <!-- Preconnect for performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <!-- Google Fonts: Inter + Montserrat -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Montserrat:wght@500;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        /* ============================================================
+           DESIGN SYSTEM — Single Source of Truth (Purple)
+           ============================================================ */
+        :root {
+            /* Colors */
+            --teal-50: #f0fdfa;
+            --teal-100: #ccfbf1;
+            --teal-200: #99f6e4;
+            --teal-300: #5eead4;
+            --teal-400: #2dd4bf;
+            --teal-500: #14b8a6;
+            --teal-600: #0d9488;
+            --teal-700: #0f766e;
+            --teal-800: #115e59;
+            --teal-900: #134e4a;
+
+            --slate-50: #f8fafc;
+            --slate-100: #f1f5f9;
+            --slate-200: #e2e8f0;
+            --slate-300: #cbd5e1;
+            --slate-400: #94a3b8;
+            --slate-500: #64748b;
+            --slate-600: #475569;
+            --slate-700: #334155;
+            --slate-800: #1e293b;
+            --slate-900: #0f172a;
+
+            --white: #ffffff;
+            --black: #000000;
+
+            /* Semantic tokens */
+            --color-primary: var(--teal-800);
+            --color-primary-dark: var(--teal-900);
+            --color-primary-light: var(--teal-500);
+            --color-primary-bg: var(--teal-50);
+            --color-accent: #0f172a;
+            --color-text: var(--slate-800);
+            --color-text-muted: var(--slate-500);
+            --color-text-inverse: var(--white);
+            --color-bg: var(--white);
+            --color-bg-alt: var(--slate-50);
+            --color-bg-dark: var(--slate-900);
+            --color-border: var(--slate-200);
+
+            /* Typography */
+            --font-heading: 'Montserrat', sans-serif;
+            --font-body: 'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif;
+
+            /* Spacing */
+            --section-py: 5rem;
+            --container-max: 1200px;
+            --container-px: 1.5rem;
+
+            /* Radii */
+            --radius-sm: 0.5rem;
+            --radius-md: 0.75rem;
+            --radius-lg: 1rem;
+            --radius-xl: 1.25rem;
+            --radius-full: 9999px;
+
+            /* Shadows */
+            --shadow-xs: 0 1px 2px rgba(0,0,0,0.04);
+            --shadow-sm: 0 1px 3px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04);
+            --shadow-md: 0 4px 12px rgba(0,0,0,0.08), 0 2px 4px rgba(0,0,0,0.04);
+            --shadow-lg: 0 10px 28px rgba(0,0,0,0.10), 0 4px 8px rgba(0,0,0,0.04);
+            --shadow-xl: 0 20px 40px rgba(0,0,0,0.12);
+
+            /* Transitions */
+            --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+            --duration-fast: 150ms;
+            --duration-normal: 250ms;
+            --duration-slow: 400ms;
+        }
+
+        /* ============================================================
+           RESET & BASE
+           ============================================================ */
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            -webkit-text-size-adjust: 100%;
+        }
+
+        body {
+            font-family: var(--font-body);
+            background-color: var(--color-bg);
+            color: var(--color-text);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        ul, ol {
+            list-style: none;
+        }
+
+        /* ============================================================
+           UTILITIES
+           ============================================================ */
+        .container {
+            width: 100%;
+            max-width: var(--container-max);
+            margin: 0 auto;
+            padding: 0 var(--container-px);
+        }
+
+        .section {
+            padding: var(--section-py) 0;
+        }
+
+        .section--alt {
+            background-color: var(--color-bg-alt);
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-label {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--color-primary);
+            margin-bottom: 0.75rem;
+        }
+
+        .section-label::before {
+            content: '';
+            width: 24px;
+            height: 2px;
+            background: var(--color-primary);
+        }
+
+        .section-title {
+            font-family: var(--font-heading);
+            font-size: clamp(1.75rem, 4vw, 2.25rem);
+            font-weight: 800;
+            color: var(--color-text);
+            line-height: 1.2;
+            margin-bottom: 0.75rem;
+        }
+
+        .section-subtitle {
+            max-width: 640px;
+            margin: 0 auto;
+            color: var(--color-text-muted);
+            font-size: 1.05rem;
+        }
+
+        /* ============================================================
+           BUTTONS
+           ============================================================ */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.75rem;
+            border-radius: var(--radius-full);
+            font-weight: 600;
+            font-size: 0.9rem;
+            font-family: var(--font-body);
+            border: 2px solid transparent;
+            cursor: pointer;
+            transition: all var(--duration-normal) var(--ease-out);
+            white-space: nowrap;
+        }
+
+        .btn:focus-visible {
+            outline: 3px solid var(--teal-300);
+            outline-offset: 2px;
+        }
+
+        .btn--primary {
+            background: var(--color-primary);
+            color: var(--color-text-inverse);
+            border-color: var(--color-primary);
+            box-shadow: 0 4px 14px rgba(107, 33, 168, 0.35);
+        }
+
+        .btn--primary:hover {
+            background: var(--color-primary-dark);
+            border-color: var(--color-primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(107, 33, 168, 0.4);
+        }
+
+        .btn--outline {
+            background: transparent;
+            color: var(--color-text-inverse);
+            border-color: rgba(255,255,255,0.5);
+        }
+
+        .btn--outline:hover {
+            background: var(--color-text-inverse);
+            color: var(--color-accent);
+            border-color: var(--color-text-inverse);
+            transform: translateY(-2px);
+        }
+
+        .btn--ghost {
+            background: transparent;
+            color: var(--color-primary);
+            border-color: var(--color-primary);
+        }
+
+        .btn--ghost:hover {
+            background: var(--color-primary);
+            color: var(--color-text-inverse);
+        }
+
+        .btn--sm {
+            padding: 0.5rem 1.25rem;
+            font-size: 0.85rem;
+        }
+
+        /* ============================================================
+           NAVIGATION
+           ============================================================ */
+        .nav {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: var(--color-accent);
+            box-shadow: 0 2px 16px rgba(0,0,0,0.15);
+        }
+
+        .nav-logo {
+            height: 28px;
+            width: auto;
+            filter: brightness(0) invert(1);
+            display: block;
+            flex-shrink: 0;
+        }
+
+        .nav__inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 64px;
+            gap: 1rem;
+        }
+
+        .nav__brand {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-family: var(--font-heading);
+            font-size: 1.15rem;
+            font-weight: 800;
+            color: var(--color-text-inverse);
+            letter-spacing: -0.02em;
+        }
+
+        .nav__brand i {
+            color: var(--color-primary);
+            font-size: 1.3rem;
+        }
+
+        .nav__links {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .nav__link {
+            color: rgba(255,255,255,0.7);
+            font-size: 0.875rem;
+            font-weight: 500;
+            padding: 0.4rem 0.75rem;
+            border-radius: var(--radius-full);
+            transition: all var(--duration-fast);
+        }
+
+        .nav__link:hover,
+        .nav__link:focus-visible {
+            color: var(--color-text-inverse);
+            background: rgba(255,255,255,0.1);
+        }
+
+        .nav__cta {
+            background: var(--color-primary);
+            color: var(--color-text-inverse);
+            padding: 0.5rem 1.25rem;
+            border-radius: var(--radius-full);
+            font-weight: 600;
+            font-size: 0.85rem;
+            transition: all var(--duration-normal) var(--ease-out);
+            box-shadow: 0 2px 8px rgba(17,94,89,0.3);
+        }
+
+        .nav__cta:hover {
+            background: var(--color-primary-dark);
+            transform: translateY(-1px);
+        }
+
+        .nav__toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--color-text-inverse);
+            font-size: 1.4rem;
+            cursor: pointer;
+            padding: 0.25rem;
+        }
+
+        /* ============================================================
+           HERO
+           ============================================================ */
+        .hero {
+            position: relative;
+            min-height: 85vh;
+            display: flex;
+            align-items: center;
+            background: #042f2e;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background:
+                radial-gradient(ellipse at 20% 50%, rgba(20,184,166,0.14) 0%, transparent 60%),
+                radial-gradient(ellipse at 80% 20%, rgba(20,184,166,0.07) 0%, transparent 50%);
+        }
+
+        .hero__grid {
+            position: absolute;
+            inset: 0;
+            background-image:
+                linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+            background-size: 60px 60px;
+        }
+
+        .hero__inner {
+            position: relative;
+            z-index: 2;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+            padding: 3rem 0;
+        }
+
+        .hero__badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(20,184,166,0.15);
+            color: var(--teal-300);
+            padding: 0.4rem 1rem;
+            border-radius: var(--radius-full);
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-bottom: 1.25rem;
+            border: 1px solid rgba(20,184,166,0.2);
+        }
+
+        .hero__badge i {
+            font-size: 0.75rem;
+        }
+
+        .hero__title {
+            font-family: var(--font-heading);
+            font-size: clamp(2rem, 4.5vw, 2.75rem);
+            font-weight: 800;
+            color: var(--color-text-inverse);
+            line-height: 1.15;
+            margin-bottom: 1rem;
+        }
+
+        .hero__title span {
+            color: var(--color-primary-light);
+        }
+
+        .hero__instructor {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--teal-200);
+            font-size: 1.05rem;
+            font-weight: 500;
+            margin-bottom: 1.25rem;
+        }
+
+        .hero__desc {
+            color: var(--slate-300);
+            font-size: 1rem;
+            line-height: 1.7;
+            margin-bottom: 2rem;
+            max-width: 540px;
+        }
+
+        .hero__actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+        }
+
+        .hero__stats {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+        }
+
+        .hero-stat {
+            background: rgba(255,255,255,0.06);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: var(--radius-lg);
+            padding: 1.5rem;
+            text-align: center;
+            transition: all var(--duration-normal) var(--ease-out);
+        }
+
+        .hero-stat:hover {
+            background: rgba(255,255,255,0.1);
+            transform: translateY(-4px);
+            border-color: rgba(20,184,166,0.3);
+        }
+
+        .hero-stat__icon {
+            width: 48px;
+            height: 48px;
+            background: rgba(20,184,166,0.15);
+            border-radius: var(--radius-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 0.75rem;
+            color: var(--color-primary-light);
+            font-size: 1.2rem;
+        }
+
+        .hero-stat__value {
+            font-family: var(--font-heading);
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--color-text-inverse);
+            margin-bottom: 0.25rem;
+        }
+
+        .hero-stat__label {
+            font-size: 0.8rem;
+            color: var(--slate-400);
+        }
+
+  /* ============================================================
+   OVERVIEW
+   ============================================================ */
+
+.overview__grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 2rem;
+    align-items: start;
+}
+
+.card--full {
+    grid-column: 1 / -1;
+}
+
+.card {
+    background: var(--color-bg);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-xl);
+    padding: 2rem;
+    box-shadow: var(--shadow-sm);
+    transition: box-shadow var(--duration-normal) var(--ease-out);
+}
+
+.card:hover {
+    box-shadow: var(--shadow-md);
+}
+
+.card--highlight {
+    border-top: 3px solid var(--color-primary);
+}
+
+.overview__text {
+    color: var(--color-text-muted);
+    line-height: 1.8;
+}
+
+.overview__text p + p {
+    margin-top: 1rem;
+}
+
+.overview__text strong {
+    color: var(--color-primary-dark);
+}
+
+/* ============================================================
+   Learning Path
+   ============================================================ */
+.progress-track {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 1.75rem 0.5rem;
+    margin-top: 1.5rem;
+}
+.progress-step {
+    position: relative;
+    flex: 0 1 110px;
+    text-align: center;
+    padding: 0 0.5rem;
+}
+
+/* connecting line only between steps that sit on the same row —
+   simplest robust fix is to only draw it on wide screens */
+.progress-step:not(:last-child)::after {
+    content: "";
+    position: absolute;
+    top: 24px;
+    left: calc(50% + 24px);
+    width: calc(100% - 48px);
+    height: 2px;
+    background: var(--color-border);
+    z-index: 0;
+}
+
+.progress-step__circle {
+    width: 48px;
+    height: 48px;
+    margin: 0 auto 0.9rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    border: 2px solid var(--color-primary);
+    background: var(--color-primary-bg);
+    color: var(--color-primary);
+    font-family: var(--font-heading);
+    font-size: 0.95rem;
+    font-weight: 700;
+    position: relative;
+    z-index: 2;
+}
+.progress-step__label {
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: var(--color-text-muted);
+    line-height: 1.4;
+    max-width: 110px;
+    margin: 0 auto;
+}
+
+/* ============================================================
+   Responsive
+   ============================================================ */
+@media (max-width: 992px) {
+    .progress-track {
+        gap: 1.5rem 0.5rem;
+    }
+    .progress-step {
+        flex: 0 1 90px;
+    }
+}
+
+/* On narrow phones: drop the connecting lines (they only make sense
+   on a single row) and let steps wrap into a clean 2–3 column grid */
+@media (max-width: 480px) {
+    .progress-track {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1.75rem 0.5rem;
+    }
+    .progress-step {
+        flex: none;
+    }
+    .progress-step::after {
+        display: none;
+    }
+    .progress-step__circle {
+        width: 42px;
+        height: 42px;
+        font-size: 0.85rem;
+    }
+    .progress-step__label {
+        font-size: 0.76rem;
+        max-width: 90px;
+    }
+}
+
+        /* On narrow phones: drop the connecting lines (they only make sense
+   on a single row) and let steps wrap into a clean 2–3 column grid */
+@media (max-width: 480px) {
+    .progress-track {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1.75rem 0.5rem;
+    }
+    .progress-step {
+        flex: none;
+    }
+    .progress-step::after {
+        display: none;
+    }
+    .progress-step__circle {
+        width: 42px;
+        height: 42px;
+        font-size: 0.85rem;
+    }
+    .progress-step__label {
+        font-size: 0.76rem;
+        max-width: 90px;
+    }
+}
+        /* ============================================================
+           OBJECTIVES
+           ============================================================ */
+        .objectives__grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1rem;
+        }
+
+        .objective-item {
+            display: flex;
+            gap: 1rem;
+            padding: 1.25rem;
+            background: var(--color-bg);
+            border-radius: var(--radius-lg);
+            border: 1px solid var(--color-border);
+            transition: all var(--duration-normal) var(--ease-out);
+        }
+
+        .objective-item:hover {
+            border-color: var(--color-primary);
+            box-shadow: var(--shadow-md);
+            transform: translateY(-2px);
+        }
+
+        .objective-item__icon {
+            flex-shrink: 0;
+            width: 40px;
+            height: 40px;
+            background: var(--color-primary-bg);
+            border-radius: var(--radius-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--color-primary);
+            font-size: 1rem;
+        }
+
+        .objective-item__text {
+            font-size: 0.925rem;
+            color: var(--color-text-muted);
+            line-height: 1.6;
+        }
+
+        /* ============================================================
+           CURRICULUM
+           ============================================================ */
+        .curriculum__grid {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+
+        .session-card {
+            background: var(--color-bg);
+            border-radius: var(--radius-lg);
+            border: 1px solid var(--color-border);
+            overflow: hidden;
+            transition: all var(--duration-normal) var(--ease-out);
+        }
+
+        .session-card:hover {
+            border-color: var(--color-primary);
+            box-shadow: var(--shadow-md);
+            transform: translateX(4px);
+        }
+
+        .session-card__header {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            padding: 1.25rem 1.5rem;
+            cursor: default;
+        }
+
+        .session-card__icon {
+            flex-shrink: 0;
+            width: 48px;
+            height: 48px;
+            background: var(--color-primary-bg);
+            border-radius: var(--radius-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--color-primary);
+            font-size: 1.3rem;
+            transition: all var(--duration-normal);
+        }
+
+        .session-card:hover .session-card__icon {
+            background: var(--color-primary);
+            color: var(--color-text-inverse);
+        }
+
+        .session-card__title {
+            font-family: var(--font-heading);
+            font-weight: 700;
+            font-size: 1.05rem;
+            color: var(--color-text);
+            margin-bottom: 0.3rem;
+        }
+
+        .session-card__desc {
+            color: var(--color-text-muted);
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+
+        /* ============================================================
+           SCHEDULE TABLE
+           ============================================================ */
+        .table-wrapper {
+            overflow-x: auto;
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--color-border);
+        }
+
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.9rem;
+        }
+
+        .data-table thead th {
+            background: var(--color-accent);
+            color: var(--color-text-inverse);
+            padding: 1rem 1.25rem;
+            font-weight: 600;
+            text-align: left;
+            white-space: nowrap;
+        }
+
+        .data-table tbody td {
+            padding: 0.875rem 1.25rem;
+            border-bottom: 1px solid var(--color-border);
+            vertical-align: middle;
+        }
+
+        .data-table tbody tr:last-child td {
+            border-bottom: none;
+        }
+
+        .data-table tbody tr:hover td {
+            background: var(--color-bg-alt);
+        }
+
+        .data-table tbody tr.past td {
+            background: var(--teal-50);
+            color: var(--teal-700);
+        }
+
+        .data-table .level-badge {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 32px;
+            height: 32px;
+            border-radius: var(--radius-sm);
+            font-weight: 700;
+            font-size: 0.8rem;
+        }
+
+        .level-badge--1 { background: var(--teal-100); color: var(--teal-700); }
+        .level-badge--2 { background: var(--teal-200); color: var(--teal-800); }
+        .level-badge--3 { background: var(--teal-300); color: var(--teal-900); }
+        .level-badge--4 { background: var(--teal-400); color: var(--white); }
+
+        .completed-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.3rem;
+            font-size: 0.7rem;
+            font-weight: 600;
+            background: var(--color-primary-bg);
+            color: var(--color-primary-dark);
+            padding: 0.15rem 0.6rem;
+            border-radius: var(--radius-full);
+            margin-left: 0.5rem;
+        }
+
+        .schedule-note {
+            text-align: center;
+            font-size: 0.85rem;
+            color: var(--color-text-muted);
+            margin-top: 1.25rem;
+        }
+
+        .schedule-note i {
+            color: var(--color-primary);
+            margin-right: 0.3rem;
+        }
+
+        /* ============================================================
+           INSTRUCTORS
+           ============================================================ */
+        .instructor-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            align-items: start;
+        }
+
+        .instructor-card {
+            background: var(--color-bg);
+            border-radius: var(--radius-xl);
+            padding: 2rem;
+            text-align: center;
+            border: 1px solid var(--color-border);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .instructor-card__avatar {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin: 0 auto 1rem;
+            border: 3px solid var(--color-primary);
+        }
+
+        .instructor-card__name {
+            font-family: var(--font-heading);
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--color-text);
+            margin-bottom: 0.3rem;
+        }
+
+        .instructor-card__title {
+            color: var(--color-text-muted);
+            font-size: 0.875rem;
+            margin-bottom: 1.25rem;
+        }
+
+        .instructor-card__contacts {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+        }
+
+        .instructor-card__contacts a {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            font-size: 0.8rem;
+            font-weight: 600;
+            padding: 0.5rem 1rem;
+            border-radius: var(--radius-full);
+            border: 1px solid var(--color-border);
+            color: var(--color-text-muted);
+            transition: all var(--duration-normal) var(--ease-out);
+        }
+
+        .instructor-card__contacts a:hover {
+            background: var(--color-primary);
+            color: var(--color-text-inverse);
+            border-color: var(--color-primary);
+        }
+
+        .instructor-card__contacts i {
+            color: var(--color-primary);
+        }
+
+        .instructor-card__contacts a:hover i {
+            color: var(--color-text-inverse);
+        }
+
+        /* ============================================================
+           CERTIFICATIONS
+           ============================================================ */
+        .cert-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .cert-card {
+            background: var(--color-bg);
+            border-radius: var(--radius-xl);
+            padding: 2rem;
+            text-align: center;
+            border: 1px solid var(--color-border);
+            border-bottom: 3px solid var(--color-primary);
+            transition: all var(--duration-normal) var(--ease-out);
+        }
+
+        .cert-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .cert-card__icon {
+            width: 56px;
+            height: 56px;
+            background: var(--color-primary-bg);
+            border-radius: var(--radius-lg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+            color: var(--color-primary);
+            font-size: 1.4rem;
+        }
+
+        .cert-card__title {
+            font-family: var(--font-heading);
+            font-size: 1.05rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .cert-card__desc {
+            color: var(--color-text-muted);
+            font-size: 0.9rem;
+        }
+
+        /* ============================================================
+           ASSIGNMENTS / TOOLS (merged section)
+           ============================================================ */
+        .meta-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .meta-card {
+            background: var(--color-bg);
+            border-radius: var(--radius-xl);
+            padding: 2rem;
+            border: 1px solid var(--color-border);
+        }
+
+        .meta-card__heading {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-family: var(--font-heading);
+            font-size: 1rem;
+            font-weight: 700;
+            margin-bottom: 1.25rem;
+        }
+
+        .meta-card__heading i {
+            color: var(--color-primary);
+        }
+
+        .meta-list {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+
+        .meta-list li {
+            display: flex;
+            gap: 0.75rem;
+            font-size: 0.9rem;
+            color: var(--color-text-muted);
+            line-height: 1.5;
+        }
+
+        .meta-list li i {
+            flex-shrink: 0;
+            color: var(--color-primary);
+            font-size: 0.75rem;
+            margin-top: 0.35rem;
+        }
+
+        /* ============================================================
+           POLICY
+           ============================================================ */
+        .policy-card {
+            background: var(--teal-50);
+            border: 1px solid var(--teal-200);
+            border-radius: var(--radius-xl);
+            padding: 2rem;
+        }
+
+        .policy-list {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+
+        .policy-list li {
+            display: flex;
+            gap: 0.75rem;
+            font-size: 0.9rem;
+            color: var(--teal-800);
+            line-height: 1.6;
+        }
+
+        .policy-list li i {
+            flex-shrink: 0;
+            color: var(--color-primary);
+            font-size: 0.8rem;
+            margin-top: 0.35rem;
+        }
+
+        /* ============================================================
+           FOOTER
+           ============================================================ */
+        .footer {
+            background: var(--color-bg-dark);
+            color: var(--slate-400);
+            padding: 4rem 0 2rem;
+        }
+
+        .footer__grid {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr 1fr;
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer__brand {
+            font-family: var(--font-heading);
+            font-size: 1.25rem;
+            font-weight: 800;
+            color: var(--color-text-inverse);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .footer__brand i {
+            color: var(--color-primary-light);
+        }
+
+        .footer__desc {
+            font-size: 0.9rem;
+            line-height: 1.7;
+            margin-bottom: 1.25rem;
+        }
+
+        .footer__heading {
+            font-family: var(--font-heading);
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: var(--color-text-inverse);
+            margin-bottom: 1rem;
+        }
+
+        .footer__links {
+            display: flex;
+            flex-direction: column;
+            gap: 0.6rem;
+        }
+
+        .footer__link {
+            font-size: 0.875rem;
+            color: var(--slate-400);
+            transition: color var(--duration-fast);
+        }
+
+        .footer__link:hover {
+            color: var(--color-primary-light);
+        }
+
+        .footer__bottom {
+            border-top: 1px solid rgba(255,255,255,0.08);
+            padding-top: 1.5rem;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1rem;
+            font-size: 0.8rem;
+        }
+
+        .footer__social {
+            display: flex;
+            gap: 0.75rem;
+        }
+
+        .footer__social a {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.06);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--slate-400);
+            font-size: 0.85rem;
+            transition: all var(--duration-fast);
+        }
+
+        .footer__social a:hover {
+            background: var(--color-primary);
+            color: var(--color-text-inverse);
+        }
+
+        /* ============================================================
+           SCROLL TO TOP
+           ============================================================ */
+        .scroll-top {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            width: 44px;
+            height: 44px;
+            background: var(--color-primary);
+            color: var(--color-text-inverse);
+            border: none;
+            border-radius: 50%;
+            font-size: 1rem;
+            cursor: pointer;
+            box-shadow: var(--shadow-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(10px);
+            transition: all var(--duration-normal) var(--ease-out);
+            z-index: 90;
+        }
+
+        .scroll-top.visible {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .scroll-top:hover {
+            background: var(--color-primary-dark);
+            transform: translateY(-2px);
+        }
+
+        /* ============================================================
+           ANIMATIONS
+           ============================================================ */
+        @media (prefers-reduced-motion: no-preference) {
+            .fade-up {
+                opacity: 0;
+                transform: translateY(24px);
+                transition: opacity 0.6s var(--ease-out), transform 0.6s var(--ease-out);
+            }
+
+            .fade-up.visible {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .fade-up {
+                opacity: 1 !important;
+                transform: none !important;
+            }
+        }
+
+        /* ============================================================
+           RESPONSIVE
+           ============================================================ */
+        @media (max-width: 1024px) {
+            .hero__inner {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .hero__desc {
+                margin: 0 auto 2rem;
+            }
+
+            .hero__actions {
+                justify-content: center;
+            }
+
+            .overview__grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer__grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            :root {
+                --section-py: 3.5rem;
+            }
+
+            .nav__inner {
+                height: 56px;
+            }
+
+            .nav__links {
+                display: none;
+                position: absolute;
+                top: 56px;
+                left: 0;
+                right: 0;
+                background: var(--color-accent);
+                flex-direction: column;
+                padding: 1rem;
+                gap: 0.25rem;
+                box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+            }
+
+            .nav__links.open {
+                display: flex;
+            }
+
+            .nav__link {
+                width: 100%;
+                padding: 0.75rem 1rem;
+                border-radius: var(--radius-md);
+            }
+
+            .nav__toggle {
+                display: block;
+            }
+
+            .hero {
+                min-height: 70vh;
+            }
+
+            .hero__stats {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1rem;
+            }
+
+            .hero-stat {
+                padding: 1rem;
+            }
+
+            .progress-track {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1.5rem;
+            }
+
+            .progress-step::after {
+                display: none;
+            }
+
+            .footer__grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .footer__bottom {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .data-table {
+                font-size: 0.8rem;
+            }
+
+            .data-table thead th,
+            .data-table tbody td {
+                padding: 0.65rem 0.75rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero__stats {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .hero-stat__value {
+                font-size: 1.25rem;
+            }
+
+            .btn {
+                padding: 0.65rem 1.25rem;
+                font-size: 0.85rem;
+            }
+
+            .card {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Skip to content for accessibility -->
+    <a href="#main" class="sr-only" style="position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden;">Skip to main content</a>
+
+    <!-- ═══════════════════════════════════════════════════════════
+         NAVIGATION
+         ═══════════════════════════════════════════════════════════ -->
+    <nav class="nav" role="navigation" aria-label="Main navigation">
+        <div class="container">
+            <div class="nav__inner">
+                <a href="index.html" class="nav__brand" aria-label="GRID ACADEMY Home">
+                    <img src="Sm1.svg" alt="Grid Academy Logo" class="nav-logo">
+                    GRID ACADEMY
+                </a>
+
+                <div class="nav__links" id="navLinks">
+                    <a href="#overview" class="nav__link">Overview</a>
+                    <a href="#curriculum" class="nav__link">Curriculum</a>
+                    <a href="#schedule" class="nav__link">Schedule</a>
+                    <a href="#instructor" class="nav__link">Instructors</a>
+                </div>
+
+                <div style="display:flex;align-items:center;gap:0.75rem;">
+                    <a href="/pay/psse.html" class="nav__cta">
+                        <i class="fas fa-file-alt" aria-hidden="true"></i> Enroll Now
+                    </a>
+                    <button class="nav__toggle" id="navToggle" aria-label="Toggle navigation menu" aria-expanded="false">
+                        <i class="fas fa-bars" aria-hidden="true"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main id="main">
+
+        <!-- ═══════════════════════════════════════════════════════
+             HERO
+             ═══════════════════════════════════════════════════════ -->
+        <section class="hero">
+            <div class="hero__grid" aria-hidden="true"></div>
+            <div class="container">
+                <div class="hero__inner">
+                    <div class="hero__copy fade-up">
+                        <div class="hero__badge">
+                            <i class="fas fa-bolt" aria-hidden="true"></i>
+                            Fall 2026 · Live Online
+                        </div>
+                        <h1 class="hero__title">
+                            PSS<span>®E</span> Steady-State Analysis &amp; IBRs Grid Integration Studies
+                        </h1>
+                        <div class="hero__instructor">
+                            <i class="fas fa-chalkboard-user" aria-hidden="true"></i>
+                            Eng. Ahmed Farid — Power System Consulting Engineer
+                        </div>
+
+
+<p class="hero__desc">
+    Master PSS®E steady-state analysis, protection studies, and Egyptian IBR grid-code compliance — from software fundamentals to comprehensive inverter-based resource grid integration assessments. 6 hands-on live sessions.
+</p>
+
+
+
+
+                        
+                        <div class="hero__actions">
+                            <a href="[REGISTRATION_FORM_URL]"
+                               class="btn btn--primary" target="_blank" rel="noopener noreferrer">
+                                <i class="fas fa-clipboard-check" aria-hidden="true"></i> Trainee Register
+                            </a>
+                            <a href="#curriculum" class="btn btn--outline">
+                                <i class="fas fa-book-open" aria-hidden="true"></i> View Curriculum
+                            </a>
+                        </div>
+                    </div>
+                    <div class="hero__stats fade-up">
+                        <div class="hero-stat">
+                            <div class="hero-stat__icon"><i class="fas fa-layer-group" aria-hidden="true"></i></div>
+                            <div class="hero-stat__value">6</div>
+                            <div class="hero-stat__label">Live Sessions</div>
+                        </div>
+                        <div class="hero-stat">
+                            <div class="hero-stat__icon"><i class="fas fa-clock" aria-hidden="true"></i></div>
+                            <div class="hero-stat__value">2h</div>
+                            <div class="hero-stat__label">Per Session</div>
+                        </div>
+                        <div class="hero-stat">
+                            <div class="hero-stat__icon"><i class="fas fa-laptop-code" aria-hidden="true"></i></div>
+                            <div class="hero-stat__value">PSS®E</div>
+                            <div class="hero-stat__label">Industry Software</div>
+                        </div>
+                        <div class="hero-stat">
+                            <div class="hero-stat__icon"><i class="fas fa-users" aria-hidden="true"></i></div>
+                            <div class="hero-stat__value">Live</div>
+                            <div class="hero-stat__label">Interactive Sessions</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ═══════════════════════════════════════════════════════
+     OVERVIEW
+     ═══════════════════════════════════════════════════════ -->
+<section id="overview" class="section">
+    <div class="container">
+        <div class="section-header fade-up">
+            <div class="section-label">Course Overview</div>
+            <h2 class="section-title">Master PSS&reg;E Steady-State &amp; IBR Grid Integration Studies</h2>
+            <p class="section-subtitle">
+                A focused 6-session professional program covering PSS&reg;E steady-state analysis
+                and Egyptian IBR grid-code compliance, using industry-standard PSS&reg;E software.
+            </p>
+        </div>
+
+        <div class="overview__grid fade-up">
+            <div class="card card--highlight card--full">
+                <div class="overview__text">
+
+
+
+<p>
+    This program delivers step-by-step guidance through
+    <strong>PSS&reg;E fundamentals</strong>,
+    <strong>steady-state power flow analysis</strong>,
+    <strong>short-circuit and contingency analysis</strong>, and
+    <strong>PV/transfer limit and QV analysis with FACTS sizing</strong> &mdash;
+    then moves into <strong>Egyptian IBR grid-code compliance</strong>, <strong>IBR modeling in PSS&reg;E</strong>
+    (PV/wind inverters, transformers, cables/TLs, grid equivalents), and a
+    <strong>comprehensive IBR steady-state compliance assessment</strong>.
+    Live PSS&reg;E demonstrations and guided practice are included in every session.
+</p>
+                    
+
+                    <p>
+                        Starting the week of <strong>30 September 2026</strong>, you'll build industry-ready skills
+                        directly applicable to real-world power system and IBR grid integration studies. Each session
+                        includes live PSS&reg;E demonstrations, hands-on practice, and Q&amp;A.
+                        Participants receive practice materials.
+                    </p>
+
+                    <div class="section-label" style="margin:2.5rem 0 1.25rem;">
+                        Learning Path
+                    </div>
+
+
+
+
+
+
+
+
+<div class="progress-track">
+    <div class="progress-step">
+        <div class="progress-step__circle">1</div>
+        <div class="progress-step__label">PSS&reg;E Overview</div>
+    </div>
+    <div class="progress-step">
+        <div class="progress-step__circle">2</div>
+        <div class="progress-step__label">Steady-state Analysis I</div>
+    </div>
+    <div class="progress-step">
+        <div class="progress-step__circle">3</div>
+        <div class="progress-step__label">Steady-state Analysis II</div>
+    </div>
+    <div class="progress-step">
+        <div class="progress-step__circle">4</div>
+        <div class="progress-step__label">Egyptian IBRs Grid Code</div>
+    </div>
+    <div class="progress-step">
+        <div class="progress-step__circle">5</div>
+        <div class="progress-step__label">IBRs Modeling in PSS&reg;E</div>
+    </div>
+    <div class="progress-step">
+        <div class="progress-step__circle">6</div>
+        <div class="progress-step__label">IBR Compliance Assessment</div>
+    </div>
+</div>
+
+
+
+
+
+
+                    
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+        <!-- ═══════════════════════════════════════════════════════
+             OBJECTIVES
+             ═══════════════════════════════════════════════════════ -->
+        <section id="objectives" class="section section--alt">
+            <div class="container">
+                <div class="section-header fade-up">
+                    <div class="section-label">Learning Outcomes</div>
+                    <h2 class="section-title">What You'll Be Able To Do</h2>
+                    <p class="section-subtitle">By the end of this course, participants will have mastered these core competencies.</p>
+                </div>
+                <div class="objectives__grid fade-up">
+    <div class="objective-item">
+        <div class="objective-item__icon"><i class="fas fa-desktop" aria-hidden="true"></i></div>
+        <div class="objective-item__text">Navigate PSS&reg;E's toolbars, diagrams, data checking, and power flow solution engine with confidence.</div>
+    </div>
+    <div class="objective-item">
+        <div class="objective-item__icon"><i class="fas fa-calculator" aria-hidden="true"></i></div>
+        <div class="objective-item__text">Assess loading, voltage profiles, and limit-checking reports, and run short-circuit (SC) analysis in PSS&reg;E.</div>
+    </div>
+    <div class="objective-item">
+        <div class="objective-item__icon"><i class="fas fa-chart-line" aria-hidden="true"></i></div>
+        <div class="objective-item__text">Perform contingency analysis, PV/transfer limit studies, and QV analysis with FACTS sizing.</div>
+    </div>
+    <div class="objective-item">
+        <div class="objective-item__icon"><i class="fas fa-shield-alt" aria-hidden="true"></i></div>
+        <div class="objective-item__text">Explain Egyptian IBR grid-code requirements: LVRT/HVRT, reactive power &amp; PQ capability, frequency response, and power quality/protection.</div>
+    </div>
+    <div class="objective-item">
+        <div class="objective-item__icon"><i class="fas fa-solar-panel" aria-hidden="true"></i></div>
+        <div class="objective-item__text">Model PV/wind inverters, 2W/3W transformers, cables/TLs, and grid equivalents in PSS&reg;E.</div>
+    </div>
+    <div class="objective-item">
+        <div class="objective-item__icon"><i class="fas fa-diagram-project" aria-hidden="true"></i></div>
+        <div class="objective-item__text">Run a comprehensive IBR grid-code compliance assessment: PQ capability, voltage profile, loading under max Q absorption/injection, and SC analysis.</div>
+    </div>
+</div>
+            </div>
+        </section>
+
+        <!-- ═══════════════════════════════════════════════════════
+             CURRICULUM
+             ═══════════════════════════════════════════════════════ -->
+        <section id="curriculum" class="section">
+            <div class="container">
+                <div class="section-header fade-up">
+                    <div class="section-label">Course Curriculum</div>
+                    <h2 class="section-title">6 Immersive Sessions</h2>
+                    <p class="section-subtitle">Each session combines theory, live PSS&reg;E demonstrations, and hands-on practice.</p>
+                </div>
+                <div class="curriculum__grid fade-up">
+                    <div class="session-card">
+                        <div class="session-card__header">
+                            <div class="session-card__icon"><i class="fas fa-desktop" aria-hidden="true"></i></div>
+                            <div>
+                                <div class="session-card__title">01. PSS&reg;E Overview</div>
+                                <div class="session-card__desc">Introduction &amp; getting started with PSS&reg;E, toolbars and diagrams, data checking and management, and power flow solutions.</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="session-card">
+                        <div class="session-card__header">
+                            <div class="session-card__icon"><i class="fas fa-chart-line" aria-hidden="true"></i></div>
+                            <div>
+                                <div class="session-card__title">02. Steady-State Analysis I</div>
+                                <div class="session-card__desc">Loading, voltage profile, and limit-checking reports, plus short-circuit (SC) analysis in PSS&reg;E.</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="session-card">
+                        <div class="session-card__header">
+                            <div class="session-card__icon"><i class="fas fa-bolt" aria-hidden="true"></i></div>
+                            <div>
+                                <div class="session-card__title">03. Steady-State Analysis II</div>
+                                <div class="session-card__desc">Contingency analysis, PV and transfer limit analysis, and QV analysis with FACTS sizing.</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="session-card">
+                        <div class="session-card__header">
+                            <div class="session-card__icon"><i class="fas fa-shield-alt" aria-hidden="true"></i></div>
+                            <div>
+                                <div class="session-card__title">04. Egyptian IBRs Grid Code Compliance Explanation</div>
+                                <div class="session-card__desc">Fault ride-through (LVRT/HVRT) &amp; operational envelope, reactive power/power factor obligations (PQ capability), active power &amp; frequency response (ramp rate, droop), and power quality &amp; protection requirements.</div>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+
+                    <div class="session-card">
+    <div class="session-card__header">
+        <div class="session-card__icon"><i class="fas fa-solar-panel" aria-hidden="true"></i></div>
+        <div>
+            <div class="session-card__title">05. IBRs Modeling in PSS&reg;E</div>
+            <div class="session-card__desc">PV/wind inverters modeling, 2W/3W transformers modeling, cables/TLs modeling, and grid equivalent modeling.</div>
+        </div>
+    </div>
+</div>
+<div class="session-card">
+    <div class="session-card__header">
+        <div class="session-card__icon"><i class="fas fa-diagram-project" aria-hidden="true"></i></div>
+        <div>
+            <div class="session-card__title">06. IBRs Grid Code Compliance | Comprehensive Steady-State Assessment</div>
+            <div class="session-card__desc">PQ capability assessment, voltage profile under various operating scenarios, loading under maximum reactive power absorption/injection, and SC analysis.</div>
+        </div>
+    </div>
+</div>
+                    
+                    <div class="session-card" style="border:1px dashed var(--color-border);">
+                        <div class="session-card__header">
+                            <div class="session-card__icon"><i class="fas fa-clock" aria-hidden="true"></i></div>
+                            <div>
+                                <div class="session-card__title">Optional. Advanced Topic &mdash; Time Series Power Flow</div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ═══════════════════════════════════════════════════════
+             SCHEDULE
+             ═══════════════════════════════════════════════════════ -->
+        <section id="schedule" class="section section--alt">
+            <div class="container">
+                <div class="section-header fade-up">
+                    <div class="section-label">Course Schedule</div>
+                    <h2 class="section-title">Session Timeline</h2>
+                    <p class="section-subtitle">
+                        <strong>Time: 8:00 PM (GMT+3) / 7:00 PM (GMT+2 &ndash; Cairo)</strong><br>
+                        Live via Microsoft Teams] &middot; PDF notes provided after each session
+                    </p>
+                </div>
+                <div class="fade-up">
+                    <div style="text-align:center;font-weight:700;font-size:1.1rem;background:var(--color-primary-bg);padding:0.875rem;border-radius:var(--radius-full);margin-bottom:1.5rem;color:var(--color-primary-dark);">
+                        Round 1 &middot; Starting 30 September 2026 &middot; Instructor: Eng. Ahmed Farid
+                    </div>
+                    <div class="table-wrapper">
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>Module</th>
+                                    <th>Session Topic</th>
+                                    <th>Date</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+
+
+
+<tr>
+    <td><span class="level-badge level-badge--1">01</span></td>
+    <td>PSS&reg;E Overview</td>
+    <td data-datetime="2026-10-05T20:00:00+03:00">05 Oct 2026</td>
+</tr>
+<tr>
+    <td><span class="level-badge level-badge--1">02</span></td>
+    <td>Steady-State Analysis I</td>
+    <td data-datetime="2026-10-12T20:00:00+03:00">12 Oct 2026</td>
+</tr>
+<tr>
+    <td><span class="level-badge level-badge--1">03</span></td>
+    <td>Steady-State Analysis II</td>
+    <td data-datetime="2026-10-19T20:00:00+03:00">19 Oct 2026</td>
+</tr>
+<tr>
+    <td><span class="level-badge level-badge--2">04</span></td>
+    <td>Egyptian IBRs Grid Code Compliance Explanation</td>
+    <td data-datetime="2026-10-26T20:00:00+03:00">26 Oct 2026</td>
+</tr>
+
+<tr>
+    <td><span class="level-badge level-badge--2">05</span></td>
+    <td>IBRs Modeling in PSS&reg;E</td>
+    <td data-datetime="2026-11-02T20:00:00+03:00">02 Nov 2026</td>
+</tr>
+<tr>
+    <td><span class="level-badge level-badge--2">06</span></td>
+    <td>IBRs Grid Code Compliance | Comprehensive Steady-State Assessment</td>
+    <td data-datetime="2026-11-09T20:00:00+03:00">09 Nov 2026</td>
+</tr>
+
+
+                                
+                        </tbody>
+                        </table>
+                        </div>
+                        
+                                                    
+
+                    
+                    <p class="schedule-note">
+                        <i class="fas fa-clock" aria-hidden="true"></i>
+                        Sessions every Monday &middot; course begins the week of 30 September 2026, first live session Monday, 05 October 2026 [START_DATE_TO_CONFIRM]
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ═══════════════════════════════════════════════════════
+             INSTRUCTORS
+             ═══════════════════════════════════════════════════════ -->
+<section id="instructor" class="section">
+    <div class="container">
+        <div class="section-header fade-up">
+            <div class="section-label">Your Instructor</div>
+            <h2 class="section-title">Learn from a Power Systems Consultant</h2>
+            <p class="section-subtitle">Hands-on experience in IBR grid compliance, power system studies, and industry-standard analysis tools.</p>
+        </div>
+        <div class="instructor-grid fade-up">
+            <div class="instructor-card">
+                <img src="Farid.png" alt="Portrait of Eng. Ahmed Farid" class="instructor-card__avatar" loading="lazy">
+                <div class="instructor-card__name">Eng. Ahmed Farid</div>
+                <div class="instructor-card__title">
+                    Power Systems Consultant @ Siemens<br>
+                    IBRs Grid Compliance Studies | Steady-state &amp; Dynamic Analyses<br>
+                    Protection Coordination | PSS&reg;E | PSS&reg;SINCAL<br>
+                    Gridscale X APA | CTDim | Energy Business Advisory<br>
+                    MSc Candidate @ CU
+                </div>
+                <div class="instructor-card__contacts">
+                    <a href="mailto:ahmedfarid1661@gmail.com" aria-label="Email Ahmed Farid">
+                        <i class="fas fa-envelope" aria-hidden="true"></i> Email
+                    </a>
+                    <a href="https://www.linkedin.com/in/ahmedfarid3/" target="_blank" rel="noopener noreferrer" aria-label="Ahmed Farid LinkedIn">
+                        <i class="fab fa-linkedin" aria-hidden="true"></i> LinkedIn
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+        <!-- ═══════════════════════════════════════════════════════
+             CERTIFICATIONS & WHAT YOU EARN
+             ═══════════════════════════════════════════════════════ -->
+        <section class="section section--alt" style="padding-top:0;">
+            <div class="container">
+                <div class="section-header fade-up">
+                    <div class="section-label">What You Earn</div>
+                    <h2 class="section-title">Industry-Recognized Credentials</h2>
+                    <p class="section-subtitle">Walk away with verified certification and a professional PSS&reg;E project portfolio.</p>
+                </div>
+                <div class="cert-grid fade-up">
+                    <div class="cert-card">
+                        <div class="cert-card__icon"><i class="fas fa-certificate" aria-hidden="true"></i></div>
+                        <div class="cert-card__title">GRID Academy Certificate</div>
+                        <div class="cert-card__desc">Verified completion of 6 modules.</div>
+                    </div>
+                    <div class="cert-card">
+                        <div class="cert-card__icon"><i class="fas fa-laptop-code" aria-hidden="true"></i></div>
+                        <div class="cert-card__title">Hands-on Project Portfolio</div>
+                        <div class="cert-card__desc">Complete real-world PSS&reg;E steady-state and IBR grid-code compliance studies to showcase your engineering capabilities.</div>
+                    </div>
+                    <div class="cert-card">
+                        <div class="cert-card__icon"><i class="fas fa-award" aria-hidden="true"></i></div>
+                        <div class="cert-card__title">Industry-Recognized Badge</div>
+                        <div class="cert-card__desc">Digital credential that can be shared on LinkedIn and professional profiles.</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ═══════════════════════════════════════════════════════
+             ASSIGNMENTS & TOOLS (merged)
+             ═══════════════════════════════════════════════════════ -->
+        <section class="section">
+            <div class="container">
+                <div class="section-header fade-up">
+                    <div class="section-label">Practical Experience</div>
+                    <h2 class="section-title">Hands-on Tasks &amp; Tools</h2>
+                    <p class="section-subtitle">Apply what you learn with real-world assignments and industry-standard software.</p>
+                </div>
+                <div class="meta-grid fade-up">
+                    <div class="meta-card">
+                        <div class="meta-card__heading">
+                            <i class="fas fa-clipboard-list" aria-hidden="true"></i> Hands-on Assignments
+                        </div>
+
+
+
+
+
+
+
+
+                        <ul class="meta-list">
+    <li><i class="fas fa-check" aria-hidden="true"></i><span>Power flow solutions and network data checking in PSS&reg;E</span></li>
+    <li><i class="fas fa-check" aria-hidden="true"></i><span>Loading, voltage profile, and limit-checking report analysis</span></li>
+    <li><i class="fas fa-check" aria-hidden="true"></i><span>Short-circuit and contingency analysis</span></li>
+    <li><i class="fas fa-check" aria-hidden="true"></i><span>PV/transfer limit analysis and QV/FACTS sizing</span></li>
+    <li><i class="fas fa-check" aria-hidden="true"></i><span>IBR modeling: PV/wind inverters, transformers, cables/TLs, grid equivalents</span></li>
+    <li><i class="fas fa-check" aria-hidden="true"></i><span>Egyptian IBR grid-code steady-state compliance assessment</span></li>
+</ul>
+
+                        
+                    </div>
+                    <div class="meta-card">
+                        <div class="meta-card__heading">
+                            <i class="fas fa-laptop-code" aria-hidden="true"></i> Tools &amp; Software
+                        </div>
+                        <ul class="meta-list">
+                            <li><i class="fas fa-check" aria-hidden="true"></i><span>Microsoft Teams for live sessions</span></li>
+                            <li><i class="fas fa-check" aria-hidden="true"></i><span>PDF lecture notes and reference materials</span></li>
+                            <li><i class="fas fa-check" aria-hidden="true"></i><span>PSS&reg;E software </span></li>
+                        </ul>
+                    </div>
+                    <div class="meta-card">
+                        <div class="meta-card__heading">
+                            <i class="fas fa-chart-bar" aria-hidden="true"></i> Evaluation Criteria
+                        </div>
+                        <ul class="meta-list">
+                            <li><i class="fas fa-check" aria-hidden="true"></i><span>Weekly assignments / quizzes</span></li>
+                            <li><i class="fas fa-check" aria-hidden="true"></i><span>50%</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ═══════════════════════════════════════════════════════
+             POLICY
+             ═══════════════════════════════════════════════════════ -->
+        <section class="section section--alt" style="padding-top:0;">
+            <div class="container">
+                <div class="section-header fade-up">
+                    <div class="section-label">Policy</div>
+                    <h2 class="section-title">Content Usage &amp; Non-Sharing Policy</h2>
+                </div>
+                <div class="policy-card fade-up">
+                    <ul class="policy-list">
+                        <li><i class="fas fa-shield-alt" aria-hidden="true"></i><span><strong>All course materials, tools, recordings, templates, and files are proprietary</strong> and may not be copied, recorded, distributed, or reused without written permission.</span></li>
+                        <li><i class="fas fa-shield-alt" aria-hidden="true"></i><span>By registering, participants agree not to share or reproduce content outside personal use or for commercial/teaching purposes.</span></li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- ═══════════════════════════════════════════════════════
+             FINAL CTA
+             ═══════════════════════════════════════════════════════ -->
+        <section class="section" style="background:var(--color-accent);text-align:center;">
+            <div class="container">
+                <div class="fade-up" style="max-width:640px;margin:0 auto;">
+                    <div class="section-label" style="color:var(--teal-300);">Ready to Start?</div>
+                    <h2 class="section-title" style="color:var(--color-text-inverse);">Begin Your PSS&reg;E &amp; IBR Grid Integration Journey</h2>
+                    <p style="color:var(--slate-300);margin-bottom:2rem;font-size:1.05rem;">Join power system engineers building PSS&reg;E and IBR grid-code compliance skills. Limited seats for the Fall 2026 cohort.</p>
+                    <div style="display:flex;flex-wrap:wrap;justify-content:center;gap:0.75rem;">
+                        <a href="https://docs.google.com/forms/d/e/1FAIpQLSdKy8u6JsBfLq4gNz6nvGTaH5G57xsdJnUxnCHkXyxNaQFnrQ/viewform"
+                           class="btn btn--primary" target="_blank" rel="noopener noreferrer">
+                            <i class="fas fa-clipboard-check" aria-hidden="true"></i> Trainee Register 
+                        </a>
+                        <a href="/pay/psse.html" class="btn btn--outline">
+                            <i class="fas fa-credit-card" aria-hidden="true"></i> Enroll Now
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- ═══════════════════════════════════════════════════════════
+         FOOTER
+         ═══════════════════════════════════════════════════════════ -->
+    <footer class="footer" role="contentinfo">
+        <div class="container">
+            <div class="footer__grid">
+                <div>
+                    <div class="footer__brand">
+                        <img src="Sm1.svg" alt="Grid Academy Logo" class="nav-logo">
+                        GRID ACADEMY
+                    </div>
+                    <p class="footer__desc">Professional engineering training for the power industry. We bridge the gap between academic knowledge and real-world engineering practice.</p>
+                    <div class="footer__social">
+                        <a href="https://www.linkedin.com/company/gridacad" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                            <i class="fab fa-linkedin-in" aria-hidden="true"></i>
+                        </a>
+                        <a href="mailto:gridacademyinfo@gmail.com" aria-label="Email">
+                            <i class="fas fa-envelope" aria-hidden="true"></i>
+                        </a>
+                        <a href="https://wa.me/201229220086" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
+                            <i class="fab fa-whatsapp" aria-hidden="true"></i>
+                        </a>
+                    </div>
+                </div>
+                <div>
+                    <div class="footer__heading">Quick Links</div>
+                    <div class="footer__links">
+                        <a href="#overview" class="footer__link">Course Overview</a>
+                        <a href="#curriculum" class="footer__link">Curriculum</a>
+                        <a href="#schedule" class="footer__link">Schedule</a>
+                        <a href="#instructor" class="footer__link">Instructors</a>
+                    </div>
+                </div>
+                <div>
+                    <div class="footer__heading">Resources</div>
+                    <div class="footer__links">
+                        <a href="[REGISTRATION_FORM_URL]" target="_blank" rel="noopener noreferrer" class="footer__link">Register Free</a>
+                        <a href="/pay/psse.html" class="footer__link">Enroll Now</a>
+                        <a href="index.html" class="footer__link">All Courses</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer__bottom">
+                <span>&copy; 2026 GRID ACADEMY. All rights reserved.</span>
+                <span>PSS&reg;E Steady-State Analysis &amp; IBRs Grid Integration Studies — Engineering Certification</span>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scroll to top -->
+    <button class="scroll-top" id="scrollTop" aria-label="Scroll to top">
+        <i class="fas fa-chevron-up" aria-hidden="true"></i>
+    </button>
+
+    <!-- Font Awesome (loaded at end for performance) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <script>
+        // ── Past session highlighting ──
+        document.addEventListener('DOMContentLoaded', function () {
+            var now = new Date();
+            document.querySelectorAll('.data-table td[data-datetime]').forEach(function (cell) {
+                var sessionDate = new Date(cell.getAttribute('data-datetime'));
+                if (sessionDate < now) {
+                    cell.closest('tr').classList.add('past');
+                }
+            });
+        });
+
+        // ── Scroll-to-top button ──
+        var scrollTopBtn = document.getElementById('scrollTop');
+        window.addEventListener('scroll', function () {
+            if (window.scrollY > 500) {
+                scrollTopBtn.classList.add('visible');
+            } else {
+                scrollTopBtn.classList.remove('visible');
+            }
+        }, { passive: true });
+
+        scrollTopBtn.addEventListener('click', function () {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        // ── Mobile nav toggle ──
+        var navToggle = document.getElementById('navToggle');
+        var navLinks = document.getElementById('navLinks');
+        navToggle.addEventListener('click', function () {
+            var isOpen = navLinks.classList.toggle('open');
+            navToggle.setAttribute('aria-expanded', isOpen);
+        });
+
+        // Close mobile nav on link click
+        navLinks.querySelectorAll('.nav__link').forEach(function (link) {
+            link.addEventListener('click', function () {
+                navLinks.classList.remove('open');
+                navToggle.setAttribute('aria-expanded', 'false');
+            });
+        });
+
+        // ── Scroll animations (Intersection Observer) ──
+        if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+            var observer = new IntersectionObserver(function (entries) {
+                entries.forEach(function (entry) {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+            document.querySelectorAll('.fade-up').forEach(function (el) {
+                observer.observe(el);
+            });
+        } else {
+            document.querySelectorAll('.fade-up').forEach(function (el) {
+                el.classList.add('visible');
+            });
+        }
+    </script>
+</body>
+</html>
