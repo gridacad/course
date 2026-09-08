@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<link rel="icon" type="image/svg+xml" href="../Sm1.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="../Sm1.png">
+<link rel="apple-touch-icon" href="../Sm1.png">
+
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Thank You | GRID ACADEMY</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --ink:            #0b1613;
+    --ink-soft:       #12211d;
+    --paper:          #f7f5f0;
+    --white:          #FFFFFF;
+    --text-dark:      #16211d;
+    --text-mute:      #5c6a63;
+    --emerald:        #009268;
+    --emerald-dark:   #045c40;
+    --emerald-light:  #00b37d;
+    --emerald-glow:   rgba(0,146,104,0.15);
+    --copper:         #c1893f;
+    --copper-dark:    #9c6c2c;
+    --line-dark:      rgba(255,255,255,0.12);
+    --line-light:     rgba(22,33,29,0.12);
+    --radius:         10px;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body {
+    font-family: 'Inter', sans-serif;
+    background: var(--paper);
+    color: var(--text-dark);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+  h1, h2, h3 { font-family: 'IBM Plex Sans', sans-serif; }
+
+  .top-nav {
+    background: var(--ink);
+    padding: 16px 24px;
+    border-bottom: 1px solid var(--line-dark);
+  }
+  .nav-inner {
+    max-width: 1240px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .nav-brand {
+    font-size: 1.15rem;
+    font-weight: 800;
+    color: white;
+    text-decoration: none;
+    letter-spacing: 0.5px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .nav-logo { height: 24px; width: auto; filter: brightness(0) invert(1); }
+
+  main {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 60px 24px;
+  }
+
+  .card {
+    max-width: 560px;
+    width: 100%;
+    background: white;
+    border: 1px solid var(--line-light);
+    border-radius: var(--radius);
+    padding: 48px 40px;
+    text-align: center;
+    box-shadow: 0 20px 48px rgba(11,22,19,0.10);
+  }
+
+  .check-badge {
+    width: 68px;
+    height: 68px;
+    background: var(--emerald-glow);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 24px;
+    color: var(--emerald);
+    font-size: 1.7rem;
+  }
+
+  h1 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--ink);
+    margin-bottom: 12px;
+    letter-spacing: -0.3px;
+  }
+
+  .lead {
+    color: var(--text-mute);
+    font-size: 0.98rem;
+    line-height: 1.65;
+    margin-bottom: 28px;
+  }
+
+  .ticket-box {
+    display: none;
+    background: var(--paper);
+    border: 1px dashed var(--line-light);
+    border-radius: 8px;
+    padding: 16px 20px;
+    margin-bottom: 28px;
+  }
+  .ticket-box.show { display: block; }
+  .ticket-label {
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    color: var(--text-mute);
+    text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+  .ticket-number {
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--copper-dark);
+    letter-spacing: 0.5px;
+  }
+
+  .next-steps {
+    text-align: left;
+    background: var(--paper);
+    border-radius: 8px;
+    padding: 20px 22px;
+    margin-bottom: 32px;
+  }
+  .next-steps h3 {
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--ink);
+    margin-bottom: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.4px;
+  }
+  .next-steps ul { list-style: none; }
+  .next-steps li {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-size: 0.9rem;
+    color: var(--text-mute);
+    line-height: 1.5;
+    margin-bottom: 10px;
+  }
+  .next-steps li:last-child { margin-bottom: 0; }
+  .next-steps i { color: var(--emerald); margin-top: 3px; flex-shrink: 0; }
+
+  .actions { display: flex; gap: 12px; flex-wrap: wrap; justify-content: center; }
+  .btn-primary {
+    background: var(--emerald);
+    color: white;
+    text-decoration: none;
+    padding: 13px 24px;
+    border-radius: 8px;
+    font-weight: 700;
+    font-size: 0.9rem;
+    transition: background 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .btn-primary:hover { background: var(--emerald-dark); }
+  .btn-outline {
+    border: 1.5px solid var(--line-light);
+    color: var(--ink);
+    text-decoration: none;
+    padding: 13px 24px;
+    border-radius: 8px;
+    font-weight: 700;
+    font-size: 0.9rem;
+    transition: all 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .btn-outline:hover { background: var(--paper); border-color: var(--emerald); color: var(--emerald); }
+
+  footer {
+    background: var(--ink);
+    padding: 24px;
+    text-align: center;
+  }
+  footer p { color: rgba(255,255,255,0.4); font-size: 0.82rem; }
+
+  @media (max-width: 480px) {
+    .card { padding: 36px 24px; }
+    .actions { flex-direction: column; }
+    .btn-primary, .btn-outline { justify-content: center; }
+  }
+</style>
+</head>
+<body>
+
+  <nav class="top-nav">
+    <div class="nav-inner">
+      <a href="https://gridacad.github.io/" class="nav-brand">
+        <img src="../Sm1.svg" alt="Grid Academy Logo" class="nav-logo">
+        GRID ACADEMY
+      </a>
+    </div>
+  </nav>
+
+  <main>
+    <div class="card">
+      <div class="check-badge"><i class="fas fa-check"></i></div>
+      <h1>Thank you, we've received your inquiry</h1>
+      <p class="lead">A member of our team will review your message and follow up directly at the email address you provided.</p>
+
+      <div class="ticket-box" id="ticketBox">
+        <div class="ticket-label">Reference ticket</div>
+        <div class="ticket-number" id="ticketNumber">&mdash;</div>
+      </div>
+
+      <div class="next-steps">
+        <h3>What happens next</h3>
+        <ul>
+          <li><i class="fas fa-envelope"></i> You'll receive a confirmation email shortly with your ticket number for reference.</li>
+          <li><i class="fas fa-user-tie"></i> Our team will review your requirements and reply within 1&ndash;2 business days.</li>
+          <li><i class="fas fa-reply"></i> You can simply reply to that email to add details, no need to fill out the form again.</li>
+        </ul>
+      </div>
+
+      <div class="actions">
+        <a href="https://gridacad.github.io/" class="btn-primary"><i class="fas fa-house"></i> Back to Homepage</a>
+        <a href="https://gridacad.github.io/#courses" class="btn-outline"><i class="fas fa-book"></i> Browse Courses</a>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <p>&copy; 2026 GRID ACADEMY. All rights reserved.</p>
+  </footer>
+
+  <script>
+    var params = new URLSearchParams(window.location.search);
+    var ticket = params.get('ticket');
+    if (ticket) {
+      document.getElementById('ticketNumber').textContent = '#' + ticket;
+      document.getElementById('ticketBox').classList.add('show');
+    }
+  </script>
+
+</body>
+</html>
