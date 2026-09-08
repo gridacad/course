@@ -240,8 +240,8 @@
       </div>
 
       <div class="actions">
-        <a href="https://gridacad.github.io/" class="btn-primary"><i class="fas fa-house"></i> Back to Homepage</a>
-        <a href="https://gridacad.github.io/#courses" class="btn-outline"><i class="fas fa-book"></i> Browse Courses</a>
+        <a href="https://gridacad.github.io/course/index.html" class="btn-primary"><i class="fas fa-house"></i> Back to Homepage</a>
+        <a href="https://gridacad.github.io/course/index.html#courses" class="btn-outline"><i class="fas fa-book"></i> Browse Courses</a>
       </div>
     </div>
   </main>
