@@ -302,6 +302,59 @@
   }
   .btn-hero-outline:hover { background: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.6); }
 
+
+.notify-highlight {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  max-width: 480px;
+  background: linear-gradient(135deg, rgba(193,137,63,0.14), rgba(193,137,63,0.05));
+  border: 1.5px solid var(--copper);
+  border-radius: 12px;
+  padding: 16px 18px;
+  text-decoration: none;
+  margin-bottom: 56px;
+  transition: transform 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: 0 0 0 rgba(193,137,63,0);
+}
+.notify-highlight:hover {
+  transform: translateY(-2px);
+  background: linear-gradient(135deg, rgba(193,137,63,0.22), rgba(193,137,63,0.08));
+  box-shadow: var(--shadow-lift);
+}
+.notify-highlight-icon {
+  flex-shrink: 0;
+  width: 44px; height: 44px;
+  background: var(--copper);
+  color: var(--ink);
+  border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.15rem;
+}
+.notify-highlight-text { display: flex; flex-direction: column; gap: 4px; min-width: 0; }
+.notify-highlight-title {
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-weight: 700;
+  color: white;
+  font-size: 1rem;
+}
+.notify-highlight-sub {
+  font-size: 0.82rem;
+  color: rgba(255,255,255,0.65);
+  line-height: 1.5;
+}
+.notify-highlight-arrow {
+  margin-left: auto;
+  color: var(--copper);
+  flex-shrink: 0;
+}
+html[dir="rtl"] .notify-highlight-arrow { margin-left: 0; margin-right: auto; transform: scaleX(-1); }
+
+@media (max-width: 480px) {
+  .notify-highlight { flex-wrap: wrap; }
+}
+
+  
   /* ── STATS STRIP ── */
   .stats-strip {
     position: relative;
@@ -955,10 +1008,22 @@
         <div class="hero-tag" data-ar="تدريب هندسي احترافي"><i class="fas fa-bolt"></i> PROFESSIONAL ENGINEERING TRAINING</div>
         <h1 data-ar="طوّر مسيرتك في<br>الهندسة <em>الكهربائية</em>">Power your career in<br>electrical <em>engineering</em></h1>
         <p data-ar="دورات تدريبية متوافقة مع سوق العمل في تصميم المحطات ودراسات نظم القوى والتكامل مع الشبكة، يقدمها مهندسون ممارسون في المجال.">Industry-aligned, job-ready courses in substation design, power system studies and grid integration, built and taught by practicing engineers.</p>
-        <div class="hero-ctas">
-          <a href="#courses" class="btn-hero-primary"><i class="fas fa-arrow-right"></i> <span data-ar="استعرض الدورات">Explore Courses</span></a>
-          <a href="https://docs.google.com/forms/d/e/1FAIpQLSdKy8u6JsBfLq4gNz6nvGTaH5G57xsdJnUxnCHkXyxNaQFnrQ/viewform?usp=send_form" class="btn-hero-outline" target="_blank" rel="noopener"><i class="fas fa-bell"></i> <span data-ar="أشعرني بالمستويات الجديدة">Notify Me on New Levels</span></a>
-        </div>
+        
+        
+        
+<div class="hero-ctas">
+  <a href="#courses" class="btn-hero-primary"><i class="fas fa-arrow-right"></i> <span data-ar="استعرض الدورات">Explore Courses</span></a>
+</div>
+
+<a href="https://docs.google.com/forms/d/e/1FAIpQLSdKy8u6JsBfLq4gNz6nvGTaH5G57xsdJnUxnCHkXyxNaQFnrQ/viewform?usp=send_form"
+   class="notify-highlight" target="_blank" rel="noopener">
+  <span class="notify-highlight-icon"><i class="fas fa-gift"></i></span>
+  <span class="notify-highlight-text">
+    <span class="notify-highlight-title" data-ar="سجّل مجانًا واحصل على كودك الخاص">Register free & get your code</span>
+    <span class="notify-highlight-sub" data-ar="أدخل بياناتك لتصلك رسائل بالمستويات الجديدة، بالإضافة إلى كود خاص تستخدمه عند تسجيلك في أي دورة">Leave your details to get emailed when new levels open — plus a personal code to use when you enroll</span>
+  </span>
+  <i class="fas fa-arrow-right notify-highlight-arrow"></i>
+</a>
       </div>
     </div>
     <div class="stats-strip">
@@ -978,28 +1043,37 @@
       <h2 class="section-title" data-ar="من التسجيل إلى الشهادة">From sign-up to certificate</h2>
       <p class="section-sub" data-ar="خمس خطوات واضحة تفصل بينك وبين بدء تدريبك.">Five straightforward steps stand between you and starting your training.</p>
     </div>
-    <div class="how-grid">
-      <div class="how-step">
-        <h3 data-ar="اختر دورتك">Choose your course</h3>
-        <p data-ar="تصفح الدورات المتاحة واختر المستوى الذي يناسب خبرتك الحالية.">Browse the available courses and pick the level that matches your current experience.</p>
-      </div>
-      <div class="how-step">
-        <h3 data-ar="سجّل والتحق">Register and enroll</h3>
-        <p data-ar="أكمل التسجيل عبر نموذج الالتحاق، أو سجّل لتصلك الإشعارات إذا لم يفتح المستوى بعد.">Complete enrollment through our sign-up form, or register for updates if the level isn't open yet.</p>
-      </div>
-      <div class="how-step">
-        <h3 data-ar="احضر الجلسات المباشرة">Attend live sessions</h3>
-        <p data-ar="انضم إلى الجلسات المباشرة عبر Microsoft Teams والعمل على سيناريوهات مشاريع حقيقية.">Join live sessions over Microsoft Teams and work through real project scenarios with your instructor.</p>
-      </div>
-      <div class="how-step">
-        <h3 data-ar="أكمل التكليفات">Complete the assignments</h3>
-        <p data-ar="طبّق ما تتعلمه باستخدام AutoCAD أو ETAP أو PSS®E أو PVsyst في تكليفات عملية.">Apply what you learn using AutoCAD, ETAP, PSS&reg;E, or PVsyst in hands-on graded assignments.</p>
-      </div>
-      <div class="how-step">
-        <h3 data-ar="احصل على شهادتك">Get certified</h3>
-        <p data-ar="استلم شهادة إتمام المستوى بعد إنهاء الدورة بنجاح.">Receive your level-completion certificate once you finish the course.</p>
-      </div>
-    </div>
+          <div class="how-grid">
+              <div class="how-step">
+                <h3 data-ar="سجّل كمتدرب مستقبلي">Register as a future trainee</h3>
+                <p data-ar="سجّل بياناتك مجانًا لتحصل على كود خاص بك، وستصلك رسالة بريدية فور فتح أي مستوى جديد للتسجيل.">Sign up for free to get your personal code, and you'll be emailed the moment any new level opens for enrollment.</p>
+              </div>
+              <div class="how-step">
+                <h3 data-ar="اختر دورتك وتصفح محتواها">Choose your course & browse its content</h3>
+                <p data-ar="تصفح الدورات المتاحة واطّلع على محتوى كل مستوى لاختيار ما يناسب خبرتك الحالية.">Browse the available courses and review each level's content to find the one that matches your current experience.</p>
+              </div>
+              <div class="how-step">
+                <h3 data-ar="تأكد من مواعيد الدورة">Check that the schedule fits</h3>
+                <p data-ar="تحقق من مواعيد وأيام الجلسات، وإذا كانت مناسبة لك انتقل إلى صفحة التسجيل الخاصة بالدورة.">Check the session dates and days. If they work for you, head to that course's enrollment page.</p>
+              </div>
+              <div class="how-step">
+                <h3 data-ar="راجع سعر الدورة وسجّل">Review the price & enroll</h3>
+                <p data-ar="راجع سعر الدورة في صفحة التسجيل، وإذا كان يناسبك أكمل خطوات التسجيل.">Review the course fee on the enrollment page, and if it works for you, complete the sign-up steps.</p>
+              </div>
+              <div class="how-step">
+                <h3 data-ar="حوّل المبلغ وأرسل إيصال الدفع">Transfer payment & submit your receipt</h3>
+                <p data-ar="قم بتحويل الرسوم، ثم أرسل إيصال التحويل كتأكيد دفع عبر صفحة الدفع. ستصلك رسالة تأكيد خلال 24 ساعة.">Transfer the fee, then submit your transfer receipt as payment confirmation on the payment page. You'll receive a confirmation reply within 24 hours.</p>
+              </div>
+              <div class="how-step">
+                <h3 data-ar="احضر الجلسات المباشرة">Attend live sessions</h3>
+                <p data-ar="انضم إلى الجلسات المباشرة عبر Microsoft Teams واعمل على سيناريوهات مشاريع حقيقية مع المدرب.">Join live sessions over Microsoft Teams and work through real project scenarios with your instructor.</p>
+              </div>
+              <div class="how-step">
+                <h3 data-ar="أكمل التكليفات واحصل على شهادتك">Complete assignments & get certified</h3>
+                <p data-ar="طبّق ما تتعلمه باستخدام AutoCAD أو ETAP أو PSS®E أو PVsyst في تكليفات عملية، واستلم شهادتك بعد إتمام الدورة بنجاح.">Apply what you learn using AutoCAD, ETAP, PSS&reg;E, or PVsyst in hands-on graded assignments, then receive your certificate once you finish successfully.</p>
+              </div>
+          </div>
+                
   </section>
 
   <!-- COURSES -->
