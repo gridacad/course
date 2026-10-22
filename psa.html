@@ -1,0 +1,833 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XWLXEZEW4R"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-XWLXEZEW4R');
+  </script>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Grid Academy — PSS®E Power System Analysis: Comprehensive Stability & Automation</title>
+  <meta name="description" content="PSS®E Power System Analysis: Comprehensive Stability & Automation: load flow, contingency, voltage stability, short-circuit, Python automation and dynamics. 8 lectures, 24 training hours, taught by Consultant Eng. Sameh Medhat.">
+
+  <link rel="icon" type="image/svg+xml" href="Sm1.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="Sm1.png">
+  <link rel="apple-touch-icon" href="Sm1.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <style>
+    :root {
+      --ink: #0a1f1d;
+      --ink-2: #1d3836;
+      --teal-deep: #3a0f0f;
+      --teal: #9b1c1c;
+      --teal-2: #e07a7a;
+      --mint: #fee2e2;
+      --bg: #fbfbfd;
+      --bg-alt: #f2f4f6;
+      --card: #ffffff;
+      --muted: #6e6e73;
+      --line: rgba(10, 31, 29, 0.10);
+      --gold: #f5b942;
+      --radius: 22px;
+      --ease: cubic-bezier(.2,.7,.2,1);
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 80px; }
+    body {
+      margin: 0;
+      font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+      background: var(--bg);
+      color: var(--ink);
+      -webkit-font-smoothing: antialiased;
+      line-height: 1.5;
+    }
+    img { max-width: 100%; display: block; }
+    a { color: inherit; }
+    .container { max-width: 1120px; margin: 0 auto; padding: 0 24px; }
+
+    /* ── Scroll progress ── */
+    .progress { position: fixed; top: 0; left: 0; height: 2px; width: 0; z-index: 300;
+      background: linear-gradient(90deg, var(--teal-2), var(--mint)); }
+
+    /* ── NAV ── */
+    .nav { position: fixed; top: 0; left: 0; right: 0; z-index: 200; transition: background .35s var(--ease), box-shadow .35s var(--ease);
+      background: rgba(58,15,15,0); }
+    .nav.scrolled { background: rgba(58,15,15,.82); backdrop-filter: saturate(180%) blur(16px); box-shadow: 0 1px 0 rgba(255,255,255,.06); }
+    .nav__inner { display: flex; align-items: center; justify-content: space-between; height: 60px; gap: 16px; }
+    .nav__brand { display: flex; align-items: center; gap: 10px; color: #fff; text-decoration: none; font-weight: 700; letter-spacing: .08em; font-size: 14px; }
+    .nav-logo { height: 26px; width: auto; filter: brightness(0) invert(1); }
+    .nav__links { display: flex; gap: 28px; }
+    .nav__links a { color: rgba(255,255,255,.72); text-decoration: none; font-size: 13.5px; font-weight: 500; transition: color .2s; }
+    .nav__links a:hover { color: #fff; }
+    .nav__cta { display: inline-flex; align-items: center; gap: 8px; background: var(--teal-2); color: var(--teal-deep); text-decoration: none;
+      font-weight: 700; font-size: 13.5px; padding: 8px 16px; border-radius: 999px; transition: transform .2s var(--ease), background .2s; }
+    .nav__cta:hover { transform: translateY(-1px); background: #fca5a5; }
+    .nav__toggle { display: none; background: none; border: 0; color: #fff; font-size: 18px; cursor: pointer; }
+    @media (max-width: 820px) {
+      .nav__links { display: none; position: absolute; top: 60px; left: 0; right: 0; flex-direction: column; gap: 0;
+        background: rgba(58,15,15,.97); padding: 8px 0; }
+      .nav__links.open { display: flex; }
+      .nav__links a { padding: 14px 24px; }
+      .nav__toggle { display: block; }
+    }
+
+    /* ── HERO ── */
+    .hero { position: relative; min-height: 100vh; background: radial-gradient(120% 80% at 70% 0%, #6b1c1c 0%, var(--teal-deep) 45%, #230909 100%);
+      color: #fff; display: flex; align-items: center; overflow: hidden; padding: 120px 0 80px; }
+    #gridCanvas { position: absolute; inset: 0; width: 100%; height: 100%; opacity: .75; pointer-events: none; }
+    
+    .hero__inner { position: relative; z-index: 2; display: grid; grid-template-columns: 1.15fr .85fr; gap: 48px; align-items: center; }
+    .badge { display: inline-flex; align-items: center; gap: 8px; padding: 7px 14px; border-radius: 999px;
+      background: rgba(254,226,226,.10); border: 1px solid rgba(254,226,226,.22); color: var(--mint); font-size: 13px; font-weight: 600; }
+    .badge .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--teal-2); box-shadow: 0 0 0 0 rgba(224,122,122,.7); animation: pulse 2s infinite; }
+    @keyframes pulse { 0% { box-shadow: 0 0 0 0 rgba(224,122,122,.7);} 70% { box-shadow: 0 0 0 10px rgba(224,122,122,0);} 100% { box-shadow: 0 0 0 0 rgba(224,122,122,0);} }
+    .hero h1 { font-size: clamp(38px, 5.6vw, 66px); line-height: 1.04; letter-spacing: -.035em; font-weight: 800; margin: 22px 0 18px; }
+    .hero h1 .grad { background: linear-gradient(90deg, #fca5a5, #fee2e2 60%, #fecaca); -webkit-background-clip: text; background-clip: text; color: transparent; }
+    .hero__lead { font-size: 18px; color: rgba(255,255,255,.78); max-width: 560px; margin: 0 0 30px; }
+    .hero__actions { display: flex; flex-wrap: wrap; gap: 12px; }
+    .btn { display: inline-flex; align-items: center; gap: 9px; padding: 14px 24px; border-radius: 999px; font-weight: 700; font-size: 15px;
+      text-decoration: none; transition: transform .25s var(--ease), box-shadow .25s var(--ease), background .25s; border: 1px solid transparent; cursor: pointer; }
+    .btn:hover { transform: translateY(-2px); }
+    .btn--primary { background: #fff; color: var(--teal-deep); box-shadow: 0 10px 30px rgba(224,122,122,.25); }
+    .btn--primary:hover { box-shadow: 0 16px 40px rgba(224,122,122,.35); }
+    .btn--ghost { background: rgba(255,255,255,.06); color: #fff; border-color: rgba(255,255,255,.22); backdrop-filter: blur(8px); }
+    .btn--ghost:hover { background: rgba(255,255,255,.12); }
+    .btn--dark { background: var(--teal); color: #fff; }
+    .btn--dark:hover { background: var(--teal-deep); }
+
+    /* hero side card (live price + countdown) */
+    .offer { background: rgba(255,255,255,.07); border: 1px solid rgba(255,255,255,.14); border-radius: 26px; padding: 28px;
+      backdrop-filter: blur(18px); box-shadow: 0 30px 80px rgba(0,0,0,.35); }
+    .offer__tag { display: inline-flex; gap: 8px; align-items: center; font-size: 12px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--gold); }
+    .offer__price { display: flex; align-items: baseline; gap: 12px; margin: 14px 0 4px; flex-wrap: wrap; }
+    .offer__now { font-size: 56px; font-weight: 800; letter-spacing: -.03em; line-height: 1; }
+    .offer__old { font-size: 22px; color: rgba(255,255,255,.45); text-decoration: line-through; font-weight: 600; }
+    .offer__sub { color: rgba(255,255,255,.7); font-size: 14px; margin-bottom: 20px; }
+    .countdown { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin-bottom: 22px; }
+    .countdown div { background: rgba(0,0,0,.25); border-radius: 14px; padding: 12px 6px; text-align: center; }
+    .countdown b { display: block; font-size: 24px; font-variant-numeric: tabular-nums; font-weight: 800; }
+    .countdown span { font-size: 11px; color: rgba(255,255,255,.6); text-transform: uppercase; letter-spacing: .08em; }
+    .offer .btn { width: 100%; justify-content: center; }
+    .offer__fine { font-size: 12.5px; color: rgba(255,255,255,.55); text-align: center; margin-top: 12px; }
+
+    .hero__side { display: grid; gap: 12px; align-content: start; }
+    .stats { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; }
+    .stat { padding: 12px 14px; border-radius: 14px; background: rgba(255,255,255,.05); border: 1px solid rgba(255,255,255,.08); }
+    .stat b { display: block; font-size: 22px; font-weight: 800; letter-spacing: -.02em; font-variant-numeric: tabular-nums; line-height: 1.2; }
+    .stat span { font-size: 12px; line-height: 1.35; color: rgba(255,255,255,.62); }
+
+    @media (max-width: 920px) {
+      .hero__inner { grid-template-columns: 1fr; }
+    }
+
+    /* ── SECTIONS ── */
+    section { padding: 110px 0; position: relative; }
+    .alt { background: var(--bg-alt); }
+    .eyebrow { font-size: 13px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--teal); margin-bottom: 14px; }
+    .h2 { font-size: clamp(30px, 4vw, 48px); line-height: 1.08; letter-spacing: -.03em; font-weight: 800; margin: 0 0 16px; }
+    .lead { font-size: 18px; color: var(--muted); max-width: 680px; margin: 0; }
+    .head { margin-bottom: 56px; }
+
+    /* reveal on scroll */
+    .reveal { opacity: 0; transform: translateY(28px); transition: opacity .9s var(--ease), transform .9s var(--ease); }
+    .reveal.in { opacity: 1; transform: none; }
+
+    /* ── OVERVIEW ── */
+    .overview { display: grid; grid-template-columns: 1.1fr .9fr; gap: 56px; align-items: center; }
+    .overview p { font-size: 17px; color: #3a3a3c; }
+    .intro-visual { background: linear-gradient(160deg, #4a1212, #9b1c1c); border-radius: 28px; padding: 28px; color: #fff; position: relative; overflow: hidden; }
+    .flow { display: flex; flex-direction: column; gap: 12px; }
+    .flow__row { display: flex; align-items: center; gap: 14px; background: rgba(255,255,255,.08); padding: 14px 16px; border-radius: 14px; transform: translateX(-16px); opacity: 0; transition: all .7s var(--ease); }
+    .flow.in .flow__row { transform: none; opacity: 1; }
+    .flow.in .flow__row:nth-child(2) { transition-delay: .12s; }
+    .flow.in .flow__row:nth-child(3) { transition-delay: .24s; }
+    .flow.in .flow__row:nth-child(4) { transition-delay: .36s; }
+    .flow__row i { color: var(--mint); width: 20px; text-align: center; }
+    .flow__row b { font-size: 14.5px; }
+    .flow__row small { display: block; color: rgba(255,255,255,.6); font-size: 12.5px; }
+    @media (max-width: 880px) { .overview { grid-template-columns: 1fr; gap: 32px; } }
+
+    /* ── OUTCOMES ── */
+    .outcomes { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+    .card { background: var(--card); border-radius: var(--radius); padding: 30px; border: 1px solid var(--line);
+      transition: transform .4s var(--ease), box-shadow .4s var(--ease); }
+    .card:hover { transform: translateY(-6px); box-shadow: 0 24px 50px rgba(10,31,29,.10); }
+    .icon { width: 48px; height: 48px; border-radius: 14px; display: grid; place-items: center; background: var(--mint); color: var(--teal); font-size: 18px; margin-bottom: 18px; }
+    .card h3 { font-size: 18px; margin: 0 0 8px; letter-spacing: -.01em; }
+    .card p { margin: 0; color: var(--muted); font-size: 15px; }
+    @media (max-width: 920px) { .outcomes { grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 620px) { .outcomes { grid-template-columns: 1fr; } }
+
+    /* ── CURRICULUM TIMELINE ── */
+    .timeline { position: relative; max-width: 860px; margin: 0 auto; padding-left: 0; }
+    .timeline::before { content: ""; position: absolute; left: 27px; top: 10px; bottom: 10px; width: 2px; background: var(--line); }
+    .timeline__fill { position: absolute; left: 27px; top: 10px; width: 2px; height: 0; background: linear-gradient(to bottom, var(--teal-2), var(--teal)); transition: height .2s linear; }
+    .lec { position: relative; display: grid; grid-template-columns: 56px 1fr; gap: 22px; padding-bottom: 36px; }
+    .lec__num { width: 56px; height: 56px; border-radius: 50%; background: var(--card); border: 2px solid var(--teal-2); display: grid; place-items: center;
+      font-weight: 800; color: var(--teal); font-size: 17px; position: relative; z-index: 1; transition: background .4s, color .4s; }
+    .lec.active .lec__num { background: var(--teal); color: #fff; }
+    .lec__body { background: var(--card); border: 1px solid var(--line); border-radius: 20px; padding: 24px 26px; transition: transform .4s var(--ease), box-shadow .4s; }
+    .lec:hover .lec__body { transform: translateX(4px); box-shadow: 0 16px 40px rgba(10,31,29,.08); }
+    .lec__meta { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 8px; }
+    .tag { font-size: 12px; font-weight: 700; padding: 4px 10px; border-radius: 999px; background: var(--bg-alt); color: var(--muted); }
+    .tag--teal { background: var(--mint); color: var(--teal-deep); }
+    .lec h3 { margin: 0 0 8px; font-size: 20px; letter-spacing: -.02em; }
+    .lec p { margin: 0 0 12px; color: var(--muted); font-size: 15px; }
+    .lec ul { margin: 0; padding: 0; list-style: none; display: flex; flex-wrap: wrap; gap: 8px; }
+    .lec li { font-size: 13px; background: var(--bg-alt); padding: 6px 11px; border-radius: 9px; color: #3a3a3c; }
+
+    /* ── PRICING ── */
+    .pricing { display: grid; grid-template-columns: repeat(2, 1fr); gap: 22px; max-width: 900px; margin: 0 auto; }
+    .plan { position: relative; background: var(--card); border-radius: 28px; padding: 36px; border: 1px solid var(--line); overflow: hidden;
+      transition: transform .45s var(--ease), box-shadow .45s var(--ease); }
+    .plan:hover { transform: translateY(-6px); box-shadow: 0 30px 60px rgba(10,31,29,.12); }
+    .plan--featured { background: linear-gradient(160deg, #4a1212 0%, #9b1c1c 100%); color: #fff; border: 0; }
+    .plan--featured .muted { color: rgba(255,255,255,.7); }
+    .plan__ribbon { position: absolute; top: 22px; right: 22px; background: var(--gold); color: #3b2a00; font-size: 11px; font-weight: 800; letter-spacing: .08em;
+      text-transform: uppercase; padding: 6px 12px; border-radius: 999px; }
+    .plan h3 { margin: 0 0 6px; font-size: 22px; letter-spacing: -.02em; }
+    .plan .muted { color: var(--muted); font-size: 15px; margin: 0 0 26px; min-height: 44px; }
+    .price { display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; }
+    .price__now { font-size: 52px; font-weight: 800; letter-spacing: -.03em; line-height: 1; font-variant-numeric: tabular-nums; }
+    .price__old { font-size: 20px; text-decoration: line-through; opacity: .5; font-weight: 600; }
+    .price__egp { font-size: 15px; font-weight: 600; opacity: .75; margin-top: 10px; }
+    .plan ul { list-style: none; padding: 0; margin: 26px 0 30px; display: grid; gap: 12px; }
+    .plan li { display: flex; gap: 10px; font-size: 15px; }
+    .plan li i { color: var(--teal-2); margin-top: 4px; }
+    .plan--featured li i { color: var(--mint); }
+    .plan .btn { width: 100%; justify-content: center; }
+    .plan .btn--outline { background: transparent; color: var(--teal); border-color: var(--teal); }
+    .plan .btn--outline:hover { background: var(--teal); color: #fff; }
+    .pricing-note { text-align: center; color: var(--muted); font-size: 14px; margin-top: 28px; }
+    .pricing-note strong { color: var(--teal); }
+    @media (max-width: 760px) { .pricing { grid-template-columns: 1fr; } }
+
+    /* ── INSTRUCTOR ── */
+    .instructor { display: grid; grid-template-columns: .85fr 1.15fr; gap: 56px; align-items: center; }
+    .portrait { position: relative; border-radius: 28px; overflow: hidden; aspect-ratio: 4 / 5; background: linear-gradient(160deg, #9b1c1c, #3a0f0f);
+      display: grid; place-items: center; }
+    .portrait img { width: 100%; height: 100%; object-fit: cover; }
+    .portrait__fallback { font-size: 96px; font-weight: 800; color: rgba(255,255,255,.9); letter-spacing: -.04em; }
+    .portrait::after { content: ""; position: absolute; inset: 0; background: linear-gradient(to top, rgba(58,15,15,.85), transparent 45%); }
+    .portrait__caption { position: absolute; left: 22px; right: 22px; bottom: 22px; z-index: 2; color: #fff; }
+    .portrait__caption b { font-size: 22px; display: block; letter-spacing: -.02em; }
+    .portrait__caption span { font-size: 14px; color: rgba(255,255,255,.8); }
+    .inst-name { font-size: clamp(32px, 4vw, 44px); font-weight: 800; letter-spacing: -.03em; margin: 0 0 8px; }
+    .inst-title { color: var(--teal); font-weight: 600; margin-bottom: 20px; font-size: 16px; }
+    .inst-bio { font-size: 17px; color: #3a3a3c; margin-bottom: 26px; }
+    .inst-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-bottom: 28px; }
+    .inst-stats div { background: var(--card); border: 1px solid var(--line); border-radius: 16px; padding: 16px; }
+    .inst-stats b { display: block; font-size: 26px; font-weight: 800; color: var(--teal); font-variant-numeric: tabular-nums; }
+    .inst-stats span { font-size: 13px; color: var(--muted); }
+    .skills { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 28px; }
+    .skills span { font-size: 13px; font-weight: 600; padding: 7px 13px; border-radius: 999px; background: var(--card); border: 1px solid var(--line); }
+    .career { display: grid; gap: 14px; margin-bottom: 28px; }
+    .career div { display: grid; grid-template-columns: 14px 1fr; gap: 14px; }
+    .career i { width: 10px; height: 10px; border-radius: 50%; background: var(--teal-2); margin-top: 7px; box-shadow: 0 0 0 4px var(--mint); }
+    .career b { display: block; font-size: 15.5px; }
+    .career span { font-size: 14px; color: var(--muted); }
+    .contact-link { display: inline-flex; align-items: center; gap: 8px; color: var(--teal); font-weight: 700; text-decoration: none; }
+    .contact-link:hover { text-decoration: underline; }
+    @media (max-width: 880px) { .instructor { grid-template-columns: 1fr; } .portrait { max-width: 380px; } }
+
+    /* ── FINAL CTA ── */
+    .cta { background: radial-gradient(120% 120% at 50% 0%, #6b1c1c 0%, var(--teal-deep) 60%, #230909 100%); color: #fff; text-align: center; }
+    .cta .h2 { color: #fff; }
+    .cta .lead { color: rgba(255,255,255,.75); margin: 0 auto 34px; }
+    .cta__stats { margin-top: 28px; font-size: 14px; color: rgba(255,255,255,.6); }
+    .cta__stats i { color: var(--gold); margin-right: 6px; }
+
+    footer { background: #230909; color: rgba(255,255,255,.6); padding: 40px 0; font-size: 14px; }
+    footer .row { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 14px; }
+    footer a { color: rgba(255,255,255,.8); text-decoration: none; }
+    footer a:hover { color: #fff; }
+    footer .links { display: flex; gap: 22px; flex-wrap: wrap; }
+      .hero { border-bottom: 1px solid rgba(254,226,226,.14); }
+    @media (min-width: 1600px) {
+      .container { max-width: 1360px; }
+      .hero h1 { font-size: 76px; }
+      .hero__lead { font-size: 20px; max-width: 640px; }
+    }
+    @media (min-width: 2200px) { .container { max-width: 1600px; } }
+  </style>
+</head>
+
+<body>
+  <div class="progress" id="progress"></div>
+
+  <!-- NAV -->
+  <nav class="nav" id="nav">
+    <div class="container nav__inner">
+      <a href="index.html" class="nav__brand" aria-label="GRID ACADEMY home">
+        <img src="Sm1.svg" alt="Grid Academy" class="nav-logo"> GRID ACADEMY
+      </a>
+      <div class="nav__links" id="navLinks">
+        <a href="#overview">Overview</a>
+        <a href="#outcomes">Outcomes</a>
+        <a href="#curriculum">Curriculum</a>
+        <a href="#pricing">Pricing</a>
+        <a href="#instructor">Instructor</a>
+      </div>
+      <div style="display:flex;align-items:center;gap:14px;">
+        <a href="psa_pay.html" class="nav__cta"><i class="fas fa-bolt"></i> Enroll now</a>
+        <button class="nav__toggle" id="navToggle" aria-label="Open menu"><i class="fas fa-bars"></i></button>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+    <!-- HERO -->
+    <header class="hero">
+      <canvas id="gridCanvas" aria-hidden="true"></canvas>
+      <div class="container hero__inner">
+        <div class="reveal in">
+          <span class="badge"><span class="dot"></span> Live online · Theory + hands-on practice</span>
+          <h1>PSS®E Power System Analysis:<br><span class="grad">Comprehensive Stability &amp; Automation</span></h1>
+          <p class="hero__lead">Learn the software utilities run on. Build a network model, then run load flow, contingency, voltage stability, short-circuit and first dynamic studies, guided by an engineer with 14+ years of field and consulting experience.</p>
+          <div class="hero__actions">
+            <a href="psa_pay.html" class="btn btn--primary"><i class="fas fa-bolt"></i> Enroll now</a>
+            <a href="#curriculum" class="btn btn--ghost"><i class="fas fa-list-ul"></i> See the curriculum</a>
+          </div>
+        </div>
+
+        <div class="hero__side">
+        <aside class="offer reveal in" aria-label="Current offer">
+          <div class="offer__tag"><i class="fas fa-fire"></i> <span id="offerTag">Early bird · 5% off</span></div>
+          <div class="offer__price">
+            <span class="offer__now js-hero-now">$—</span>
+            <span class="offer__old js-hero-old"></span>
+          </div>
+          <div class="offer__sub">Live + Recorded · full course</div>
+          <div class="countdown" id="heroCountdown" aria-live="polite">
+            <div><b data-u="d">--</b><span>Days</span></div>
+            <div><b data-u="h">--</b><span>Hours</span></div>
+            <div><b data-u="m">--</b><span>Min</span></div>
+            <div><b data-u="s">--</b><span>Sec</span></div>
+          </div>
+          <a href="psa_pay.html" class="btn btn--primary"><i class="fas fa-arrow-right"></i> Secure my seat</a>
+          <div class="offer__fine">Pay in EGP via Instapay or Vodafone Cash, or by card.</div>
+        </aside>
+        <div class="stats">
+          <div class="stat reveal" data-count="8"><b>0</b><span>Lectures, one per week</span></div>
+          <div class="stat reveal" data-count="24"><b>0</b><span>Training hours</span></div>
+          <div class="stat reveal" data-count="11"><b>0</b><span>Core topics</span></div>
+          <div class="stat reveal"><b>PSS®E</b><span>Industry-standard software</span></div>
+        </div>
+        </div>
+      </div>
+
+    </header>
+
+    <!-- OVERVIEW -->
+    <section id="overview">
+      <div class="container overview">
+        <div class="reveal">
+          <div class="eyebrow">Course overview</div>
+          <h2 class="h2">The studies utilities run every day, taught the way engineers actually use them.</h2>
+          <p>PSS®E is one of the world's leading tools for power system planning, operation and stability work. Utilities, system operators and consultants rely on it to judge whether a network is performing, reliable and secure.</p>
+          <p>This course gives you the fundamentals and the practical skills to run the essential steady-state studies yourself, with an introduction to dynamic simulation and stability assessment. Every topic combines theory with hands-on work in the software.</p>
+        </div>
+        <div class="intro-visual reveal">
+          <div class="flow" id="flow">
+            <div class="flow__row"><i class="fas fa-diagram-project"></i><div><b>Model the network</b><small>Buses, lines, transformers, generators</small></div></div>
+            <div class="flow__row"><i class="fas fa-gauge-high"></i><div><b>Solve the operating point</b><small>Load flow and voltage profile</small></div></div>
+            <div class="flow__row"><i class="fas fa-triangle-exclamation"></i><div><b>Stress-test it</b><small>Contingencies, voltage stability, faults</small></div></div>
+            <div class="flow__row"><i class="fas fa-code"></i><div><b>Automate with Python</b><small>Repeatable, scriptable studies</small></div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- OUTCOMES -->
+    <section id="outcomes" class="alt">
+      <div class="container">
+        <div class="head reveal">
+          <div class="eyebrow">Expected outcomes</div>
+          <h2 class="h2">By the final lecture, you will work independently.</h2>
+          <p class="lead">You will be able to run the core steady-state studies on your own, and you will understand the fundamentals of dynamic modelling and basic transient stability simulation.</p>
+        </div>
+        <div class="outcomes">
+          <div class="card reveal"><div class="icon"><i class="fas fa-scale-balanced"></i></div><h3>Load flow analysis</h3><p>Solve operating points, read bus voltages and line flows, and spot losses and limits.</p></div>
+          <div class="card reveal"><div class="icon"><i class="fas fa-shield-halved"></i></div><h3>Contingency analysis</h3><p>Screen N-1 outages and identify the overloads and voltage violations they cause.</p></div>
+          <div class="card reveal"><div class="icon"><i class="fas fa-chart-line"></i></div><h3>Voltage stability</h3><p>Build P–V and Q–V curves and quantify how much margin the system has before collapse.</p></div>
+          <div class="card reveal"><div class="icon"><i class="fas fa-bolt"></i></div><h3>Short-circuit studies</h3><p>Compute fault currents for protection settings and equipment ratings.</p></div>
+          <div class="card reveal"><div class="icon"><i class="fas fa-terminal"></i></div><h3>Python automation</h3><p>Script PSS®E studies so you can run and repeat large case sets without manual clicks.</p></div>
+          <div class="card reveal"><div class="icon"><i class="fas fa-wind"></i></div><h3>Dynamics &amp; renewables</h3><p>Understand rotor angle and frequency stability, plus the basics of renewable integration.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CURRICULUM -->
+    <section id="curriculum">
+      <div class="container">
+        <div class="head reveal" style="text-align:center;margin-left:auto;margin-right:auto;">
+          <div class="eyebrow">Curriculum</div>
+          <h2 class="h2">Eight lectures. One clear path.</h2>
+          <p class="lead" style="margin:0 auto;">Each week builds on the last: from building the model, to solving it, to stress-testing it, to automating and extending it.</p>
+        </div>
+
+        <div class="timeline" id="timeline">
+          <div class="timeline__fill" id="timelineFill"></div>
+
+          <div class="lec reveal">
+            <div class="lec__num">01</div>
+            <div class="lec__body">
+              <div class="lec__meta"><span class="tag tag--teal">Week 1 · 3h</span><span class="tag">Foundations</span></div>
+              <h3>Introduction to PSS®E &amp; Power System Modeling</h3>
+              <p>Navigate the software and build a power system model from data, the foundation for every study that follows.</p>
+              <ul><li>Software environment</li><li>Network data structure</li><li>Model building</li></ul>
+            </div>
+          </div>
+
+          <div class="lec reveal">
+            <div class="lec__num">02</div>
+            <div class="lec__body">
+              <div class="lec__meta"><span class="tag tag--teal">Week 2 · 3h</span><span class="tag">Modeling</span></div>
+              <h3>Transmission Line Parameter Calculation with LineProp</h3>
+              <p>Derive the resistance, reactance and susceptance of real conductor configurations and feed them into the model.</p>
+              <ul><li>LineProp workflow</li><li>Conductor geometry</li><li>Parameter validation</li></ul>
+            </div>
+          </div>
+
+          <div class="lec reveal">
+            <div class="lec__num">03</div>
+            <div class="lec__body">
+              <div class="lec__meta"><span class="tag tag--teal">Week 3 · 3h</span><span class="tag">Steady state</span></div>
+              <h3>Load Flow Analysis</h3>
+              <p>Solve the network for a stable operating point and interpret voltages, flows and losses like a planning engineer.</p>
+              <ul><li>Bus types</li><li>Convergence</li><li>Reading results</li></ul>
+            </div>
+          </div>
+
+          <div class="lec reveal">
+            <div class="lec__num">04</div>
+            <div class="lec__body">
+              <div class="lec__meta"><span class="tag tag--teal">Week 4 · 3h</span><span class="tag">Security</span></div>
+              <h3>Contingency Analysis</h3>
+              <p>Simulate outages one element at a time and find where the system breaks under N-1 conditions.</p>
+              <ul><li>N-1 screening</li><li>Overload detection</li><li>Violation reports</li></ul>
+            </div>
+          </div>
+
+          <div class="lec reveal">
+            <div class="lec__num">05</div>
+            <div class="lec__body">
+              <div class="lec__meta"><span class="tag tag--teal">Week 5 · 3h</span><span class="tag">Stability</span></div>
+              <h3>Voltage Stability: P–V &amp; Q–V Curves</h3>
+              <p>Trace the nose curve of each load area and measure the margin between the operating point and voltage collapse.</p>
+              <ul><li>P–V curves</li><li>Q–V curves</li><li>Reactive reserve</li></ul>
+            </div>
+          </div>
+
+          <div class="lec reveal">
+            <div class="lec__num">06</div>
+            <div class="lec__body">
+              <div class="lec__meta"><span class="tag tag--teal">Week 6 · 3h</span><span class="tag">Faults</span></div>
+              <h3>Short-Circuit Analysis</h3>
+              <p>Calculate fault levels across the network to support protection coordination and equipment selection.</p>
+              <ul><li>Three-phase faults</li><li>Fault levels</li><li>Equipment ratings</li></ul>
+            </div>
+          </div>
+
+          <div class="lec reveal">
+            <div class="lec__num">07</div>
+            <div class="lec__body">
+              <div class="lec__meta"><span class="tag tag--teal">Week 7 · 3h</span><span class="tag">Automation</span></div>
+              <h3>PSS®E Automation with Python &amp; Introduction to Dynamics</h3>
+              <p>Turn repetitive studies into scripts, then take the first look at how a system behaves in time after a disturbance.</p>
+              <ul><li>Python API basics</li><li>Batch studies</li><li>Dynamic analysis overview</li></ul>
+            </div>
+          </div>
+
+          <div class="lec reveal">
+            <div class="lec__num">08</div>
+            <div class="lec__body">
+              <div class="lec__meta"><span class="tag tag--teal">Week 8 · 3h</span><span class="tag">Dynamics</span></div>
+              <h3>Renewable Integration &amp; Basic Dynamic Simulation</h3>
+              <p>Introduce renewable integration and simulate rotor angle and frequency stability on a working case.</p>
+              <ul><li>Renewable integration</li><li>Rotor angle stability</li><li>Frequency stability</li></ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PRICING -->
+    <section id="pricing" class="alt">
+      <div class="container">
+        <div class="head reveal" style="text-align:center;margin-left:auto;margin-right:auto;">
+          <div class="eyebrow">Pricing</div>
+          <h2 class="h2">Invest once. Use it for years.</h2>
+          <p class="lead" style="margin:0 auto;">Early bird pricing is 5% off until the countdown ends, then the full price applies.</p>
+        </div>
+
+        <div class="pricing">
+          <div class="plan plan--featured reveal" data-plan="full">
+            <div class="plan__ribbon">Best value</div>
+            <h3>Live + Recorded</h3>
+            <p class="muted">Attend every live session and keep full recordings to revisit anytime.</p>
+            <div class="price">
+              <span class="price__old js-usd-old"></span>
+              <span class="price__now js-usd-now">$—</span>
+            </div>
+            <div class="price__egp"><span class="js-egp-old" style="text-decoration:line-through;opacity:.6;margin-right:6px;"></span><span class="js-egp-now">EGP —</span></div>
+            <ul>
+              <li><i class="fas fa-check"></i> All 8 live lectures (24 hours)</li>
+              <li><i class="fas fa-check"></i> Full recordings for revision</li>
+              <li><i class="fas fa-check"></i> Hands-on PSS®E practice</li>
+              <li><i class="fas fa-check"></i> Python automation module</li>
+            </ul>
+            <a href="psa_pay.html" class="btn btn--primary" style="color:var(--teal-deep);"><i class="fas fa-bolt"></i> Enroll — Live + Recorded</a>
+          </div>
+
+          <div class="plan reveal" data-plan="live">
+            <h3>Live Sessions Only</h3>
+            <p class="muted">Join every live session with no recorded access.</p>
+            <div class="price">
+              <span class="price__old js-usd-old"></span>
+              <span class="price__now js-usd-now">$—</span>
+            </div>
+            <div class="price__egp"><span class="js-egp-old" style="text-decoration:line-through;opacity:.6;margin-right:6px;"></span><span class="js-egp-now">EGP —</span></div>
+            <ul>
+              <li><i class="fas fa-check"></i> All 8 live lectures (24 hours)</li>
+              <li><i class="fas fa-check"></i> Hands-on PSS®E practice</li>
+              <li><i class="fas fa-check"></i> Python automation module</li>
+            </ul>
+            <a href="psa_pay.html" class="btn btn--outline"><i class="fas fa-bolt"></i> Enroll — Live only</a>
+          </div>
+        </div>
+
+        <p class="pricing-note reveal">Pay in EGP via <strong>Instapay</strong> or <strong>Vodafone Cash</strong>, or by card in USD. Early bird ends in <strong class="js-inline-countdown">--</strong>.</p>
+      </div>
+    </section>
+
+    <!-- INSTRUCTOR -->
+    <section id="instructor">
+      <div class="container instructor">
+        <div class="portrait reveal" id="portrait">
+          <img src="sameh.png" alt="Consultant Eng. Sameh Medhat" loading="lazy"
+               onerror="this.remove(); document.getElementById('portraitFallback').style.display='block';">
+          <div class="portrait__fallback" id="portraitFallback" style="display:none;position:absolute;">SM</div>
+          <div class="portrait__caption">
+            <b>Consultant Eng. Sameh Medhat</b>
+            <span>Power System Analysis Consultant · Cairo, Egypt</span>
+          </div>
+        </div>
+
+        <div class="reveal">
+          <div class="eyebrow">Your instructor</div>
+          <h2 class="inst-name">Sameh Medhat</h2>
+          <div class="inst-title">High Voltage Projects Manager · Secondary Design Lead · Power System Analysis Consultant</div>
+          <p class="inst-bio">More than 14 years of consulting engineering on HV networks, from computer modelling of electrical systems in PSS®E and ETAP to substation design and commissioning. He teaches the way the work is actually done, with real cases.</p>
+
+          <div class="inst-stats">
+            <div><b data-count="14">0</b><span>Years in HV consulting</span></div>
+            <div><b data-count="4">0</b><span>Core tools: PSS®E Suite&amp; ETAP</span></div>
+            <div><b>HV</b><span>Substations, primary &amp; secondary</span></div>
+          </div>
+
+          <div class="skills">
+            <span>Steady-state &amp; dynamic studies</span>
+            <span>HV substation design</span>
+            <span>Testing &amp; commissioning</span>
+            <span>Harmonic analysis &amp; filter design</span>
+            <span>SCADA integration</span>
+            <span>Protection &amp; control</span>
+          </div>
+
+          <div class="career">
+            <div><i></i><span><b>Senior HV Engineer</b>Shaker Consultancy Group · 2009 – 2024</span></div>
+            <div><i></i><span><b>Post-Graduate Diploma</b>Cairo University · 2007 – 2009</span></div>
+            <div><i></i><span><b>Bachelor's, Power &amp; Electrical Machines</b>Helwan University · 1996 – 2001</span></div>
+          </div>
+
+          <a class="contact-link" href="https://www.linkedin.com/in/samehmedhat-8225651b7" target="_blank" rel="noopener"><i class="fab fa-linkedin"></i> View LinkedIn profile</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- FINAL CTA -->
+    <section class="cta">
+      <div class="container reveal">
+        <div class="eyebrow" style="color:var(--mint);">Ready when you are</div>
+        <h2 class="h2">Start your PSS®E journey.</h2>
+        <p class="lead">Eight weeks. Twenty-four hours. Studies you can run on your own by the end.</p>
+        <a href="psa_pay.html" class="btn btn--primary" style="font-size:16px;padding:16px 30px;"><i class="fas fa-bolt"></i> Enroll now</a>
+        <div class="cta__stats"><i class="fas fa-clock"></i><span class="js-inline-countdown">--</span> left at the early bird price</div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container row">
+      <div>© Grid Academy · PSS®E Power System Analysis: Comprehensive Stability & Automation</div>
+      <div class="links">
+        <a href="#overview">Overview</a>
+        <a href="#curriculum">Curriculum</a>
+        <a href="#pricing">Pricing</a>
+        <a href="psa_pay.html">Payment</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    /* =========================================================================
+       COURSE CONFIG — the only place to edit prices and the early bird.
+       Keep this block identical in psa_pay.html.
+       ========================================================================= */
+    const CONFIG = {
+      earlyBirdDeadline: "2026-11-30T23:59:59+02:00", // Cairo time, format YYYY-MM-DDTHH:MM:SS+02:00
+      earlyBirdDiscount: 0.05,                       // 5% off
+      priceIncrease: 0.20,                           // 20% increase applied to the old prices below
+      plans: {
+        full: { name: "Live + Recorded", oldUSD: 199, oldEGP: 10000 },
+        live: { name: "Live Only",       oldUSD: 149, oldEGP: 7500  }
+      }
+    };
+
+    /* ---------- price maths (all results rounded) ---------- */
+    const roundTo = (n, step) => Math.round(n / step) * step;
+    function priceFor(key) {
+      const p = CONFIG.plans[key];
+      const baseUSD = roundTo(p.oldUSD * (1 + CONFIG.priceIncrease), 1);
+      const baseEGP = roundTo(p.oldEGP * (1 + CONFIG.priceIncrease), 50);
+      const earlyUSD = roundTo(baseUSD * (1 - CONFIG.earlyBirdDiscount), 1);
+      const earlyEGP = roundTo(baseEGP * (1 - CONFIG.earlyBirdDiscount), 50);
+      return { baseUSD, baseEGP, earlyUSD, earlyEGP };
+    }
+    const fmtUSD = n => "$" + n.toLocaleString("en-US");
+    const fmtEGP = n => "EGP " + n.toLocaleString("en-US");
+    const earlyOpen = () => Date.now() < new Date(CONFIG.earlyBirdDeadline).getTime();
+
+    /* ---------- render prices (cards, hero offer, and text) ---------- */
+    function renderPrices() {
+      const open = earlyOpen();
+      const fullP = priceFor("full");
+
+      document.querySelectorAll("[data-plan]").forEach(card => {
+        const key = card.dataset.plan;
+        const p = priceFor(key);
+        card.querySelector(".js-usd-now").textContent = fmtUSD(open ? p.earlyUSD : p.baseUSD);
+        card.querySelector(".js-egp-now").textContent = fmtEGP(open ? p.earlyEGP : p.baseEGP);
+        const usdOld = card.querySelector(".js-usd-old");
+        const egpOld = card.querySelector(".js-egp-old");
+        usdOld.textContent = open ? fmtUSD(p.baseUSD) : "";
+        egpOld.textContent = open ? fmtEGP(p.baseEGP) : "";
+      });
+
+      const heroNow = document.querySelector(".js-hero-now");
+      const heroOld = document.querySelector(".js-hero-old");
+      heroNow.textContent = fmtUSD(open ? fullP.earlyUSD : fullP.baseUSD);
+      heroOld.textContent = open ? fmtUSD(fullP.baseUSD) : "";
+      document.getElementById("offerTag").textContent = open
+        ? "Early bird · " + Math.round(CONFIG.earlyBirdDiscount * 100) + "% off"
+        : "Full price · enrolment open";
+    }
+
+    /* ---------- countdown ---------- */
+    function tick() {
+      const msLeft = new Date(CONFIG.earlyBirdDeadline) - Date.now();
+      const units = document.querySelectorAll("#heroCountdown [data-u]");
+      const inline = document.querySelectorAll(".js-inline-countdown");
+      if (msLeft <= 0) {
+        renderPrices();
+        units.forEach(u => u.textContent = "0");
+        document.getElementById("heroCountdown").style.display = "none";
+        inline.forEach(el => el.textContent = "ended");
+        clearInterval(timerId);
+        return;
+      }
+      const s = Math.floor(msLeft / 1000);
+      const d = Math.floor(s / 86400), h = Math.floor((s % 86400) / 3600),
+            m = Math.floor((s % 3600) / 60), sec = s % 60;
+      const pad = n => String(n).padStart(2, "0");
+      units[0].textContent = d; units[1].textContent = pad(h);
+      units[2].textContent = pad(m); units[3].textContent = pad(sec);
+      inline.forEach(el => el.textContent = d + "d " + pad(h) + "h " + pad(m) + "m " + pad(sec) + "s");
+    }
+
+    let timerId = null;
+    renderPrices();
+    tick();
+    if (new Date(CONFIG.earlyBirdDeadline) - Date.now() > 0) timerId = setInterval(tick, 1000);
+    // re-check the price state once a minute in case the deadline passes while the page is open
+    setInterval(renderPrices, 60000);
+
+    /* ---------- hero network canvas ---------- */
+    (function network() {
+      const cv = document.getElementById("gridCanvas");
+      const ctx = cv.getContext("2d");
+      let w, h, nodes = [], pulses = [];
+      const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+      function resize() {
+        const dpr = Math.min(window.devicePixelRatio || 1, 2);
+        w = cv.clientWidth; h = cv.clientHeight;
+        cv.width = w * dpr; cv.height = h * dpr;
+        ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+        const count = Math.round(Math.min(70, Math.max(30, (w * h) / 16000)));
+        nodes = Array.from({ length: count }, () => ({
+          x: Math.random() * w, y: Math.random() * h,
+          vx: (Math.random() - .5) * .18, vy: (Math.random() - .5) * .18,
+          r: Math.random() * 1.4 + 1.2
+        }));
+      }
+
+      function step() {
+        ctx.clearRect(0, 0, w, h);
+        const maxD = Math.min(w, h) * .22;
+        nodes.forEach(n => {
+          if (!reduce) { n.x += n.vx; n.y += n.vy; }
+          if (n.x < 0 || n.x > w) n.vx *= -1;
+          if (n.y < 0 || n.y > h) n.vy *= -1;
+        });
+        for (let i = 0; i < nodes.length; i++) {
+          for (let j = i + 1; j < nodes.length; j++) {
+            const a = nodes[i], b = nodes[j];
+            const d = Math.hypot(a.x - b.x, a.y - b.y);
+            if (d < maxD) {
+              ctx.strokeStyle = "rgba(254,226,226," + (1 - d / maxD) * .22 + ")";
+              ctx.lineWidth = 1;
+              ctx.beginPath(); ctx.moveTo(a.x, a.y); ctx.lineTo(b.x, b.y); ctx.stroke();
+            }
+          }
+        }
+        nodes.forEach(n => {
+          ctx.fillStyle = "rgba(254,226,226,.75)";
+          ctx.beginPath(); ctx.arc(n.x, n.y, n.r, 0, Math.PI * 2); ctx.fill();
+        });
+        if (!reduce) {
+          if (pulses.length < 14 && Math.random() < .15) {
+            const a = nodes[Math.floor(Math.random() * nodes.length)];
+            const b = nodes.reduce((best, n) => {
+              const d = Math.hypot(a.x - n.x, a.y - n.y);
+              return (d > 0 && d < maxD && (!best || d < best.d)) ? { n, d } : best;
+            }, null);
+            if (b) pulses.push({ a, b: b.n, t: 0 });
+          }
+          pulses = pulses.filter(p => p.t < 1);
+          pulses.forEach(p => {
+            p.t += .012;
+            const x = p.a.x + (p.b.x - p.a.x) * p.t, y = p.a.y + (p.b.y - p.a.y) * p.t;
+            ctx.fillStyle = "rgba(252,165,165,.95)";
+            ctx.shadowColor = "rgba(252,165,165,.9)"; ctx.shadowBlur = 10;
+            ctx.beginPath(); ctx.arc(x, y, 2.2, 0, Math.PI * 2); ctx.fill();
+            ctx.shadowBlur = 0;
+          });
+        }
+        requestAnimationFrame(step);
+      }
+
+      resize();
+      window.addEventListener("resize", resize);
+      step();
+    })();
+
+    /* ---------- nav, progress, mobile menu ---------- */
+    const nav = document.getElementById("nav");
+    const progress = document.getElementById("progress");
+    const onScroll = () => {
+      nav.classList.toggle("scrolled", window.scrollY > 40);
+      const max = document.documentElement.scrollHeight - window.innerHeight;
+      progress.style.width = (max > 0 ? (window.scrollY / max) * 100 : 0) + "%";
+      updateTimeline();
+    };
+    window.addEventListener("scroll", onScroll, { passive: true });
+
+    const toggle = document.getElementById("navToggle");
+    const links = document.getElementById("navLinks");
+    toggle.addEventListener("click", () => links.classList.toggle("open"));
+    links.querySelectorAll("a").forEach(a => a.addEventListener("click", () => links.classList.remove("open")));
+
+    /* ---------- reveal on scroll ---------- */
+    const io = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add("in");
+          if (e.target.matches(".stat")) countUp(e.target);
+          if (e.target.id === "flow") e.target.classList.add("in");
+          io.unobserve(e.target);
+        }
+      });
+    }, { threshold: .15 });
+    document.querySelectorAll(".reveal, .stat").forEach(el => io.observe(el));
+    const flow = document.getElementById("flow");
+    new IntersectionObserver((es, o) => {
+      if (es[0].isIntersecting) { flow.classList.add("in"); o.disconnect(); }
+    }, { threshold: .3 }).observe(flow);
+
+    /* ---------- count-up numbers ---------- */
+    const counted = new WeakSet();
+    function countUp(el) {
+      if (counted.has(el)) return;
+      counted.add(el);
+      const target = el.dataset.count ? Number(el.dataset.count) : null;
+      const numEl = el.tagName === "B" ? el : el.querySelector("b");
+      if (target === null || !numEl) return;
+      const dur = 1400, start = performance.now();
+      const frame = now => {
+        const t = Math.min((now - start) / dur, 1);
+        numEl.textContent = Math.round(target * (1 - Math.pow(1 - t, 3)));
+        if (t < 1) requestAnimationFrame(frame);
+      };
+      requestAnimationFrame(frame);
+    }
+    document.querySelectorAll(".inst-stats b[data-count]").forEach(el => {
+      new IntersectionObserver((es, o) => {
+        if (es[0].isIntersecting) { countUp(el); o.disconnect(); }
+      }, { threshold: .5 }).observe(el);
+    });
+
+    /* ---------- curriculum timeline: fill line + highlight current lecture ---------- */
+    const timeline = document.getElementById("timeline");
+    const fill = document.getElementById("timelineFill");
+    const lectures = Array.from(timeline.querySelectorAll(".lec"));
+    function updateTimeline() {
+      const rect = timeline.getBoundingClientRect();
+      const mid = window.innerHeight * .5;
+      const progressPx = Math.min(Math.max(mid - rect.top, 0), rect.height);
+      fill.style.height = progressPx + "px";
+      lectures.forEach(l => {
+        const r = l.getBoundingClientRect();
+        l.classList.toggle("active", r.top < mid && r.bottom > mid - 40);
+      });
+    }
+    updateTimeline();
+
+    /* ---------- subtle tilt on pricing cards (pointer devices only) ---------- */
+    if (window.matchMedia("(hover: hover)").matches) {
+      document.querySelectorAll(".plan").forEach(card => {
+        card.addEventListener("mousemove", e => {
+          const r = card.getBoundingClientRect();
+          const x = (e.clientX - r.left) / r.width - .5, y = (e.clientY - r.top) / r.height - .5;
+          card.style.transform = "perspective(900px) rotateX(" + (-y * 4) + "deg) rotateY(" + (x * 4) + "deg) translateY(-6px)";
+        });
+        card.addEventListener("mouseleave", () => card.style.transform = "");
+      });
+    }
+
+    /* ---------- portrait: subtle parallax ---------- */
+    const portrait = document.getElementById("portrait");
+    if (portrait && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      window.addEventListener("scroll", () => {
+        const r = portrait.getBoundingClientRect();
+        if (r.bottom > 0 && r.top < window.innerHeight) {
+          const img = portrait.querySelector("img");
+          if (img) img.style.transform = "translateY(" + ((r.top - window.innerHeight / 2) * -.04) + "px) scale(1.06)";
+        }
+      }, { passive: true });
+    }
+  </script>
+</body>
+</html>
