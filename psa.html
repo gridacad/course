@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" dir="ltr">
 <head>
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-XWLXEZEW4R"></script>
@@ -44,6 +44,35 @@
 
     * { box-sizing: border-box; }
     html { scroll-behavior: smooth; scroll-padding-top: 80px; }
+    html[dir="rtl"] { direction: rtl; }
+    html[dir="rtl"] .nav__inner { flex-direction: row-reverse; }
+    html[dir="rtl"] .nav__links { flex-direction: row-reverse; }
+    html[dir="rtl"] .hero__inner { direction: rtl; }
+    html[dir="rtl"] .hero__actions { justify-content: flex-start; }
+    html[dir="rtl"] .overview { direction: rtl; }
+    html[dir="rtl"] .timeline::before { left: auto; right: 27px; }
+    html[dir="rtl"] .timeline__fill { left: auto; right: 27px; }
+    html[dir="rtl"] .lec { grid-template-columns: 1fr 56px; direction: rtl; }
+    html[dir="rtl"] .lec__num { margin-left: 0; margin-right: 0; }
+    html[dir="rtl"] .lec__body { text-align: right; }
+    html[dir="rtl"] .lec ul { justify-content: flex-end; }
+    html[dir="rtl"] .instructor { direction: rtl; }
+    html[dir="rtl"] .career div { grid-template-columns: 1fr 14px; }
+    html[dir="rtl"] .career i { margin-left: auto; margin-right: 0; }
+    html[dir="rtl"] .footer .row { flex-direction: row-reverse; }
+    html[dir="rtl"] .footer .links { flex-direction: row-reverse; }
+    html[dir="rtl"] .crumb { direction: rtl; }
+    html[dir="rtl"] .hero__meta { direction: rtl; }
+    html[dir="rtl"] .plans { direction: rtl; }
+    html[dir="rtl"] .plan-opt { direction: rtl; }
+    html[dir="rtl"] .plan-opt__price { text-align: left; }
+    html[dir="rtl"] .due__row { direction: rtl; }
+    html[dir="rtl"] .methods { direction: rtl; }
+    html[dir="rtl"] .method__top { flex-direction: row-reverse; }
+    html[dir="rtl"] .numbox { flex-direction: row-reverse; }
+    html[dir="rtl"] .wrap { direction: rtl; }
+    html[dir="rtl"] .countdown { direction: rtl; }
+    html[dir="rtl"] .btn { direction: rtl; }
     body {
       margin: 0;
       font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
@@ -74,6 +103,9 @@
       font-weight: 700; font-size: 13.5px; padding: 8px 16px; border-radius: 999px; transition: transform .2s var(--ease), background .2s; }
     .nav__cta:hover { transform: translateY(-1px); background: #fca5a5; }
     .nav__toggle { display: none; background: none; border: 0; color: #fff; font-size: 18px; cursor: pointer; }
+    .nav__lang { display: inline-flex; align-items: center; gap: 6px; background: rgba(255,255,255,.1); border: 1px solid rgba(255,255,255,.2); color: #fff; padding: 6px 12px; border-radius: 999px; font-size: 13px; font-weight: 600; cursor: pointer; transition: background .2s, border-color .2s; }
+    .nav__lang:hover { background: rgba(255,255,255,.2); border-color: rgba(255,255,255,.4); }
+    .nav__lang i { font-size: 12px; }
     @media (max-width: 820px) {
       .nav__links { display: none; position: absolute; top: 60px; left: 0; right: 0; flex-direction: column; gap: 0;
         background: rgba(58,15,15,.97); padding: 8px 0; }
@@ -260,7 +292,17 @@
       .hero__lead { font-size: 20px; max-width: 640px; }
     }
     @media (min-width: 2200px) { .container { max-width: 1600px; } }
+  
+    /* ---- Arabic / RTL support ---- */
+    html[dir="rtl"] body { font-family: "Noto Sans Arabic", "Segoe UI", Tahoma, Arial, sans-serif; }
+    html[dir="rtl"] .fa-arrow-left, html[dir="rtl"] .fa-arrow-right { transform: scaleX(-1); display: inline-block; }
+    html[dir="rtl"] .nav__brand { direction: ltr; }
+
+    html[dir="rtl"] .plan__ribbon { right: auto; left: 22px; }
+    html[dir="rtl"] .hero h1 .grad { display: inline-block; }
+
   </style>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Arabic:wght@400;600;700;800&display=swap" rel="stylesheet">
 </head>
 
 <body>
@@ -273,14 +315,18 @@
         <img src="Sm1.svg" alt="Grid Academy" class="nav-logo"> GRID ACADEMY
       </a>
       <div class="nav__links" id="navLinks">
-        <a href="#overview">Overview</a>
-        <a href="#outcomes">Outcomes</a>
-        <a href="#curriculum">Curriculum</a>
-        <a href="#pricing">Pricing</a>
-        <a href="#instructor">Instructor</a>
+        <a href="#overview" data-i18n="nav.overview">Overview</a>
+        <a href="#outcomes" data-i18n="nav.outcomes">Outcomes</a>
+        <a href="#curriculum" data-i18n="nav.curriculum">Curriculum</a>
+        <a href="#pricing" data-i18n="nav.pricing">Pricing</a>
+        <a href="#instructor" data-i18n="nav.instructor">Instructor</a>
       </div>
       <div style="display:flex;align-items:center;gap:14px;">
-        <a href="/pay/psa_pay.html" class="nav__cta"><i class="fas fa-bolt"></i> Enroll now</a>
+        <button class="nav__lang" id="langToggle" aria-label="Switch language" title="Switch language">
+          <span class="lang-current">EN</span>
+          <i class="fas fa-globe"></i>
+        </button>
+        <a href="/pay/psa_pay.html" class="nav__cta"><i class="fas fa-bolt"></i> <span data-i18n="nav.enroll">Enroll now</span></a>
         <button class="nav__toggle" id="navToggle" aria-label="Open menu"><i class="fas fa-bars"></i></button>
       </div>
     </div>
@@ -829,5 +875,86 @@
       }, { passive: true });
     }
   </script>
+<script>
+(function () {
+  var AR = {"Overview": "نظرة عامة", "Outcomes": "النتائج المتوقعة", "Curriculum": "المقرر", "Pricing": "الأسعار", "Instructor": "المدرب", "Enroll now": "سجل الآن", "Live online · Theory + hands-on practice": "أونلاين مباشر · نظرية + تطبيق عملي", "Learn the software utilities run on. Build a network model, then run load flow, contingency, voltage stability, short-circuit and first dynamic studies, guided by an engineer with 14+ years of field and consulting experience.": "تعلّم البرنامج الذي تعتمد عليه شركات المرافق. ابنِ نموذج شبكة، ثم شغّل دراسات الحمل، الطوارئ، استقرار الجهد، القصر، وأول دراسات الديناميك، بإرشاد مهندس بخبرة 14+ سنة في الميدان والاستشارات.", "See the curriculum": "شاهد المنهج", "Early bird · 5% off": "عرض مبكر · خصم 5%", "Live + Recorded · full course": "مباشر + مسجل · الدورة كاملة", "Days": "أيام", "Hours": "ساعات", "Min": "دقايق", "Sec": "ثواني", "Secure my seat": "احجز مكانك", "Pay in EGP via Instapay or Vodafone Cash, or by card.": "الدفع بالجنيه المصري عبر إنستاباي أو فودافون كاش، أو بالبطاقة.", "Lectures, one per week": "محاضرات، واحدة أسبوعياً", "Training hours": "ساعات تدريب", "Core topics": "موضوعات أساسية", "Industry-standard software": "برنامج معياري في الصناعة", "Course overview": "نظرة عامة على الدورة", "The studies utilities run every day, taught the way engineers actually use them.": "الدراسات التي تديرها شركات المرافق يومياً، تُعلّم كما يستخدمها المهندسون فعلياً.", "PSS®E is one of the world's leading tools for power system planning, operation and stability work. Utilities, system operators and consultants rely on it to judge whether a network is performing, reliable and secure.": "PSS®E من أبرز الأدوات عالمياً لتخطيط وتشغيل واستقرار نظم الطاقة. تعتمد عليه المرافق والمشغلون والاستشاريون لتقييم أداء الشبكة وموثوقيتها وأمانها.", "This course gives you the fundamentals and the practical skills to run the essential steady-state studies yourself, with an introduction to dynamic simulation and stability assessment. Every topic combines theory with hands-on work in the software.": "تمنحك هذه الدورة الأساسيات والمهارات العملية لتشغيل دراسات الحالة المستقرة الأساسية بنفسك، مع مقدمة للمحاكاة الديناميكية وتقييم الاستقرار. كل موضوع يجمع بين النظرية والتطبيق العملي في البرنامج.", "Model the network": "نمذجة الشبكة", "Buses, lines, transformers, generators": "العقد، الخطوط، المحولات، المولدات", "Solve the operating point": "حل نقطة التشغيل", "Load flow and voltage profile": "تدفق الحمل وملف الجهد", "Stress-test it": "اختبارها تحت الضغط", "Contingencies, voltage stability, faults": "الطوارئ، استقرار الجهد، الأعطال", "Automate with Python": "أتمتة بايثون", "Repeatable, scriptable studies": "دراسات قابلة للتكرار والبرمجة", "Expected outcomes": "النتائج المتوقعة", "By the final lecture, you will work independently.": "بنهاية المحاضرة الأخيرة، ستعمل بشكل مستقل.", "You will be able to run the core steady-state studies on your own, and you will understand the fundamentals of dynamic modelling and basic transient stability simulation.": "ستتمكن من تشغيل دراسات الحالة المستقرة الأساسية بنفسك، وستفهم أساسيات نمذجة الديناميك ومحاكاة الاستقرار العابر الأساسية.", "Load flow analysis": "تحليل تدفق الحمل", "Solve operating points, read bus voltages and line flows, and spot losses and limits.": "حل نقاط التشغيل، قراءة جهود العقد وتدفقات الخطوط، ورصد الفاقد والحدود.", "Contingency analysis": "تحليل الطوارئ", "Screen N-1 outages and identify the overloads and voltage violations they cause.": "فحص انقطاعات N-1 وتحديد الأحمال الزائدة وانتهاكات الجهد التي تسببها.", "Voltage stability": "استقرار الجهد", "Build P–V and Q–V curves and quantify how much margin the system has before collapse.": "رسم منحنيات P–V و Q–V وقياس الهامش قبل انهيار الجهد.", "Short-circuit studies": "دراسات القصر", "Compute fault currents for protection settings and equipment ratings.": "حساب تيارات القصر لضبط الحماية وتقييم المعدات.", "Python automation": "أتمتة بايثون", "Script PSS®E studies so you can run and repeat large case sets without manual clicks.": "برمجة دراسات PSS®E لتشغيل وتكرار مجموعات حالات كبيرة دون نقرات يدوية.", "Dynamics & renewables": "الديناميك والطاقة المتجددة", "Understand rotor angle and frequency stability, plus the basics of renewable integration.": "فهم استقرار زاوية الدوار والتردد، وأساسيات دمج الطاقة المتجددة.", "Eight lectures. One clear path.": "ثماني محاضرات. مسار واضح واحد.", "Each week builds on the last: from building the model, to solving it, to stress-testing it, to automating and extending it.": "كل أسبوع يبني على السابق: من بناء النموذج، لحله، لاختباره، لأتمتته وتوسيعه.", "Week 1 · 3h": "الأسبوع 1 · 3س", "Foundations": "الأساسيات", "Introduction to PSS®E & Power System Modeling": "مقدمة لـ PSS®E ونمذجة نظم الطاقة", "Navigate the software and build a power system model from data, the foundation for every study that follows.": "التنقل في البرنامج وبناء نموذج نظام طاقة من البيانات، الأساس لكل دراسة تليها.", "Software environment": "بيئة البرنامج", "Network data structure": "هيكل بيانات الشبكة", "Model building": "بناء النموذج", "Week 2 · 3h": "الأسبوع 2 · 3س", "Modeling": "النمذجة", "Transmission Line Parameter Calculation with LineProp": "حساب معاملات خطوط النقل مع LineProp", "Derive the resistance, reactance and susceptance of real conductor configurations and feed them into the model.": "استخراج المقاومة والمفاعلة والمستحث لتركيبات الموصلات الحقيقية وإدخالها في النموذج.", "LineProp workflow": "سير عمل LineProp", "Conductor geometry": "هندسة الموصلات", "Parameter validation": "التحقق من المعاملات", "Week 3 · 3h": "الأسبوع 3 · 3س", "Steady state": "الحالة المستقرة", "Load Flow Analysis": "تحليل تدفق الحمل", "Solve the network for a stable operating point and interpret voltages, flows and losses like a planning engineer.": "حل الشبكة لنقطة تشغيل مستقرة وتفسير الجهود والتدفقات والفاقد كمهندس تخطيط.", "Bus types": "أنواع العقد", "Convergence": "التقارب", "Reading results": "قراءة النتائج", "Week 4 · 3h": "الأسبوع 4 · 3س", "Security": "الأمان", "Contingency Analysis": "تحليل الطوارئ", "Simulate outages one element at a time and find where the system breaks under N-1 conditions.": "محاكاة الانقطاعات عنصراً بعنصر وإيجاد أين ينكسر النظام تحت شروط N-1.", "N-1 screening": "فحص N-1", "Overload detection": "كشف الأحمال الزائدة", "Violation reports": "تقارير الانتهاكات", "Week 5 · 3h": "الأسبوع 5 · 3س", "Stability": "الاستقرار", "Voltage Stability: P–V & Q–V Curves": "استقرار الجهد: منحنيات P–V و Q–V", "Trace the nose curve of each load area and measure the margin between the operating point and voltage collapse.": "رسم منحنى الأنف لكل منطقة حمل وقياس الهامش بين نقطة التشغيل وانهيار الجهد.", "P–V curves": "منحنيات P–V", "Q–V curves": "منحنيات Q–V", "Reactive reserve": "احتياطي المفاعلة", "Week 6 · 3h": "الأسبوع 6 · 3س", "Faults": "الأعطال", "Short-Circuit Analysis": "تحليل القصر", "Calculate fault levels across the network to support protection coordination and equipment selection.": "حساب مستويات القصر عبر الشبكة لدعم تنسيق الحماية واختيار المعدات.", "Three-phase faults": "أعطال ثلاثية الطور", "Fault levels": "مستويات القصر", "Equipment ratings": "تقييم المعدات", "Week 7 · 3h": "الأسبوع 7 · 3س", "Automation": "الأتمتة", "PSS®E Automation with Python & Introduction to Dynamics": "أتمتة PSS®E بايثون ومقدمة للديناميك", "Turn repetitive studies into scripts, then take the first look at how a system behaves in time after a disturbance.": "تحويل الدراسات المتكررة إلى سكريبتات، ثم أول نظرة لكيف يتصرف النظام زمنياً بعد اضطراب.", "Python API basics": "أساسيات API بايثون", "Batch studies": "دراسات الدفعات", "Dynamic analysis overview": "نظرة عامة على التحليل الديناميكي", "Week 8 · 3h": "الأسبوع 8 · 3س", "Dynamics": "الديناميك", "Renewable Integration & Basic Dynamic Simulation": "دمج الطاقة المتجددة ومحاكاة ديناميكية أساسية", "Introduce renewable integration and simulate rotor angle and frequency stability on a working case.": "إدخال دمج المتجددة ومحاكاة استقرار زاوية الدوار والتردد على حالة عمل.", "Renewable integration": "دمج الطاقة المتجددة", "Rotor angle stability": "استقرار زاوية الدوار", "Frequency stability": "استقرار التردد", "Invest once. Use it for years.": "استثمر مرة. استخدمها لسنوات.", "Early bird pricing is 5% off until the countdown ends, then the full price applies.": "أسعار العرض المبكر بخصم 5% حتى انتهاء العد التنازلي، ثم يُطبق السعر الكامل.", "Live + Recorded": "مباشر + مسجل", "Attend every live session and keep full recordings to revisit anytime.": "احضر كل الجلسات المباشرة واحتفظ بالتسجيلات الكاملة للمراجعة في أي وقت.", "Best value": "أفضل قيمة", "All 8 live lectures (24 hours)": "8 محاضرات مباشرة (24 ساعة)", "Full recordings for revision": "تسجيلات كاملة للمراجعة", "Hands-on PSS®E practice": "تطبيق عملي على PSS®E", "Python automation module": "وحدة أتمتة بايثون", "Enroll — Live + Recorded": "سجل — مباشر + مسجل", "Live Sessions Only": "الجلسات المباشرة فقط", "Join every live session with no recorded access.": "احضر كل الجلسات المباشرة دون تسجيلات.", "Enroll — Live only": "سجل — مباشر فقط", "Your instructor": "مدربك", "Sameh Medhat": "سميح مدحت", "High Voltage Projects Manager · Secondary Design Lead · Power System Analysis Consultant": "مدير مشاريع الجهد العالي · رئيس التصميم الثانوي · استشاري تحليل نظم الطاقة", "More than 14 years of consulting engineering on HV networks, from computer modelling of electrical systems in PSS®E and ETAP to substation design and commissioning. He teaches the way the work is actually done, with real cases.": "أكثر من 14 سنة استشارات هندسية في شبكات الجهد العالي، من نمذجة الأنظمة الكهربائية في PSS®E و ETAP إلى تصميم وتشغيل المحطات. يعلّم كما يتم العمل فعلياً، بحالات حقيقية.", "Years in HV consulting": "سنوات في استشارات الجهد العالي", "Core tools: PSS®E Suite & ETAP": "أدوات أساسية: PSS®E Suite & ETAP", "Substations, primary & secondary": "محطات، أولي وثانوي", "Steady-state & dynamic studies": "دراسات الحالة المستقرة والديناميكية", "HV substation design": "تصميم محطات الجهد العالي", "Testing & commissioning": "الاختبارات والتشغيل", "Harmonic analysis & filter design": "تحليل التوافقيات وتصميم المرشحات", "SCADA integration": "تكامل SCADA", "Protection & control": "الحماية والتحكم", "Senior HV Engineer": "مهندس جهد عالي أول", "Shaker Consultancy Group · 2009 – 2024": "مجموعة شاكر للاستشارات · 2009 – 2024", "Post-Graduate Diploma": "دبلوم الدراسات العليا", "Cairo University · 2007 – 2009": "جامعة القاهرة · 2007 – 2009", "Bachelor's, Power & Electrical Machines": "بكالوريوس، القوى والآلات الكهربائية", "Helwan University · 1996 – 2001": "جامعة حلوان · 1996 – 2001", "View LinkedIn profile": "عرض ملف لينكد إن", "Ready when you are": "مستعد عندما تكون أنت", "Start your PSS®E journey.": "ابدأ رحلتك مع PSS®E.", "Eight weeks. Twenty-four hours. Studies you can run on your own by the end.": "ثمانية أسابيع. أربع وعشرون ساعة. دراسات يمكنك تشغيلها بنفسك في النهاية.", "left at the early bird price": "متبقي على سعر العرض المبكر", "© Grid Academy · PSS®E Power System Analysis: Comprehensive Stability & Automation": "© جريد أكاديمي · تحليل نظم الطاقة PSS®E: الاستقرار الشامل والأتمتة", "Payment": "الدفع", "Full price · enrolment open": "السعر الكامل · التسجيل مفتوح", "--": "--", "PSS®E Power System Analysis:": "تحليل نظم الطاقة بـ PSS®E:", "Comprehensive Stability & Automation": "الاستقرار الشامل والأتمتة", "Consultant Eng. Sameh Medhat": "المهندس الاستشاري سامح مدحت", "Power System Analysis Consultant · Cairo, Egypt": "استشاري تحليل نظم الطاقة · القاهرة، مصر", "Core tools: PSS®E Suite& ETAP": "أدوات أساسية: PSS®E Suite & ETAP", "HV": "جهد عالي", "Pay in EGP via": "ادفع بالجنيه المصري عبر", "Instapay": "إنستاباي", "or": "أو", "Vodafone Cash": "فودافون كاش", ", or by card in USD. Early bird ends in": "، أو بالبطاقة بالدولار. العرض المبكر ينتهي خلال", "Switch language": "تغيير اللغة", "Open menu": "فتح القائمة", "GRID ACADEMY home": "الصفحة الرئيسية لـ GRID ACADEMY", "Current offer": "العرض الحالي"};
+  var TITLE_AR = "Grid Academy — تحليل نظم الطاقة PSS®E: الاستقرار الشامل والأتمتة";
+  var EN_TITLE = document.title;
+  var PATTERNS = [
+    [/^EGP ([\d,]+)$/, function (m) { return m[1] + " ج.م"; }],
+    [/^EGP —$/, function () { return "— ج.م"; }],
+    [/^≈ (\$[\d,]+) by card$/, function (m) { return "≈ " + m[1] + " بالبطاقة"; }],
+    [/^You save EGP ([\d,]+) · (\d+)% early bird$/, function (m) { return "توفر " + m[1] + " ج.م · عرض مبكر " + m[2] + "%"; }],
+    [/^Early bird · save (\$[\d,]+)$/, function (m) { return "عرض مبكر · وفر " + m[1]; }],
+    [/^Early bird · (\d+)% off$/, function (m) { return "عرض مبكر · خصم " + m[1] + "%"; }],
+    [/^([\d-]+)d ([\d-]+)h ([\d-]+)m ([\d-]+)s$/, function (m) { return m[1] + " ي " + m[2] + " س " + m[3] + " د " + m[4] + " ث"; }]
+  ];
+
+  function lookup(s) {
+    if (Object.prototype.hasOwnProperty.call(AR, s)) return AR[s];
+    for (var i = 0; i < PATTERNS.length; i++) {
+      var m = s.match(PATTERNS[i][0]);
+      if (m) return PATTERNS[i][1](m);
+    }
+    return null;
+  }
+
+  var textOrig = new WeakMap(), attrOrig = new WeakMap();
+
+  function apply(lang) {
+    var ar = lang === "ar";
+    document.documentElement.lang = ar ? "ar" : "en";
+    document.documentElement.dir = ar ? "rtl" : "ltr";
+    document.title = ar ? TITLE_AR : EN_TITLE;
+
+    var w = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT, {
+      acceptNode: function (n) {
+        return /^(SCRIPT|STYLE)$/.test(n.parentNode.nodeName) ? NodeFilter.FILTER_REJECT : NodeFilter.FILTER_ACCEPT;
+      }
+    });
+    var nodes = [], n;
+    while ((n = w.nextNode())) nodes.push(n);
+    nodes.forEach(function (node) {
+      if (!textOrig.has(node)) {
+        if (!node.nodeValue.trim()) return;
+        textOrig.set(node, node.nodeValue);
+      }
+      var src = textOrig.get(node), s = src.trim();
+      var t = ar ? lookup(s.replace(/\s+/g, " ")) : null;
+      var out = t === null ? src : src.replace(s, function () { return t; });
+      if (node.nodeValue !== out) node.nodeValue = out;
+    });
+
+    document.querySelectorAll("[alt],[aria-label],[title]").forEach(function (el) {
+      var o = attrOrig.get(el);
+      if (!o) { o = {}; attrOrig.set(el, o); }
+      ["alt", "aria-label", "title"].forEach(function (a) {
+        if (!el.hasAttribute(a)) return;
+        if (!(a in o)) o[a] = el.getAttribute(a);
+        var t = ar ? lookup(o[a].trim()) : null;
+        var v = t === null ? o[a] : t;
+        if (el.getAttribute(a) !== v) el.setAttribute(a, v);
+      });
+    });
+
+    var cur = document.querySelector("#langToggle .lang-current");
+    if (cur) {
+      var label = ar ? "EN" : "عربي";
+      if (cur.textContent !== label) cur.textContent = label;
+    }
+  }
+
+  var lang = "en";
+  try { lang = localStorage.getItem("gaLang") || "en"; } catch (e) {}
+  var tb = document.getElementById("langToggle");
+  if (tb) tb.addEventListener("click", function () {
+    lang = lang === "en" ? "ar" : "en";
+    try { localStorage.setItem("gaLang", lang); } catch (e) {}
+    apply(lang);
+  });
+  apply(lang);
+  setInterval(function () { apply(lang); }, 1000);
+})();
+</script>
 </body>
 </html>
