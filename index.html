@@ -1327,6 +1327,25 @@ html[dir="rtl"] .notify-highlight-arrow { margin-left: 0; margin-right: auto; tr
   .vb-canvas { pointer-events: none; }
   .vb-content { pointer-events: none; }
   .vb-content a, .vb-content button { pointer-events: auto; }
+
+  /* ── SOFT TOP BUTTON (no harsh edges on narrow screens) ── */
+  .notify-highlight {
+    background: radial-gradient(120% 140% at 0% 0%, rgba(193,137,63,0.20), rgba(193,137,63,0.04) 70%);
+    border: 1px solid rgba(193,137,63,0.38);
+    box-shadow: 0 24px 60px -24px rgba(193,137,63,0.45);
+    border-radius: 18px;
+  }
+  @media (max-width: 560px) {
+    .notify-highlight {
+      box-shadow: 0 14px 36px -18px rgba(193,137,63,0.35);
+      border-radius: 14px;
+      background: linear-gradient(160deg, rgba(193,137,63,0.16), rgba(193,137,63,0.03));
+    }
+  }
+
+  /* ── SOFT EDGES: section fades + floating footer, space after cards ── */
+  .video-band { margin-top: 120px; }
+
 </style>
 </head>
 <body>
@@ -1614,16 +1633,7 @@ html[dir="rtl"] .notify-highlight-arrow { margin-left: 0; margin-right: auto; tr
         </div>
       </div>
 
-    <div class="tools-strip">
-      <span class="tools-strip-label" data-ar="البرامج المستخدمة في دوراتنا">SOFTWARE COVERED ACROSS OUR COURSES</span>
-      <div class="tools-list">
-        <span>AutoCAD</span>
-        <span>ETAP</span>
-        <span>PSS&reg;E</span>
-        <span>PVsyst</span>
-        <span>Excel</span>
-      </div>
-    </div>
+    
   </div>
     
   <!-- VIDEO-STYLE BAND -->
@@ -1902,7 +1912,8 @@ html[dir="rtl"] .notify-highlight-arrow { margin-left: 0; margin-right: auto; tr
       var nodes = [], parts = [];
       var mouse = { x: -9999, y: -9999, on: false };
       var PUSH_R = 130, GRAB_R = 170, LINK_R = 110;
-      var rafId = 0, visible = true;
+      var rafId = 0, visible = true, t = 0;
+      mouse.s = 0;
 
       function setup() {
         var rect = band.getBoundingClientRect();
@@ -1945,19 +1956,29 @@ html[dir="rtl"] .notify-highlight-arrow { margin-left: 0; margin-right: auto; tr
 
       function step() {
         ctx.clearRect(0, 0, W, H);
+        t += 0.02;
+        mouse.s += ((mouse.on ? 1 : 0) - mouse.s) * 0.035;
+        var S = mouse.s;
 
-        // 1) Grid nodes: pointer pushes, springs pull back
+        // 1) Grid nodes: a magnet pulls nearby nodes toward the pointer, with micro-wobble
+        //    while it is held; when released they spring back to the rectangular grid.
         for (var i = 0; i < nodes.length; i++) {
           var n = nodes[i];
-          if (mouse.on) {
-            var dx = n.x - mouse.x, dy = n.y - mouse.y;
+          var wob = 0;
+          if (S > 0.002) {
+            var dx = mouse.x - n.x, dy = mouse.y - n.y;
             var d2 = dx * dx + dy * dy;
             if (d2 < PUSH_R * PUSH_R) {
               var d = Math.sqrt(d2) || 0.001;
-              var f = (1 - d / PUSH_R) * 2.4;
-              n.vx += (dx / d) * f;
-              n.vy += (dy / d) * f;
+              var w = 1 - d / PUSH_R;
+              n.vx += (dx / d) * w * 1.1 * S;
+              n.vy += (dy / d) * w * 1.1 * S;
+              wob = w * S;
             }
+          }
+          if (wob > 0) {
+            n.vx += Math.sin(t * 9 + n.ox * 0.12 + n.oy * 0.09) * 0.35 * wob;
+            n.vy += Math.cos(t * 8 + n.ox * 0.1 - n.oy * 0.13) * 0.35 * wob;
           }
           n.vx += (n.ox - n.x) * 0.06;
           n.vy += (n.oy - n.y) * 0.06;
@@ -1989,13 +2010,13 @@ html[dir="rtl"] .notify-highlight-arrow { margin-left: 0; margin-right: auto; tr
         }
 
         // 4) Pointer grab: lines from the cursor to nearby nodes
-        if (mouse.on) {
+        if (S > 0.002) {
           for (var g = 0; g < nodes.length; g++) {
             var gn = nodes[g];
             var gx = gn.x - mouse.x, gy = gn.y - mouse.y;
             var gd = Math.sqrt(gx * gx + gy * gy);
             if (gd < GRAB_R) {
-              ctx.strokeStyle = 'rgba(0,255,170,' + ((1 - gd / GRAB_R) * 0.6).toFixed(3) + ')';
+              ctx.strokeStyle = 'rgba(0,255,170,' + ((1 - gd / GRAB_R) * 0.6 * S).toFixed(3) + ')';
               ctx.beginPath();
               ctx.moveTo(mouse.x, mouse.y);
               ctx.lineTo(gn.x, gn.y);
@@ -2007,18 +2028,24 @@ html[dir="rtl"] .notify-highlight-arrow { margin-left: 0; margin-right: auto; tr
         // 5) Particle swarm: drift, wrap at edges, gather toward the pointer
         for (var j = 0; j < parts.length; j++) {
           var pt = parts[j];
-          if (mouse.on) {
+          if (S > 0.002) {
             var px = mouse.x - pt.x, py = mouse.y - pt.y;
             var pd = Math.sqrt(px * px + py * py);
             if (pd < GRAB_R && pd > 1) {
-              pt.vx += (px / pd) * 0.02;
-              pt.vy += (py / pd) * 0.02;
+              pt.vx += (px / pd) * 0.02 * S;
+              pt.vy += (py / pd) * 0.02 * S;
             }
           }
           pt.vx += (Math.random() - 0.5) * 0.03;
           pt.vy += (Math.random() - 0.5) * 0.03;
           pt.vx *= 0.97;
           pt.vy *= 0.97;
+          var psp = Math.sqrt(pt.vx * pt.vx + pt.vy * pt.vy);
+          if (psp < 0.25) {
+            var ang = Math.atan2(pt.vy, pt.vx) || Math.random() * 6.2832;
+            pt.vx = Math.cos(ang) * 0.25;
+            pt.vy = Math.sin(ang) * 0.25;
+          }
           pt.x += pt.vx;
           pt.y += pt.vy;
           if (pt.x < -10) pt.x = W + 10;
@@ -2049,10 +2076,10 @@ html[dir="rtl"] .notify-highlight-arrow { margin-left: 0; margin-right: auto; tr
 
       function frame() {
         step();
-        rafId = (visible && !reduce) ? requestAnimationFrame(frame) : 0;
+        rafId = visible ? requestAnimationFrame(frame) : 0;
       }
       function start() {
-        if (!rafId && visible && !reduce) rafId = requestAnimationFrame(frame);
+        if (!rafId && visible) rafId = requestAnimationFrame(frame);
       }
 
       band.addEventListener('pointermove', function (e) {
@@ -2080,7 +2107,7 @@ html[dir="rtl"] .notify-highlight-arrow { margin-left: 0; margin-right: auto; tr
       }
 
       setup();
-      if (reduce) { step(); } else { start(); }
+      start();
     })();
 
     // Gentle reveal-on-scroll for sections and cards
