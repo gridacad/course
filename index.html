@@ -55,6 +55,10 @@
     --psse-primary:      #115e59;
     --psse-primary-dark: #0b3f3b;
     --psse-glow:         rgba(17,94,89,0.15);
+
+    --psa-primary:      #9b1c1c;
+    --psa-primary-dark: #7a1616;
+    --psa-glow:         rgba(155,28,28,0.12);
   }
 
   * { margin:0; padding:0; box-sizing:border-box; }
@@ -430,7 +434,7 @@ html[dir="rtl"] .notify-highlight-arrow { margin-left: 0; margin-right: auto; tr
 
   .courses-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 340px), 1fr));
     gap: 28px;
   }
 
@@ -483,6 +487,11 @@ html[dir="rtl"] .notify-highlight-arrow { margin-left: 0; margin-right: auto; tr
   .card-banner-psse {
     background-image:
       linear-gradient(180deg, rgba(11,63,59,0.4) 0%, rgba(11,63,59,0.9) 100%),
+      url('https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?fm=jpg&q=75&w=1200&auto=format&fit=crop');
+  }
+  .card-banner-psa {
+    background-image:
+      linear-gradient(180deg, rgba(58,15,15,0.45) 0%, rgba(58,15,15,0.92) 100%),
       url('https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?fm=jpg&q=75&w=1200&auto=format&fit=crop');
   }
   .banner-pattern {
@@ -560,6 +569,7 @@ html[dir="rtl"] .notify-highlight-arrow { margin-left: 0; margin-right: auto; tr
   .meta-chip i.pss-icon { color: var(--pss-primary); }
   .meta-chip i.pd-icon { color: var(--pd-primary); }
   .meta-chip i.psse-icon { color: var(--psse-primary); }
+  .meta-chip i.psa-icon { color: var(--psa-primary); }
   .meta-chip i.pv-icon { color: var(--pv-primary); }
 
   .card-divider { border: none; border-top: 1px solid var(--line-light); margin-bottom: 20px; }
@@ -579,6 +589,7 @@ html[dir="rtl"] .notify-highlight-arrow { margin-left: 0; margin-right: auto; tr
   .instructor-avatar-purple { background: var(--pss-glow); color: var(--pss-primary); }
   .instructor-avatar-orange { background: var(--pd-glow); color: var(--pd-primary); }
   .instructor-avatar-teal { background: var(--psse-glow); color: var(--psse-primary); }
+  .instructor-avatar-red { background: var(--psa-glow); color: var(--psa-primary); }
   .instructor-avatar-stack { display: flex; flex-shrink: 0; }
   .instructor-avatar-stack .instructor-avatar { border: 2px solid white; }
   .instructor-avatar-stack .instructor-avatar:not(:first-child) { margin-left: -12px; }
@@ -608,6 +619,8 @@ html[dir="rtl"] .notify-highlight-arrow { margin-left: 0; margin-right: auto; tr
   .btn-primary-orange:hover { background: var(--pd-primary-dark); }
   .btn-primary-teal { background: var(--psse-primary); }
   .btn-primary-teal:hover { background: var(--psse-primary-dark); }
+  .btn-primary-red { background: var(--psa-primary); }
+  .btn-primary-red:hover { background: var(--psa-primary-dark); }
 
   .btn-outline {
     padding: 12px 15px;
@@ -629,6 +642,8 @@ html[dir="rtl"] .notify-highlight-arrow { margin-left: 0; margin-right: auto; tr
   .btn-outline-orange:hover { background: var(--pd-primary); color: white; }
   .btn-outline-teal { border-color: var(--psse-primary); color: var(--psse-primary); }
   .btn-outline-teal:hover { background: var(--psse-primary); color: white; }
+  .btn-outline-red { border-color: var(--psa-primary); color: var(--psa-primary); }
+  .btn-outline-red:hover { background: var(--psa-primary); color: white; }
 
   /* ── SOFTWARE STRIP ── */
   .tools-strip {
@@ -973,6 +988,318 @@ html[dir="rtl"] .notify-highlight-arrow { margin-left: 0; margin-right: auto; tr
     .footer-inner { grid-template-columns: 1fr; }
     .notify-inner { flex-direction: column; align-items: flex-start; }
   }
+
+  /* ── MOTION ── */
+  @keyframes fadeUp {
+    from { opacity: 0; translate: 0 22px; }
+    to   { opacity: 1; translate: 0 0; }
+  }
+  .hero-inner > * { animation: fadeUp 0.9s cubic-bezier(.2,.7,.2,1) both; }
+  .hero-inner > *:nth-child(2) { animation-delay: 0.12s; }
+  .hero-inner > *:nth-child(3) { animation-delay: 0.24s; }
+  .hero-inner > *:nth-child(4) { animation-delay: 0.36s; }
+
+  .reveal {
+    opacity: 0;
+    translate: 0 26px;
+    transition: opacity 0.8s cubic-bezier(.2,.7,.2,1), translate 0.8s cubic-bezier(.2,.7,.2,1);
+  }
+  .course-card.reveal {
+    transition: opacity 0.8s ease, translate 0.8s cubic-bezier(.2,.7,.2,1),
+                transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+  }
+  .reveal.in { opacity: 1; translate: 0 0; }
+
+  .top-nav { transition: background 0.3s ease, box-shadow 0.3s ease; }
+  .top-nav.scrolled {
+    background: rgba(8,18,16,0.97);
+    box-shadow: 0 8px 28px rgba(0,0,0,0.35);
+  }
+
+  .hero { isolation: isolate; }
+  .hero::after {
+    content: "";
+    position: absolute;
+    right: -12%; bottom: -45%;
+    width: 65%; height: 130%;
+    background: radial-gradient(circle, rgba(0,146,104,0.22), transparent 60%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* ── VIDEO-STYLE BAND (ambient, slow-moving background) ── */
+  .video-band {
+    position: relative;
+    min-height: 620px;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    background: var(--ink);
+    isolation: isolate;
+  }
+  .vb-media {
+    position: absolute;
+    inset: -4%;
+    z-index: -2;
+    background-image:
+      linear-gradient(to right, rgba(6,14,12,0.94) 0%, rgba(6,14,12,0.7) 50%, rgba(6,14,12,0.45) 100%),
+      url('https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?fm=jpg&q=80&w=2400&auto=format&fit=crop');
+    background-size: cover;
+    background-position: center;
+    animation: kenburns 28s ease-in-out infinite alternate;
+    will-change: transform;
+  }
+  html[dir="rtl"] .vb-media {
+    background-image:
+      linear-gradient(to left, rgba(6,14,12,0.94) 0%, rgba(6,14,12,0.7) 50%, rgba(6,14,12,0.45) 100%),
+      url('https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?fm=jpg&q=80&w=2400&auto=format&fit=crop');
+  }
+  @keyframes kenburns {
+    from { transform: scale(1.04) translate3d(0,0,0); }
+    to   { transform: scale(1.16) translate3d(-1.5%,-1%,0); }
+  }
+  .vb-grid {
+    position: absolute; inset: 0;
+    z-index: -1;
+    background-image:
+      linear-gradient(rgba(0,146,104,0.12) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0,146,104,0.12) 1px, transparent 1px);
+    background-size: 64px 64px;
+    -webkit-mask-image: radial-gradient(ellipse at center, #000 30%, transparent 78%);
+            mask-image: radial-gradient(ellipse at center, #000 30%, transparent 78%);
+    animation: gridDrift 18s linear infinite;
+  }
+  @keyframes gridDrift { to { background-position: 64px 64px; } }
+  .vb-content {
+    position: relative;
+    width: 100%;
+    max-width: 1240px;
+    margin: 0 auto;
+    padding: 110px 24px;
+  }
+  .vb-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    border: 1px solid rgba(255,255,255,0.3);
+    background: rgba(0,0,0,0.25);
+    backdrop-filter: blur(6px);
+    color: white;
+    padding: 7px 14px;
+    border-radius: 999px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.8px;
+  }
+  .vb-dot {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: #4ade80;
+    animation: pulse 2s infinite;
+  }
+  @keyframes pulse {
+    0%   { box-shadow: 0 0 0 0 rgba(74,222,128,0.6); }
+    70%  { box-shadow: 0 0 0 10px rgba(74,222,128,0); }
+    100% { box-shadow: 0 0 0 0 rgba(74,222,128,0); }
+  }
+  .vb-content h2 {
+    font-family: 'IBM Plex Sans', sans-serif;
+    color: white;
+    font-size: clamp(2rem, 4.4vw, 3.4rem);
+    line-height: 1.12;
+    letter-spacing: -0.5px;
+    max-width: 760px;
+    margin: 22px 0 18px;
+  }
+  .vb-content p {
+    color: rgba(255,255,255,0.75);
+    max-width: 560px;
+    line-height: 1.7;
+    margin-bottom: 34px;
+  }
+
+  /* ── BECOME AN INSTRUCTOR ── */
+  .teach-section {
+    background: var(--paper-dim);
+    padding: 96px 24px;
+    border-top: 1px solid var(--line-light);
+  }
+  .teach-inner {
+    max-width: 1240px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: minmax(0, 5fr) minmax(0, 6fr);
+    gap: 72px;
+    align-items: center;
+  }
+  .teach-visual { position: relative; max-width: 440px; }
+  .teach-photo {
+    width: 100%;
+    aspect-ratio: 4 / 5;
+    border-radius: 14px;
+    background-image:
+      linear-gradient(180deg, rgba(4,45,32,0.10) 0%, rgba(4,45,32,0.7) 100%),
+      url('https://images.unsplash.com/photo-1504639725590-34d0984388bd?fm=jpg&q=80&w=1200&auto=format&fit=crop');
+    background-size: cover;
+    background-position: center;
+    box-shadow: var(--shadow-lift);
+  }
+  .teach-q {
+    position: absolute;
+    right: -18px; bottom: -18px;
+    width: 88px; height: 88px;
+    border-radius: 50%;
+    background: var(--copper);
+    color: var(--ink);
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-weight: 800;
+    font-size: 2.6rem;
+    display: flex; align-items: center; justify-content: center;
+    box-shadow: var(--shadow-lift);
+  }
+  html[dir="rtl"] .teach-q { right: auto; left: -18px; }
+  .teach-text .section-title { color: var(--ink); }
+  .teach-lead {
+    color: var(--text-mute);
+    font-size: 1.02rem;
+    line-height: 1.7;
+    margin-bottom: 30px;
+    max-width: 520px;
+  }
+  .teach-mail {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    background: var(--ink);
+    color: white;
+    padding: 12px 24px 12px 12px;
+    border-radius: 999px;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 0.95rem;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  .teach-mail:hover { transform: translateY(-2px); box-shadow: var(--shadow-lift); }
+  .teach-mail-icon {
+    width: 40px; height: 40px;
+    border-radius: 50%;
+    background: white;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .teach-mail-icon svg { width: 22px; height: 22px; }
+
+  /* ── RESPONSIVE (final overrides) ── */
+  @media (max-width: 900px) {
+    .teach-inner { grid-template-columns: 1fr; gap: 56px; }
+    .teach-visual { max-width: 360px; margin: 0 auto; }
+  }
+  @media (max-width: 720px) {
+    .courses-section, .how-section { padding: 72px 18px 32px; }
+    .section-head { margin-bottom: 36px; }
+    .hero-content { padding-left: 18px; padding-right: 18px; }
+    .hero-ctas .btn-hero-primary, .hero-ctas .btn-hero-outline { width: 100%; justify-content: center; }
+    .notify-highlight { margin-bottom: 40px; }
+    .corporate-section, .why-section, .teach-section { padding: 72px 18px; }
+    .notify-banner { margin-top: 72px; }
+    .notify-inner { padding: 48px 18px; }
+    .contact-form { padding: 22px; }
+    .footer-inner { grid-template-columns: 1fr; }
+    .video-band { min-height: 560px; }
+    .vb-content { padding: 84px 18px; }
+    .tools-strip { margin-top: 48px; padding: 28px 18px; }
+  }
+  @media (max-width: 480px) {
+    .hero h1 { font-size: 2rem; }
+    .card-banner { height: 150px; }
+    .stat-number { font-size: 1.5rem; }
+    .card-body { padding: 22px 20px; }
+    .video-band { min-height: 520px; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .reveal { opacity: 1; translate: none; }
+    .hero-inner > * { animation: none; }
+  }
+
+  /* ── FULL-WIDTH FILL ── */
+  .hero-content, .stats-inner, .courses-section, .how-section, .tools-strip,
+  .why-inner, .corporate-inner, .teach-inner, .vb-content, .footer-inner,
+  .footer-bottom, .notify-inner {
+    max-width: none !important;
+  }
+  .courses-section, .how-section, .tools-strip, .hero-content, .stats-inner,
+  .why-section, .corporate-section, .teach-section, .vb-content, .footer-inner,
+  .footer-bottom, .notify-inner, footer {
+    padding-left: clamp(20px, 4vw, 72px) !important;
+    padding-right: clamp(20px, 4vw, 72px) !important;
+  }
+  .tools-strip { margin-left: 0; margin-right: 0; }
+  .hero-inner { max-width: 780px; }
+
+  /* ── JOINED SECTIONS (no gap or separator before notify) ── */
+  .notify-banner { margin-top: 0; }
+  .notify-banner::before { display: none; }
+
+  /* ── BIG REGISTRATION BUTTON ── */
+  .notify-highlight {
+    max-width: none;
+    width: 100%;
+    padding: 30px 32px;
+    gap: 26px;
+    border-width: 2px;
+    border-radius: 16px;
+    margin-bottom: 56px;
+    box-shadow: 0 0 0 1px rgba(193,137,63,0.2), 0 18px 50px rgba(193,137,63,0.18);
+  }
+  .notify-highlight-icon {
+    width: 72px; height: 72px;
+    border-radius: 16px;
+    font-size: 1.7rem;
+  }
+  .notify-highlight-text { gap: 8px; }
+  .notify-highlight-badge {
+    align-self: flex-start;
+    background: var(--copper);
+    color: var(--ink);
+    font-size: 0.72rem;
+    font-weight: 800;
+    letter-spacing: 0.8px;
+    padding: 4px 10px;
+    border-radius: 999px;
+  }
+  .notify-highlight-title {
+    font-size: clamp(1.35rem, 2.6vw, 1.9rem);
+    line-height: 1.2;
+  }
+  .notify-highlight-sub {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: rgba(255,255,255,0.8);
+  }
+  .notify-highlight-arrow {
+    width: 60px; height: 60px;
+    border-radius: 50%;
+    background: var(--copper);
+    color: var(--ink);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.2rem;
+  }
+  @media (max-width: 560px) {
+    .notify-highlight { flex-wrap: nowrap; padding: 22px 20px; }
+    .notify-highlight-icon { width: 52px; height: 52px; font-size: 1.3rem; }
+    .notify-highlight-arrow { width: 44px; height: 44px; }
+  }
+
+  /* ── INTERACTIVE CANVAS BAND ── */
+  .vb-canvas {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    display: block;
+  }
+  .vb-media { opacity: 0.55; }
 </style>
 </head>
 <body>
@@ -1019,8 +1346,9 @@ html[dir="rtl"] .notify-highlight-arrow { margin-left: 0; margin-right: auto; tr
    class="notify-highlight" target="_blank" rel="noopener">
   <span class="notify-highlight-icon"><i class="fas fa-gift"></i></span>
   <span class="notify-highlight-text">
-    <span class="notify-highlight-title" data-ar="سجّل مجانًا واحصل على كودك الخاص">Register free & get your code</span>
-    <span class="notify-highlight-sub" data-ar="أدخل بياناتك لتصلك رسائل بالمستويات الجديدة، بالإضافة إلى كود خاص تستخدمه عند تسجيلك في أي دورة">Leave your details to get emailed when new levels open — plus a personal code to use when you enroll</span>
+    <span class="notify-highlight-badge" data-ar="مطلوب لجميع المتدربين">REQUIRED FOR ALL TRAINEES</span>
+    <span class="notify-highlight-title" data-ar="سجّل كمتدرب واحصل على كودك الشخصي">Register as a trainee & get your personal code</span>
+    <span class="notify-highlight-sub" data-ar="مطلوب قبل الانضمام لأي دورة، حتى لو لم تقرر التسجيل بعد. أنشئ ملفك كمتدرب لتطّلع على المستويات القادمة المناسبة لخبرتك ومتطلباتك وأهدافك المهنية، وستصلك رسالة فور فتحها.">Required before joining any course, even if you are not enrolling yet. Create your trainee profile to see upcoming levels matched to your experience, requirements and career goals, and get emailed the moment they open.</span>
   </span>
   <i class="fas fa-arrow-right notify-highlight-arrow"></i>
 </a>
@@ -1029,8 +1357,8 @@ html[dir="rtl"] .notify-highlight-arrow { margin-left: 0; margin-right: auto; tr
     <div class="stats-strip">
       <div class="stats-inner">
         <div class="stat"><span class="stat-number">5</span><span class="stat-label" data-ar="دورات">Courses</span></div>
-        <div class="stat"><span class="stat-number">66+</span><span class="stat-label" data-ar="جلسة">Sessions</span></div>
-        <div class="stat"><span class="stat-number">100+</span><span class="stat-label" data-ar="مهندس تم تدريبه">Engineers Trained</span></div>
+        <div class="stat"><span class="stat-number">74+</span><span class="stat-label" data-ar="جلسة">Sessions</span></div>
+        <div class="stat"><span class="stat-number">200+</span><span class="stat-label" data-ar="مهندس تم تدريبه">Engineers Trained</span></div>
         <div class="stat"><span class="stat-number">16+</span><span class="stat-label" data-ar="سنة خبرة صناعية">Years Industry Exp.</span></div>
       </div>
     </div>
@@ -1045,11 +1373,11 @@ html[dir="rtl"] .notify-highlight-arrow { margin-left: 0; margin-right: auto; tr
     </div>
           <div class="how-grid">
               <div class="how-step">
-                <h3 data-ar="سجّل كمتدرب مستقبلي">Register as a future trainee</h3>
+                <h3><a href="https://docs.google.com/forms/d/e/1FAIpQLSdKy8u6JsBfLq4gNz6nvGTaH5G57xsdJnUxnCHkXyxNaQFnrQ/viewform?usp=send_form" target="_blank" rel="noopener" class="step-link"><span data-ar="سجّل كمتدرب مستقبلي">Register as a future trainee</span> <i class="fas fa-arrow-right"></i></a></h3>
                 <p data-ar="سجّل بياناتك مجانًا لتحصل على كود خاص بك، وستصلك رسالة بريدية فور فتح أي مستوى جديد للتسجيل.">Sign up for free to get your personal code, and you'll be emailed the moment any new level opens for enrollment.</p>
               </div>
               <div class="how-step">
-                <h3 data-ar="اختر دورتك وتصفح محتواها">Choose your course & browse its content</h3>
+                <h3><a href="#courses" class="step-link"><span data-ar="اختر دورتك وتصفح محتواها">Choose your course & browse its content</span> <i class="fas fa-arrow-down"></i></a></h3>
                 <p data-ar="تصفح الدورات المتاحة واطّلع على محتوى كل مستوى لاختيار ما يناسب خبرتك الحالية.">Browse the available courses and review each level's content to find the one that matches your current experience.</p>
               </div>
               <div class="how-step">
@@ -1086,11 +1414,45 @@ html[dir="rtl"] .notify-highlight-arrow { margin-left: 0; margin-right: auto; tr
 
     <div class="courses-grid">
 
+      <!-- CARD 0: PSS®E Power System Analysis (NEW) -->
+      <div class="course-card">
+        <div class="card-banner card-banner-psa">
+          <div class="banner-icon"><i class="fas fa-bolt"></i></div>
+          <span class="banner-badge"><i class="fas fa-circle dot-open" style="font-size:0.5rem; margin-right:6px;"></i> <span data-ar="جديدة، التسجيل مفتوح الآن">New, Enrolling Now</span></span>
+        </div>
+        <div class="card-body">
+          <h3 class="card-title" data-ar="تحليل نظم القوى بـ PSS®E: الاستقرار والأتمتة الشاملة">PSS&reg;E Power System Analysis: Comprehensive Stability &amp; Automation</h3>
+          <p class="card-description" data-ar="ثماني محاضرات مباشرة أسبوعيًا تغطي بناء نموذج الشبكة وحساب خطوط النقل وسيلان الأحمال وتحليل الطوارئ واستقرار الجهد ومنحنيات P–V وQ–V والدائرة القصيرة وأتمتة Python والاستقرار الديناميكي مع تكامل مصادر الطاقة المتجددة.">Eight weekly live lectures covering network modelling, line parameters with LineProp, load flow, contingency analysis, P–V and Q–V voltage stability, short-circuit studies, Python automation, and dynamic stability with renewable integration.</p>
+          <div class="card-meta">
+            <span class="meta-chip"><i class="fas fa-calendar-week psa-icon"></i> <span data-ar="8 محاضرات">8 Lectures</span></span>
+            <span class="meta-chip"><i class="fas fa-clock psa-icon"></i> <span data-ar="24 ساعة تدريب">24 Hours</span></span>
+            <span class="meta-chip"><i class="fas fa-laptop psa-icon"></i> <span data-ar="عبر الإنترنت">Live Online</span></span>
+            <span class="meta-chip"><i class="fas fa-tools psa-icon"></i> PSS&reg;E · Python</span>
+          </div>
+          <hr class="card-divider" />
+          <div class="card-instructor">
+            <div class="instructor-avatar instructor-avatar-red"><i class="fas fa-user-tie"></i></div>
+            <div>
+              <div class="instructor-name">Consultant Eng. Sameh Medhat</div>
+              <div class="instructor-title" data-ar="خبير تحليل نظم القوى · خبرة 14+ عامًا">Power System Analysis Specialist · 14+ yrs</div>
+            </div>
+          </div>
+          <div class="card-actions">
+            <a href="psa.html" class="btn-primary btn-primary-red">
+              <i class="fas fa-arrow-right"></i> <span data-ar="عرض الدورة">View Course</span>
+            </a>
+            <a href="psa_pay.html" class="btn-outline btn-outline-red">
+              <i class="fas fa-file-alt"></i>&nbsp;<span data-ar="التسجيل">Enroll</span>
+            </a>
+          </div>
+        </div>
+      </div>
+
       <!-- CARD 1: Substation Design & Protection -->
       <div class="course-card">
         <div class="card-banner card-banner-sd">
           <div class="banner-icon"><i class="fas fa-bolt"></i></div>
-          <span class="banner-badge"><i class="fas fa-circle dot-live" style="font-size:0.5rem; margin-right:6px;"></i> <span data-ar="نشطة، الدفعة الثالثة جارية">Active, Round 3 Ongoing</span></span>
+          <span class="banner-badge"><i class="fas fa-circle dot-live" style="font-size:0.5rem; margin-right:6px;"></i> <span data-ar="نشطة، الدفعة الرابعة جارية">Active, Round 4 Ongoing</span></span>
         </div>
         <div class="card-body">
           <h3 class="card-title" data-ar="تصميم المحطات وأنظمة الحماية">Substation Design &amp; Protection Systems</h3>
@@ -1161,7 +1523,7 @@ html[dir="rtl"] .notify-highlight-arrow { margin-left: 0; margin-right: auto; tr
         <div class="card-banner card-banner-pd">
           <div class="banner-pattern"></div>
           <div class="banner-icon"><i class="fas fa-drafting-compass"></i></div>
-          <span class="banner-badge"><i class="fas fa-circle dot-open" style="font-size:0.5rem; margin-right:6px;"></i> <span data-ar="التسجيل متاح الآن">Enrolling Now</span></span>
+          <span class="banner-badge"><i class="fas fa-circle dot-open" style="font-size:0.5rem; margin-right:6px;"></i> <span data-ar="نشطة، الدفعة الأولى جارية">Round 1 Ongoing</span></span>
         </div>
         <div class="card-body">
           <h3 class="card-title" data-ar="دورة التصميم الأولي">Primary Design Course</h3>
@@ -1225,7 +1587,28 @@ html[dir="rtl"] .notify-highlight-arrow { margin-left: 0; margin-right: auto; tr
         </div>
       </div>
 
-  <!-- NOTIFY BANNER -->
+    <div class="tools-strip">
+      <span class="tools-strip-label" data-ar="البرامج المستخدمة في دوراتنا">SOFTWARE COVERED ACROSS OUR COURSES</span>
+      <div class="tools-list">
+        <span>AutoCAD</span>
+        <span>ETAP</span>
+        <span>PSS&reg;E</span>
+        <span>PVsyst</span>
+        <span>Excel</span>
+      </div>
+    </div>
+  </div>
+    
+  <!-- VIDEO-STYLE BAND -->
+  <section class="video-band" aria-label="Grid Academy">
+    <div class="vb-media" aria-hidden="true"></div>
+    <canvas class="vb-canvas" id="vbCanvas" aria-hidden="true"></canvas>
+    <div class="vb-content">
+      <h2 data-ar="تعلّم على الأنظمة التي ستصممها فعلًا">Learn on the systems you will actually design</h2>
+      <p data-ar="من مخططات المحطات إلى نماذج الشبكة وتحليل الأعطال، كل جلسة مرتبطة بعمل هندسي حقيقي.">From substation layouts to network models and fault studies, every session connects to real engineering deliverables.</p>
+    </div>
+  </section>
+
   <!-- NOTIFY BANNER -->
   <section class="notify-banner">
     <div class="notify-inner">
@@ -1279,6 +1662,32 @@ html[dir="rtl"] .notify-highlight-arrow { margin-left: 0; margin-right: auto; tr
           <div class="feature-title" data-ar="تسجيلات الجلسات">Session recordings</div>
           <div class="feature-desc" data-ar="متاحة لدورات مختارة فقط. التسجيلات مقفلة على جهازك طوال مدة الدورة لتتمكن من تعويض أي جلسة فاتتك.">Available for select courses. Recordings are locked to your device for the course duration, so you can catch up on a missed session.</div>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BECOME AN INSTRUCTOR -->
+  <section class="teach-section" id="teach">
+    <div class="teach-inner">
+      <div class="teach-visual">
+        <div class="teach-photo" role="img" aria-label="Engineer teaching"></div>
+        <div class="teach-q" aria-hidden="true">?</div>
+      </div>
+      <div class="teach-text">
+        <p class="section-label" data-ar="انضم إلينا كمدرب">BECOME AN INSTRUCTOR</p>
+        <h2 class="section-title" data-ar="هل تود التدريس معنا؟">Want to teach with Grid Academy?</h2>
+        <p class="teach-lead" data-ar="إذا كنت مهندسًا ممارسًا ولديك خبرة في المشاريع الحقيقية وترغب في مشاركتها، يسعدنا التعرف عليك. أخبرنا بخلفيتك والموضوعات التي يمكنك تدريسها.">If you are a practicing engineer with real project experience and want to share it, we would love to hear from you. Tell us about your background and the topics you can teach.</p>
+        <a href="mailto:gridacademyinfo@gmail.com?subject=Application%20for%20a%20role%20-%20XXXX%20Engineer&body=Dear%20Grid%20Academy%20team%2C%0A%0AI%20would%20like%20to%20apply%20for%20a%20role%20as%20an%20XXXX%20Engineer%20%2F%20instructor.%0A%0AMy%20resume%20and%20course%20syllabus%20are%20attached.%0A%0AThank%20you%2C%0A%5BYour%20name%5D%0A%5BYour%20phone%5D" class="teach-mail" aria-label="Email Grid Academy with an application">
+          <span class="teach-mail-icon">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path fill="#4285F4" d="M2 6v13a1 1 0 0 0 1 1h3V9.5z"/>
+              <path fill="#34A853" d="M22 6v13a1 1 0 0 1-1 1h-3V9.5z"/>
+              <path fill="#FBBC04" d="M18 5v4.5L12 14 6 9.5V5l6 4.5z"/>
+              <path fill="#EA4335" d="M2 6l10 7.5L22 6v-.5a1.5 1.5 0 0 0-2.5-1.1L12 10.5 4.5 4.4A1.5 1.5 0 0 0 2 5.5z"/>
+            </svg>
+          </span>
+          <span data-ar="تواصل معنا">Contact us</span>
+        </a>
       </div>
     </div>
   </section>
@@ -1340,7 +1749,7 @@ html[dir="rtl"] .notify-highlight-arrow { margin-left: 0; margin-right: auto; tr
         <a href="https://gridacad.github.io/course/SDPC.html" data-ar="تصميم المحطات والحماية">Substation Design &amp; Protection</a>
         <a href="https://gridacad.github.io/course/pss.html" data-ar="دراسات نظم القوى">Power System Studies</a>
         <a href="https://gridacad.github.io/course/pd.html" data-ar="دورة التصميم الأولي">Primary Design Course</a>
-        <a href="https://gridacad.github.io/course/psse.html" data-ar="تحليل PSS®E والتكامل مع الشبكة">PSS&reg;E Steady-State &amp; IBRs</a>
+        <a href="psa.html" data-ar="تحليل نظم القوى بـ PSS®E">PSS&reg;E Power System Analysis</a>
         <a href="https://gridacad.github.io/course/PV.html" data-ar="هندسة الأنظمة الكهروضوئية">PV Systems Engineering</a>
       </div>
       <div class="footer-col">
@@ -1440,6 +1849,183 @@ html[dir="rtl"] .notify-highlight-arrow { margin-left: 0; margin-right: auto; tr
       try { saved = localStorage.getItem('ga_lang') || 'en'; } catch (e) {}
       setLang(saved);
     })();
+  </script>
+
+  <script>
+    // Nav gains a shadow once the page is scrolled
+    var navEl = document.getElementById('siteNav');
+    function onScrollNav() {
+      if (navEl) navEl.classList.toggle('scrolled', window.scrollY > 24);
+    }
+    window.addEventListener('scroll', onScrollNav, { passive: true });
+    onScrollNav();
+
+    // Interactive node grid + particle swarm for the video-style band
+    (function () {
+      var canvas = document.getElementById('vbCanvas');
+      if (!canvas) return;
+      var band = canvas.parentElement;
+      var ctx = canvas.getContext('2d');
+      var W = 0, H = 0, dpr = 1, GAP = 56;
+      var nodes = [], parts = [], cols = 0;
+      var mouse = { x: -9999, y: -9999 };
+      var t = 0;
+      var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+      function build() {
+        nodes = [];
+        cols = Math.ceil(W / GAP) + 2;
+        var rows = Math.ceil(H / GAP) + 2;
+        for (var r = 0; r < rows; r++) {
+          for (var k = 0; k < cols; k++) {
+            nodes.push({ ox: k * GAP - GAP / 2, oy: r * GAP - GAP / 2, x: 0, y: 0, inf: 0 });
+          }
+        }
+        var n = Math.min(110, Math.floor((W * H) / 13000));
+        parts = [];
+        for (var i = 0; i < n; i++) {
+          parts.push({ x: Math.random() * W, y: Math.random() * H, vx: 0, vy: 0, a: Math.random() * Math.PI * 2 });
+        }
+      }
+
+      function resize() {
+        dpr = Math.min(window.devicePixelRatio || 1, 2);
+        W = band.clientWidth;
+        H = band.clientHeight;
+        canvas.width = W * dpr;
+        canvas.height = H * dpr;
+        ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+        build();
+      }
+
+      function step() {
+        t += 0.012;
+        ctx.clearRect(0, 0, W, H);
+        var R = 260;
+
+        // Grid nodes pushed gently away from the pointer, with a soft idle wave
+        for (var i = 0; i < nodes.length; i++) {
+          var p = nodes[i];
+          var dx = p.ox - mouse.x, dy = p.oy - mouse.y;
+          var d = Math.sqrt(dx * dx + dy * dy) || 1;
+          var inf = Math.max(0, 1 - d / R);
+          var wave = Math.sin(t * 2 + p.ox * 0.02 + p.oy * 0.015) * 2.2;
+          p.inf = inf;
+          p.x = p.ox + (dx / d) * inf * 24 + wave * 0.5;
+          p.y = p.oy + (dy / d) * inf * 24 + wave * 0.5;
+        }
+
+        // Grid lines to right and down neighbours
+        for (var r = 0; r < nodes.length; r++) {
+          var a = nodes[r];
+          var col = r % cols;
+          var right = col < cols - 1 ? nodes[r + 1] : null;
+          var down = nodes[r + cols];
+          [right, down].forEach(function (b) {
+            if (!b) return;
+            var glow = Math.max(a.inf, b.inf);
+            ctx.strokeStyle = 'rgba(0,146,104,' + (0.22 + glow * 0.6) + ')';
+            ctx.lineWidth = 1 + glow * 0.8;
+            ctx.beginPath();
+            ctx.moveTo(a.x, a.y);
+            ctx.lineTo(b.x, b.y);
+            ctx.stroke();
+          });
+        }
+
+        // Nodes
+        for (var q = 0; q < nodes.length; q++) {
+          var n = nodes[q];
+          ctx.fillStyle = 'rgba(0,110,80,' + (0.45 + n.inf * 0.5) + ')';
+          ctx.beginPath();
+          ctx.arc(n.x, n.y, 1.2 + n.inf * 2.6, 0, Math.PI * 2);
+          ctx.fill();
+        }
+
+        // Particle swarm: wander, and gather toward the pointer when near
+        for (var j = 0; j < parts.length; j++) {
+          var s = parts[j];
+          var mx = mouse.x - s.x, my = mouse.y - s.y;
+          var md = Math.sqrt(mx * mx + my * my);
+          if (md < 300) {
+            s.vx += (mx / (md || 1)) * 0.035;
+            s.vy += (my / (md || 1)) * 0.035;
+          } else {
+            s.a += (Math.random() - 0.5) * 0.3;
+            s.vx += Math.cos(s.a) * 0.015;
+            s.vy += Math.sin(s.a) * 0.015;
+          }
+          var sp = Math.sqrt(s.vx * s.vx + s.vy * s.vy);
+          if (sp > 1.6) { s.vx = (s.vx / sp) * 1.6; s.vy = (s.vy / sp) * 1.6; }
+          s.vx *= 0.985; s.vy *= 0.985;
+          s.x += s.vx; s.y += s.vy;
+          if (s.x < -10) s.x = W + 10; if (s.x > W + 10) s.x = -10;
+          if (s.y < -10) s.y = H + 10; if (s.y > H + 10) s.y = -10;
+        }
+
+        // Particle links and dots
+        for (var u = 0; u < parts.length; u++) {
+          var A = parts[u];
+          for (var v = u + 1; v < parts.length; v++) {
+            var B = parts[v];
+            var ex = A.x - B.x, ey = A.y - B.y;
+            var ed = Math.sqrt(ex * ex + ey * ey);
+            if (ed < 90) {
+              ctx.strokeStyle = 'rgba(0,146,104,' + ((1 - ed / 90) * 0.35) + ')';
+              ctx.lineWidth = 0.8;
+              ctx.beginPath();
+              ctx.moveTo(A.x, A.y);
+              ctx.lineTo(B.x, B.y);
+              ctx.stroke();
+            }
+          }
+          ctx.fillStyle = 'rgba(0,120,88,0.85)';
+          ctx.beginPath();
+          ctx.arc(A.x, A.y, 1.4, 0, Math.PI * 2);
+          ctx.fill();
+        }
+      }
+
+      function loop() {
+        step();
+        requestAnimationFrame(loop);
+      }
+
+      band.addEventListener('pointermove', function (e) {
+        var rect = canvas.getBoundingClientRect();
+        mouse.x = e.clientX - rect.left;
+        mouse.y = e.clientY - rect.top;
+      });
+      band.addEventListener('pointerleave', function () {
+        mouse.x = -9999; mouse.y = -9999;
+      });
+      window.addEventListener('resize', resize);
+
+      resize();
+      if (reduce) { step(); } else { loop(); }
+    })();
+
+    // Gentle reveal-on-scroll for sections and cards
+    var revealTargets = document.querySelectorAll(
+      '.section-head, .course-card, .how-step, .feature-card, .teach-inner, .corporate-inner, .notify-inner, .vb-content'
+    );
+    revealTargets.forEach(function (el, i) {
+      el.classList.add('reveal');
+      el.style.transitionDelay = ((i % 3) * 80) + 'ms';
+    });
+    if ('IntersectionObserver' in window) {
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('in');
+            io.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+      revealTargets.forEach(function (el) { io.observe(el); });
+    } else {
+      revealTargets.forEach(function (el) { el.classList.add('in'); });
+    }
   </script>
 
 </body>
