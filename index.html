@@ -1300,6 +1300,33 @@ html[dir="rtl"] .notify-highlight-arrow { margin-left: 0; margin-right: auto; tr
     display: block;
   }
   .vb-media { opacity: 0.55; }
+
+  /* ── HIGHLIGHTED STEP LINKS ── */
+  .step-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.78rem;
+    font-weight: 700;
+    color: var(--emerald-dark);
+    background: var(--emerald-glow);
+    border: 1px solid rgba(0,146,104,0.35);
+    padding: 5px 12px;
+    border-radius: 999px;
+    text-decoration: none;
+    margin-top: 2px;
+    transition: background 0.2s ease, color 0.2s ease;
+  }
+  .step-link i { font-size: 0.7rem; }
+  .step-link:hover { background: var(--emerald); color: white; }
+  .how-step h3 { line-height: 1.3; }
+
+  /* ── DARK PHOTO BAND WITH LIVE GREEN GRID ── */
+  .video-band { background: var(--ink); touch-action: pan-y; }
+  .vb-media { opacity: 1; }
+  .vb-canvas { pointer-events: none; }
+  .vb-content { pointer-events: none; }
+  .vb-content a, .vb-content button { pointer-events: auto; }
 </style>
 </head>
 <body>
@@ -1860,149 +1887,200 @@ html[dir="rtl"] .notify-highlight-arrow { margin-left: 0; margin-right: auto; tr
     window.addEventListener('scroll', onScrollNav, { passive: true });
     onScrollNav();
 
-    // Interactive node grid + particle swarm for the video-style band
+    // Interactive green node grid + particle field over the dark photo band.
+    // Nodes spring back to their grid position after the pointer pushes them;
+    // particles drift, link to each other, and are gently drawn toward the pointer.
     (function () {
       var canvas = document.getElementById('vbCanvas');
-      if (!canvas) return;
+      if (!canvas || !canvas.getContext) return;
       var band = canvas.parentElement;
       var ctx = canvas.getContext('2d');
-      var W = 0, H = 0, dpr = 1, GAP = 56;
-      var nodes = [], parts = [], cols = 0;
-      var mouse = { x: -9999, y: -9999 };
-      var t = 0;
-      var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if (!ctx) return;
+      var reduce = !!(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches);
 
-      function build() {
+      var W = 1, H = 1, dpr = 1, gap = 56, cols = 0, rows = 0;
+      var nodes = [], parts = [];
+      var mouse = { x: -9999, y: -9999, on: false };
+      var PUSH_R = 130, GRAB_R = 170, LINK_R = 110;
+      var rafId = 0, visible = true;
+
+      function setup() {
+        var rect = band.getBoundingClientRect();
+        W = Math.max(1, Math.round(rect.width));
+        H = Math.max(1, Math.round(rect.height));
+        dpr = Math.min(window.devicePixelRatio || 1, 2);
+        canvas.width = Math.round(W * dpr);
+        canvas.height = Math.round(H * dpr);
+        canvas.style.width = W + 'px';
+        canvas.style.height = H + 'px';
+        ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+
+        // Responsive density: grid spacing scales with the viewport width
+        gap = Math.max(34, Math.min(64, Math.round(W / 24)));
+        cols = Math.ceil(W / gap) + 1;
+        rows = Math.ceil(H / gap) + 1;
         nodes = [];
-        cols = Math.ceil(W / GAP) + 2;
-        var rows = Math.ceil(H / GAP) + 2;
         for (var r = 0; r < rows; r++) {
           for (var k = 0; k < cols; k++) {
-            nodes.push({ ox: k * GAP - GAP / 2, oy: r * GAP - GAP / 2, x: 0, y: 0, inf: 0 });
+            var ox = k * gap, oy = r * gap;
+            nodes.push({ ox: ox, oy: oy, x: ox, y: oy, vx: 0, vy: 0, glow: 0 });
           }
         }
-        var n = Math.min(110, Math.floor((W * H) / 13000));
+        var count = Math.min(60, Math.floor((W * H) / 16000));
         parts = [];
-        for (var i = 0; i < n; i++) {
-          parts.push({ x: Math.random() * W, y: Math.random() * H, vx: 0, vy: 0, a: Math.random() * Math.PI * 2 });
+        for (var i = 0; i < count; i++) {
+          parts.push({ x: Math.random() * W, y: Math.random() * H,
+                       vx: (Math.random() - 0.5) * 0.5, vy: (Math.random() - 0.5) * 0.5 });
         }
       }
 
-      function resize() {
-        dpr = Math.min(window.devicePixelRatio || 1, 2);
-        W = band.clientWidth;
-        H = band.clientHeight;
-        canvas.width = W * dpr;
-        canvas.height = H * dpr;
-        ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-        build();
+      function drawLink(a, b) {
+        var alpha = 0.2 + Math.max(a.glow, b.glow) * 0.65;
+        ctx.strokeStyle = 'rgba(0,220,150,' + alpha.toFixed(3) + ')';
+        ctx.beginPath();
+        ctx.moveTo(a.x, a.y);
+        ctx.lineTo(b.x, b.y);
+        ctx.stroke();
       }
 
       function step() {
-        t += 0.012;
         ctx.clearRect(0, 0, W, H);
-        var R = 260;
 
-        // Grid nodes pushed gently away from the pointer, with a soft idle wave
+        // 1) Grid nodes: pointer pushes, springs pull back
         for (var i = 0; i < nodes.length; i++) {
-          var p = nodes[i];
-          var dx = p.ox - mouse.x, dy = p.oy - mouse.y;
-          var d = Math.sqrt(dx * dx + dy * dy) || 1;
-          var inf = Math.max(0, 1 - d / R);
-          var wave = Math.sin(t * 2 + p.ox * 0.02 + p.oy * 0.015) * 2.2;
-          p.inf = inf;
-          p.x = p.ox + (dx / d) * inf * 24 + wave * 0.5;
-          p.y = p.oy + (dy / d) * inf * 24 + wave * 0.5;
+          var n = nodes[i];
+          if (mouse.on) {
+            var dx = n.x - mouse.x, dy = n.y - mouse.y;
+            var d2 = dx * dx + dy * dy;
+            if (d2 < PUSH_R * PUSH_R) {
+              var d = Math.sqrt(d2) || 0.001;
+              var f = (1 - d / PUSH_R) * 2.4;
+              n.vx += (dx / d) * f;
+              n.vy += (dy / d) * f;
+            }
+          }
+          n.vx += (n.ox - n.x) * 0.06;
+          n.vy += (n.oy - n.y) * 0.06;
+          n.vx *= 0.84;
+          n.vy *= 0.84;
+          n.x += n.vx;
+          n.y += n.vy;
+          var disp = Math.abs(n.x - n.ox) + Math.abs(n.y - n.oy);
+          n.glow = Math.min(1, disp / 18);
         }
 
-        // Grid lines to right and down neighbours
-        for (var r = 0; r < nodes.length; r++) {
-          var a = nodes[r];
-          var col = r % cols;
-          var right = col < cols - 1 ? nodes[r + 1] : null;
-          var down = nodes[r + cols];
-          [right, down].forEach(function (b) {
-            if (!b) return;
-            var glow = Math.max(a.inf, b.inf);
-            ctx.strokeStyle = 'rgba(0,146,104,' + (0.22 + glow * 0.6) + ')';
-            ctx.lineWidth = 1 + glow * 0.8;
-            ctx.beginPath();
-            ctx.moveTo(a.x, a.y);
-            ctx.lineTo(b.x, b.y);
-            ctx.stroke();
-          });
+        // 2) Grid lines between neighbours (brighter where displaced)
+        ctx.lineWidth = 1;
+        for (var r = 0; r < rows; r++) {
+          for (var k = 0; k < cols; k++) {
+            var idx = r * cols + k;
+            if (k < cols - 1) drawLink(nodes[idx], nodes[idx + 1]);
+            if (r < rows - 1) drawLink(nodes[idx], nodes[idx + cols]);
+          }
         }
 
-        // Nodes
+        // 3) Nodes at intersections
         for (var q = 0; q < nodes.length; q++) {
-          var n = nodes[q];
-          ctx.fillStyle = 'rgba(0,110,80,' + (0.45 + n.inf * 0.5) + ')';
+          var m = nodes[q];
+          ctx.fillStyle = 'rgba(120,255,200,' + (0.35 + m.glow * 0.65).toFixed(3) + ')';
           ctx.beginPath();
-          ctx.arc(n.x, n.y, 1.2 + n.inf * 2.6, 0, Math.PI * 2);
+          ctx.arc(m.x, m.y, 1.3 + m.glow * 2, 0, Math.PI * 2);
           ctx.fill();
         }
 
-        // Particle swarm: wander, and gather toward the pointer when near
-        for (var j = 0; j < parts.length; j++) {
-          var s = parts[j];
-          var mx = mouse.x - s.x, my = mouse.y - s.y;
-          var md = Math.sqrt(mx * mx + my * my);
-          if (md < 300) {
-            s.vx += (mx / (md || 1)) * 0.035;
-            s.vy += (my / (md || 1)) * 0.035;
-          } else {
-            s.a += (Math.random() - 0.5) * 0.3;
-            s.vx += Math.cos(s.a) * 0.015;
-            s.vy += Math.sin(s.a) * 0.015;
+        // 4) Pointer grab: lines from the cursor to nearby nodes
+        if (mouse.on) {
+          for (var g = 0; g < nodes.length; g++) {
+            var gn = nodes[g];
+            var gx = gn.x - mouse.x, gy = gn.y - mouse.y;
+            var gd = Math.sqrt(gx * gx + gy * gy);
+            if (gd < GRAB_R) {
+              ctx.strokeStyle = 'rgba(0,255,170,' + ((1 - gd / GRAB_R) * 0.6).toFixed(3) + ')';
+              ctx.beginPath();
+              ctx.moveTo(mouse.x, mouse.y);
+              ctx.lineTo(gn.x, gn.y);
+              ctx.stroke();
+            }
           }
-          var sp = Math.sqrt(s.vx * s.vx + s.vy * s.vy);
-          if (sp > 1.6) { s.vx = (s.vx / sp) * 1.6; s.vy = (s.vy / sp) * 1.6; }
-          s.vx *= 0.985; s.vy *= 0.985;
-          s.x += s.vx; s.y += s.vy;
-          if (s.x < -10) s.x = W + 10; if (s.x > W + 10) s.x = -10;
-          if (s.y < -10) s.y = H + 10; if (s.y > H + 10) s.y = -10;
         }
 
-        // Particle links and dots
+        // 5) Particle swarm: drift, wrap at edges, gather toward the pointer
+        for (var j = 0; j < parts.length; j++) {
+          var pt = parts[j];
+          if (mouse.on) {
+            var px = mouse.x - pt.x, py = mouse.y - pt.y;
+            var pd = Math.sqrt(px * px + py * py);
+            if (pd < GRAB_R && pd > 1) {
+              pt.vx += (px / pd) * 0.02;
+              pt.vy += (py / pd) * 0.02;
+            }
+          }
+          pt.vx += (Math.random() - 0.5) * 0.03;
+          pt.vy += (Math.random() - 0.5) * 0.03;
+          pt.vx *= 0.97;
+          pt.vy *= 0.97;
+          pt.x += pt.vx;
+          pt.y += pt.vy;
+          if (pt.x < -10) pt.x = W + 10;
+          if (pt.x > W + 10) pt.x = -10;
+          if (pt.y < -10) pt.y = H + 10;
+          if (pt.y > H + 10) pt.y = -10;
+        }
         for (var u = 0; u < parts.length; u++) {
           var A = parts[u];
           for (var v = u + 1; v < parts.length; v++) {
             var B = parts[v];
             var ex = A.x - B.x, ey = A.y - B.y;
             var ed = Math.sqrt(ex * ex + ey * ey);
-            if (ed < 90) {
-              ctx.strokeStyle = 'rgba(0,146,104,' + ((1 - ed / 90) * 0.35) + ')';
-              ctx.lineWidth = 0.8;
+            if (ed < LINK_R) {
+              ctx.strokeStyle = 'rgba(0,220,150,' + ((1 - ed / LINK_R) * 0.35).toFixed(3) + ')';
               ctx.beginPath();
               ctx.moveTo(A.x, A.y);
               ctx.lineTo(B.x, B.y);
               ctx.stroke();
             }
           }
-          ctx.fillStyle = 'rgba(0,120,88,0.85)';
+          ctx.fillStyle = 'rgba(190,255,225,0.85)';
           ctx.beginPath();
           ctx.arc(A.x, A.y, 1.4, 0, Math.PI * 2);
           ctx.fill();
         }
       }
 
-      function loop() {
+      function frame() {
         step();
-        requestAnimationFrame(loop);
+        rafId = (visible && !reduce) ? requestAnimationFrame(frame) : 0;
+      }
+      function start() {
+        if (!rafId && visible && !reduce) rafId = requestAnimationFrame(frame);
       }
 
       band.addEventListener('pointermove', function (e) {
         var rect = canvas.getBoundingClientRect();
         mouse.x = e.clientX - rect.left;
         mouse.y = e.clientY - rect.top;
+        mouse.on = true;
+        if (reduce) step();
       });
-      band.addEventListener('pointerleave', function () {
-        mouse.x = -9999; mouse.y = -9999;
-      });
-      window.addEventListener('resize', resize);
+      band.addEventListener('pointerleave', function () { mouse.on = false; });
 
-      resize();
-      if (reduce) { step(); } else { loop(); }
+      // Responsive: re-layout whenever the band changes size
+      if ('ResizeObserver' in window) {
+        new ResizeObserver(function () { setup(); if (reduce) step(); }).observe(band);
+      } else {
+        window.addEventListener('resize', function () { setup(); if (reduce) step(); });
+      }
+
+      // Pause the animation while the band is off-screen
+      if ('IntersectionObserver' in window) {
+        new IntersectionObserver(function (entries) {
+          visible = entries[0].isIntersecting;
+          if (visible) start();
+        }).observe(band);
+      }
+
+      setup();
+      if (reduce) { step(); } else { start(); }
     })();
 
     // Gentle reveal-on-scroll for sections and cards
